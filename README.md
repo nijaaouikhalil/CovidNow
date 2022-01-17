@@ -19,6 +19,7 @@ COVID-19 Tracking App
 ### Front-end Technologies
 
 * ReactJS
+* Figma
 
 ### Back-end Technologies
 

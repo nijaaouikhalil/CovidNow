@@ -13,6 +13,7 @@ COVID-19 Tracking App
 
 * Khalil (Scrum Master)
 * Hussein Olleik - 40090081 ([HAOlleik](https://github.com/HAOlleik "Github user's profile"))
+* George Koutsaris - 40086174
 
 ## Technologies
 

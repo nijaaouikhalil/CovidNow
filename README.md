@@ -9,10 +9,10 @@ COVID-19 Tracking App
 ## Core Features 👇
 
 ## Progress ⏰
- [X] Sprint 1
- [X] Sprint 2
- [X] Sprint 3
- [X] Sprint 4
+ - [X] Sprint 1
+ - [X] Sprint 2
+ - [X] Sprint 3
+ - [X] Sprint 4
 
 ## Team Members
 

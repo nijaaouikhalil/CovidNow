@@ -3,7 +3,7 @@
 ## Objective
 COVID-19 Tracking App
 
-## Project
+## Description
 
 
 ## Core Features
@@ -11,10 +11,20 @@ COVID-19 Tracking App
 
 ## Team Members
 
-* Khalil (Scrum Master)
-* Hussein Olleik - 40090081 ([HAOlleik](https://github.com/HAOlleik "Github user's profile"))
-* George Koutsaris - 40086174
-* Ryan Leyland - 40015165
+#	Name	ID	Github Username
+1 Khalil(Scrum Master)
+2	Hussein Olleik 4009008	HAOlleik
+3	George Koutsaris	40086174	
+4	Ryan Leyland	40015165	
+5	
+6	
+7	
+8	
+9
+
+
+
+
 
 ## Technologies
 

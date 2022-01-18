@@ -4,7 +4,7 @@
 COVID-19 Tracking App
 
 ## Description ✏️
-
+Build a simplified Covid tracking app that helps medical doctors, government officers and health officials to keep track of those infected with Covid-19.
 
 ## Core Features 👇
 
@@ -14,9 +14,8 @@ COVID-19 Tracking App
  [X] Sprint 3
  [X] Sprint 4
 
-## Team Members
-
-#	Name	ID	Github Username
+## Team Members 💻
+###	Name	ID	Github Username
 1	Khalil (Scrum Master)
 2	Hussein Olleik  40090081 [HAOlleik](https://github.com/HAOlleik "Github user's profile")
 3	George Koutsaris  40086174

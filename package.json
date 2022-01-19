@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/nijaaouikhalil/CovidNow#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.2"
   },
-  "type":"module"
+  "type": "module"
 }

@@ -1,0 +1,25 @@
+{
+  "name": "covidnow",
+  "version": "1.0.0",
+  "description": "COVID-19 Tracking App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nijaaouikhalil/CovidNow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nijaaouikhalil/CovidNow/issues"
+  },
+  "homepage": "https://github.com/nijaaouikhalil/CovidNow#readme",
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.2"
+  },
+  "type": "module"
+}

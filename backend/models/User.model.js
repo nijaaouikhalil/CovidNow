@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+// THIS IS A BASE SCHEMA - INHERITED BY ALL OTHER USER TYPES
+
 const UserSchema = new mongoose.Schema({
     firstname: {
         type: String,

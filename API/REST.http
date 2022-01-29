@@ -1,0 +1,56 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "name" : "Admin",
+    "email":"admin@admin",
+    "password":"pass1",
+    "cpassword": "pass1",
+    "roles": ["user", "admin"]
+
+}
+
+###
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "name" : "User2",
+    "email":"user2@gmail",
+    "password":"pass1",
+    "cpassword": "pass1",
+    "roles": ["user"]
+
+}
+
+###
+GET http://localhost:3000/api/test/all
+
+###
+GET http://localhost:3000/api/test/user
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjViM2NiZGU2OTNmYjIxNjgxN2JlYiIsImlhdCI6MTY0MzQ5MjcyNiwiZXhwIjoxNjQzNTc5MTI2fQ.M31KNb0o0E-5QzNwcmn2pfuMv_QrFCjdAHC53Aa67Lg
+
+
+###
+POST http://localhost:3000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email":"user2@gmail",
+    "password":"pass1"
+}
+
+###
+POST http://localhost:3000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email":"admin@admin",
+    "password":"pass1"
+}
+
+###
+GET http://localhost:3000/api/test/admin
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjViNDM0ZGU2OTNmYjIxNjgxN2JmMCIsImlhdCI6MTY0MzQ5MjkxMSwiZXhwIjoxNjQzNTc5MzExfQ.A-U8waTZ0YalVAbdiNgN73NwsTn3ynlyvhJDti_DIsE

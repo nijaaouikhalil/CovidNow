@@ -8,7 +8,7 @@ function Footer() {
         <Container>
           <Navbar.Brand>CovIDTracker</Navbar.Brand>
           <Row>
-            <Col className="text-center py-3">Copyright &copy; {getCurrentYear()} CovIDTracker</Col>
+            <Col className="text-center py-3">&copy; {getCurrentYear()} CovIDTracker</Col>
           </Row>
         </Container>
       </Navbar>

@@ -6,7 +6,7 @@ function Header() {
     <Navbar bg="primary" collapseOnSelect variant="dark">
       <Container>
         <LinkContainer to="/">
-          <Navbar.Brand>CovidTracker</Navbar.Brand>
+          <Navbar.Brand>CovIDTracker</Navbar.Brand>
         </LinkContainer>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Nav className="me-auto">

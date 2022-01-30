@@ -19,15 +19,17 @@ function RegisterScreen() {
 
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Full Name</Form.Label>
           <Form.Control
             required
             type="name"
-            placeholder="Enter name"
+            placeholder="Enter Full Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
+        <br></br>
 
         <Form.Group controlId="email">
           <Form.Label>Email Address</Form.Label>
@@ -40,6 +42,8 @@ function RegisterScreen() {
           ></Form.Control>
         </Form.Group>
 
+        <br></br>
+
         <Form.Group controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -50,6 +54,8 @@ function RegisterScreen() {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
+
+        <br></br>
 
         <Form.Group controlId="passwordConfirm">
           <Form.Label>Confirm Password</Form.Label>
@@ -69,7 +75,7 @@ function RegisterScreen() {
 
       <Row className="py-3">
         <Col>
-          Have an Account? <Link to={"/login"}>Sign In</Link>
+          Already Have an Account? <Link to={"/login"}>Sign in Here</Link>
         </Col>
       </Row>
     </FormContainer>

@@ -1,6 +1,7 @@
 const {verifyRegister} = require("../middlewares")
 const controller = require("../controllers/authControllers")
 
+
 module.exports = function(app){
     app.use(function(req,res,next){
         res.header(
@@ -18,8 +19,7 @@ module.exports = function(app){
         controller.register
     )
 
-    app.get(
-        "/api/auth/confirm/:confirmationCode",
+    app.get("/api/auth/confirm/:confirmationCode",
         controller.verifyUser
     )
 

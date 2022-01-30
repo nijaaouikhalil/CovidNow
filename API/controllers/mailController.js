@@ -4,7 +4,7 @@ const user = process.env.EMAIL_VERIFICATION
 const pass = process.env.VERIFICATION_PASSWORD
 
 const transport = nodemailer.createTransport({
-    service: "Gmail",
+    service: "gmail",
     auth: {
       user: user,
       pass: pass
@@ -20,7 +20,9 @@ const transport = nodemailer.createTransport({
       html: `<h1>Email Confirmation</h1>
           <h2>Hello ${name}</h2>
           <p>Thank you for subscribing. Please confirm your email by clicking on the following link</p>
-          <a href=http://localhost:3000/confirm/${confirmationCode}> Click here</a>
+          <a href=http://localhost:3000/api/auth/confirm/${confirmationCode}> Click here</a>
           </div>`,
     }).catch(err => console.log(err));
   };
+
+  

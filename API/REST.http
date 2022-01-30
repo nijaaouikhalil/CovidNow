@@ -2,10 +2,10 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "NoRoles",
-    "email":"NR@admin",
-    "password":"NR",
-    "cpassword": "NR",
+    "name" : "SOEN390Test2",
+    "email":"soen390testing@gmail.com",
+    "password":"ST",
+    "cpassword": "ST",
     "roles": ["user", "admin"]
 
 }
@@ -37,8 +37,8 @@ POST http://localhost:3000/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"user2@gmail",
-    "password":"pass1"
+    "email":"soen390testing@gmail.com",
+    "password":"ST"
 }
 
 ###

@@ -44,7 +44,7 @@ try{
                                 res.status(500).send({message: err})
                                 return
                             }
-                            res.send({message: "User registered successfully, heehee email winwin"})
+                            res.send({message: "User registered successfully, Please check your email for account confirmation. "})
 
                             nodemailer.sendConfirmationEmail(
                                 user.username,
@@ -71,7 +71,7 @@ try{
                         return;
                       }
             
-                      res.send({ message: "User registered successfully, Check yo mail" });
+                      res.send({ message: "User registered successfully, Please check your email for account confirmation." });
 
                       nodemailer.sendConfirmationEmail(
                         user.username,
@@ -146,7 +146,6 @@ exports.verifyUser = (req, res, next) => {
         if (!user) {
             return res.status(404).send({ message: "User Not found." });
         }
-      
         user.status = "Active";
         user.save((err) => {
             if (err) {
@@ -157,3 +156,4 @@ exports.verifyUser = (req, res, next) => {
         })
         .catch((e) => console.log("error", e));
     };
+

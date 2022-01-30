@@ -18,5 +18,10 @@ module.exports = function(app){
         controller.register
     )
 
+    app.get(
+        "/api/auth/confirm/:confirmationCode",
+        controller.verifyUser
+    )
+
     app.post("/api/auth/signin", controller.signin)
 }

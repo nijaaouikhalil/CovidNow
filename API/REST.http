@@ -2,10 +2,10 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "Admin",
-    "email":"admin@admin",
-    "password":"pass1",
-    "cpassword": "pass1",
+    "name" : "NoRoles",
+    "email":"NR@admin",
+    "password":"NR",
+    "cpassword": "NR",
     "roles": ["user", "admin"]
 
 }
@@ -15,10 +15,10 @@ POST http://localhost:3000/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "User2",
-    "email":"user2@gmail",
-    "password":"pass1",
-    "cpassword": "pass1",
+    "name" : "EmailConfirmation",
+    "email":"officialcovidnow@gmail.com",
+    "password":"EC",
+    "cpassword": "EC",
     "roles": ["user"]
 
 }
@@ -29,7 +29,7 @@ GET http://localhost:3000/api/test/all
 ###
 GET http://localhost:3000/api/test/user
 Content-Type: application/json
-x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjViM2NiZGU2OTNmYjIxNjgxN2JlYiIsImlhdCI6MTY0MzQ5MjcyNiwiZXhwIjoxNjQzNTc5MTI2fQ.M31KNb0o0E-5QzNwcmn2pfuMv_QrFCjdAHC53Aa67Lg
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjVkYWMxY2IwZmZjM2U1NzM3ZDc3YiIsImlhdCI6MTY0MzUwMjc2NiwiZXhwIjoxNjQzNTg5MTY2fQ.3FEaFI5poQw0_18OuOVbEPPHCK68v2bV-XowYYFKbPo
 
 
 ###
@@ -46,8 +46,8 @@ POST http://localhost:3000/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"admin@admin",
-    "password":"pass1"
+    "email":"NR@admin",
+    "password":"NR"
 }
 
 ###

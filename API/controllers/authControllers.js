@@ -1,4 +1,5 @@
 const db = require("../models");
+const nodemailer = require('./mailController')
 const User = db.user;
 const Role = db.role;
 
@@ -10,11 +11,14 @@ try{
     if(req.body.password != req.body.cpassword){
             console.log("Passwords do not match")
      }else{
+         
+        const token = jwt.sign({email: req.body.email}, process.env.EMAIL_TOKEN_SECRET)
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
         const signedUpUser = new User({
             name: req.body.name,
             email: req.body.email,
-            password: hashedPassword
+            password: hashedPassword,
+            confirmationCode: token
         })
             
         signedUpUser.save((err, user) => {
@@ -23,7 +27,7 @@ try{
                 return
             }
 
-            if(req.body.roles){
+            if(req.body.roles && req.body.roles.length >0){
                 Role.find(
                     {
                         name: {$in: req.body.roles}
@@ -40,8 +44,16 @@ try{
                                 res.status(500).send({message: err})
                                 return
                             }
-                            res.send({message: "User registered successfully"})
+                            res.send({message: "User registered successfully, heehee email winwin"})
+
+                            nodemailer.sendConfirmationEmail(
+                                user.username,
+                                user.email,
+                                user.confirmationCode
+                         );
                         })
+
+                       
 
                     }
                 )
@@ -59,7 +71,13 @@ try{
                         return;
                       }
             
-                      res.send({ message: "User registered successfully" });
+                      res.send({ message: "User registered successfully, Check yo mail" });
+
+                      nodemailer.sendConfirmationEmail(
+                        user.username,
+                        user.email,
+                        user.confirmationCode
+                     );
                     })
                 })   
             }
@@ -76,6 +94,7 @@ exports.signin = (req, res) => {
         email: req.body.email
     }).populate("roles", "-__v")
       .exec((err, user) =>{
+
           if(err){
               res.status(500).send({message: err})
               return
@@ -84,7 +103,7 @@ exports.signin = (req, res) => {
           if(!user){
               return res.status(404).send({message: "User Not Found"})
           }
-
+          
           var validPass = bcrypt.compareSync(req.body.password, user.password)
 
           if(!validPass){
@@ -93,6 +112,13 @@ exports.signin = (req, res) => {
                     message: "Invalid Password"
                 })
           }
+          
+          if (user.status != "Active") {
+            return res.status(401).send({
+              message: "Pending Account. Please Verify Your Email!",
+            });
+          }
+          
 
           var token = jwt.sign({ id: user.id }, process.env.ACCESS_TOKEN_SECRET, {expiresIn: 86400})
 
@@ -111,3 +137,23 @@ exports.signin = (req, res) => {
 
       })
 }
+
+exports.verifyUser = (req, res, next) => {
+    User.findOne({
+        confirmationCode: req.params.confirmationCode,
+    })
+        .then((user) => {
+        if (!user) {
+            return res.status(404).send({ message: "User Not found." });
+        }
+      
+        user.status = "Active";
+        user.save((err) => {
+            if (err) {
+                res.status(500).send({ message: err });
+                return;
+            }
+            });
+        })
+        .catch((e) => console.log("error", e));
+    };

@@ -24,8 +24,16 @@ const User = mongoose.model(
         date:{
             type:Date,
             default:Date.now
+        },
+        status: {
+            type: String, 
+            enum: ['Pending', 'Active'],
+            default: 'Pending'
+          },
+        confirmationCode: { 
+            type: String, 
+            unique: true },
         }
-    }
     )
 )
 

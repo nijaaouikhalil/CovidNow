@@ -6,7 +6,6 @@ function Footer() {
     <footer>
       <Navbar bg="primary" collapseOnSelect variant="dark">
         <Container>
-          <Navbar.Brand>CovIDTracker</Navbar.Brand>
           <Row>
             <Col className="text-center py-3">&copy; {getCurrentYear()} CovIDTracker</Col>
           </Row>

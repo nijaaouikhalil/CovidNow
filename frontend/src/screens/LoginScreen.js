@@ -12,7 +12,7 @@ function LoginScreen() {
   };
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1>Sign In to your Account</h1>
 
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
@@ -24,7 +24,7 @@ function LoginScreen() {
             onChange={(e) => setEmail(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
+        <br></br>
         <Form.Group controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -34,7 +34,7 @@ function LoginScreen() {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
+        <br></br>
         <Button type="submit" variant="primary">
           Sign In
         </Button>
@@ -42,8 +42,7 @@ function LoginScreen() {
 
       <Row className="py-3">
         <Col>
-          New User?
-          <Link to={"/register"}> Register</Link>
+          Don't have an account? <Link to={"/register"}>Register here</Link>
         </Col>
       </Row>
     </FormContainer>

@@ -47,7 +47,7 @@ try{
                             res.send({message: "User registered successfully, Please check your email for account confirmation. "})
 
                             nodemailer.sendConfirmationEmail(
-                                user.username,
+                                user.name,
                                 user.email,
                                 user.confirmationCode
                          );

@@ -57,4 +57,4 @@ function initial() {
 require('./routes/authRoutes')(app)
 require('./routes/testRoutes')(app)
 
-app.listen(3000, () => console.log("server is up and running"))
+app.listen(8080, () => console.log("server is up and running"))

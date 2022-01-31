@@ -1,0 +1,66 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "name" : "SOEN390Test2",
+    "email":"soen390testing@gmail.com",
+    "password":"ST",
+    "cpassword": "ST",
+    "roles": ["user", "admin"]
+
+}
+
+###
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "name" : "EmailConfirmation",
+    "email":"officialcovidnow@gmail.com",
+    "password":"EC",
+    "cpassword": "EC",
+    "roles": ["user"]
+
+}
+###
+PUT http://localhost:3000/api/auth/resetPassword
+Content-Type: application/json
+
+{
+    "email" : "soen390testing@gmail.com",
+    "currentPassword" : "ST",
+    "newPassword":"STD"
+    
+}
+
+###
+GET http://localhost:3000/api/test/all
+
+###
+GET http://localhost:3000/api/test/user
+Content-Type: application/json
+x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjVkYWMxY2IwZmZjM2U1NzM3ZDc3YiIsImlhdCI6MTY0MzUwMjc2NiwiZXhwIjoxNjQzNTg5MTY2fQ.3FEaFI5poQw0_18OuOVbEPPHCK68v2bV-XowYYFKbPo
+
+
+###
+POST http://localhost:3000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email":"soen390testing@gmail.com",
+    "password":"STD"
+}
+
+###
+POST http://localhost:3000/api/auth/signin
+Content-Type: application/json
+
+{
+    "email":"NR@admin",
+    "password":"NR"
+}
+
+###
+GET http://localhost:3000/api/test/admin
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjViNDM0ZGU2OTNmYjIxNjgxN2JmMCIsImlhdCI6MTY0MzQ5MjkxMSwiZXhwIjoxNjQzNTc5MzExfQ.A-U8waTZ0YalVAbdiNgN73NwsTn3ynlyvhJDti_DIsE

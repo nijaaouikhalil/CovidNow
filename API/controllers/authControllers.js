@@ -146,6 +146,7 @@ exports.verifyUser = (req, res, next) => {
         if (!user) {
             return res.status(404).send({ message: "User Not found." });
         }
+
         user.status = "Active";
         user.save((err) => {
             if (err) {
@@ -157,3 +158,43 @@ exports.verifyUser = (req, res, next) => {
         .catch((e) => console.log("error", e));
     };
 
+
+exports.resetPassword = async (req,res) =>{
+try{
+    //console.log("Current password : " + req.body.currentPassword)
+    //console.log("New Password : " + req.body.newPassword)
+    const hashedNewPassword = await bcrypt.hash(req.body.newPassword, 10)
+    //console.log("Hashed New Password :" + hashedNewPassword)
+    User.findOne({
+        email: req.body.email
+    })
+    .then((user) => {
+        if (!user) {
+            return res.status(404).send({ message: "User Not found." });
+        }
+        //console.log("Comparing the hashed password on the database with the current entered password's hash.")
+        var validPass = bcrypt.compareSync(req.body.currentPassword, user.password)
+        if(!validPass){
+            return res.status(401).send({
+                message: "Invalid Password Entered."
+            })
+        }
+        user.password = hashedNewPassword;
+        //console.log("Changed password to " + user.password)
+        user.save((err) => {
+            if (err) {
+                res.status(500).send({ message: err });
+                return;
+            }
+            });
+
+        console.log("Comparing the new password in the database to the new inputted password")
+        var validPass = bcrypt.compareSync(req.body.newPassword, user.password)
+        if(validPass) {
+            res.status(200).send({ message: "Password Successfully Updated." });
+        }
+        })
+    }catch(e){
+        res.send({ message: e.message });
+    } 
+}

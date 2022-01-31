@@ -22,6 +22,16 @@ Content-Type: application/json
     "roles": ["user"]
 
 }
+###
+PUT http://localhost:3000/api/auth/resetPassword
+Content-Type: application/json
+
+{
+    "email" : "soen390testing@gmail.com",
+    "currentPassword" : "ST",
+    "newPassword":"STD"
+    
+}
 
 ###
 GET http://localhost:3000/api/test/all
@@ -38,7 +48,7 @@ Content-Type: application/json
 
 {
     "email":"soen390testing@gmail.com",
-    "password":"ST"
+    "password":"STD"
 }
 
 ###

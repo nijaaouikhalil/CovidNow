@@ -25,7 +25,7 @@ Build a COVID-19 tracking app that heps medical doctors, immigration officers an
 | 4   | Ryan Leyland         | 40015165  | [rsleyland](https://github.com/rsleyland "Ryan's github profile")         |
 | 5   | Warda Ahmed Salem    | 40085148  | [wardslm](https://github.com/wardslm "Github user's profile")             |
 | 6   | Omar Ghieh           | 40129455  | [Ogmar](https://github.com/Ogmar "Github user's profile")                 |
-| 7   |                      |           |                                                                           | 
+| 7   | Farouk Ihdene        | 40129461  | [FI2000](https://github.com/FI2000 "Github user's profile")               | 
 | 8   |                      |           |                                                                           |
 | 9   |                      |           |                                                                           |
 ## Technologies

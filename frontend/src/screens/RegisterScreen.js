@@ -1,9 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
+import { useNavigate } from "react-router-dom";
+import { register } from "../actions/userActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 function RegisterScreen() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,18 +18,40 @@ function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user_type, setType] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, user_info } = userLogin;
+
+  useEffect(() => {
+    if (user_info) {
+      navigate("/");
+    }
+  }, [navigate, user_info]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log();
+
+    if (password != confirmPassword) {
+      setPasswordError("Passwords do not match");
+    } else {
+      setPasswordError("");
+      dispatch(register(name, email, password));
+    }
   };
+
   return (
     <div className="container">
       <Form onSubmit={submitHandler}>
         <Row className="mb-3">
           <Col>
             <h1>Sign up </h1>
+            {passwordError && (
+              <Message variant="danger">{passwordError}</Message>
+            )}
+            {error && <Message variant="danger">{error}</Message>}
+            {loading && <Loader />}
           </Col>
           <Col>
             <FloatingLabel controlId="floatingSelect" label="User type">

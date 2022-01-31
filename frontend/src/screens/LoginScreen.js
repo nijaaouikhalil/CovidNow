@@ -1,18 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
+import { useNavigate } from "react-router-dom";
+import { login } from "../actions/userActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 function LoginScreen() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, user_info } = userLogin;
 
+  useEffect(() => {
+    if (user_info) {
+      navigate("/");
+    }
+  }, [navigate, user_info]);
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log();
+    dispatch(login(email, password));
   };
   return (
     <FormContainer>
       <h1>Sign In</h1>
+      {error && <Message variant="danger">{error}</Message>}
+      {loading && <Loader />}
 
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">

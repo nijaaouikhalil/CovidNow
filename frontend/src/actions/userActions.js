@@ -11,6 +11,7 @@ import {
   USER_UPDATE_FAIL,
 } from "../constants/userConstants";
 import axios from "axios";
+import { BaseUrl } from "../utils/utils";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -25,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "/api/users/login/",
+      BaseUrl + "/api/auth/signin",
       { username: email, password: password, email: email },
       config
     );
@@ -35,7 +36,7 @@ export const login = (email, password) => async (dispatch) => {
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("user_info", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -47,7 +48,7 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 export const logout = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
+  localStorage.removeItem("user_info");
   dispatch({ type: USER_LOGOUT });
 };
 
@@ -64,7 +65,11 @@ export const register = (user) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post("/api/users/register/", user, config);
+    const { data } = await axios.post(
+      BaseUrl + "/api/auth/register",
+      user,
+      config
+    );
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
@@ -74,7 +79,7 @@ export const register = (user) => async (dispatch) => {
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("user_info", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -93,17 +98,21 @@ export const updateUser = (user) => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { user_info },
     } = getState();
 
     const config = {
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${user_info.token}`,
       },
     };
 
-    const { data } = await axios.put(`/api/users/update/`, user, config);
+    const { data } = await axios.put(
+      BaseUrl + `/api/users/update/`,
+      user,
+      config
+    );
 
     dispatch({
       type: USER_UPDATE_SUCCESS,
@@ -115,7 +124,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
       payload: data,
     });
 
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("user_info", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_UPDATE_FAIL,

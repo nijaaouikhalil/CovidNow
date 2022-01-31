@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
@@ -34,10 +34,11 @@ function LoginScreen() {
             onChange={(e) => setPassword(e.target.value)}
           ></Form.Control>
         </Form.Group>
-
-        <Button type="submit" variant="primary">
-          Sign In
-        </Button>
+        <div className="d-grid gap-2 py-3">
+          <Button type="submit" variant="primary">
+            Sign In
+          </Button>
+        </div>
       </Form>
 
       <Row className="py-3">

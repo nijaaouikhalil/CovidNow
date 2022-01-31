@@ -11,13 +11,13 @@ function Header() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Nav className="me-auto">
           <LinkContainer className="m-3" to="/">
-            <i className="fas fa-home"> Home </i>
+            <i className="fas fa-home clickable"> Home </i>
           </LinkContainer>
           <LinkContainer className="m-3" to="/login">
-            <i className="fas fa-user"> Login </i>
+            <i className="fas fa-user clickable"> Login </i>
           </LinkContainer>
           <LinkContainer className="m-3" to="/announcements">
-            <i className="fas fa-bullhorn"> Announcements </i>
+            <i className="fas fa-bullhorn clickable"> Announcements </i>
           </LinkContainer>
         </Nav>
       </Container>

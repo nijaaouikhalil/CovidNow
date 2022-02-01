@@ -15,9 +15,11 @@ exports.register = async (req, res) => {
         { email: req.body.email },
         process.env.EMAIL_TOKEN_SECRET
       );
+      
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const signedUpUser = new User({
         name: req.body.name,
+        lname: req.body.lname,
         email: req.body.email,
         password: hashedPassword,
         confirmationCode: token,
@@ -30,17 +32,23 @@ exports.register = async (req, res) => {
         }
 
         if (req.body.roles && req.body.roles.length > 0) {
-          Role.find(
+          Role.findOne(
             {
-              name: { $in: req.body.roles },
+              name: req.body.roles,
             },
-            (err, roles) => {
+            (err, role) => {
               if (err) {
                 res.status(500).send({ message: err });
                 return;
               }
+              //check if user or special role
+              var verified = 'Pending'
+              if(role.name == 'user'){
+                verified = 'Active'
+              }
 
-              user.roles = roles.map((role) => role.id);
+              user.roles = role._id;
+              user.verified = verified;
               user.save((err) => {
                 if (err) {
                   res.status(500).send({ message: err });
@@ -66,7 +74,8 @@ exports.register = async (req, res) => {
               return;
             }
 
-            user.roles = [role._id];
+            user.roles = role._id;
+            user.verified = 'Active'
             user.save((err) => {
               if (err) {
                 res.status(500).send({ message: err });
@@ -89,7 +98,7 @@ exports.register = async (req, res) => {
       });
     }
   } catch (e) {
-    res.send({ message: "Error" });
+    res.send({ message: e });
   }
 };
 
@@ -127,11 +136,11 @@ exports.signin = (req, res) => {
         expiresIn: 86400,
       });
 
-      var authorities = [];
+      var authorities = "ROLE_"+user.roles.name.toUpperCase();
 
-      for (let i = 0; i < user.roles.length; i++) {
-        authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
-      }
+     // for (let i = 0; i < user.roles.length; i++) {
+      //  authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
+      //}
       res.status(200).send({
         id: user._id,
         name: user.name,
@@ -205,3 +214,4 @@ exports.resetPassword = async (req, res) => {
     res.send({ message: e.message });
   }
 };
+

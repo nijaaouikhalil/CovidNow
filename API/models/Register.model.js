@@ -7,6 +7,10 @@ const User = mongoose.model(
             type:String,
             required : true
         },
+        lname:{
+            type:String,
+            required : true
+        },
         email:{
             type:String,
             required : true
@@ -15,12 +19,12 @@ const User = mongoose.model(
             type:String,
             required : true
         },
-        roles: [
+        roles: 
             {
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "Role"
             }
-        ],
+        ,
         date:{
             type:Date,
             default:Date.now
@@ -33,6 +37,44 @@ const User = mongoose.model(
         confirmationCode: { 
             type: String, 
             unique: true },
+        verified:{
+            type: String, 
+            enum: ['Pending', 'Active'],
+            sparse: true
+        },
+        doctorInfo:
+            {
+               location: {
+                    address1: {type: String, sparse: true},
+                    address2: {type: String, sparse: true},
+                    city: {type: String, sparse: true},
+                    postalCode: {type: String, sparse: true},
+                    province: {type: String, sparse: true},
+               },
+               licenseNumber: {
+                type: String,
+                unique: true,
+                sparse: true
+               },
+                
+            },
+
+        governmentOfficialInfo:
+            {
+               governmentID: {
+                type: String,
+                sparse: true
+               },
+
+            },    
+        healthOfficialInfo:
+            {
+               healthOfficialID: {
+                type: String,
+                sparse: true
+               },
+ 
+            }      
         }
     )
 )

@@ -1,17 +1,18 @@
-POST http://localhost:3000/api/auth/register
+POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "SOEN390Test2",
-    "email":"soen390testing@gmail.com",
-    "password":"ST",
-    "cpassword": "ST",
-    "roles": ["user", "admin"]
+    "name" : "Doccy",
+    "lname": "Badmin",
+    "email":"soen394testing@gmail.com",
+    "password":"pass",
+    "cpassword": "pass",
+    "roles": "immigration_officer"
 
 }
 
 ###
-POST http://localhost:3000/api/auth/register
+POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
@@ -23,7 +24,7 @@ Content-Type: application/json
 
 }
 ###
-PUT http://localhost:3000/api/auth/resetPassword
+PUT http://localhost:8080/api/auth/resetPassword
 Content-Type: application/json
 
 {
@@ -34,25 +35,25 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/test/all
+GET http://localhost:8080/api/test/all
 
 ###
-GET http://localhost:3000/api/test/user
+GET http://localhost:8080/api/test/user
 Content-Type: application/json
 x-access-token:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjVkYWMxY2IwZmZjM2U1NzM3ZDc3YiIsImlhdCI6MTY0MzUwMjc2NiwiZXhwIjoxNjQzNTg5MTY2fQ.3FEaFI5poQw0_18OuOVbEPPHCK68v2bV-XowYYFKbPo
 
 
 ###
-POST http://localhost:3000/api/auth/signin
+POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"soen390testing@gmail.com",
-    "password":"STD"
+    "email":"soen391testing@gmail.com",
+    "password":"pass"
 }
 
 ###
-POST http://localhost:3000/api/auth/signin
+POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
@@ -61,6 +62,23 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/test/admin
+GET http://localhost:8080/api/verify/admin
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjViNDM0ZGU2OTNmYjIxNjgxN2JmMCIsImlhdCI6MTY0MzQ5MjkxMSwiZXhwIjoxNjQzNTc5MzExfQ.A-U8waTZ0YalVAbdiNgN73NwsTn3ynlyvhJDti_DIsE
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjhhOGY2OGU2OWE5ZTFkYTFiMmUyOSIsImlhdCI6MTY0MzY4NjQ4OCwiZXhwIjoxNjQzNzcyODg4fQ.3K9FWbSzxwWd2RbC-CTy5202vr74QPNc6Pf0Gd5YfMk
+
+###
+PUT http://localhost:8080/api/verify/admin
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjhhOGY2OGU2OWE5ZTFkYTFiMmUyOSIsImlhdCI6MTY0MzY4NjQ4OCwiZXhwIjoxNjQzNzcyODg4fQ.3K9FWbSzxwWd2RbC-CTy5202vr74QPNc6Pf0Gd5YfMk
+
+{
+    "id": "61f8a9578e69a9e1da1b2e38"
+}
+###
+PUT http://localhost:8080/api/verify/confirmDetails
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjg4MjU5YWEwNzE5ODI1Y2EwYWExNyIsImlhdCI6MTY0MzY3NjM1OSwiZXhwIjoxNjQzNzYyNzU5fQ.NdNHUXsvG-k8OGnsopkacN9Ve3L72EQG-NFjKDljAoo
+
+{
+    
+}

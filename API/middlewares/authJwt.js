@@ -26,9 +26,9 @@ isAdmin = (req, res, next) => {
             return
         }
 
-        Role.find(
+        Role.findOne(
             {
-                _id: {$in: user.roles}
+                _id: user.roles
             },
             (err, roles) => {
                 if(err){
@@ -36,14 +36,46 @@ isAdmin = (req, res, next) => {
                     return
                 }
 
+                /*
                 for(let i=0; i<roles.length; i++){
                     if(roles[i].name === "admin"){
                         next()
                         return
                     }
                 }
-
+                */
+                if(roles.name == "admin"){
+                    next()
+                    return
+                }
                 res.status(403).send({message: "Require Admin Role"})
+            }
+        )
+
+    })
+}
+
+isSpecial = (req, res, next) => {
+    User.findById(req.userId).exec((err, user) => {
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+        Role.findOne(
+            {
+                _id: user.roles
+            },
+            (err, roles) => {
+                if(err){
+                    res.status(500).send({message: err})
+                    return
+                }
+
+                if(roles.name != "user"){
+                    next()
+                    return
+                }
+                res.status(403).send({message: "Require Special Role"})
             }
         )
 
@@ -52,6 +84,7 @@ isAdmin = (req, res, next) => {
 
 const authJwt = {
     verifyToken,
-    isAdmin
+    isAdmin,
+    isSpecial
 }
 module.exports = authJwt

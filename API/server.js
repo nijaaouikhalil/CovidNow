@@ -49,12 +49,39 @@ function initial() {
 
         console.log("added 'admin' to roles collection");
       });
+      new Role({
+        name: "doctor",
+      }).save((err) => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'doctor' to roles collection");
+      });
+      new Role({
+        name: "health_official",
+      }).save((err) => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'health_official' to roles collection");
+      });
+      new Role({
+        name: "immigration_officer",
+      }).save((err) => {
+        if (err) {
+          console.log("error", err);
+        }
+
+        console.log("added 'immigration_officer' to roles collection");
+      });
     }
   });
 }
 
 //routes
 require("./routes/authRoutes")(app);
-require("./routes/testRoutes")(app);
+require("./routes/verificationRoutes")(app);
 
 app.listen(8080, () => console.log("server is up and running"));

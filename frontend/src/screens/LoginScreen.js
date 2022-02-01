@@ -17,7 +17,11 @@ function LoginScreen() {
 
   useEffect(() => {
     if (user_info) {
-      navigate("/");
+      if (!user_info.verified) {
+        navigate("/editprofile");
+      } else {
+        navigate("/");
+      }
     }
   }, [navigate, user_info]);
   const submitHandler = (e) => {

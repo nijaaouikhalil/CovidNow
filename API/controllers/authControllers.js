@@ -15,7 +15,7 @@ exports.register = async (req, res) => {
         { email: req.body.email },
         process.env.EMAIL_TOKEN_SECRET
       );
-      
+
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const signedUpUser = new User({
         name: req.body.name,
@@ -42,9 +42,9 @@ exports.register = async (req, res) => {
                 return;
               }
               //check if user or special role
-              var verified = 'Pending'
-              if(role.name == 'user'){
-                verified = 'Active'
+              var verified = "Pending";
+              if (role.name == "user") {
+                verified = "Active";
               }
 
               user.roles = role._id;
@@ -75,7 +75,7 @@ exports.register = async (req, res) => {
             }
 
             user.roles = role._id;
-            user.verified = 'Active'
+            user.verified = "Active";
             user.save((err) => {
               if (err) {
                 res.status(500).send({ message: err });
@@ -136,9 +136,9 @@ exports.signin = (req, res) => {
         expiresIn: 86400,
       });
 
-      var authorities = "ROLE_"+user.roles.name.toUpperCase();
+      var authorities = "ROLE_" + user.roles.name.toUpperCase();
 
-     // for (let i = 0; i < user.roles.length; i++) {
+      // for (let i = 0; i < user.roles.length; i++) {
       //  authorities.push("ROLE_" + user.roles[i].name.toUpperCase());
       //}
       res.status(200).send({
@@ -147,6 +147,7 @@ exports.signin = (req, res) => {
         email: user.email,
         roles: authorities,
         accessToken: token,
+        verified: user.verified,
       });
     });
 };
@@ -214,4 +215,3 @@ exports.resetPassword = async (req, res) => {
     res.send({ message: e.message });
   }
 };
-

@@ -1,7 +1,10 @@
+const { user } = require("../models");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
-  
+database = require("mongoose")
+
+
   exports.verifyRole = (req, res) => {
     User.findOne({
       _id: req.body.id
@@ -27,15 +30,24 @@ const Role = db.role;
   };
   
   exports.getPendingList = (req, res) => {
+    var json;
     User.find({
-      verified: "Pending"
-    }).exec((err, users) => {
-      if (err) {
-        res.status(500).send({ message: err });
-        return;
-      }
-
-      res.send(users)
+      verified: "Pending",
+    },
+    'name lname email roles verified').exec(async (err, cursor) => {
+      await cursor.forEach((doc, index) => {
+        Role.findOne({
+          _id: doc["roles"]
+        }, 'name').exec((err, role) => {
+          
+          doc["roles"] = role
+          console.log(role)
+          if(index == cursor.length-1){
+            res.send(cursor)
+          }
+          
+        })
+      })
     })
   };
 

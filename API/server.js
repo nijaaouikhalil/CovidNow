@@ -24,6 +24,7 @@ db.mongoose
     process.exit();
   });
 
+
 app.get("/", (req, res) => {
   res.json({ message: "Go to /api/auth/register" });
 });

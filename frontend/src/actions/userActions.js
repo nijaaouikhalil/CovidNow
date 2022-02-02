@@ -41,8 +41,8 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({
       type: USER_LOGIN_FAIL,
       payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }
@@ -73,19 +73,15 @@ export const register = (user) => async (dispatch) => {
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
-      payload: data,
+      payload: data.message,
     });
-    dispatch({
-      type: USER_LOGIN_SUCCESS,
-      payload: data,
-    });
-    localStorage.setItem("user_info", JSON.stringify(data));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: USER_REGISTER_FAIL,
       payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }
@@ -100,37 +96,38 @@ export const updateUser = (user) => async (dispatch, getState) => {
     const {
       userLogin: { user_info },
     } = getState();
-
+    user.userId = user_info.id;
     const config = {
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${user_info.token}`,
+        "x-access-token": `${user_info.accessToken}`,
       },
     };
 
     const { data } = await axios.put(
-      BaseUrl + `/api/users/update/`,
+      BaseUrl + `/api/verify/confirmDetails`,
       user,
       config
     );
 
     dispatch({
       type: USER_UPDATE_SUCCESS,
-      payload: data,
+      payload: data.message,
     });
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: data.user,
     });
 
     localStorage.setItem("user_info", JSON.stringify(data));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: USER_UPDATE_FAIL,
       payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }

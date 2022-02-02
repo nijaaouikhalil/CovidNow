@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
 import FormContainer from "./FormContainer";
+import { updateUser } from "../../actions/userActions";
 
 function DoctorInfo() {
+  const dispatch = useDispatch();
   const [address1, setAdress1] = useState("");
   const [address2, setAdress2] = useState("");
   const [city, setCity] = useState("");
@@ -20,8 +23,22 @@ function DoctorInfo() {
     { lable: "Yukon", value: "YT" },
     { lable: "Nunavut", value: "NU" },
   ];
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateUser({
+        address1,
+        address2,
+        city,
+        province,
+        licenceNumber,
+        postalCode: postalcode,
+      })
+    );
+  };
   return (
-    <Form className="container">
+    <Form className="container" onSubmit={submitHandler}>
       <Form.Group className="mb-3" controlId="formGridAddress1">
         <Form.Label>Address 1</Form.Label>
         <Form.Control

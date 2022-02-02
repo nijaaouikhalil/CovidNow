@@ -18,26 +18,39 @@ function RegisterScreen() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user_type, setType] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [customError, setCustomError] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { error, loading, user_info } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error, loading, register_message, success } = userRegister;
 
   useEffect(() => {
-    if (user_info) {
-      navigate("/");
+    if (success) {
+      navigate("/login");
     }
-  }, [navigate, user_info]);
+  }, [navigate, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     if (password != confirmPassword) {
-      setPasswordError("Passwords do not match");
+      setCustomError("Passwords do not match! Please try again");
+    } else if (email !== confirmEmail) {
+      setCustomError("Emails do not match! Please try again");
+    } else if (user_type === "") {
+      setCustomError("Please select a user type");
     } else {
-      setPasswordError("");
-      dispatch(register(name, email, password));
+      setCustomError("");
+      dispatch(
+        register({
+          name,
+          lname: lastName,
+          email,
+          password,
+          cpassword: confirmPassword,
+          roles: user_type,
+        })
+      );
     }
   };
 
@@ -47,9 +60,7 @@ function RegisterScreen() {
         <Row className="mb-3">
           <Col>
             <h1>Sign up </h1>
-            {passwordError && (
-              <Message variant="danger">{passwordError}</Message>
-            )}
+            {customError && <Message variant="danger">{customError}</Message>}
             {error && <Message variant="danger">{error}</Message>}
             {loading && <Loader />}
           </Col>
@@ -64,7 +75,7 @@ function RegisterScreen() {
                 <option value="patient">Patient</option>
                 <option value="doctor">Doctor</option>
                 <option value="health">Health official</option>
-                <option value="immigration officer">Immigration officer</option>
+                <option value="officer">Immigration officer</option>
               </Form.Select>
             </FloatingLabel>
           </Col>

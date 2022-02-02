@@ -9,6 +9,7 @@ import {
   ADMIN_LIST_USERS_RESET,
 } from "../constants/adminConstants";
 import axios from "axios";
+import { BaseUrl } from "../utils/utils";
 
 export const AdminUpdateUser = (user) => async (dispatch, getState) => {
   try {
@@ -17,17 +18,21 @@ export const AdminUpdateUser = (user) => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { user_info },
     } = getState();
 
     const config = {
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        "x-access-token": `${user_info.accessToken}`,
       },
     };
 
-    const { data } = await axios.put(`/api/users/update/`, user, config);
+    const { data } = await axios.put(
+      BaseUrl + `/api/verify/admin`,
+      user,
+      config
+    );
 
     dispatch({
       type: ADMIN_UPDATE_USER_SUCCESS,
@@ -37,8 +42,8 @@ export const AdminUpdateUser = (user) => async (dispatch, getState) => {
     dispatch({
       type: ADMIN_UPDATE_USER_FAIL,
       payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }
@@ -51,17 +56,17 @@ export const AdminlistUsers = () => async (dispatch, getState) => {
     });
 
     const {
-      userLogin: { userInfo },
+      userLogin: { user_info },
     } = getState();
 
     const config = {
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${userInfo.token}`,
+        "x-access-token": `${user_info.accessToken}`,
       },
     };
 
-    const { data } = await axios.get(`/api/admin/users`, config);
+    const { data } = await axios.get(BaseUrl + `/api/verify/admin`, config);
 
     dispatch({
       type: ADMIN_LIST_USERS_SUCCESS,
@@ -71,8 +76,8 @@ export const AdminlistUsers = () => async (dispatch, getState) => {
     dispatch({
       type: ADMIN_LIST_USERS_FAIL,
       payload:
-        error.response && error.response.data.detail
-          ? error.response.data.detail
+        error.response && error.response.data.message
+          ? error.response.data.message
           : error.message,
     });
   }

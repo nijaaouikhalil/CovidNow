@@ -1,6 +1,8 @@
+const { user } = require("../models");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
+
 
 exports.verifyRole = (req, res) => {
   User.findOne({
@@ -27,18 +29,6 @@ exports.verifyRole = (req, res) => {
   });
 };
 
-exports.getPendingList = (req, res) => {
-  User.find({
-    verified: "Pending",
-  }).exec((err, users) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-
-    res.send(users);
-  });
-};
 
 exports.roleInformation = (req, res) => {
   User.findById(req.userId).exec((err, user) => {
@@ -50,8 +40,7 @@ exports.roleInformation = (req, res) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
-        }
-
+        } 
         const userRole = role.name;
 
         //request info dependent on role
@@ -71,6 +60,7 @@ exports.roleInformation = (req, res) => {
           user.governmentOfficialInfo.governmentID = req.body.governmentID;
         }
 
+
         user.save((err) => {
           if (err) {
             res.status(500).send({ message: err });
@@ -84,4 +74,32 @@ exports.roleInformation = (req, res) => {
       }
     );
   });
+};
+
+exports.getPendingList = (req, res) => {
+  User.find({
+    verified: "Pending",
+  },
+  'name lname email roles verified').exec(async (err, cursor) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    await cursor.forEach((doc, index) => {
+      Role.findOne({
+        _id: doc["roles"]
+      }, 'name').exec((err, role) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        doc["roles"] = role
+
+        if(index == cursor.length-1){
+          res.send(cursor)
+        }
+        
+      })
+    })
+  })
 };

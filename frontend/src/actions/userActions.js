@@ -73,7 +73,7 @@ export const register = (user) => async (dispatch) => {
 
     dispatch({
       type: USER_REGISTER_SUCCESS,
-      payload: data,
+      payload: data.message,
     });
   } catch (error) {
     console.log(error);
@@ -96,32 +96,33 @@ export const updateUser = (user) => async (dispatch, getState) => {
     const {
       userLogin: { user_info },
     } = getState();
-
+    user.userId = user_info.id;
     const config = {
       headers: {
         "Content-type": "application/json",
-        Authorization: `Bearer ${user_info.token}`,
+        "x-access-token": `${user_info.accessToken}`,
       },
     };
 
     const { data } = await axios.put(
-      BaseUrl + `/api/users/update/`,
+      BaseUrl + `/api/verify/confirmDetails`,
       user,
       config
     );
 
     dispatch({
       type: USER_UPDATE_SUCCESS,
-      payload: data,
+      payload: data.message,
     });
 
     dispatch({
       type: USER_LOGIN_SUCCESS,
-      payload: data,
+      payload: data.user,
     });
 
     localStorage.setItem("user_info", JSON.stringify(data));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: USER_UPDATE_FAIL,
       payload:

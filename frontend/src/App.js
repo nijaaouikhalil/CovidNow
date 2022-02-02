@@ -9,6 +9,8 @@ import RegisterScreen from "./screens/RegisterScreen";
 import LoginScreen from "./screens/LoginScreen";
 import HomeScreen from "./screens/HomeScreen";
 import EditProfile from "./screens/EditProfile";
+import AdminPanelScreen from "./screens/AdminPanelScreen";
+import AnnouceScreen from "./screens/AnnouceScreen";
 
 function App() {
   return (
@@ -21,6 +23,9 @@ function App() {
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/editprofile" element={<EditProfile />} />
+            <Route path="/admin/userlist" element={<AdminPanelScreen />} />
+            <Route path="/announcements" element={<AnnouceScreen />} />
+            announcements
           </Routes>
         </Container>
       </main>

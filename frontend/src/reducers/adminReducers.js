@@ -9,19 +9,19 @@ import {
   ADMIN_LIST_USERS_RESET,
 } from "../constants/adminConstants";
 
-export const adminUpdateReducer = (state = { profile: {} }, action) => {
+export const adminUpdateReducer = (state = {}, action) => {
   switch (action.type) {
     case ADMIN_UPDATE_USER_REQUEST:
       return { loading: true };
 
     case ADMIN_UPDATE_USER_SUCCESS:
-      return { loading: false, success: true, profile: action.payload };
+      return { loading: false, success: true, message: action.payload.message };
 
     case ADMIN_UPDATE_USER_FAIL:
       return { loading: false, error: action.payload };
 
     case ADMIN_UPDATE_USER_RESET:
-      return { profile: {} };
+      return {};
 
     default:
       return state;

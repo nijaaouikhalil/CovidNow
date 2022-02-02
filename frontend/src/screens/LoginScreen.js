@@ -14,10 +14,12 @@ function LoginScreen() {
   const [password, setPassword] = useState("");
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, user_info } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { register_message } = userRegister;
 
   useEffect(() => {
     if (user_info) {
-      if (!user_info.verified) {
+      if (user_info.verified === "Pending") {
         navigate("/editprofile");
       } else {
         navigate("/");
@@ -31,6 +33,9 @@ function LoginScreen() {
   return (
     <FormContainer>
       <h1>Sign In</h1>
+      {register_message && (
+        <Message variant="warning">{register_message}</Message>
+      )}
       {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
 

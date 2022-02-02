@@ -21,14 +21,14 @@ function RegisterScreen() {
   const [customError, setCustomError] = useState("");
   const [phonenumber, setPhoneNumber] = useState("");
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { error, loading, user_info } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { error, loading, register_message, success } = userRegister;
 
   useEffect(() => {
-    if (user_info) {
-      navigate("/");
+    if (success) {
+      navigate("/login");
     }
-  }, [navigate, user_info]);
+  }, [navigate, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -37,6 +37,8 @@ function RegisterScreen() {
       setCustomError("Passwords do not match! Please try again");
     } else if (email !== confirmEmail) {
       setCustomError("Emails do not match! Please try again");
+    } else if (user_type === "") {
+      setCustomError("Please select a user type");
     } else {
       setCustomError("");
       dispatch(

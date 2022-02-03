@@ -86,7 +86,7 @@ function AdminPanelScreen() {
                           </td>
                           <td>{user.email}</td>
 
-                          <td>{user.roles ? user.roles : ""}</td>
+                          <td>{user.roles ? user.roles.name : ""}</td>
                           <td>
                             {user.verified === "Active" ? (
                               <i

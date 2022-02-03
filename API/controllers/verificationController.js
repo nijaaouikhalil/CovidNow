@@ -3,7 +3,6 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
-
 exports.verifyRole = (req, res) => {
   User.findOne({
     _id: req.body.id,
@@ -12,23 +11,27 @@ exports.verifyRole = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }
+
+    let msg = "";
     if (req.body.decision) {
       user.verified = "Active";
+      msg = " Account was Actived!";
     } else {
       user.verified = "Denied";
+      msg = " Account was Denied!";
     }
     user.save((err) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
+
       res.send({
-        message: user.name + " was confirmed by admin",
+        message: user.name + msg,
       });
     });
   });
 };
-
 
 exports.roleInformation = (req, res) => {
   User.findById(req.userId).exec((err, user) => {
@@ -40,7 +43,7 @@ exports.roleInformation = (req, res) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
-        } 
+        }
         const userRole = role.name;
 
         //request info dependent on role
@@ -60,7 +63,6 @@ exports.roleInformation = (req, res) => {
           user.governmentOfficialInfo.governmentID = req.body.governmentID;
         }
 
-
         user.save((err) => {
           if (err) {
             res.status(500).send({ message: err });
@@ -77,29 +79,33 @@ exports.roleInformation = (req, res) => {
 };
 
 exports.getPendingList = (req, res) => {
-  User.find({
-    verified: "Pending",
-  },
-  'name lname email roles verified').exec(async (err, cursor) => {
+  User.find(
+    {
+      verified: "Pending",
+    },
+    "name lname email roles verified"
+  ).exec(async (err, cursor) => {
     if (err) {
       res.status(500).send({ message: err });
       return;
     }
     await cursor.forEach((doc, index) => {
-      Role.findOne({
-        _id: doc["roles"]
-      }, 'name').exec((err, role) => {
+      Role.findOne(
+        {
+          _id: doc["roles"],
+        },
+        "name"
+      ).exec((err, role) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
         }
-        doc["roles"] = role
+        doc["roles"] = role;
 
-        if(index == cursor.length-1){
-          res.send(cursor)
+        if (index == cursor.length - 1) {
+          res.send(cursor);
         }
-        
-      })
-    })
-  })
+      });
+    });
+  });
 };

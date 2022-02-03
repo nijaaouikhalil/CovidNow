@@ -72,10 +72,10 @@ function RegisterScreen() {
                 aria-label="Floating label select example"
               >
                 <option>select user type</option>
-                <option value="patient">Patient</option>
+                <option value="user">Patient</option>
                 <option value="doctor">Doctor</option>
-                <option value="health">Health official</option>
-                <option value="officer">Immigration officer</option>
+                <option value="health_official">Health official</option>
+                <option value="immigration_officer">Immigration officer</option>
               </Form.Select>
             </FloatingLabel>
           </Col>

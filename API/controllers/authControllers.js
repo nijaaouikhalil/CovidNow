@@ -43,6 +43,8 @@ exports.register = async (req, res) => {
               }
               //check if user or special role
               var verified = "Pending";
+              console.log("role is : " + role);
+              console.log("request role is : " + req.body.roles);
               if (role.name == "user") {
                 verified = "Active";
               }

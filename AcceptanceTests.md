@@ -22,7 +22,7 @@ Then I get a message saying "Account successfully created. If you wish to log in
 
 
 
-**_Scenario #4_**
+**_Scenario #3_**
 
 Given I am `NOT a Registered User`,
 When I can click on the "Login" button in order to attempt to sign in,
@@ -30,7 +30,7 @@ Then I will get an error message saying "Wrong credentials".
 
 
 
-**_Scenario #5_**
+**_Scenario #4_**
 
 Given that I am `NOT a Logged-in User`,
 When I can click on the "Login" button in order to sign in and I enter an invalid email or password,
@@ -38,7 +38,7 @@ Then I get an error message saying "Wrong credentials".
  
  
 
-**_Scenario #6_**
+**_Scenario #5_**
 
 Given that I am `NOT a Logged-in User`,
 When I can click on the "Login" button in order to sign in and I enter the correct login credentials associated with my account,

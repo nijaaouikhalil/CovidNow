@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const db = require("../models")
 const User = db.user
 const Role = db.role
-
+//Verifies the x-access jwt header token
 verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"]
 
@@ -19,6 +19,7 @@ verifyToken = (req, res, next) => {
     })
 }
 
+//Checks if the user is an admin in the database
 isAdmin = (req, res, next) => {
     User.findById(req.userId).exec((err, user) => {
         if(err){
@@ -54,7 +55,7 @@ isAdmin = (req, res, next) => {
 
     })
 }
-
+//Checks if the user has a special role
 isSpecial = (req, res, next) => {
     User.findById(req.userId).exec((err, user) => {
         if(err){

@@ -9,19 +9,19 @@ module.exports = function(app){
         );
         next();
       });
-
+      //GET route to see non-verified users
       app.get(
           "/api/verify/admin",
           [authJwt.verifyToken, authJwt.isAdmin],
           controller.getPendingList
       )
-      
+      //PUT route to deny/accept the special users
       app.put(
         "/api/verify/admin",
         [authJwt.verifyToken, authJwt.isAdmin],
         controller.verifyRole
       )
-
+      //PUT route where special users input specific specialized contextual information
       app.put(
         "/api/verify/confirmDetails",
         [authJwt.verifyToken, authJwt.isSpecial],

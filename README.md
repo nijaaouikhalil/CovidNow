@@ -19,9 +19,9 @@ Build a COVID-19 tracking app that heps medical doctors, immigration officers an
 
 | #   | Name                 | ID        | Github Username                                                           |
 | --- | :------------------- | :-------- | :----------------------------------------                                 |
-| 1   | Khalil(Scrum Master)|| 40092653  |[nijaaouikhalil](https://github.com/nijaaouikhalil "Github user's profile")|                                                     
+| 1   | Khalil(Scrum Master) | 40092653  |[nijaaouikhalil](https://github.com/nijaaouikhalil "Github user's profile")|                                                     
 | 2   | Hussein Olleik       | 40090081  |  [HAOlleik](https://github.com/HAOlleik "Github user's profile")          |
-| 3   | George Koutsaris     | 40086174  |                                                                           |
+| 3   | George Koutsaris     | 40086174  |  [georgekouts108](https://github.com/georgekouts108 "Github user's profile")|
 | 4   | Ryan Leyland         | 40015165  | [rsleyland](https://github.com/rsleyland "Ryan's github profile")         |
 | 5   | Warda Ahmed Salem    | 40085148  | [wardslm](https://github.com/wardslm "Github user's profile")             |
 | 6   | Omar Ghieh           | 40129455  | [Ogmar](https://github.com/Ogmar "Github user's profile")                 |

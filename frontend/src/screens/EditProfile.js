@@ -42,9 +42,9 @@ function EditProfile() {
       {user_info ? (
         user_info.roles === "ROLE_DOCTOR" ? (
           <DoctorInfo />
-        ) : user_info.roles === "ROLE_HEALTH" ? (
+        ) : user_info.roles === "ROLE_IMMIGRATION_OFFICER" ? (
           <GouvernInfo></GouvernInfo>
-        ) : user_info.roles === "ROLE_OFFICER" ? (
+        ) : user_info.roles === "ROLE_HEALTH_OFFICIAL" ? (
           <HealthOfficialInfo></HealthOfficialInfo>
         ) : (
           ""

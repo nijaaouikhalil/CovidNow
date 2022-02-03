@@ -2,6 +2,7 @@ if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
 
+//Requiring basic libraries/databases
 const express = require("express");
 const cors = require("cors");
 
@@ -10,13 +11,17 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+//Importing Database models/variables/references
 const db = require("./models");
 const Role = db.role;
 
+module.exports = app
+
+//Connecting to database
 db.mongoose
   .connect(process.env.DATABASE_URL)
   .then(() => {
-    console.log("Database Connected");
+    //console.log("Database Connected");
     initial();
   })
   .catch((err) => {
@@ -24,11 +29,13 @@ db.mongoose
     process.exit();
   });
 
+  
 
 app.get("/", (req, res) => {
   res.json({ message: "Go to /api/auth/register" });
 });
 
+//Initializes empty database collection with required roles
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
     if (!err && count === 0) {
@@ -85,4 +92,5 @@ function initial() {
 require("./routes/authRoutes")(app);
 require("./routes/verificationRoutes")(app);
 
+//Connect to port
 app.listen(8080, () => console.log("server is up and running"));

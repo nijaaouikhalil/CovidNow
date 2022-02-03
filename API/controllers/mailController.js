@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer")
 const user = process.env.EMAIL_VERIFICATION
 const pass = process.env.VERIFICATION_PASSWORD
 
+//Creates transport route to send the user the registration mail
 const transport = nodemailer.createTransport({
     service: "gmail",
     auth: {

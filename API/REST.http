@@ -4,7 +4,7 @@ Content-Type: application/json
 {
     "name" : "Doccy",
     "lname": "Badmin",
-    "email":"soen394testing@gmail.com",
+    "email":"soen390testing@gmail.com",
     "password":"pass",
     "cpassword": "pass",
     "roles": "immigration_officer"
@@ -29,8 +29,8 @@ Content-Type: application/json
 
 {
     "email" : "soen390testing@gmail.com",
-    "currentPassword" : "ST",
-    "newPassword":"STD"
+    "currentPassword" : "123",
+    "newPassword":"pass"
     
 }
 
@@ -48,7 +48,7 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"soen391testing@gmail.com",
+    "email":"soen390testing@gmail.com",
     "password":"pass"
 }
 

@@ -3,7 +3,7 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 
-
+//Method used to verify the role of a special user
 exports.verifyRole = (req, res) => {
   User.findOne({
     _id: req.body.id,
@@ -29,7 +29,7 @@ exports.verifyRole = (req, res) => {
   });
 };
 
-
+//updates the special role's information
 exports.roleInformation = (req, res) => {
   User.findById(req.userId).exec((err, user) => {
     Role.findOne(
@@ -76,6 +76,7 @@ exports.roleInformation = (req, res) => {
   });
 };
 
+//Shows all users waiting on their role confirmation
 exports.getPendingList = (req, res) => {
   User.find({
     verified: "Pending",

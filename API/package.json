@@ -1,29 +1,28 @@
 {
-  "name": "covidnow",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "chai-http": "^4.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^14.3.2",
+    "express": "^4.17.2",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.1.8",
+    "nodemailer": "^6.7.2",
+    "nodemon": "^2.0.15"
+  },
+  "name": "api",
   "version": "1.0.0",
-  "description": "COVID-19 Tracking App",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --exit",
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/nijaaouikhalil/CovidNow.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nijaaouikhalil/CovidNow/issues"
-  },
-  "homepage": "https://github.com/nijaaouikhalil/CovidNow#readme",
-  "dependencies": {
-    "ejs": "^3.1.6",
-    "express": "^4.17.2"
-  },
-  "type": "module",
+  "description": "",
   "devDependencies": {
-    "chai": "^4.3.4",
-    "mocha": "^9.1.4"
+    "chai": "^4.3.6",
+    "mocha": "^9.2.0"
   }
 }

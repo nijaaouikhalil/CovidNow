@@ -9,10 +9,10 @@ Build a COVID-19 tracking app that heps medical doctors, immigration officers an
 ## Core Features 👇
 
 ## Progress ⏰
- - [X] Sprint 1
- - [X] Sprint 2
- - [X] Sprint 3
- - [X] Sprint 4
+ - [ ] Sprint 1
+ - [ ] Sprint 2
+ - [ ] Sprint 3
+ - [ ] Sprint 4
 
 
 ## Team Members :technologist:
@@ -22,11 +22,11 @@ Build a COVID-19 tracking app that heps medical doctors, immigration officers an
 | 1   | Khalil(Scrum Master)||           |                                                                           | 
 | 2   | Hussein Olleik       | 40090081  |  [HAOlleik](https://github.com/HAOlleik "Github user's profile")          |
 | 3   | George Koutsaris     | 40086174  |                                                                           |
-| 4   | Ryan Leyland         | 40015165  |                                                                           |
+| 4   | Ryan Leyland         | 40015165  | [rsleyland](https://github.com/rsleyland "Ryan's github profile")         |
 | 5   | Warda Ahmed Salem    | 40085148  | [wardslm](https://github.com/wardslm "Github user's profile")             |
 | 6   | Omar Ghieh           | 40129455  | [Ogmar](https://github.com/Ogmar "Github user's profile")                 |
-| 7   |                      |           |                                                                           | 
-| 8   |                      |           |                                                                           |
+| 7   | Farouk Ihdene        | 40129461  | [FI2000](https://github.com/FI2000 "Github user's profile")               | 
+| 8   | Ismael Rekik         | 40132567  | [IRekik](https://github.com/IRekik "Github user's profile")               |
 | 9   |                      |           |                                                                           |
 ## Technologies
 

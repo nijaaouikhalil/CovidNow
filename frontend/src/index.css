@@ -15,3 +15,7 @@ code {
 .clickable {
   cursor: pointer;
 }
+.Col_profile {
+  width: fit-content;
+  height: fit-content;
+}

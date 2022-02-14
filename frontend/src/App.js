@@ -15,6 +15,7 @@ import DoctorPanelScreen from "./screens/DoctorPanelScreen";
 import DoctorPatientDetailScreen from "./screens/DoctorPatientDetailScreen";
 import ImmigrationPanelScreen from "./screens/ImmigrationPanelScreen";
 import ImmigrationUserDetailScreen from "./screens/ImmigrationUserDetailScreen";
+import PasswordRestScreen from "./screens/PasswordRestScreen";
 
 function App() {
   return (
@@ -29,10 +30,17 @@ function App() {
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/admin/userlist" element={<AdminPanelScreen />} />
             <Route path="/doctor/patientlist" element={<DoctorPanelScreen />} />
-            <Route path="/doctor/patientdetails/:pid" element={<DoctorPatientDetailScreen />} />
+            <Route
+              path="/doctor/patientdetails/:pid"
+              element={<DoctorPatientDetailScreen />}
+            />
             <Route path="/immi/userlist" element={<ImmigrationPanelScreen />} />
-            <Route path="/immi/userdetails/:uid" element={<ImmigrationUserDetailScreen />} />
+            <Route
+              path="/immi/userdetails/:uid"
+              element={<ImmigrationUserDetailScreen />}
+            />
             <Route path="/announcements" element={<AnnouceScreen />} />
+            <Route path="/passwordrest" element={<PasswordRestScreen />} />
           </Routes>
         </Container>
       </main>

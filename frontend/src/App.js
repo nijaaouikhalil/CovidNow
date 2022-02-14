@@ -11,6 +11,10 @@ import HomeScreen from "./screens/HomeScreen";
 import EditProfile from "./screens/EditProfile";
 import AdminPanelScreen from "./screens/AdminPanelScreen";
 import AnnouceScreen from "./screens/AnnouceScreen";
+import DoctorPanelScreen from "./screens/DoctorPanelScreen";
+import DoctorPatientDetailScreen from "./screens/DoctorPatientDetailScreen";
+import ImmigrationPanelScreen from "./screens/ImmigrationPanelScreen";
+import ImmigrationUserDetailScreen from "./screens/ImmigrationUserDetailScreen";
 
 function App() {
   return (
@@ -24,8 +28,11 @@ function App() {
             <Route path="/register" element={<RegisterScreen />} />
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/admin/userlist" element={<AdminPanelScreen />} />
+            <Route path="/doctor/patientlist" element={<DoctorPanelScreen />} />
+            <Route path="/doctor/patientdetails/:pid" element={<DoctorPatientDetailScreen />} />
+            <Route path="/immi/userlist" element={<ImmigrationPanelScreen />} />
+            <Route path="/immi/userdetails/:uid" element={<ImmigrationUserDetailScreen />} />
             <Route path="/announcements" element={<AnnouceScreen />} />
-            announcements
           </Routes>
         </Container>
       </main>

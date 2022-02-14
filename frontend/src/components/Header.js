@@ -55,6 +55,23 @@ function Header() {
           {user_info && user_info.roles === "ROLE_ADMIN" && (
             <NavDropdown title="Admin" id="adminmenue">
               <LinkContainer to="/admin/userlist">
+                <NavDropdown.Item>Confirm Users</NavDropdown.Item>
+              </LinkContainer>
+              <LinkContainer to="/admin/userlist/all">
+                <NavDropdown.Item>All Users</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
+          {user_info && user_info.roles === "ROLE_DOCTOR" && (
+            <NavDropdown title="Doctor" id="doctormenue">
+              <LinkContainer to="/doctor/patientlist">
+                <NavDropdown.Item>Patients</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
+          {user_info && user_info.roles === "ROLE_IMMIGRATION_OFFICER" && (
+            <NavDropdown title="Immigration Officer" id="immimenue">
+              <LinkContainer to="/immi/userlist">
                 <NavDropdown.Item>Users</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>

@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken");
 const db = require("../models")
 const User = db.user
 const Role = db.role
+const assignedDoctor = db.assignedDoctor;
 //Verifies the x-access jwt header token
 verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"]
@@ -83,9 +84,60 @@ isSpecial = (req, res, next) => {
     })
 }
 
+canView = (req, res, next) => {
+    User.findById(req.userId).exec((err, user) => {
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+        Role.findOne(
+            {
+                _id: user.roles 
+            },
+            (err, roles) => {
+                if(err){
+                    res.status(500).send({message: err})
+                    return
+                }
+
+                if(roles.name == "admin" || roles.name == "health_official") {
+                    next()
+                    return
+                }else if (req.userId == req.params.userId){
+                    next()
+                    return 
+                }
+                else if(roles.name == "doctor"){
+                    assignedDoctor.findOne(
+                        {
+                            doctorId: req.userId,
+                            userId: req.params.userId
+                        },
+                        (err) => {
+                            if(err){
+                                res.status(500).send({message: err})
+                                return
+                            }
+                            next()
+                            return
+                        }    
+                    )
+                }
+                else{
+                    res.status(500).send({message: "Something went wrong"})
+                    return
+                }
+                
+            }   
+        )
+    })
+}
+
+
 const authJwt = {
     verifyToken,
     isAdmin,
-    isSpecial
+    isSpecial,
+    canView
 }
 module.exports = authJwt

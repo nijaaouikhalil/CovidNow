@@ -88,42 +88,64 @@ exports.profileInfo = (req, res) => {
     )
 }
 
+//Show list of profiles you have access to depending on the role
 exports.viewAll = (req, res) => {
-    
-}
-
-//return role Name
-getRoleName = (id) => {
-    User.findById(id).exec((err, user) => {
-        if(err){
-            res.status(500).send({message: err})
-            return
-        }
+    if(req.roleName == "user"){
+        res.redirect(`http://localhost:8080/api/view/${req.userId}`)
+    }else if(req.roleName == "health_official"){
+       
         Role.findOne(
             {
-                _id: user.roles
+                name: "user"
             },
-            (err, roles) => {
-                if(err){
-                    res.status(500).send({message: err})
-                    return
-                }
-
-                return roles.name
+            (err, role) => {
+                
+                User.find(
+                    {
+                        roles: role._id,
+                        verified: "Active",
+                        status: "Active"
+                    },
+                    "name lname email"
+                ).exec((err, cursor) =>{
+                    res.send(cursor)
+                })
             }
         )
+    }
+    else if(req.roleName == "admin"){
+        User.find(
+            {
+              
+            },
+            "name lname email roles verified"
+          ).exec(async (err, cursor) => {
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+            await cursor.forEach((doc, index) => {
+              Role.findOne(
+                {
+                  _id: doc["roles"],
+                },
+                "name"
+              ).exec((err, role) => {
+                if (err) {
+                  res.status(500).send({ message: err });
+                  return;
+                }
+                doc["roles"] = role;
+        
+                if (index == cursor.length - 1) {
+                  res.send(cursor);
+                }
+              });
+            });
+          });
+    }
+    else if(req.roleName == "doctor"){
 
-    })
+    }
 }
 
-
-checkUserId = async (id) => {
-    await User.findById(id).exec((err, user) => {
-        if(err){
-            res.status(500).send({message: err})
-            return
-        }
-        return id;
-
-    })
-}

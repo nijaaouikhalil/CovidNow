@@ -18,13 +18,13 @@ module.exports = function(app){
 
       app.get(
         "/api/view/:userId",
-        [authJwt.verifyToken, authJwt.isAdmin, authJwt.canView],
+        [authJwt.verifyToken, authJwt.canView],
         controller.profileInfo
     )
 
     app.get(
       "/api/view/",
-      [authJwt.verifyToken],
+      [authJwt.verifyToken, requestRoleName],
       controller.viewAll
   )
       

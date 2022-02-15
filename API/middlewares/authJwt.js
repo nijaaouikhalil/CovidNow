@@ -85,6 +85,8 @@ isSpecial = (req, res, next) => {
 }
 
 canView = (req, res, next) => {
+    console.log(req.params.userId)
+    console.log(req.userId)
     User.findById(req.userId).exec((err, user) => {
         if(err){
             res.status(500).send({message: err})
@@ -133,11 +135,36 @@ canView = (req, res, next) => {
     })
 }
 
+requestRoleName = (req, res, next) => {
+    User.findById(req.userId).exec((err, user) => {
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+        Role.findOne(
+            {
+                _id: user.roles
+            },
+            (err, roles) => {
+                if(err){
+                    res.status(500).send({message: err})
+                    return
+                }
+
+                req.roleName = roles.name
+                next()
+            }
+        )
+
+    })
+}
+
 
 const authJwt = {
     verifyToken,
     isAdmin,
     isSpecial,
-    canView
+    canView,
+    requestRoleName
 }
 module.exports = authJwt

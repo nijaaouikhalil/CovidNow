@@ -2,12 +2,12 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "Doccy",
-    "lname": "Badmin",
-    "email":"soen390testing@gmail.com",
+    "name" : "health",
+    "lname": "official",
+    "email":"health_official@gmail.com",
     "password":"pass",
     "cpassword": "pass",
-    "roles": "immigration_officer"
+    "roles": "health_official"
 
 }
 
@@ -16,11 +16,12 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "EmailConfirmation",
-    "email":"officialcovidnow@gmail.com",
-    "password":"EC",
-    "cpassword": "EC",
-    "roles": ["user"]
+    "name" : "User",
+    "lname": "buser",
+    "email":"user@user",
+    "password":"pass",
+    "cpassword": "pass",
+    "roles": ""
 
 }
 ###
@@ -57,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"NR@admin",
-    "password":"NR"
+    "email":"health_official@gmail.com",
+    "password":"pass"
 }
 
 ###
@@ -97,6 +98,15 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE
 GET http://localhost:8080/api/view/61f8bf1f8336e6bf4342687b
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NDkzODA3NywiZXhwIjoxNjQ1MDI0NDc3fQ.h1ZR_agZcJe7wMSoBhZ8VyrMQGL-6tLJFMnjSCXSeqs
+
+{
+    
+}
+
+###
+GET http://localhost:8080/api/view
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZDFjYjM0YTc1YWVhZWIyMTA0NyIsImlhdCI6MTY0NDk0NDc1NiwiZXhwIjoxNjQ1MDMxMTU2fQ.yWecdnH_tgtYsrsIzfAIhrbMMGnINKOgZuXvGef5DKQ
 
 {
     

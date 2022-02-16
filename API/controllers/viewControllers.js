@@ -1,3 +1,4 @@
+const { user } = require("../models");
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
@@ -114,6 +115,8 @@ exports.viewAll = (req, res) => {
         )
     }
     else if(req.roleName == "admin"){
+        var final = []
+        console.log("------------------------------------------------------------------------")
         User.find(
             {
               
@@ -124,7 +127,7 @@ exports.viewAll = (req, res) => {
               res.status(500).send({ message: err });
               return;
             }
-            await cursor.forEach((doc, index) => {
+              cursor.forEach((doc, index) => {
               Role.findOne(
                 {
                   _id: doc["roles"],
@@ -135,17 +138,68 @@ exports.viewAll = (req, res) => {
                   res.status(500).send({ message: err });
                   return;
                 }
+
                 doc["roles"] = role;
-        
-                if (index == cursor.length - 1) {
-                  res.send(cursor);
+                if(doc.roles !== null && doc.roles.name == 'doctor'){
+                    assignedDoctor.count({
+                        doctorId : doc._id
+                    }).exec((err,count) => {
+                        var NewArray = {
+                            '_id' : doc._id,
+                            'name' : doc.name,
+                            'lname' : doc.lname,
+                            'email' : doc.email,
+                            'roles' : doc.roles,
+                            'verified' : doc.verified,
+                            'count' : count
+                        }
+                        cursor[index] = NewArray
+                    })
+
                 }
+                setTimeout(() => {
+                    if (index == cursor.length - 1) {
+                        res.send(cursor);
+                        }
+                }, 500);
               });
             });
           });
     }
     else if(req.roleName == "doctor"){
+        let listOfPatients = []
+        assignedDoctor.find(
+            {
+                doctorId: req.userId
+            },
+            "userId"
+        ).exec((err, patients) => {
 
+            if (err) {
+                res.status(500).send({ message: err });
+                return;
+              }   
+              for(let i = 0;i< patients.length;i++){
+                  var obj = patients[i]
+                  User.findOne({
+                    _id : obj.userId
+                },
+                "name lname email"
+                ).exec((err,patient) => {
+                    
+                  if (err) {
+                      res.status(500).send({ message: err });
+                      return;
+                    }
+                  listOfPatients.push(patient)
+                  if(i==patients.length-1){
+                    res.send(listOfPatients)
+                  }
+                })
+
+              } 
+                
+        })
     }
 }
 

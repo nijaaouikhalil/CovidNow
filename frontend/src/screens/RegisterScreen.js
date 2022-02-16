@@ -82,7 +82,7 @@ function RegisterScreen() {
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>First Name</Form.Label>
             <Form.Control
               required
               placeholder="Enter name"
@@ -92,7 +92,7 @@ function RegisterScreen() {
           </Form.Group>
 
           <Form.Group as={Col} controlId="lastname">
-            <Form.Label>Last name</Form.Label>
+            <Form.Label>Last Name</Form.Label>
             <Form.Control
               required
               placeholder="Enter last name"
@@ -113,7 +113,7 @@ function RegisterScreen() {
             ></Form.Control>
           </Form.Group>
           <Form.Group as={Col} controlId="email">
-            <Form.Label>confirm email Address</Form.Label>
+            <Form.Label>Confirm Email Address</Form.Label>
             <Form.Control
               required
               type="email"
@@ -158,7 +158,7 @@ function RegisterScreen() {
 
       <Row className="py-3">
         <Col>
-          Have an Account? <Link to={"/login"}>Sign In</Link>
+          Already have an account? <Link to={"/login"}>Sign In</Link>
         </Col>
       </Row>
     </div>

@@ -7,17 +7,17 @@ const DoctorStatistics = ({setSubPage}) => {
                     <h3>1234</h3>
                     <p>Total Confirmed Cases</p>
                 </div>
-                <div className='dd-card pastel-green'><a onClick={() => (setSubPage("My Patients"))}>
+                <div className='dd-card dd-card-link pastel-green' onClick={() => (setSubPage("My Patients"))}>
                     <h3>34</h3>
-                    <p>Patients Assigned</p></a>
+                    <p>Patients Assigned</p>
                 </div>
-                <div className='dd-card pastel-orange'><a href="" onClick={() => (setSubPage("Messages"))}>
+                <div className='dd-card dd-card-link pastel-orange' onClick={() => (setSubPage("Messages"))}>
                     <h3>12</h3>
-                    <p>New Messages</p></a>
+                    <p>New Messages</p>
                 </div>
-                <div className='dd-card pastel-red'><a href="" onClick={() => (setSubPage("Appointments"))}>
+                <div className='dd-card dd-card-link pastel-red' onClick={() => (setSubPage("Appointments"))}>
                     <h3>6</h3>
-                    <p>Appointments</p></a>
+                    <p>Appointments</p>
                 </div>
                 </div>
 

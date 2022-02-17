@@ -30,6 +30,7 @@
 .dd-sidebar .nav-link:hover,
 .dd-sidebar .nav-link.active {
   color: inherit;
+  cursor: pointer;
 }
 
 /* DOCTOR DASHBOARD DROPDOWN MENU SMALL SCREEENS */
@@ -62,6 +63,20 @@
   flex-direction: column!important;
   margin-bottom: 25px;
   box-shadow: 3px 3px 3px #888888;
+}
+
+.dd-card-link {
+  cursor: pointer;
+}
+
+@keyframes dd-btn-clicked {
+  0% {transform: translateX(0) translateY(0); box-shadow: 3px 3px 3px #888888;}
+  50% {transform: translateX(5px) translateY(5px); box-shadow: none;}
+  100% {transform: translateX(0) translateY(0); box-shadow: 3px 3px 3px #888888;}
+}
+
+.dd-card-link:active {
+  animation: dd-btn-clicked 0.1s;
 }
 
 

@@ -15,6 +15,7 @@ const AdminAllUsersList = () => {
                                 <th className='dd-patient-email'>Email</th>
                                 <th>Confirmed</th>
                                 <th>Quarantined</th>
+                                <th>Role</th>
                                 <th>Details</th>
                                 </tr>
                             </thead>
@@ -26,6 +27,7 @@ const AdminAllUsersList = () => {
                                 <td className='dd-patient-email'>Mark@Otto.com</td>
                                 <td>True</td>
                                 <td>True</td>
+                                <td>D</td>
                                 <td><a href="/admin/userdetails/132">More</a></td>
                                 </tr>
                                 <tr>
@@ -35,6 +37,7 @@ const AdminAllUsersList = () => {
                                 <td className='dd-patient-email'>Jacob@Thornton.com</td>
                                 <td>False</td>
                                 <td>False</td>
+                                <td>P</td>
                                 <td><a href="/admin/userdetails/12">More</a></td>
                                 </tr>
                                 <tr>
@@ -44,6 +47,7 @@ const AdminAllUsersList = () => {
                                 <td className='dd-patient-email'>dave@bull.com</td>
                                 <td>True</td>
                                 <td>True</td>
+                                <td>D</td>
                                 <td><a href="/admin/userdetails/4">More</a></td>
                                 </tr>
                                 <tr>
@@ -53,6 +57,7 @@ const AdminAllUsersList = () => {
                                 <td className='dd-patient-email'>Mark@Otto.com</td>
                                 <td>True</td>
                                 <td>True</td>
+                                <td>HO</td>
                                 <td><a href="/doctor/patientdetails/132">More</a></td>
                                 </tr>
                                 <tr>
@@ -62,6 +67,7 @@ const AdminAllUsersList = () => {
                                 <td className='dd-patient-email'>Jacob@Thornton.com</td>
                                 <td>False</td>
                                 <td>False</td>
+                                <td>IO</td>
                                 <td><a href="/admin/userdetails/12">More</a></td>
                                 </tr>
                                 <tr>
@@ -71,6 +77,7 @@ const AdminAllUsersList = () => {
                                 <td className='dd-patient-email'>dave@bull.com</td>
                                 <td>True</td>
                                 <td>True</td>
+                                <td>A</td>
                                 <td><a href="/admin/userdetails/4">More</a></td>
                                 </tr>
                             </tbody>

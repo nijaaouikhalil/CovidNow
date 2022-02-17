@@ -38,7 +38,6 @@ const AdminConfirmUsers = () => {
     return (
         <Container>
         <h1 className="text-center">Admin panel</h1>
-        <h3>{users}</h3>
         {updateLoading ? (
           <Loader />
         ) : updatError ? (

@@ -27,25 +27,25 @@ function PatientPanelScreen() {
                 <ul className="nav flex-column mt-5">
                 <li className="text-center mb-2"><h5>Patient</h5></li>
                   <li className="nav-item">
-                      <a className="nav-link active" aria-current="page" onClick={() => (setSubPage("Statistics"))}>
+                      <a className={subPage=='Statistics' ? "nav-link active" : "nav-link"} aria-current="page" onClick={() => (setSubPage("Statistics"))}>
                       <i className="fas fa-chart-line me-3"></i>
                       Statistics
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Menu item"))}>
+                      <a className={subPage=='Menu item' ? "nav-link active" : "nav-link"} onClick={() => (setSubPage("Menu item"))}>
                       <i className="fas fa-hospital-user me-3"></i>
                       Menu item
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Menu item"))}>
+                      <a className={subPage=='Menu item' ? "nav-link active" : "nav-link"} onClick={() => (setSubPage("Menu item"))}>
                       <i className="fas fa-check-square me-3"></i>
                       Menu item
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link"  onClick={() => (setSubPage("Settings"))}>
+                      <a className={subPage=='Settings' ? "nav-link active" : "nav-link"}  onClick={() => (setSubPage("Settings"))}>
                       <i className="fas fa-cogs me-3"></i>
                       Settings
                       </a>

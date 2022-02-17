@@ -7,13 +7,13 @@ const AdminStatistics = ({setSubPage}) => {
                     <h3>1234</h3>
                     <p>Total Confirmed Cases</p>
                 </div>
-                <div className='dd-card dd-card-link pastel-green'><a onClick={() => (setSubPage("All Users"))}>
+                <div className='dd-card dd-card-link pastel-green' onClick={() => (setSubPage("All Users"))}>
                     <h3>34</h3>
-                    <p>Total users</p></a>
+                    <p>Total users</p>
                 </div>
-                <div className='dd-card dd-card-link pastel-orange'><a onClick={() => (setSubPage("Confirm Users"))}>
+                <div className='dd-card dd-card-link pastel-orange' onClick={() => (setSubPage("Confirm Users"))}>
                     <h3>12</h3>
-                    <p>Users to Confirm</p></a>
+                    <p>Users to Confirm</p>
                 </div>
                 </div>
 

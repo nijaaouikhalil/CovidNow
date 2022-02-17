@@ -38,31 +38,31 @@ function DoctorPanelScreen() {
                 <ul className="nav flex-column mt-5">
                 <li className="text-center mb-2"><h5>Doctor</h5></li>
                   <li className="nav-item">
-                      <a className="nav-link active" aria-current="page"  onClick={() => (setSubPage("Statistics"))}>
+                      <a className={subPage=='Statistics' ? "nav-link active" : "nav-link"} aria-current="page"  onClick={() => (setSubPage("Statistics"))}>
                       <i class="fas fa-chart-line me-3"></i>
                       Statistics
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("My Patients"))}>
+                      <a className={subPage=='My Patients' ? "nav-link active" : "nav-link"} onClick={() => (setSubPage("My Patients"))}>
                       <i class="fas fa-hospital-user me-3"></i>
                       My Patients
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Messages"))}>
+                      <a className={subPage=='Messages' ? "nav-link active" : "nav-link"} onClick={() => (setSubPage("Messages"))}>
                       <i class="fas fa-inbox me-3"></i>
                       Messages
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Appointments"))}>
+                      <a className={subPage=='Appointments' ? "nav-link active" : "nav-link"} onClick={() => (setSubPage("Appointments"))}>
                       <i class="fas fa-calendar me-3"></i>
                       Appointments
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link"  onClick={() => (setSubPage("Settings"))}>
+                      <a className={subPage=='Settings' ? "nav-link active" : "nav-link"}  onClick={() => (setSubPage("Settings"))}>
                       <i class="fas fa-cogs me-3"></i>
                       Settings
                       </a>

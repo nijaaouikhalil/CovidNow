@@ -37,19 +37,19 @@ function HealthOfficialPanelScreen() {
                 <ul className="nav flex-column mt-5">
                 <li className="text-center mb-2"><h5>Health Official</h5></li>
                   <li className="nav-item">
-                      <a className="nav-link active" aria-current="page"  onClick={() => (setSubPage("Statistics"))}>
+                      <a className={subPage=='Statistics' ? "nav-link active" : "nav-link"} aria-current="page"  onClick={() => (setSubPage("Statistics"))}>
                       <i class="fas fa-chart-line me-3"></i>
                       Statistics
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("All Patients"))}>
+                      <a className={subPage=='All Patients' ? "nav-link active" : "nav-link"} onClick={() => (setSubPage("All Patients"))}>
                       <i class="fas fa-hospital-user me-3"></i>
                       All Patients
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link"  onClick={() => (setSubPage("Settings"))}>
+                      <a className={subPage=='Settings' ? "nav-link active" : "nav-link"}  onClick={() => (setSubPage("Settings"))}>
                       <i class="fas fa-cogs me-3"></i>
                       Settings
                       </a>

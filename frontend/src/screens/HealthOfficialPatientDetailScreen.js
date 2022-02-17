@@ -5,28 +5,28 @@ import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { DoctorGetPatient, DoctorUpdatePatient } from "../actions/doctorActions";
+// import { HealthOfficialGetPatient } from "../actions/healthOfficialActions";
 import { LinkContainer } from "react-router-bootstrap";
 
-function ImmigrationUserDetailScreen() {
+function HealthOfficialPatientDetailScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-//   const DoctorListPatients = useSelector((state) => state.DoctorListPatients);
-//   const { users, loading, error } = DoctorListPatients;
+//   const DoctorListPatients = useSelector((state) => state.HealthOfficialListPatients);
+//   const { users, loading, error } = HealthOfficialListPatients;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_IMMIGRATION_OFFICER") {
+    if (!user_info || user_info.roles !== "ROLE_HEALTH_OFFICIAL") {
       navigate("/login");
     }
-    // dispatch(DoctorGetPatient());
+    // dispatch(HealthOfficialGetPatient());
   }, [dispatch, user_info]);
 
   
   return (
     <div>
-      <Link to="/doctor/patientlist" className="btn btn-light my-2">
+      <Link to="/immi/dashboard" className="btn btn-light my-2 ms-3">
         Go Back
       </Link>
       <Container>
@@ -79,4 +79,4 @@ function ImmigrationUserDetailScreen() {
   );
 }
 
-export default ImmigrationUserDetailScreen;
+export default HealthOfficialPatientDetailScreen;

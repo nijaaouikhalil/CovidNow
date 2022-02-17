@@ -5,32 +5,32 @@ import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { DoctorGetPatient, DoctorUpdatePatient } from "../actions/doctorActions";
+// import { AdminGetUser, AdminUpdateUser } from "../actions/adminActions";
 import { LinkContainer } from "react-router-bootstrap";
 
-function DoctorPatientDetailScreen() {
+function AdminUserDetailScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-//   const DoctorListPatients = useSelector((state) => state.DoctorListPatients);
-//   const { users, loading, error } = DoctorListPatients;
+//   const DoctorListPatients = useSelector((state) => state.AdminListPatients);
+//   const { users, loading, error } = AdminListPatients;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_DOCTOR") {
+    if (!user_info || user_info.roles !== "ROLE_ADMIN") {
       navigate("/login");
     }
-    // dispatch(DoctorGetPatient());
+    // dispatch(AdminGetPatient());
   }, [dispatch, user_info]);
 
   
   return (
     <div>
-      <Link to="/doctor/dashboard" className="btn btn-light my-2 ms-3">
+      <Link to="/admin/dashboard" className="btn btn-light my-2 ms-3">
         Go Back
       </Link>
       <Container>
-        <h3 className="my-3 text-center">Patient Name</h3>
+        <h3 className="my-3 text-center">User Name</h3>
         {/* {updateLoading ? (
           <Loader />
         ) : updatError ? (
@@ -50,7 +50,7 @@ function DoctorPatientDetailScreen() {
             <Row className="justify-content-center">
               <Col md={10}>
 
-                <h2 className="ms-3">Patient Details</h2>
+                <h2 className="ms-3">User Details</h2>
                 <div className="mb-5" style={{maxHeight: "200px", overflow: "scroll"}}>
 
                     <ListGroup variant="flush">
@@ -135,7 +135,7 @@ function DoctorPatientDetailScreen() {
                     </Accordion.Item>
                 </Accordion>
                 <div style={{display: "flex", justifyContent: "center"}}>
-                  <Button className="ms-3 w-50">UPDATE PATIENT</Button>
+                  <Button className="ms-3 w-50">UPDATE USER</Button>
                 </div>
 
 
@@ -149,4 +149,4 @@ function DoctorPatientDetailScreen() {
   );
 }
 
-export default DoctorPatientDetailScreen;
+export default AdminUserDetailScreen;

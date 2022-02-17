@@ -19,7 +19,7 @@ function Header() {
     goHome();
   };
   return (
-    <Navbar bg="primary" collapseOnSelect variant="dark">
+    <Navbar id="main-navbar" bg="primary" collapseOnSelect variant="dark">
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand>CovidTracker</Navbar.Brand>
@@ -54,25 +54,36 @@ function Header() {
         <Nav className="ml-auto">
           {user_info && user_info.roles === "ROLE_ADMIN" && (
             <NavDropdown title="Admin" id="adminmenue">
-              <LinkContainer to="/admin/userlist">
-                <NavDropdown.Item>Confirm Users</NavDropdown.Item>
-              </LinkContainer>
-              <LinkContainer to="/admin/userlist/all">
-                <NavDropdown.Item>All Users</NavDropdown.Item>
+              <LinkContainer to="/admin/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
           )}
           {user_info && user_info.roles === "ROLE_DOCTOR" && (
             <NavDropdown title="Doctor" id="doctormenue">
-              <LinkContainer to="/doctor/patientlist">
-                <NavDropdown.Item>Patients</NavDropdown.Item>
+              <LinkContainer to="/doctor/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
+          {user_info && user_info.roles === "ROLE_HEALTH_OFFICIAL" && (
+            <NavDropdown title="Health Official" id="healthoffmenu">
+              <LinkContainer to="/healthoff/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
           )}
           {user_info && user_info.roles === "ROLE_IMMIGRATION_OFFICER" && (
             <NavDropdown title="Immigration Officer" id="immimenue">
-              <LinkContainer to="/immi/userlist">
-                <NavDropdown.Item>Users</NavDropdown.Item>
+              <LinkContainer to="/immi/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
+          {user_info && user_info.roles === "ROLE_USER" && (
+            <NavDropdown title="Patient" id="patientmenu">
+              <LinkContainer to="/patient/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
           )}

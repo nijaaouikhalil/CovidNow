@@ -242,13 +242,13 @@ exports.forgotPasswordCEmail = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
   try {
 
-    User.findOne({email:/* from body parser that will be added*/}).then((user)=>{
+    User.findOne({email: req.body.email}).then((user)=>{
     
     if (req.body.password != req.body.cpassword) {
       console.log("Passwords do not match");
     } else {
 
-    user.password = await bcrypt.hash(req.body.newPassword, 10);
+    user.password = bcrypt.hashSync(req.body.newPassword, 10);
     
     user.save((err) => {
       if (err) {

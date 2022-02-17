@@ -1,30 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Row, Col, Table } from "react-bootstrap";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { AdminlistUsers, AdminUpdateUser } from "../actions/adminActions";
-import { LinkContainer } from "react-router-bootstrap";
-import { AdminConfirmUsers } from '../components/AdminConfirmUsers';
-import { AdminAllUsersList } from '../components/AdminAllUsersList';
-import { AdminStatistics } from '../components/AdminStatistics'
+import { PatientStatistics } from '../components/PatientStatistics'
 
 
-function AdminPanelScreen() {
-  const dispatch = useDispatch();
+function PatientPanelScreen() {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-  const AdminListUsers = useSelector((state) => state.AdminListUsers);
-  const { users, loading, error } = AdminListUsers;
-  const adminUpdate = useSelector((state) => state.adminUpdate);
-  const { message, loading: updateLoading, error: updatError } = adminUpdate;
   const [subPage, setSubPage] = useState('Statistics')
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_ADMIN") {
+    if (!user_info) {
       navigate("/login");
     };
   }, [user_info]);
@@ -33,12 +20,12 @@ function AdminPanelScreen() {
   return (
 
     <div className="container-fluid">
-          <div className="row">
+        <div className="row">
               
             <nav className="col-md-3 col-lg-2 d-md-block bg-light dd-sidebar collapse">
               <div className="position-sticky pt-3">
                 <ul className="nav flex-column mt-5">
-                <li className="text-center mb-2"><h5>Admin</h5></li>
+                <li className="text-center mb-2"><h5>Patient</h5></li>
                   <li className="nav-item">
                       <a className="nav-link active" aria-current="page" onClick={() => (setSubPage("Statistics"))}>
                       <i className="fas fa-chart-line me-3"></i>
@@ -46,15 +33,15 @@ function AdminPanelScreen() {
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("All Users"))}>
+                      <a className="nav-link" onClick={() => (setSubPage("Menu item"))}>
                       <i className="fas fa-hospital-user me-3"></i>
-                      All Users
+                      Menu item
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Confirm Users"))}>
+                      <a className="nav-link" onClick={() => (setSubPage("Menu item"))}>
                       <i className="fas fa-check-square me-3"></i>
-                      Confirm Users
+                      Menu item
                       </a>
                   </li>
                   <li className="nav-item">
@@ -76,22 +63,20 @@ function AdminPanelScreen() {
                     </a>
                     <ul className="dropdown-menu" aria-labelledby="dd-dropdown-menu-button">
                       <li><a className="dropdown-item"  onClick={() => (setSubPage("Statistics"))}><i className="fas fa-chart-line me-2"></i> Statistics</a></li>
-                      <li><a className="dropdown-item"  onClick={() => (setSubPage("All Users"))}><i className="fas fa-hospital-user me-2"></i> All Users</a></li>
-                      <li><a className="dropdown-item"  onClick={() => (setSubPage("Confirm Users"))}><i className="fas fa-check-square me-2"></i> Confirm Users</a></li>
+                      <li><a className="dropdown-item"  onClick={() => (setSubPage("Menu item"))}><i className="fas fa-hospital-user me-2"></i> Menu item</a></li>
+                      <li><a className="dropdown-item"  onClick={() => (setSubPage("Menu item"))}><i className="fas fa-check-square me-2"></i> Menu item</a></li>
                       <li><a className="dropdown-item"  onClick={() => (setSubPage("Settings"))}><i className="fas fa-cogs me-2"></i> Settings</a></li>
                     </ul>
                   </div>
                 </div>
             </div>
 
-            { (subPage=='Statistics') && <AdminStatistics setSubPage={setSubPage}/> }
-            { (subPage=='Confirm Users') && <AdminConfirmUsers/>}
-            { (subPage=='All Users') && <AdminAllUsersList/>}
+            { (subPage=='Statistics') && <PatientStatistics setSubPage={setSubPage}/> }
 
 
-          </div>
         </div>
+    </div>
   );
 }
 
-export default AdminPanelScreen;
+export default PatientPanelScreen;

@@ -18,8 +18,8 @@ const AdminStatistics = ({setSubPage}) => {
                 </div>
 
                 <div id='dd-data-visuals' className='d-flex justify-content-around align-items-center'>
-                    <div id='dd-pie' className='pastel-red'><h5 className='text-center'>Pie Chart Title</h5><img src="/img/piechart.png" alt="pie-chart"/></div>
-                    <div id='dd-chart' className='pastel-blue'><h5 className='text-center'>Graph Title</h5><img src="/img/graph.png" alt="graph" /></div>
+                    <div id='dd-pie' className='pastel-red dd-card-link'><h5 className='text-center'>Pie Chart Title</h5><img src="/img/piechart.png" alt="pie-chart"/></div>
+                    <div id='dd-chart' className='pastel-blue dd-card-link'><h5 className='text-center'>Graph Title</h5><img src="/img/graph.png" alt="graph" /></div>
                 </div>
             </div>
         </div>

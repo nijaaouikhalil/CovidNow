@@ -69,6 +69,11 @@
   cursor: pointer;
 }
 
+.dd-card-link:hover {
+  transform: scale(1.01);
+  box-shadow: 3px 3px 3px #666464;
+}
+
 @keyframes dd-btn-clicked {
   0% {transform: translateX(0) translateY(0); box-shadow: 3px 3px 3px #888888;}
   50% {transform: translateX(5px) translateY(5px); box-shadow: none;}
@@ -130,7 +135,7 @@
 
 #dd-data-visuals {
   flex-wrap: wrap;
-  margin: 60px 20px 50px 20px;
+  margin: 40px 20px 50px 20px;
 }
 
 #dd-data-visuals h5 {
@@ -142,6 +147,7 @@
   border-radius: 10px;
   padding: 40px;
   box-shadow: 3px 3px 3px #888888;
+  margin: 20px;
 }
 
 #dd-pie img {

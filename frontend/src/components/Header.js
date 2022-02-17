@@ -66,10 +66,17 @@ function Header() {
               </LinkContainer>
             </NavDropdown>
           )}
+          {user_info && user_info.roles === "ROLE_HEALTH_OFFICIAL" && (
+            <NavDropdown title="Health Official" id="healthoffmenu">
+              <LinkContainer to="/healthoff/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
           {user_info && user_info.roles === "ROLE_IMMIGRATION_OFFICER" && (
             <NavDropdown title="Immigration Officer" id="immimenue">
-              <LinkContainer to="/immi/userlist">
-                <NavDropdown.Item>Users</NavDropdown.Item>
+              <LinkContainer to="/immi/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
               </LinkContainer>
             </NavDropdown>
           )}

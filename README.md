@@ -9,7 +9,7 @@ Build a COVID-19 tracking app that heps medical doctors, immigration officers an
 ## Core Features 👇
 
 ## Progress ⏰
- - [ ] Sprint 1
+ - [x] Sprint 1
  - [ ] Sprint 2
  - [ ] Sprint 3
  - [ ] Sprint 4

@@ -19,6 +19,7 @@ import HealthOfficialPatientDetailScreen from "./screens/HealthOfficialPatientDe
 import ImmigrationPanelScreen from "./screens/ImmigrationPanelScreen";
 import ImmigrationPatientDetailScreen from "./screens/ImmigrationPatientDetailScreen";
 import PasswordRestScreen from "./screens/PasswordRestScreen";
+import PatientPanelScreen from "./screens/PatientPanelScreen";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/healthoff/patientdetails/:pid" element={<HealthOfficialPatientDetailScreen />}/>
             <Route path="/immi/dashboard" element={<ImmigrationPanelScreen />} />
             <Route path="/immi/patientdetails/:uid" element={<ImmigrationPatientDetailScreen />} />
+            <Route path="/patient/dashboard" element={<PatientPanelScreen />} />
             <Route path="/announcements" element={<AnnouceScreen />} />
             <Route path="/passwordrest" element={<PasswordRestScreen />} />
           </Routes>

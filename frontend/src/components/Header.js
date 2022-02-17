@@ -80,6 +80,13 @@ function Header() {
               </LinkContainer>
             </NavDropdown>
           )}
+          {user_info && user_info.roles === "ROLE_USER" && (
+            <NavDropdown title="Patient" id="patientmenu">
+              <LinkContainer to="/patient/dashboard">
+                <NavDropdown.Item>Dashboard</NavDropdown.Item>
+              </LinkContainer>
+            </NavDropdown>
+          )}
         </Nav>
       </Container>
     </Navbar>

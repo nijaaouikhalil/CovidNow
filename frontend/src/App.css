@@ -152,21 +152,6 @@
   text-decoration: none;
 }
 
-.pastel-blue {
-  background: rgba(128, 216, 216, 0.2);
-}
-
-.pastel-green {
-  background-color: rgba(173, 219, 100, 0.2);
-}
-
-.pastel-orange {
-  background-color: rgba(241, 162, 57, 0.2);
-}
-
-.pastel-red {
-  background-color: rgba(228, 127, 141, 0.2);
-}
 
 /* DOCTOR DASHBOARD My Patients */
 
@@ -174,4 +159,19 @@
   .dd-patient-email {
     display: none;
   }
+}
+
+
+/* COLOUR CLASSES */
+.pastel-blue {
+  background: rgba(128, 216, 216, 0.2);
+}
+.pastel-green {
+  background-color: rgba(173, 219, 100, 0.2);
+}
+.pastel-orange {
+  background-color: rgba(241, 162, 57, 0.2);
+}
+.pastel-red {
+  background-color: rgba(228, 127, 141, 0.2);
 }

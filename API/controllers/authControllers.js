@@ -237,7 +237,7 @@ exports.forgotPassword = async (req, res) => {
         console.log("Passwords do not match");
       } else {
 
-      user.password = await bcrypt.hash(req.body.newPassword, 10);
+      user.password = bcrypt.hashSync(req.body.newPassword, 10);
       
       user.save((err) => {
         if (err) {

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 // import { DoctorGetPatient, DoctorUpdatePatient } from "../actions/doctorActions";
 import { LinkContainer } from "react-router-bootstrap";
 
-function ImmigrationUserDetailScreen() {
+function ImmigrationPatientDetailScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -17,7 +17,7 @@ function ImmigrationUserDetailScreen() {
 //   const { users, loading, error } = DoctorListPatients;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_IMMIGRATION_OFFICER") {
+    if (!user_info || user_info.roles !== "ROLE_DOCTOR") {
       navigate("/login");
     }
     // dispatch(DoctorGetPatient());
@@ -26,7 +26,7 @@ function ImmigrationUserDetailScreen() {
   
   return (
     <div>
-      <Link to="/doctor/patientlist" className="btn btn-light my-2">
+      <Link to="/immi/dashboard" className="btn btn-light my-2 ms-3">
         Go Back
       </Link>
       <Container>
@@ -79,4 +79,4 @@ function ImmigrationUserDetailScreen() {
   );
 }
 
-export default ImmigrationUserDetailScreen;
+export default ImmigrationPatientDetailScreen;

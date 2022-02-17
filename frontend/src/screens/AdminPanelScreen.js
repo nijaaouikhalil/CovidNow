@@ -7,6 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AdminlistUsers, AdminUpdateUser } from "../actions/adminActions";
 import { LinkContainer } from "react-router-bootstrap";
+import { AdminConfirmUsers } from '../components/AdminConfirmUsers';
+import { AdminAllUsersList } from '../components/AdminAllUsersList';
+import { AdminStatistics } from '../components/AdminStatistics'
+
+
 function AdminPanelScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,129 +21,76 @@ function AdminPanelScreen() {
   const { users, loading, error } = AdminListUsers;
   const adminUpdate = useSelector((state) => state.adminUpdate);
   const { message, loading: updateLoading, error: updatError } = adminUpdate;
+  const [subPage, setSubPage] = useState('Statistics')
 
   useEffect(() => {
     if (!user_info || user_info.roles !== "ROLE_ADMIN") {
       navigate("/login");
-    }
-    dispatch(AdminlistUsers());
-  }, [dispatch, user_info]);
+    };
+  }, [user_info]);
 
-  const ConfirmUser = (id, decision) => {
-    dispatch(
-      AdminUpdateUser({
-        id,
-        decision,
-      })
-    );
-  };
+
   return (
-    <div className="second_menu_links">
-      <Link to="/" className="btn btn-light my-3">
-        Go Back
-      </Link>
-      <Container>
-        <h1 className="text-center">Admin panel</h1>
-        {updateLoading ? (
-          <Loader />
-        ) : updatError ? (
-          <Message variant="danger">{updatError}</Message>
-        ) : message ? (
-          <Message variant="success">{message}</Message>
-        ) : (
-          ""
-        )}
 
-        {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : (
-          <div>
-            <Row className="justify-content-md-center">
-              <Col sm={8}>
-                {" "}
-                <Table
-                  striped
-                  bordered
-                  hover
-                  responsive
-                  className="table-sm text-center"
-                >
-                  <thead className="table-dark">
-                    <tr>
-                      <th>NAME</th>
-                      <th>EMAIL</th>
-                      <th>ROLE</th>
+    <div className="container-fluid">
+          <div className="row">
+              
+            <nav className="col-md-3 col-lg-2 d-md-block bg-light dd-sidebar collapse">
+              <div className="position-sticky pt-3">
+                <ul className="nav flex-column mt-5">
+                <li className="text-center mb-2"><h5>Admin</h5></li>
+                  <li className="nav-item">
+                      <a className="nav-link active" aria-current="page" onClick={() => (setSubPage("Statistics"))}>
+                      <i className="fas fa-chart-line me-3"></i>
+                      Statistics
+                      </a>
+                  </li>
+                  <li className="nav-item">
+                      <a className="nav-link" onClick={() => (setSubPage("All Users"))}>
+                      <i className="fas fa-hospital-user me-3"></i>
+                      All Users
+                      </a>
+                  </li>
+                  <li className="nav-item">
+                      <a className="nav-link" onClick={() => (setSubPage("Confirm Users"))}>
+                      <i className="fas fa-check-square me-3"></i>
+                      Confirm Users
+                      </a>
+                  </li>
+                  <li className="nav-item">
+                      <a className="nav-link"  onClick={() => (setSubPage("Settings"))}>
+                      <i className="fas fa-cogs me-3"></i>
+                      Settings
+                      </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+                
+            <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div className="d-flex justify-content-between flex-wrap align-items-center pt-3 pb-2">
+                  <h1 className="h2 ms-3">Dashboard - {subPage}</h1>
+                  <div className="btn-toolbar mb-2 mb-md-0">
+                    <a className="nav-link" href="#" id="dd-dropdown-menu-button" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i className="fas fa-ellipsis-h"></i>
+                    </a>
+                    <ul className="dropdown-menu" aria-labelledby="dd-dropdown-menu-button">
+                      <li><a className="dropdown-item"  onClick={() => (setSubPage("Statistics"))}><i className="fas fa-chart-line me-2"></i> Statistics</a></li>
+                      <li><a className="dropdown-item"  onClick={() => (setSubPage("All Users"))}><i className="fas fa-hospital-user me-2"></i> All Users</a></li>
+                      <li><a className="dropdown-item"  onClick={() => (setSubPage("Confirm Users"))}><i className="fas fa-check-square me-2"></i> Confirm Users</a></li>
+                      <li><a className="dropdown-item"  onClick={() => (setSubPage("Settings"))}><i className="fas fa-cogs me-2"></i> Settings</a></li>
+                    </ul>
+                  </div>
+                </div>
+            </div>
 
-                      <th>ACCOUNT STATUS</th>
-                      <th>DETAILS</th>
-                      <th>ACTIONS TO TAKE</th>
-                    </tr>
-                  </thead>
+            { (subPage=='Statistics') && <AdminStatistics setSubPage={setSubPage}/> }
+            { (subPage=='Confirm Users') && <AdminConfirmUsers/>}
+            { (subPage=='All Users') && <AdminAllUsersList/>}
 
-                  <tbody>
-                    {users && users.length > 0 ? (
-                      users.map((user, index) => (
-                        <tr key={user._id}>
-                          <td>
-                            {user.name} {user.lname}
-                          </td>
-                          <td>{user.email}</td>
 
-                          <td>{user.roles ? user.roles.name : ""}</td>
-                          <td>
-                            {user.verified === "Active" ? (
-                              <i
-                                className="fa fa-check-circle btn-success"
-                                aria-hidden="true"
-                              ></i>
-                            ) : (
-                              <i className="fas fa-user-times text-danger"></i>
-                            )}
-                          </td>
-                          <td>
-                            <LinkContainer
-                              to={`/admin/userdetails/${user._id}`}
-                            >
-                              <Button variant="light" className="btn-sm">
-                                Details
-                              </Button>
-                            </LinkContainer>
-                          </td>
-                          <td>
-                            <Button
-                              variant="light"
-                              className="btn-sm text-success m-2"
-                              onClick={() => ConfirmUser(user._id, true)}
-                            >
-                              <i className="fas fa-check"></i>
-                            </Button>
-                            <Button
-                              variant="light"
-                              className="btn-sm text-danger m-2"
-                              onClick={() => ConfirmUser(user._id, false)}
-                            >
-                              <i className="fas fa-times"></i>
-                            </Button>
-                          </td>
-                        </tr>
-                      ))
-                    ) : (
-                      <tr>
-                        <td>
-                          <Message variant="info">{"No users"}</Message>
-                        </td>
-                      </tr>
-                    )}
-                  </tbody>
-                </Table>
-              </Col>
-            </Row>
           </div>
-        )}
-      </Container>
-    </div>
+        </div>
   );
 }
 

@@ -5,26 +5,25 @@ import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { DoctorlistUsers } from "../actions/doctorActions";
+// import { HealthOfficallistUsers } from "../actions/healthOfficalActions";
 import { LinkContainer } from "react-router-bootstrap";
 
-import { DoctorStatistics } from '../components/DoctorStatistics'
-import { DoctorPatientsList } from '../components/DoctorPatientsList'
+import { HealthOfficialPatientsList } from '../components/HealthOfficialPatientsList'
 
-function DoctorPanelScreen() {
+function HealthOfficialPanelScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
   const [subPage, setSubPage] = useState('Statistics')
-//   const DoctorListPatients = useSelector((state) => state.DoctorListPatients);
-//   const { users, loading, error } = DoctorListPatients;
+//   const HealthOfficalListPatients = useSelector((state) => state.HealthOfficalListPatients);
+//   const { users, loading, error } = HealthOfficalListPatients;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_DOCTOR") {
+    if (!user_info || user_info.roles !== "ROLE_HEALTH_OFFICIAL") {
       navigate("/login");
     }
-    // dispatch(DoctorlistUsers());
+    // dispatch(HealthOfficalUsers());
   }, [dispatch, user_info]);
 
   
@@ -36,7 +35,7 @@ function DoctorPanelScreen() {
             <nav className="col-md-3 col-lg-2 d-md-block bg-light dd-sidebar collapse">
               <div className="position-sticky pt-3">
                 <ul className="nav flex-column mt-5">
-                <li className="text-center mb-2"><h5>Doctor</h5></li>
+                <li className="text-center mb-2"><h5>Health Official</h5></li>
                   <li className="nav-item">
                       <a className="nav-link active" aria-current="page"  onClick={() => (setSubPage("Statistics"))}>
                       <i class="fas fa-chart-line me-3"></i>
@@ -44,21 +43,9 @@ function DoctorPanelScreen() {
                       </a>
                   </li>
                   <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("My Patients"))}>
+                      <a className="nav-link" onClick={() => (setSubPage("All Patients"))}>
                       <i class="fas fa-hospital-user me-3"></i>
-                      My Patients
-                      </a>
-                  </li>
-                  <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Messages"))}>
-                      <i class="fas fa-inbox me-3"></i>
-                      Messages
-                      </a>
-                  </li>
-                  <li className="nav-item">
-                      <a className="nav-link" onClick={() => (setSubPage("Appointments"))}>
-                      <i class="fas fa-calendar me-3"></i>
-                      Appointments
+                      All Patients
                       </a>
                   </li>
                   <li className="nav-item">
@@ -81,8 +68,6 @@ function DoctorPanelScreen() {
                     <ul className="dropdown-menu" aria-labelledby="dd-dropdown-menu-button">
                       <li><a className="dropdown-item" href="#"><i class="fas fa-chart-line me-2"></i> Statistics</a></li>
                       <li><a className="dropdown-item" href="#"><i class="fas fa-hospital-user me-2"></i> Patients</a></li>
-                      <li><a className="dropdown-item" href="#"><i class="fas fa-inbox me-2"></i> Messages</a></li>
-                      <li><a className="dropdown-item" href="#"><i class="fas fa-calendar me-2"></i> Appointments</a></li>
                       <li><a className="dropdown-item" href="#"><i class="fas fa-cogs me-2"></i> Settings</a></li>
                     </ul>
                   </div>
@@ -90,8 +75,8 @@ function DoctorPanelScreen() {
             </div>
 
 
-            { (subPage=='Statistics') && <DoctorStatistics setSubPage={setSubPage}/>}
-            { (subPage=='My Patients') && <DoctorPatientsList/>}
+            {/* { (subPage=='Statistics') && <DoctorStatistics setSubPage={setSubPage}/>} */}
+            { (subPage=='All Patients') && <HealthOfficialPatientsList/>}
 
 
           </div>
@@ -124,4 +109,4 @@ function DoctorPanelScreen() {
   );
 }
 
-export default DoctorPanelScreen;
+export default HealthOfficialPanelScreen;

@@ -1,4 +1,4 @@
-import { Container, Row, Col, Table, Button} from 'react-bootstrap';
+import { Row, Col, Table, Button} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
 import Loader from "./Loader";
 import Message from "./Message";
@@ -36,17 +36,20 @@ const AdminConfirmUsers = () => {
     );
 
     return (
-        <Container>
-        <h1 className="text-center">Admin panel</h1>
-        {updateLoading ? (
-          <Loader />
-        ) : updatError ? (
-          <Message variant="danger">{updatError}</Message>
-        ) : message ? (
-          <Message variant="success">{message}</Message>
-        ) : (
-          ""
-        )}
+      <div id='dd-main-container'>
+        <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <div className='row justify-content-center mt-5'>
+              <div className="col-11">
+
+                {updateLoading ? (
+                  <Loader />
+                ) : updatError ? (
+                  <Message variant="danger">{updatError}</Message>
+                ) : message ? (
+                  <Message variant="success">{message}</Message>
+                ) : (
+                  ""
+                )}
 
         {loading ? (
           <Loader />
@@ -54,8 +57,8 @@ const AdminConfirmUsers = () => {
           <Message variant="danger">{error}</Message>
         ) : (
           <div>
-            <Row className="justify-content-md-center">
-              <Col sm={8}>
+            <Row>
+              <Col>
                 {" "}
                 <Table
                   striped
@@ -67,7 +70,7 @@ const AdminConfirmUsers = () => {
                   <thead className="table-dark">
                     <tr>
                       <th>NAME</th>
-                      <th>EMAIL</th>
+                      <th className='dd-patient-email'>EMAIL</th>
                       <th>ROLE</th>
 
                       <th>ACCOUNT STATUS</th>
@@ -83,7 +86,7 @@ const AdminConfirmUsers = () => {
                           <td>
                             {user.name} {user.lname}
                           </td>
-                          <td>{user.email}</td>
+                          <td className='dd-patient-email'>{user.email}</td>
 
                           <td>{user.roles ? user.roles.name : ""}</td>
                           <td>
@@ -136,7 +139,10 @@ const AdminConfirmUsers = () => {
             </Row>
           </div>
         )}
-      </Container>
+      </div>
+      </div>
+      </div>
+      </div>
 
     )
 }

@@ -17,7 +17,7 @@ function ImmigrationPatientDetailScreen() {
 //   const { users, loading, error } = DoctorListPatients;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_DOCTOR") {
+    if (!user_info || user_info.roles !== "ROLE_IMMIGRATION_OFFICER") {
       navigate("/login");
     }
     // dispatch(DoctorGetPatient());

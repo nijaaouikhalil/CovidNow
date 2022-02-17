@@ -17,7 +17,7 @@ function HealthOfficialPatientDetailScreen() {
 //   const { users, loading, error } = HealthOfficialListPatients;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_DOCTOR") {
+    if (!user_info || user_info.roles !== "ROLE_HEALTH_OFFICIAL") {
       navigate("/login");
     }
     // dispatch(HealthOfficialGetPatient());

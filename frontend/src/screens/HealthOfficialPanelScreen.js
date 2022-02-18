@@ -39,11 +39,14 @@ function HealthOfficialPanelScreen() {
           <div className="position-sticky pt-3">
             <ul className="nav flex-column mt-5">
               <li className="text-center mb-2">
-                <h5>Health Official</h5>
+              <h1><i className="fas fa-user-md"></i></h1>
+                <h4> Welcome {user_info.name}</h4>
+                <small>{user_info.email}</small><br />
+                <small>Health Official Account</small>
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link active"
+                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
                   aria-current="page"
                   onClick={() => setSubPage("Statistics")}
                 >
@@ -53,7 +56,7 @@ function HealthOfficialPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link"
+                  className={subPage =='All Patients' ? "nav-link active" : "nav-link"}
                   onClick={() => setSubPage("All Patients")}
                 >
                   <i class="fas fa-hospital-user me-3"></i>
@@ -61,7 +64,7 @@ function HealthOfficialPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => setSubPage("Settings")}>
+                <a className={subPage =='Settings' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Settings")}>
                   <i className="fas fa-cogs me-3"></i>
                   Settings
                 </a>
@@ -89,17 +92,17 @@ function HealthOfficialPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-chart-line me-2"></i> Statistics
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-hospital-user me-2"></i> Patients
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>

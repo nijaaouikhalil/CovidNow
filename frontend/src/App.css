@@ -23,6 +23,7 @@
 .dd-sidebar .nav-link {
   font-weight: 500;
   color: #727272;
+  cursor: pointer;
 }
 .dd-sidebar .nav-link.active {
   color: #2470dc;
@@ -62,6 +63,21 @@
   flex-direction: column!important;
   margin-bottom: 25px;
   box-shadow: 3px 3px 3px #888888;
+}
+
+.dd-card-link:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+}
+
+@keyframes dd-btn-pressed {
+  0% { transform: translate(0, 0); box-shadow: 3px 3px 3px #888888;}
+  50% { transform: translate(5px, 5px); box-shadow: 3px 3px 5px #414040;}
+  100% { transform: translate(0, 0); box-shadow: 3px 3px 3px #888888;}
+}
+
+.dd-card-link:active {
+  animation: dd-btn-pressed 0.2s;
 }
 
 

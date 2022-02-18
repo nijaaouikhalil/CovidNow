@@ -49,11 +49,14 @@ function AdminPanelScreen() {
           <div className="position-sticky pt-3">
             <ul className="nav flex-column mt-5">
               <li className="text-center mb-2">
-                <h5>Admin</h5>
+              <h1><i className="fas fa-lock"></i></h1>
+                <h4> Welcome {user_info.name}</h4>
+                <small>{user_info.email}</small><br />
+                <small>Admin Account</small>
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link active"
+                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
                   aria-current="page"
                   onClick={() => setSubPage("Statistics")}
                 >
@@ -62,14 +65,14 @@ function AdminPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => setSubPage("All Users")}>
+                <a className={subPage =='All Users' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("All Users")}>
                   <i className="fas fa-hospital-user me-3"></i>
                   All Users
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link"
+                  className={subPage =='Confirm Users' ? "nav-link active" : "nav-link"}
                   onClick={() => setSubPage("Confirm Users")}
                 >
                   <i className="fas fa-check-square me-3"></i>
@@ -77,7 +80,7 @@ function AdminPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => setSubPage("Settings")}>
+                <a className={subPage =='Settings' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Settings")}>
                   <i className="fas fa-cogs me-3"></i>
                   Settings
                 </a>
@@ -106,7 +109,7 @@ function AdminPanelScreen() {
               >
                 <li>
                   <a
-                    className="dropdown-item"
+                    className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"}
                     onClick={() => setSubPage("Statistics")}
                   >
                     <i className="fas fa-chart-line me-2"></i> Statistics
@@ -114,7 +117,7 @@ function AdminPanelScreen() {
                 </li>
                 <li>
                   <a
-                    className="dropdown-item"
+                    className={subPage =='All Users' ? "dropdown-item active" : "dropdown-item"}
                     onClick={() => setSubPage("All Users")}
                   >
                     <i className="fas fa-hospital-user me-2"></i> All Users
@@ -122,7 +125,7 @@ function AdminPanelScreen() {
                 </li>
                 <li>
                   <a
-                    className="dropdown-item"
+                    className={subPage =='Confirm Users' ? "dropdown-item active" : "dropdown-item"}
                     onClick={() => setSubPage("Confirm Users")}
                   >
                     <i className="fas fa-check-square me-2"></i> Confirm Users
@@ -130,7 +133,7 @@ function AdminPanelScreen() {
                 </li>
                 <li>
                   <a
-                    className="dropdown-item"
+                    className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"}
                     onClick={() => setSubPage("Settings")}
                   >
                     <i className="fas fa-cogs me-2"></i> Settings

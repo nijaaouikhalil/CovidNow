@@ -7,22 +7,10 @@ const HealthOfficialStatistics = ({ setSubPage, patients }) => {
             <h3>1234</h3>
             <p>Total Confirmed Cases</p>
           </div>
-          <div className="dd-card pastel-green">
+          <div className="dd-card dd-card-link pastel-green">
             <a onClick={() => setSubPage("My Patients")}>
               <h3>{patients ? patients.length : 0}</h3>
               <p>Patients </p>
-            </a>
-          </div>
-          <div className="dd-card pastel-orange">
-            <a href="" onClick={() => setSubPage("Messages")}>
-              <h3>12</h3>
-              <p>New Messages</p>
-            </a>
-          </div>
-          <div className="dd-card pastel-red">
-            <a href="" onClick={() => setSubPage("Appointments")}>
-              <h3>6</h3>
-              <p>Appointments</p>
             </a>
           </div>
         </div>

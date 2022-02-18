@@ -30,7 +30,7 @@ const ImmiPatientsList = ({ all_users }) => {
                         <td>True</td>
                         <td>True</td>
                         <td>
-                          <Link to={"/admin/userdetails/" + user._id}>
+                          <Link to={"/immi/patientdetails/" + user._id}>
                             More
                           </Link>
                         </td>

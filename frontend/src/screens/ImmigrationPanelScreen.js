@@ -113,17 +113,17 @@ function ImmigrationPanelScreen() {
               >
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-chart-line me-2"></i> Statistics
+                    <i className="fas fa-chart-line me-2"></i> Statistics
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-hospital-user me-2"></i> All Patients
+                    <i className="fas fa-hospital-user me-2"></i> All Patients
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-cogs me-2"></i> Settings
+                    <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>
               </ul>

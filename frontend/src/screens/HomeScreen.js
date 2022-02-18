@@ -2,7 +2,7 @@ import React from "react";
 import { covid_resources } from "../utils/utils";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col, Card } from "react-bootstrap";
 import Resource from "../components/Resource";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -11,7 +11,7 @@ function HomeScreen() {
   const { error, loading, user_info } = userLogin;
 
   return (
-    <div>
+    <div className="p-3">
       <h1>COVID RESOURCES </h1>
       <div className="container mx-auto">
         <Row className="row-eq-height">
@@ -37,7 +37,9 @@ function HomeScreen() {
             information
           </Message>
         ) : (
-          "My dashboard"
+          <Card>
+            <Card.Body>Dashboard</Card.Body>
+          </Card>
         )}
       </div>
     </div>

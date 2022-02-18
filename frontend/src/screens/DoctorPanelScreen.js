@@ -43,7 +43,7 @@ function DoctorPanelScreen() {
                   aria-current="page"
                   onClick={() => setSubPage("Statistics")}
                 >
-                  <i class="fas fa-chart-line me-3"></i>
+                  <i className="fas fa-chart-line me-3"></i>
                   Statistics
                 </a>
               </li>
@@ -52,13 +52,13 @@ function DoctorPanelScreen() {
                   className="nav-link"
                   onClick={() => setSubPage("My Patients")}
                 >
-                  <i class="fas fa-hospital-user me-3"></i>
+                  <i className="fas fa-hospital-user me-3"></i>
                   My Patients
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => setSubPage("Messages")}>
-                  <i class="fas fa-inbox me-3"></i>
+                  <i className="fas fa-inbox me-3"></i>
                   Messages
                 </a>
               </li>
@@ -67,13 +67,13 @@ function DoctorPanelScreen() {
                   className="nav-link"
                   onClick={() => setSubPage("Appointments")}
                 >
-                  <i class="fas fa-calendar me-3"></i>
+                  <i className="fas fa-calendar me-3"></i>
                   Appointments
                 </a>
               </li>
               <li className="nav-item">
                 <a className="nav-link" onClick={() => setSubPage("Settings")}>
-                  <i class="fas fa-cogs me-3"></i>
+                  <i className="fas fa-cogs me-3"></i>
                   Settings
                 </a>
               </li>
@@ -101,27 +101,27 @@ function DoctorPanelScreen() {
               >
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-chart-line me-2"></i> Statistics
+                    <i className="fas fa-chart-line me-2"></i> Statistics
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-hospital-user me-2"></i> Patients
+                    <i className="fas fa-hospital-user me-2"></i> Patients
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-inbox me-2"></i> Messages
+                    <i className="fas fa-inbox me-2"></i> Messages
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-calendar me-2"></i> Appointments
+                    <i className="fas fa-calendar me-2"></i> Appointments
                   </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
-                    <i class="fas fa-cogs me-2"></i> Settings
+                    <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>
               </ul>

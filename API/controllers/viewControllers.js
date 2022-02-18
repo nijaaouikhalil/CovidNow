@@ -74,6 +74,7 @@ exports.profileInfo = (req, res) => {
                 res.send(profile);
               });
           } else {
+            console.log(profile);
             res.send(profile);
           }
         }

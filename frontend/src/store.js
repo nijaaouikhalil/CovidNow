@@ -5,12 +5,16 @@ import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 import {
   AdminListUsersReducer,
   adminUpdateReducer,
+  AdminListAllUsersReducer,
 } from "./reducers/adminReducers";
+import { doctorListPatientsReducer } from "./reducers/doctorReducers";
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
   AdminListUsers: AdminListUsersReducer,
   adminUpdate: adminUpdateReducer,
+  doctorListPatients: doctorListPatientsReducer,
+  AdminListAllUsers: AdminListAllUsersReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("user_info")

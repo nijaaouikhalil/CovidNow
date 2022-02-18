@@ -1,4 +1,5 @@
 import { Table } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const DoctorPatientsList = ({ patients }) => {
   return (
@@ -29,9 +30,9 @@ const DoctorPatientsList = ({ patients }) => {
                         <td>False</td>
                         <td>False</td>
                         <td>
-                          <a href={"/doctor/patientdetails/" + patient._id}>
+                          <Link to={"/doctor/patientdetails/" + patient._id}>
                             More
-                          </a>
+                          </Link>
                         </td>
                       </tr>
                     ))

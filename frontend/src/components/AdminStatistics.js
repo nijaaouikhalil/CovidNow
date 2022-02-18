@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const AdminStatistics = ({ setSubPage, all_users, users_to_confirm }) => {
   return (
     <div id="dd-main-container">

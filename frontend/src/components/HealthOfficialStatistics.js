@@ -1,4 +1,4 @@
-const DoctorStatistics = ({ setSubPage, patients }) => {
+const HealthOfficialStatistics = ({ setSubPage, patients }) => {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -10,7 +10,7 @@ const DoctorStatistics = ({ setSubPage, patients }) => {
           <div className="dd-card pastel-green">
             <a onClick={() => setSubPage("My Patients")}>
               <h3>{patients ? patients.length : 0}</h3>
-              <p>Patients Assigned</p>
+              <p>Patients </p>
             </a>
           </div>
           <div className="dd-card pastel-orange">
@@ -45,4 +45,4 @@ const DoctorStatistics = ({ setSubPage, patients }) => {
   );
 };
 
-export { DoctorStatistics };
+export { HealthOfficialStatistics };

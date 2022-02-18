@@ -25,23 +25,38 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-          <Routes>
-            <Route path="/" element={<HomeScreen />} exact />
-            <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<RegisterScreen />} />
-            <Route path="/editprofile" element={<EditProfile />} />
-            <Route path="/admin/dashboard" element={<AdminPanelScreen />} />
-            <Route path="/admin/userdetails/:uid" element={<AdminUserDetailScreen />}/>
-            <Route path="/doctor/dashboard" element={<DoctorPanelScreen />} />
-            <Route path="/doctor/patientdetails/:pid" element={<DoctorPatientDetailScreen />}/>
-            <Route path="/healthoff/dashboard" element={<HealthOfficialPanelScreen />} />
-            <Route path="/healthoff/patientdetails/:pid" element={<HealthOfficialPatientDetailScreen />}/>
-            <Route path="/immi/dashboard" element={<ImmigrationPanelScreen />} />
-            <Route path="/immi/patientdetails/:uid" element={<ImmigrationPatientDetailScreen />} />
-            <Route path="/patient/dashboard" element={<PatientPanelScreen />} />
-            <Route path="/announcements" element={<AnnouceScreen />} />
-            <Route path="/passwordrest" element={<PasswordRestScreen />} />
-          </Routes>
+      <Routes>
+        <Route path="/" element={<HomeScreen />} exact />
+        <Route path="/login" element={<LoginScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
+        <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/admin/dashboard" element={<AdminPanelScreen />} />
+        <Route
+          path="/admin/userdetails/:pid"
+          element={<AdminUserDetailScreen />}
+        />
+        <Route path="/doctor/dashboard" element={<DoctorPanelScreen />} />
+        <Route
+          path="/doctor/patientdetails/:pid"
+          element={<DoctorPatientDetailScreen />}
+        />
+        <Route
+          path="/healthoff/dashboard"
+          element={<HealthOfficialPanelScreen />}
+        />
+        <Route
+          path="/healthoff/patientdetails/:pid"
+          element={<HealthOfficialPatientDetailScreen />}
+        />
+        <Route path="/immi/dashboard" element={<ImmigrationPanelScreen />} />
+        <Route
+          path="/immi/patientdetails/:pid"
+          element={<ImmigrationPatientDetailScreen />}
+        />
+        <Route path="/patient/dashboard" element={<PatientPanelScreen />} />
+        <Route path="/announcements" element={<AnnouceScreen />} />
+        <Route path="/passwordrest" element={<PasswordRestScreen />} />
+      </Routes>
       <Footer />
     </BrowserRouter>
   );

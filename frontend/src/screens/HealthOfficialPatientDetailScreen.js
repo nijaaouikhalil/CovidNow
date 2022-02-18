@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Row, Col, Accordion, ListGroup, Form } from "react-bootstrap";
+
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,74 +7,81 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 // import { HealthOfficialGetPatient } from "../actions/healthOfficialActions";
 import { LinkContainer } from "react-router-bootstrap";
+import { getUserDetails } from "../actions/userActions";
+import { useParams } from "react-router-dom";
 
 function HealthOfficialPatientDetailScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-//   const DoctorListPatients = useSelector((state) => state.HealthOfficialListPatients);
-//   const { users, loading, error } = HealthOfficialListPatients;
+  const userDetails = useSelector((state) => state.userDetails);
+  const { user, loading, error } = userDetails;
 
+  let { pid } = useParams();
   useEffect(() => {
     if (!user_info || user_info.roles !== "ROLE_HEALTH_OFFICIAL") {
       navigate("/login");
     }
-    // dispatch(HealthOfficialGetPatient());
-  }, [dispatch, user_info]);
 
-  
+    dispatch(getUserDetails(pid));
+  }, [dispatch, user_info, pid]);
+
   return (
     <div>
-      <Link to="/immi/dashboard" className="btn btn-light my-2 ms-3">
+      <Link to="/healthoff/dashboard" className="btn btn-light my-2 ms-3">
         Go Back
       </Link>
-      <Container>
-        <h3 className="my-3 text-center">User Name</h3>
-        {/* {updateLoading ? (
-          <Loader />
-        ) : updatError ? (
-          <Message variant="danger">{updatError}</Message>
-        ) : message ? (
-          <Message variant="success">{message}</Message>
-        ) : (
-          ""
-        )} */}
 
-        {/* {loading ? (
-          <Loader />
-        ) : error ? (
-          <Message variant="danger">{error}</Message>
-        ) : ( */}
-          <div>
-            <Row className="justify-content-center">
-              <Col md={10}>
+      <h3 className="my-3 text-center">User Information</h3>
 
-                <h2 className="ms-3">User Details</h2>
-                <div className="mb-3" style={{maxHeight: "200px", overflow: "scroll"}}>
-
-                    <ListGroup variant="flush">
-                        <ListGroup.Item>First Name : Joe</ListGroup.Item>
-                        <ListGroup.Item>Last Name : Bloggs</ListGroup.Item>
-                        <ListGroup.Item>Email : joe@bloggs.com</ListGroup.Item>
-                        <ListGroup.Item>DOB : 26/05/1995</ListGroup.Item>
-                        <ListGroup.Item>Street Address : 1234 park lane</ListGroup.Item>
-                        <ListGroup.Item>City : Montreal</ListGroup.Item>
-                        <ListGroup.Item>Province: Quebec</ListGroup.Item>
-                        <ListGroup.Item>Post Code: H2R 3T4</ListGroup.Item>
-                    </ListGroup>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        <div>
+          <h2 className="ms-3">User Details</h2>
+          <div className="mb-3">
+            <div className="card mb-4">
+              <div className="card-body">
+                <div className="row">
+                  <div className="col-sm-3">
+                    <p className="mb-0">Full Name</p>
+                  </div>
+                  <div className="col-sm-9">
+                    <p className="text-muted mb-0">
+                      {user ? user.name : "John"} {user ? user.lname : "Doe"}
+                    </p>
+                  </div>
                 </div>
-
-
-                
-
-
-
-              </Col>
-            </Row>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-3">
+                    <p className="mb-0">Email</p>
+                  </div>
+                  <div className="col-sm-9">
+                    <p className="text-muted mb-0">
+                      {user ? user.email : "johndoe@error.com"}
+                    </p>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-3">
+                    <p className="mb-0">Role</p>
+                  </div>
+                  <div className="col-sm-9">
+                    <p className="text-muted mb-0">
+                      {user ? user.role : "Patient"}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        {/* )} */}
-      </Container>
+        </div>
+      )}
     </div>
   );
 }

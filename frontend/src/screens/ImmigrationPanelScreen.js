@@ -66,7 +66,7 @@ function ImmigrationPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link active"
+                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
                   aria-current="page"
                   onClick={() => setSubPage("Statistics")}
                 >
@@ -76,7 +76,7 @@ function ImmigrationPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link"
+                  className={subPage =='My Patients' ? "nav-link active" : "nav-link"}
                   onClick={() => setSubPage("My Patients")}
                 >
                   <i class="fas fa-hospital-user me-3"></i>
@@ -84,7 +84,7 @@ function ImmigrationPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => setSubPage("Settings")}>
+                <a className={subPage =='Settings' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Settings")}>
                   <i class="fas fa-cogs me-3"></i>
                   Settings
                 </a>
@@ -112,17 +112,17 @@ function ImmigrationPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-chart-line me-2"></i> Statistics
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='All Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-hospital-user me-2"></i> All Patients
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>

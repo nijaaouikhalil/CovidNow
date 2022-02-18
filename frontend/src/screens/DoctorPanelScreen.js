@@ -34,12 +34,15 @@ function DoctorPanelScreen() {
         <nav className="col-md-3 col-lg-2 d-md-block bg-light dd-sidebar collapse">
           <div className="position-sticky pt-3">
             <ul className="nav flex-column mt-5">
-              <li className="text-center mb-2">
-                <h5>Doctor</h5>
+              <li className="text-center mb-3">
+                <h1><i className="fas fa-user-md"></i></h1>
+                <h4> Welcome Dr. {user_info.name}</h4>
+                <small>{user_info.email}</small><br />
+                <small>Doctor Account</small>
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link active"
+                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
                   aria-current="page"
                   onClick={() => setSubPage("Statistics")}
                 >
@@ -49,7 +52,7 @@ function DoctorPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link"
+                  className={subPage =='My Patients' ? "nav-link active" : "nav-link"}
                   onClick={() => setSubPage("My Patients")}
                 >
                   <i className="fas fa-hospital-user me-3"></i>
@@ -57,14 +60,14 @@ function DoctorPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => setSubPage("Messages")}>
+                <a className={subPage =='Messages' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Messages")}>
                   <i className="fas fa-inbox me-3"></i>
                   Messages
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className="nav-link"
+                  className={subPage =='Appointments' ? "nav-link active" : "nav-link"}
                   onClick={() => setSubPage("Appointments")}
                 >
                   <i className="fas fa-calendar me-3"></i>
@@ -72,7 +75,7 @@ function DoctorPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" onClick={() => setSubPage("Settings")}>
+                <a className={subPage =='Settings' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Settings")}>
                   <i className="fas fa-cogs me-3"></i>
                   Settings
                 </a>
@@ -100,27 +103,27 @@ function DoctorPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-chart-line me-2"></i> Statistics
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-hospital-user me-2"></i> Patients
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Messages' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-inbox me-2"></i> Messages
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Appointments' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-calendar me-2"></i> Appointments
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>

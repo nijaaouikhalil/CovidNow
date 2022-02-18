@@ -7,11 +7,11 @@ const PatientStatistics = ({setSubPage}) => {
                     <h3>1234</h3>
                     <p>Total Confirmed Cases</p>
                 </div>
-                <div className='dd-card pastel-green'><a onClick={() => (setSubPage(""))}>
+                <div className='dd-card dd-card-link pastel-green'><a onClick={() => (setSubPage(""))}>
                     <h3>7</h3>
                     <p>Remaining Days In Quarantine</p></a>
                 </div>
-                <div className='dd-card pastel-orange'><a onClick={() => (setSubPage(""))}>
+                <div className='dd-card dd-card-link pastel-orange'><a onClick={() => (setSubPage(""))}>
                     <h3>4</h3>
                     <p>Users Traced</p></a>
                 </div>

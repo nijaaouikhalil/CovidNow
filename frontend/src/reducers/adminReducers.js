@@ -60,7 +60,10 @@ export const AdminListUsersReducer = (state = { users: [] }, action) => {
       return state;
   }
 };
-export const AdminListAllUsersReducer = (state = { all_users: [] }, action) => {
+export const AdminListAllUsersReducer = (
+  state = { all_users: [], doctors: [] },
+  action
+) => {
   switch (action.type) {
     case ADMIN_LIST_ALL_USERS_REQUEST:
       return {
@@ -71,6 +74,9 @@ export const AdminListAllUsersReducer = (state = { all_users: [] }, action) => {
       return {
         loading: false,
         all_users: action.payload,
+        doctors: action.payload.filter(
+          (user) => user.roles && user.roles.name == "doctor"
+        ),
       };
 
     case ADMIN_LIST_ALL_USERS_FAIL:

@@ -7,15 +7,18 @@ import {
   Accordion,
   ListGroup,
   Form,
+  FloatingLabel,
 } from "react-bootstrap";
+
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { AdminGetUser, AdminUpdateUser } from "../actions/adminActions";
+import axios from "axios";
 import { getUserDetails } from "../actions/userActions";
 import { useParams } from "react-router-dom";
+import { BaseUrl } from "../utils/utils";
 
 function AdminUserDetailScreen() {
   const dispatch = useDispatch();
@@ -24,7 +27,17 @@ function AdminUserDetailScreen() {
   const { user_info } = userLogin;
   const userDetails = useSelector((state) => state.userDetails);
   const { user, loading, error } = userDetails;
+  const AdminListAllUsers = useSelector((state) => state.AdminListAllUsers);
+  const {
+    all_users,
+    loading: loadingAllUsers,
+    error: errorAllUsers,
+    doctors,
+  } = AdminListAllUsers;
 
+  const [doctorId, setDoctorId] = useState("");
+  const [updating, setUpdating] = useState(false);
+  const [message, setMessage] = useState("");
   let { pid } = useParams();
   useEffect(() => {
     if (!user_info || user_info.roles !== "ROLE_ADMIN") {
@@ -33,6 +46,27 @@ function AdminUserDetailScreen() {
     dispatch(getUserDetails(pid));
   }, [dispatch, user_info, pid]);
 
+  const updateDoctorHandler = async (doctorId) => {
+    setUpdating(true);
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          "x-access-token": `${user_info.accessToken}`,
+        },
+      };
+
+      const { data } = await axios.post(
+        BaseUrl + `/api/view/assign`,
+        { doctorId, userId: user._id },
+        config
+      );
+      setMessage(data.message);
+      setUpdating(false);
+    } catch (error) {
+      setUpdating(false);
+    }
+  };
   return (
     <div>
       <Link to="/admin/dashboard" className="btn btn-light my-2 ms-3">
@@ -91,6 +125,53 @@ function AdminUserDetailScreen() {
                     </div>
                   </div>
                 </div>
+              )}
+
+              <h2 className="ms-3">Assign to a doctor</h2>
+              <Row className="mb-3">
+                <Col xs={10}>
+                  <FloatingLabel
+                    controlId="floatingSelect"
+                    label="Select doctor"
+                  >
+                    <Form.Select
+                      value={doctorId}
+                      onChange={(e) => setDoctorId(e.target.value)}
+                      aria-label="select a doctor"
+                    >
+                      <option>select a doctor</option>
+                      {doctors &&
+                        doctors.length > 0 &&
+                        doctors.map((doctor) => (
+                          <option key={doctor._id} value={doctor._id}>
+                            {doctor.name}
+                          </option>
+                        ))}
+                    </Form.Select>
+                  </FloatingLabel>
+                </Col>
+
+                <Col>
+                  <Button
+                    disabled={doctorId === ""}
+                    onClick={() => updateDoctorHandler(doctorId)}
+                  >
+                    Update doctor
+                  </Button>
+                </Col>
+              </Row>
+              {updating ? (
+                <Loader />
+              ) : message ? (
+                <Message
+                  variant={
+                    message === "Assigned user to doctor" ? "success" : "danger"
+                  }
+                >
+                  {message}
+                </Message>
+              ) : (
+                ""
               )}
 
               <h2 className="ms-3">Requirement Updates</h2>

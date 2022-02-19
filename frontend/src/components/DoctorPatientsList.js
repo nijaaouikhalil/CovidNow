@@ -22,17 +22,25 @@ const DoctorPatientsList = ({ patients }) => {
               <tbody>
                 {patients && patients.length > 0
                   ? patients.map((patient, index) => (
-                      <tr>
+                      <tr key={index}>
                         <td>{index + 1}</td>
-                        <td>{patient.name}</td>
-                        <td>{patient.lname}</td>
-                        <td className="dd-patient-email">{patient.email}</td>
+                        <td>{patient ? patient.name : "John"}</td>
+                        <td>{patient ? patient.lname : "Doe"}</td>
+                        <td className="dd-patient-email">
+                          {patient ? patient.email : "johndoe@test.com"}
+                        </td>
                         <td>False</td>
                         <td>False</td>
                         <td>
-                          <Link to={"/doctor/patientdetails/" + patient._id}>
-                            More
-                          </Link>
+                          {patient ? (
+                            <Link to={"/doctor/patientdetails/" + patient._id}>
+                              More
+                            </Link>
+                          ) : (
+                            <Link to={"/doctor/patientdetails/" + index}>
+                              More
+                            </Link>
+                          )}
                         </td>
                       </tr>
                     ))

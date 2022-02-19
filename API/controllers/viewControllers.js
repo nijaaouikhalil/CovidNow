@@ -52,7 +52,7 @@ exports.profileInfo = (req, res) => {
             name: user.name,
             lname: user.lname,
             email: user.email,
-            role: role.name,
+            role: role ? role.name : "Not selected yet",
           };
 
           if (role.name == "doctor") {

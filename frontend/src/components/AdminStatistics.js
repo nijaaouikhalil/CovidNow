@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-const AdminStatistics = ({ setSubPage, all_users, users_to_confirm }) => {
+const AdminStatistics = ({
+  setSubPage,
+  all_users,
+  users_to_confirm,
+  doctors,
+}) => {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -18,6 +23,12 @@ const AdminStatistics = ({ setSubPage, all_users, users_to_confirm }) => {
             <a onClick={() => setSubPage("Confirm Users")}>
               <h3>{users_to_confirm ? users_to_confirm.length : 0}</h3>
               <p>Users to Confirm</p>
+            </a>
+          </div>
+          <div className="dd-card dd-card-link pastel-green">
+            <a onClick={() => setSubPage("All Users")}>
+              <h3>{doctors ? doctors.length : 0}</h3>
+              <p>Total doctors</p>
             </a>
           </div>
         </div>

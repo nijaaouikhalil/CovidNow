@@ -40,3 +40,4 @@ function HealthOfficialInfo_Test() {
         </Form>
     );
 }
+export default HealthOfficialInfo_Test;

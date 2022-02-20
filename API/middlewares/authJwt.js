@@ -1,8 +1,10 @@
 const jwt = require("jsonwebtoken");
-const db = require("../models")
+const { user } = require("../models");
+const db = require("../models");
 const User = db.user
 const Role = db.role
 const assignedDoctor = db.assignedDoctor;
+const Report = db.report;
 //Verifies the x-access jwt header token
 verifyToken = (req, res, next) => {
     let token = req.headers["x-access-token"]
@@ -84,6 +86,35 @@ isSpecial = (req, res, next) => {
     })
 }
 
+//Checks if the user is Doctor
+isDoctor = (req, res, next) => {
+    User.findById(req.userId).exec((err, user) => {
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+        Role.findOne(
+            {
+                _id: user.roles
+            },
+            (err, roles) => {
+                if(err){
+                    res.status(500).send({message: err})
+                    return
+                }
+
+                if(roles.name == "doctor"){
+                    next()
+                    return
+                }
+                res.status(403).send({message: "Require Doctor Role"})
+            }
+        )
+
+    })
+}
+
+
 canView = (req, res, next) => {
     //console.log(req.params.userId)
     //console.log(req.userId)
@@ -163,12 +194,79 @@ requestRoleName = (req, res, next) => {
     })
 }
 
+dailyReport = (req, res, next) => {
+
+       Report.findOne({
+           userId: req.body.userId,
+           date: {$gte: new Date().setHours(0,0,0,0), $lt: new Date().setHours(23,59,59,999)}  
+       }).exec((err, report) => {
+            if(err){
+                res.status(500).send({message: err})
+                return
+            }
+
+            req.exists = report
+            next()
+       })
+       
+
+}
+
+isMyPatient = (req, res, next) => {
+    assignedDoctor.find({doctorId: req.userId}).exec((err, user) => {
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+       req.myPatients = user
+    
+       var include = false
+       user.forEach((value) => {
+           if(value.userId == req.body.userId) {
+            include = true
+           }
+       })
+       if(!include){
+        res.status(500).send("You are not assigned to that patient")
+        return
+       }
+       next()
+    })   
+}
+
+
+
+
+canFillReport = (req, res, next) =>{
+
+    Report.find(
+        {
+            userId: req.userId,
+        }).sort({date: -1}).exec((err, users) => {
+            var user = users[0]
+
+            if(user != null && user.questions == null){
+                req.reportId = user._id
+                next()
+            }else{
+                res.status(500).send("You have no reports to fill")
+            }
+
+    })
+
+
+}
+
 
 const authJwt = {
     verifyToken,
     isAdmin,
     isSpecial,
     canView,
-    requestRoleName
+    requestRoleName,
+    isDoctor,
+    dailyReport,
+    canFillReport,
+    isMyPatient
 }
 module.exports = authJwt

@@ -58,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"admin1@admin.com",
-    "password":"admin"
+    "email":"patient@patient.com",
+    "password":"patient"
 }
 
 ###
@@ -91,8 +91,8 @@ Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTM3NDcwNywiZXhwIjoxNjQ1NDYxMTA3fQ.j8fgj59lYo56PJFlg3bBGrIiMedsa7pzOtR5Rs51w5c
 
 {
-    "doctorId": "61f8bf1f8336e6bf4342687b",
-    "userId": "61f8bf1f8336e6bf4342687b"
+    "doctorId": "6206d9a5c48f73131c34f3ef",
+    "userId": "620eca00f1eb719f8011f97d"
 
 }
 
@@ -112,4 +112,26 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE
 
 {
     
+}
+
+###
+PUT http://localhost:8080/api/view/requestReport
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NTM4OTcyNCwiZXhwIjoxNjQ1NDc2MTI0fQ.CJKBziUEViXcReMptWiEBWH3aSh_KS_eiBWQnro08n8
+
+{
+   "userId": "620eca00f1eb719f8011f97d"  
+}
+
+###
+PUT http://localhost:8080/api/view/fillReport
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0NTM4OTg2OCwiZXhwIjoxNjQ1NDc2MjY4fQ.-mUsQB5k6t-BodI2X9m1-mHlEIJ_7Q5YUE4G3_EkTIk
+
+{
+    "hasCovid": false,
+    "hasTravelled": false,
+    "hasAutoImmuneDisease": false,
+    "isPregnant": false,
+    "hadAllergicReaction": false
 }

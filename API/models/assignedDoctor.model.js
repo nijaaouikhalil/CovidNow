@@ -10,6 +10,7 @@ const assignedDoctor = mongoose.model(
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
+        unique: true,
     },  
   })
 );

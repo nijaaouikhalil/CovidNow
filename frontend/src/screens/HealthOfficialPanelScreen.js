@@ -5,14 +5,14 @@ import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { DoctorlistUsers } from "../actions/doctorActions";
+// import { HealthOfficallistUsers } from "../actions/healthOfficalActions";
 import { LinkContainer } from "react-router-bootstrap";
 
-import { ImmiPatientsList } from "../components/ImmiPatientsList";
+import { HealthOfficialPatientsList } from "../components/HealthOfficialPatientsList";
 import { ListAllUsers } from "../actions/adminActions";
-import { ImmiStatistics } from "../components/ImmiStatistics";
+import { HealthOfficialStatistics } from "../components/HealthOfficialStatistics";
 
-function ImmigrationPanelScreen() {
+function HealthOfficialPanelScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -26,43 +26,23 @@ function ImmigrationPanelScreen() {
   } = AdminListAllUsers;
 
   useEffect(() => {
-    if (!user_info || user_info.roles !== "ROLE_IMMIGRATION_OFFICER") {
+    if (!user_info || user_info.roles !== "ROLE_HEALTH_OFFICIAL") {
       navigate("/login");
     }
     dispatch(ListAllUsers());
   }, [dispatch, user_info]);
 
   return (
-    // <div className="second_menu_links">
-    //   <Container>
-    //     {/* {updateLoading ? (
-    //       <Loader />
-    //     ) : updatError ? (
-    //       <Message variant="danger">{updatError}</Message>
-    //     ) : message ? (
-    //       <Message variant="success">{message}</Message>
-    //     ) : (
-    //       ""
-    //     )} */}
-
-    //     {/* {loading ? (
-    //       <Loader />
-    //     ) : error ? (
-    //       <Message variant="danger">{error}</Message>
-    //     ) : ( */}
-    //       <div>
-    //       </div>
-    //     {/* )} */}
-    //   </Container>
-    // </div>
-
     <div className="container-fluid">
       <div className="row">
         <nav className="col-md-3 col-lg-2 d-md-block bg-light dd-sidebar collapse">
           <div className="position-sticky pt-3">
             <ul className="nav flex-column mt-5">
               <li className="text-center mb-2">
-                <h5>Immigration Officer</h5>
+              <h1><i className="fas fa-user-md"></i></h1>
+                <h4> Welcome {user_info.name}</h4>
+                <small>{user_info.email}</small><br />
+                <small>Health Official Account</small>
               </li>
               <li className="nav-item">
                 <a
@@ -76,8 +56,8 @@ function ImmigrationPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='My Patients' ? "nav-link active" : "nav-link"}
-                  onClick={() => setSubPage("My Patients")}
+                  className={subPage =='All Patients' ? "nav-link active" : "nav-link"}
+                  onClick={() => setSubPage("All Patients")}
                 >
                   <i class="fas fa-hospital-user me-3"></i>
                   All Patients
@@ -85,7 +65,7 @@ function ImmigrationPanelScreen() {
               </li>
               <li className="nav-item">
                 <a className={subPage =='Settings' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Settings")}>
-                  <i class="fas fa-cogs me-3"></i>
+                  <i className="fas fa-cogs me-3"></i>
                   Settings
                 </a>
               </li>
@@ -117,8 +97,8 @@ function ImmigrationPanelScreen() {
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='All Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
-                    <i className="fas fa-hospital-user me-2"></i> All Patients
+                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
+                    <i className="fas fa-hospital-user me-2"></i> Patients
                   </a>
                 </li>
                 <li>
@@ -131,14 +111,40 @@ function ImmigrationPanelScreen() {
           </div>
         </div>
 
-        {/* { (subPage=='Statistics') && <DoctorStatistics setSubPage={setSubPage}/>} */}
         {subPage == "Statistics" && (
-          <ImmiStatistics patients={all_users} setSubPage={setSubPage} />
+          <HealthOfficialStatistics
+            patients={all_users}
+            setSubPage={setSubPage}
+          />
         )}
-        {subPage == "My Patients" && <ImmiPatientsList all_users={all_users} />}
+        {subPage == "All Patients" && (
+          <HealthOfficialPatientsList all_users={all_users} />
+        )}
       </div>
     </div>
+
+    // <div className="second_menu_links">
+    //   <Container>
+    //     {/* {updateLoading ? (
+    //       <Loader />
+    //     ) : updatError ? (
+    //       <Message variant="danger">{updatError}</Message>
+    //     ) : message ? (
+    //       <Message variant="success">{message}</Message>
+    //     ) : (
+    //       ""
+    //     )} */}
+
+    //     {/* {loading ? (
+    //       <Loader />
+    //     ) : error ? (
+    //       <Message variant="danger">{error}</Message>
+    //     ) : ( */}
+    //
+    //     {/* )} */}
+    //   </Container>
+    // </div>
   );
 }
 
-export default ImmigrationPanelScreen;
+export default HealthOfficialPanelScreen;

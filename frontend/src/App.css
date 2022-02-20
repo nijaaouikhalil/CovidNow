@@ -1,38 +1,193 @@
-.App {
-  text-align: center;
+/* FIX FOR NAVBAR TO STAY ONTOP OF FIXED SIDEBAR AND MAIN CONTENT */
+#main-navbar {
+  z-index: 5;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* DOCTOR DASHBOARD */
+/*
+ * Sidebar
+ */
+* {
+  margin: 0;
+  padding: 0;
+}
+ .dd-sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 2; /* Behind the navbar */
+  padding: 50px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+.dd-sidebar .nav-link {
+  font-weight: 500;
+  color: #727272;
+  cursor: pointer;
+}
+.dd-sidebar .nav-link.active {
+  color: #2470dc;
+}
+.dd-sidebar .nav-link:hover,
+.dd-sidebar .nav-link.active {
+  color: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* DOCTOR DASHBOARD DROPDOWN MENU SMALL SCREEENS */
+
+#dd-dropdown-menu-button {
+  visibility: hidden;
+  color: inherit;
+  font-size: 24px;
+}
+
+#dd-dropdown-menu-button:hover {
+  color: orange
+}
+
+@media screen and (max-width: 767px) {
+  #dd-dropdown-menu-button {
+    visibility: visible;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Doctor dashboard statistics */
+
+.dd-card {
+  border-radius: 10px!important;
+  width: 220px;
+  padding: 10px;
+  background-color: rgb(255, 255, 255, 0.8);
+  margin:  0px 20px;
+  display: flex!important;
+  flex-direction: column!important;
+  margin-bottom: 25px;
+  box-shadow: 3px 3px 3px #888888;
 }
 
-.App-link {
-  color: #61dafb;
+.dd-card-link:hover {
+  cursor: pointer;
+  transform: scale(1.01);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes dd-btn-pressed {
+  0% { transform: translate(0, 0); box-shadow: 3px 3px 3px #888888;}
+  50% { transform: translate(5px, 5px); box-shadow: 3px 3px 5px #414040;}
+  100% { transform: translate(0, 0); box-shadow: 3px 3px 3px #888888;}
+}
+
+.dd-card-link:active {
+  animation: dd-btn-pressed 0.2s;
+}
+
+
+@media screen and (max-width: 767px) {
+  .dd-card {
+    width: 400px!important;
   }
-  to {
-    transform: rotate(360deg);
+  #dd-chart img {
+    width: 400px!important;
   }
+  #dd-pie {
+    margin-top: -20px!important;
+  }
+}
+@media screen and (max-width: 920px) {
+  #dd-chart img {
+    width: 350px!important;
+  }
+}
+
+@media screen and (max-width: 1354px) {
+  #dd-chart {
+    margin-top: 60px!important;
+  }
+}
+
+.dd-card h3 {
+  color: black;
+  font-weight: 500;
+  margin-top: 10px;
+}
+
+.dd-card p {
+  color: grey;
+  font-weight: 400;
+  font-size: 18px;
+  margin-top: -8px;
+  padding: 0 2px 2px 2px;
+  box-sizing: border-box;
+}
+
+
+#dd-main-container {
+  background: rgba(161, 161, 161, 0.2);
+  min-height: calc(100vh - 150px);
+  overflow: visible;
+  padding-top: 20px;
+  z-index: 1;
+
+}
+
+#dd-data-visuals {
+  flex-wrap: wrap;
+  margin: 60px 20px 50px 20px;
+}
+
+#dd-data-visuals h5 {
+  font-weight: 200;
+}
+
+#dd-pie {
+  box-sizing: content-box;
+  border-radius: 10px;
+  padding: 40px;
+  box-shadow: 3px 3px 3px #888888;
+}
+
+#dd-pie img {
+  margin-top: 10px;
+  width: 250px;
+  height: 250px;
+}
+
+#dd-chart {
+  padding: 40px;
+  box-sizing: content-box;
+  border-radius: 10px;
+  box-shadow: 3px 3px 3px #888888;
+}
+
+#dd-chart img{
+  margin-top: 10px;
+  width: 600px;
+  height: 250px;
+}
+
+#dd-main-container a {
+  text-decoration: none;
+}
+
+
+/* DOCTOR DASHBOARD My Patients */
+
+@media screen and (max-width: 767px) {
+  .dd-patient-email {
+    display: none;
+  }
+}
+
+
+/* COLOUR CLASSES */
+.pastel-blue {
+  background: rgba(128, 216, 216, 0.2);
+}
+.pastel-green {
+  background-color: rgba(173, 219, 100, 0.2);
+}
+.pastel-orange {
+  background-color: rgba(241, 162, 57, 0.2);
+}
+.pastel-red {
+  background-color: rgba(228, 127, 141, 0.2);
 }

@@ -26,4 +26,16 @@ const transport = nodemailer.createTransport({
     }).catch(err => console.log(err));
   };
 
-  
+  module.exports.confirmEmailForgotPassword = (name, email) => {
+    console.log("Check");
+    transport.sendMail({
+      from: user,
+      to: email,
+      subject: "Change Password",
+      html: `<h1>Email Confirmation</h1>
+          <h2>Hello ${name}</h2>
+          <p>Someone is trying to change your password. Please confirm if it was you who is changing the password.</p>
+          <a href=http://localhost:8080/api/auth/resetPassword/${email}> Click here</a>
+          </div>`,
+    }).catch(err => console.log(err));
+  }

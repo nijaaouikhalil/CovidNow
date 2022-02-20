@@ -4,13 +4,11 @@ import { Container, Row, Col } from "react-bootstrap";
 function Footer() {
   return (
     <footer>
-      <Navbar bg="primary" collapseOnSelect variant="dark">
-        <Container>
-          <Row>
-            <Col className="text-center py-3">&copy; {getCurrentYear()} CovIDTracker</Col>
-          </Row>
-        </Container>
-      </Navbar>
+      <Container>
+        <Row>
+          <Col className="text-center py-3">&copy; {getCurrentYear()} CovIDTracker</Col>
+        </Row>
+      </Container>
     </footer>
   );
 }

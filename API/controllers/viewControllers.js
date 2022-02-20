@@ -3,6 +3,7 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 const assignedDoctor = db.assignedDoctor;
+const Report = db.report;
 
 exports.assignDoctor = (req, res) => {
   //verify if doctorId is doctor role
@@ -259,3 +260,82 @@ exports.viewAll = (req, res) => {
       });
   }
 };
+
+
+exports.askReport = (req, res) => {
+  var date = req.body.date
+  if(date == null){
+    var date = new Date()
+  }
+
+  if(req.exists == null){
+      const newReport = new Report({
+        userId: req.body.userId,
+        date: date
+      })
+
+      newReport.save((err, report) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        res.send({
+          message:
+            "User can now fill his report",
+        });
+      })
+  }else{
+    Report.findById(req.exists._id).exec((err, report) => {
+
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      report.questions = null
+      report.date = date
+      report.save((err) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        res.send({
+          message:
+            "User can now refill his report",
+        });
+      })
+
+    })
+  }
+
+}
+
+exports.fillReport = (req, res) => {
+  
+  Report.findById(req.reportId).exec((err, report) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    report.questions.hasCovid = req.body.hasCovid
+    report.questions.hasTravelled = req.body.hasTravelled
+    report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease
+    report.questions.isPregnant = req.body.isPregnant 
+    report.questions.hadAllergicReaction = req.body.hadAllergicReaction
+
+    report.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      res.send({
+        message: "Succesfully submitted your information"
+      });
+    })
+
+  })
+
+}
+
+exports.viewReport = (req, res) => {
+  
+}

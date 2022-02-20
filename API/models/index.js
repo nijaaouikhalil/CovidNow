@@ -8,6 +8,7 @@ db.mongoose = mongoose;
 db.user = require("./Register.model")
 db.role = require("./Role.model")
 db.assignedDoctor = require("./assignedDoctor.model")
+db.report = require("./Report.model")
 
 db.ROLES = ["user", "admin"]
 

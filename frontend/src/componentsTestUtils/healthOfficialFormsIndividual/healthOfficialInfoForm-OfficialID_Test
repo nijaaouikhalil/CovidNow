@@ -4,23 +4,39 @@ import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
 import { updateUser } from "../../actions/userActions";
 import { Container, Row, Col } from "react-bootstrap";
 
-<Form className="container" onSubmit={submitHandler}>
+function HealthOfficialInfo_Test() {
+    const dispatch = useDispatch();
+    const [healthID, sethealthID] = useState("");
 
-    <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Health official ID</Form.Label>
-        <Form.Control
-            required
-            placeholder="Health official ID"
-            value={healthID}
-            onChange={(e) => sethealthID(e.target.value)}
-        ></Form.Control>
-    </Form.Group>
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            updateUser({
+                healthOfficialID: healthID,
+            })
+        );
+    };
+    return (
 
-    <Row className="mb-3 justify-content-md-center">
-        <div className="d-grid gap-2 py-3">
-            <Button type="submit" variant="primary">
-                Update
-            </Button>
-        </div>
-    </Row>
-</Form>
+        <Form className="container" onSubmit={submitHandler}>
+
+            <Form.Group className="mb-3" controlId="formGridAddress1">
+                <Form.Label>Health official ID</Form.Label>
+                <Form.Control
+                    required
+                    placeholder="Health official ID"
+                    value={healthID}
+                    onChange={(e) => sethealthID(e.target.value)}
+                ></Form.Control>
+            </Form.Group>
+
+            <Row className="mb-3 justify-content-md-center">
+                <div className="d-grid gap-2 py-3">
+                    <Button type="submit" variant="primary">
+                        Update
+                    </Button>
+                </div>
+            </Row>
+        </Form>
+    );
+}

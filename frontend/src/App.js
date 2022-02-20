@@ -31,13 +31,13 @@ import DoctorInfoFormProvince_Test from "./componentsTestUtils/doctorFormsIndivi
 import gouvernInfoForm_gouvernID_Test from "./componentsTestUtils/gouvernFormsIndividual";
 import healthOfficialInfoForm_OfficialID_Test from "./componentsTestUtils/healthOfficialFormsIndividual";
 
-import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen"; // implement
-import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1"; // implement
-import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2"; // implement
-import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City"; // implement
-import CTestScreen_Doctor_LicenceNum from "./screens/componentTestScreens/CTestScreen_Doctor_LicenceNum"; // implement
-import CTestScreen_Doctor_PostalCode from "./screens/componentTestScreens/CTestScreen_Doctor_PostalCode"; // implement
-import CTestScreen_Doctor_Province from "./screens/componentTestScreens/CTestScreen_Doctor_Province"; // implement
+import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen"; //implement
+import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1"; //implement
+import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2"; //implement
+import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City"; //implement
+import CTestScreen_Doctor_LicenceNum from "./screens/componentTestScreens/CTestScreen_Doctor_LicenceNum"; //implement
+import CTestScreen_Doctor_PostalCode from "./screens/componentTestScreens/CTestScreen_Doctor_PostalCode"; //implement
+import CTestScreen_Doctor_Province from "./screens/componentTestScreens/CTestScreen_Doctor_Province"; //implement
 import CTestScreen_Govern_ID from "./screens/componentTestScreens/CTestScreen_Govern_ID"; // implement
 import CTestScreen_Health_ID from "./screens/componentTestScreens/CTestScreen_Health_ID"; // implement
 // END OF COMPONENT TEST ROUTE(S)
@@ -49,8 +49,15 @@ function App() {
       <Header />
       <Routes>
 
-        <Route path="/componentTests" element={<ComponentTestsScreen></ComponentTestsScreen>} />
-
+        <Route path="/componentTests" element={<ComponentTestScreen></ComponentTestScreen>} />
+        <Route path="/componentTests/doc/address1" element={<CTestScreen_Doctor_Address1></CTestScreen_Doctor_Address1>} />
+        <Route path="/componentTests/doc/address2" element={<CTestScreen_Doctor_Address2></CTestScreen_Doctor_Address2>} />
+        <Route path="/componentTests/doc/city" element={<CTestScreen_Doctor_City></CTestScreen_Doctor_City>} />
+        <Route path="/componentTests/doc/licencenum" element={<CTestScreen_Doctor_LicenceNum></CTestScreen_Doctor_LicenceNum>} />
+        <Route path="/componentTests/doc/postalcode" element={<CTestScreen_Doctor_PostalCode></CTestScreen_Doctor_PostalCode>} />
+        <Route path="/componentTests/doc/province" element={<CTestScreen_Doctor_Province></CTestScreen_Doctor_Province>} />
+        <Route path="/componentTests/gov/id" element={<CTestScreen_Govern_ID></CTestScreen_Govern_ID>} />
+        <Route path="/componentTests/health/id" element={<CTestScreen_Health_ID></CTestScreen_Health_ID>} />
 
         <Route path="/" element={<HomeScreen />} exact />
         <Route path="/login" element={<LoginScreen />} />

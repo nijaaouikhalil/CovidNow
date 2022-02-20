@@ -5,23 +5,41 @@ import FormContainer from "./FormContainer";
 import { updateUser } from "../../actions/userActions";
 import { Container, Row, Col } from "react-bootstrap";
 
-<Form className="container" onSubmit={submitHandler}>
+function DoctorInfoLicenseNum_Test() {
+    const dispatch = useDispatch();
+    const [licenceNumber, setLicenceNumber] = useState("");
 
-    <Form.Group as={Col} controlId="LicenceNumber">
-        <Form.Label>Licence number</Form.Label>
-        <Form.Control
-            required
-            placeholder="Licence number"
-            value={licenceNumber}
-            onChange={(e) => setLicenceNumber(e.target.value)}
-        ></Form.Control>
-    </Form.Group>
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            updateUser({
+                licenceNumber
+            })
+        );
+    };
+    return (
 
-    <Row className="mb-3 justify-content-md-center">
-        <div className="d-grid gap-2 py-3">
-            <Button type="submit" variant="primary">
-                Update
-            </Button>
-        </div>
-    </Row>
-</Form>
+        <Form className="container" onSubmit={submitHandler}>
+
+            <Form.Group as={Col} controlId="LicenceNumber">
+                <Form.Label>Licence number</Form.Label>
+                <Form.Control
+                    required
+                    placeholder="Licence number"
+                    value={licenceNumber}
+                    onChange={(e) => setLicenceNumber(e.target.value)}
+                ></Form.Control>
+            </Form.Group>
+
+            <Row className="mb-3 justify-content-md-center">
+                <div className="d-grid gap-2 py-3">
+                    <Button type="submit" variant="primary">
+                        Update
+                    </Button>
+                </div>
+            </Row>
+        </Form>
+    );
+}
+
+export default DoctorInfoLicenceNum_Test;

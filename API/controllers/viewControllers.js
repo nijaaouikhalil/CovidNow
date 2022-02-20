@@ -74,8 +74,20 @@ exports.profileInfo = (req, res) => {
                 res.send(profile);
               });
           } else {
-            console.log(profile);
-            res.send(profile);
+            assignedDoctor.findOne(
+              {
+                userId: user._id,
+              },
+              "doctorId"
+            ).exec((err, doctor) => {
+              User.findOne({_id: doctor.doctorId}, "name lname").exec((err, docName) => {
+
+                profile.doctor = docName
+                console.log(profile);
+                res.send(profile);
+              })
+
+            })
           }
         }
       );
@@ -126,16 +138,13 @@ exports.viewAll = (req, res) => {
     );
   } else if (req.roleName == "admin") {
     var final = [];
-    console.log(
-      "------------------------------------------------------------------------"
-    );
     User.find({}, "name lname email roles verified").exec(
       async (err, cursor) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
         }
-        cursor.forEach((doc, index) => {
+        await cursor.forEach((doc, index) => {
           Role.findOne(
             {
               _id: doc["roles"],
@@ -166,11 +175,51 @@ exports.viewAll = (req, res) => {
                   cursor[index] = NewArray;
                 });
             }
+            else{
+              assignedDoctor
+                .findOne({
+                  userId: doc._id,
+                })
+                .exec((err, assigned) => {
+                  if(assigned == null){
+                    your_doctor = null
+                    var NewArray = {
+                      _id: doc._id,
+                      name: doc.name,
+                      lname: doc.lname,
+                      email: doc.email,
+                      roles: doc.roles,
+                      verified: doc.verified,
+                      your_doctor: your_doctor,
+                    };
+                    cursor[index] = NewArray; 
+                  }else{
+                    User.findOne({_id: assigned.doctorId}, "name lname").exec((err, your_doctor) => {
+                      var NewArray = {
+                        _id: doc._id,
+                        name: doc.name,
+                        lname: doc.lname,
+                        email: doc.email,
+                        roles: doc.roles,
+                        verified: doc.verified,
+                        your_doctor: your_doctor,
+                      };
+                      cursor[index] = NewArray;
+                    })}
+                  })
+
+                }
+              
+               
+        
+        
+        
             setTimeout(() => {
               if (index == cursor.length - 1) {
                 res.send(cursor);
               }
-            }, 500);
+            }, 1000);
+
           });
         });
       }

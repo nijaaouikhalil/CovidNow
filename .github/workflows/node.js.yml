@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ TestingPipeline-patch ]
+    branches: [ main, khalil ]
   pull_request:
-    branches: [ TestingPipeline-patch ]
+    branches: [ main ]
 
 jobs:
   build:

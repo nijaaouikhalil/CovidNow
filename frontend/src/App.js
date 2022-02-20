@@ -21,6 +21,18 @@ import ImmigrationPatientDetailScreen from "./screens/ImmigrationPatientDetailSc
 import PasswordRestScreen from "./screens/PasswordRestScreen";
 import PatientPanelScreen from "./screens/PatientPanelScreen";
 
+// COMPONENT TEST ROUTE(S)
+import DoctorInfoFormAddress1_Test from "./componentsTestUtils/doctorFormsIndividual";
+import DoctorInfoFormAddress2_Test from "./componentsTestUtils/doctorFormsIndividual";
+import DoctorInfoFormCity_Test from "./componentsTestUtils/doctorFormsIndividual";
+import DoctorInfoFormLicenceNum_Test from "./componentsTestUtils/doctorFormsIndividual";
+import DoctorInfoFormPostalCode_Test from "./componentsTestUtils/doctorFormsIndividual";
+import DoctorInfoFormProvince_Test from "./componentsTestUtils/doctorFormsIndividual";
+import gouvernInfoForm_gouvernID_Test from "./componentsTestUtils/gouvernFormsIndividual";
+import healthOfficialInfoForm_OfficialID_Test from "./componentsTestUtils/healthOfficialFormsIndividual";
+// END OF COMPONENT TEST ROUTE(S)
+
+
 function App() {
   return (
     <BrowserRouter>

@@ -30,6 +30,16 @@ import DoctorInfoFormPostalCode_Test from "./componentsTestUtils/doctorFormsIndi
 import DoctorInfoFormProvince_Test from "./componentsTestUtils/doctorFormsIndividual";
 import gouvernInfoForm_gouvernID_Test from "./componentsTestUtils/gouvernFormsIndividual";
 import healthOfficialInfoForm_OfficialID_Test from "./componentsTestUtils/healthOfficialFormsIndividual";
+
+import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen"; // implement
+import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1"; // implement
+import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2"; // implement
+import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City"; // implement
+import CTestScreen_Doctor_LicenceNum from "./screens/componentTestScreens/CTestScreen_Doctor_LicenceNum"; // implement
+import CTestScreen_Doctor_PostalCode from "./screens/componentTestScreens/CTestScreen_Doctor_PostalCode"; // implement
+import CTestScreen_Doctor_Province from "./screens/componentTestScreens/CTestScreen_Doctor_Province"; // implement
+import CTestScreen_Govern_ID from "./screens/componentTestScreens/CTestScreen_Govern_ID"; // implement
+import CTestScreen_Health_ID from "./screens/componentTestScreens/CTestScreen_Health_ID"; // implement
 // END OF COMPONENT TEST ROUTE(S)
 
 
@@ -38,6 +48,10 @@ function App() {
     <BrowserRouter>
       <Header />
       <Routes>
+
+        <Route path="/componentTests" element={<ComponentTestsScreen></ComponentTestsScreen>} />
+
+
         <Route path="/" element={<HomeScreen />} exact />
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/register" element={<RegisterScreen />} />

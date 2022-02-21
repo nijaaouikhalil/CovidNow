@@ -31,7 +31,7 @@ function CTestScreen_Health_ID() {
                 <Form.Label>Health official ID</Form.Label>
                 <Form.Control
                     required
-                    placeholder="Health official ID"
+                    placeholder="Health Official ID"
                     value={healthID}
                     onChange={(e) => sethealthID(e.target.value)}
                 ></Form.Control>

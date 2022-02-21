@@ -30,7 +30,7 @@ function CTestScreen_Doctor_LicenceNum() {
                 <Form.Label>Licence number</Form.Label>
                 <Form.Control
                     required
-                    placeholder="Licence number"
+                    placeholder="Licence Number"
                     value={licenceNumber}
                     onChange={(e) => setLicenceNumber(e.target.value)}
                 ></Form.Control>

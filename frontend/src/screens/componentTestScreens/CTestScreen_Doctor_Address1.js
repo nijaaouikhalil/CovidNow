@@ -27,7 +27,7 @@ function CTestScreen_Doctor_Address1() {
                 <Form.Label>Address 1</Form.Label>
                 <Form.Control
                     required
-                    placeholder="Postal code"
+                    placeholder="Address 1"
                     value={address1}
                     onChange={(e) => setAdress1(e.target.value)}
                 ></Form.Control>

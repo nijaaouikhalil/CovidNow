@@ -43,7 +43,7 @@ function DoctorInfo() {
         <Form.Label>Address 1</Form.Label>
         <Form.Control
           required
-          placeholder="Postal code"
+          placeholder="Address 1"
           value={address1}
           onChange={(e) => setAdress1(e.target.value)}
         ></Form.Control>
@@ -53,7 +53,7 @@ function DoctorInfo() {
         <Form.Label>Address 2</Form.Label>
         <Form.Control
           required
-          placeholder="Postal code"
+          placeholder="Address 2"
           value={address2}
           onChange={(e) => setAdress2(e.target.value)}
         ></Form.Control>
@@ -64,7 +64,7 @@ function DoctorInfo() {
           <Form.Label>City</Form.Label>
           <Form.Control
             required
-            placeholder="Postal code"
+            placeholder="City"
             value={city}
             onChange={(e) => setCity(e.target.value)}
           ></Form.Control>
@@ -74,7 +74,7 @@ function DoctorInfo() {
           <Form.Label>Postal code</Form.Label>
           <Form.Control
             required
-            placeholder="Postal code"
+            placeholder="Postal Code"
             value={postalcode}
             onChange={(e) => setPostalcode(e.target.value)}
           ></Form.Control>
@@ -100,7 +100,7 @@ function DoctorInfo() {
         <Form.Label>Licence number</Form.Label>
         <Form.Control
           required
-          placeholder="Licence number"
+          placeholder="Licence Number"
           value={licenceNumber}
           onChange={(e) => setLicenceNumber(e.target.value)}
         ></Form.Control>

@@ -7,10 +7,15 @@ var bcrypt = require("bcryptjs");
 //Creates transport route to send the user the registration mail
 const transport = nodemailer.createTransport({
   service: "gmail",
+  secure: false, // use SSL
+  port: 25, // port for secure SMTP
   auth: {
     user: user,
     pass: pass,
   },
+  tls: {
+    rejectUnauthorized: false
+  }
 });
 
 module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {

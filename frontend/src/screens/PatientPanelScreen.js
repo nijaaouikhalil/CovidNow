@@ -23,7 +23,13 @@ function PatientPanelScreen() {
           <div className="position-sticky pt-3">
             <ul className="nav flex-column mt-5">
               <li className="text-center mb-2">
-                <h5>Patient</h5>
+                <h1>
+                  <i className="fas fa-hospital-user"></i>
+                </h1>
+                <h4> Patient {user_info.name}</h4>
+                <small>{user_info.email}</small>
+                <br />
+                <small>Patient Account</small>
               </li>
               <li className="nav-item">
                 <a

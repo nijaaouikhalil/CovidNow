@@ -12,6 +12,10 @@ import {
   USER_DETAILS_REQUEST,
   USER_DETAILS_SUCCESS,
   USER_DETAILS_FAIL,
+  USER_DAILY_REPORTS_REQUEST,
+  USER_DAILY_REPORTS_SUCCESS,
+  USER_DAILY_REPORTS_FAIL,
+  USER_DAILY_REPORTS_RESET,
 } from "../constants/userConstants";
 import axios from "axios";
 import { BaseUrl } from "../utils/utils";
@@ -162,6 +166,42 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
   } catch (error) {
     dispatch({
       type: USER_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+export const getUserDailyReports = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_DAILY_REPORTS_REQUEST,
+    });
+
+    const {
+      userLogin: { user_info },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-type": "application/json",
+        "x-access-token": `${user_info.accessToken}`,
+      },
+    };
+
+    const { data } = await axios.get(
+      BaseUrl + `/api/view/${id}/report`,
+      config
+    );
+    dispatch({
+      type: USER_DAILY_REPORTS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: USER_DAILY_REPORTS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message

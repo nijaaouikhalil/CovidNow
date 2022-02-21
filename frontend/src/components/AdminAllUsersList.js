@@ -13,8 +13,9 @@ const AdminAllUsersList = ({ all_users }) => {
                   <th>First Name</th>
                   <th>Last Name</th>
                   <th className="dd-patient-email">Email</th>
+                  <th>Role</th>
                   <th>Confirmed</th>
-                  <th>Quarantined</th>
+                  <th>Assigned Doctor</th>
                   <th>Details</th>
                 </tr>
               </thead>
@@ -26,8 +27,27 @@ const AdminAllUsersList = ({ all_users }) => {
                         <td>{user.name}</td>
                         <td>{user.lname}</td>
                         <td className="dd-patient-email">{user.email}</td>
+                        <td>
+                          {user.roles ? (
+                            <div className="text-center">
+                              {user.roles.name}
+                              {user.roles.name === "doctor" && (
+                                <div className="fw-bold fst-italic">
+                                  assigned &nbsp;
+                                  {user.count} patients
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            "User"
+                          )}
+                        </td>
                         <td>True</td>
-                        <td>True</td>
+                        <td className="text-center">
+                          {user.your_doctor
+                            ? user.your_doctor.name
+                            : "Not assigned"}
+                        </td>
                         <td>
                           <Link to={"/admin/userdetails/" + user._id}>
                             More

@@ -58,7 +58,7 @@ function AdminUserDetailScreen() {
 
       const { data } = await axios.post(
         BaseUrl + `/api/view/assign`,
-        { doctorId, userId: user._id },
+        { doctorId, userId: pid },
         config
       );
       setMessage(data.message);

@@ -22,16 +22,16 @@ import PasswordRestScreen from "./screens/PasswordRestScreen";
 import PatientPanelScreen from "./screens/PatientPanelScreen";
 
 // COMPONENT TEST ROUTE(S)
-import DoctorInfoFormAddress1_Test from "./componentsTestUtils/doctorFormsIndividual";
-import DoctorInfoFormAddress2_Test from "./componentsTestUtils/doctorFormsIndividual";
-import DoctorInfoFormCity_Test from "./componentsTestUtils/doctorFormsIndividual";
-import DoctorInfoFormLicenceNum_Test from "./componentsTestUtils/doctorFormsIndividual";
-import DoctorInfoFormPostalCode_Test from "./componentsTestUtils/doctorFormsIndividual";
-import DoctorInfoFormProvince_Test from "./componentsTestUtils/doctorFormsIndividual";
-import gouvernInfoForm_gouvernID_Test from "./componentsTestUtils/gouvernFormsIndividual";
-import healthOfficialInfoForm_OfficialID_Test from "./componentsTestUtils/healthOfficialFormsIndividual";
+import DoctorInfoAddress1_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormAddress1_Test";
+import DoctorInfoAddress2_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormAddress2_Test";
+import DoctorInfoCity_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormCity_Test";
+import DoctorInfoLicenceNum_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormLicenceNum_Test";
+import DoctorInfoPostalCode_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormPostalCode_Test";
+import DoctorInfoProvince_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormProvince_Test";
+import GouvernInfo_Test from "./componentsTestUtils/gouvernFormsIndividual/gouvernInfoForm_gouvernID_Test";
+import HealthOfficialInfo_Test from "./componentsTestUtils/healthOfficialFormsIndividual/healthOfficialInfoForm_OfficialID_Test";
 
-import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen"; //implement
+import ComponentTestScreen from "./screens/componentTestScreens/componentTestScreen"; //implement
 import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1"; //implement
 import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2"; //implement
 import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City"; //implement

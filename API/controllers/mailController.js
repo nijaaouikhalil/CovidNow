@@ -14,13 +14,8 @@ const transport = nodemailer.createTransport({
     pass: pass,
   },
   tls: {
-<<<<<<< HEAD
     rejectUnauthorized: false,
   },
-=======
-    rejectUnauthorized: false
-  }
->>>>>>> khalil
 });
 
 module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {

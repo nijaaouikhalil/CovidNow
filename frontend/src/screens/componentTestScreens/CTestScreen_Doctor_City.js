@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
+import DoctorInfoCity_Test from "../../componentsTestUtils/doctorFormsIndividual/DoctorInfoFormCity_Test";
+
 function CTestScreen_Doctor_City() {
     return (
         "Hello world!"

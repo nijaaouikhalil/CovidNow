@@ -232,7 +232,7 @@ function getRandomPassword() {
 exports.forgotPasswordCEmail = async (req, res) => {
   console.log("njk");
   try {
-    User.findOne({ email: req.body.email }).then((user) => {
+    User.findOne({ email: req.body.email }).then(async (user) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." }); //Email provided not available
       }
@@ -240,7 +240,7 @@ exports.forgotPasswordCEmail = async (req, res) => {
       const newPassword = getRandomPassword();
       console.log("newPassword");
       console.log(newPassword);
-      const hashedNewPassword = bcrypt.hash(newPassword, 10); //hash the password
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10); //hash the password
       user.password = hashedNewPassword; //change the user's password
       user.save((err) => {
         console.log(err);

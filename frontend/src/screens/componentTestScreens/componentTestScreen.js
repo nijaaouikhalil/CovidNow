@@ -1,17 +1,9 @@
-//import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-//import Header from "./components/Header";
-//import Footer from "./components/Footer";
-
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
-//import FormContainer from "../components/Form/FormContainer";
 import { useNavigate } from "react-router-dom";
-//import { login } from "../actions/userActions";
-//import Loader from "../components/Loader";
-//import Message from "../components/Message";
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";

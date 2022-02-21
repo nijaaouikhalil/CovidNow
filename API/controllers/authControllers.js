@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
         { email: req.body.email },
         process.env.EMAIL_TOKEN_SECRET
       );
-        //Hashes the password for safety
+      //Hashes the password for safety
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const signedUpUser = new User({
         name: req.body.name,
@@ -70,7 +70,8 @@ exports.register = async (req, res) => {
               });
             }
           );
-        } else {//If the user did not enter a role, they/them will automatically be assigned to user
+        } else {
+          //If the user did not enter a role, they/them will automatically be assigned to user
           Role.findOne({ name: "user" }, (err, role) => {
             if (err) {
               res.status(500).send({ message: err });
@@ -219,22 +220,18 @@ exports.resetPassword = async (req, res) => {
 exports.forgotPasswordCEmail = async (req, res) => {
   console.log("njk");
   try {
-    User.findOne({email:req.body.email}).then((user)=>{
+    User.findOne({ email: req.body.email }).then((user) => {
       if (!user) {
-        return res.status(404).send({ message: "User Not found." });//Email provided not available
+        return res.status(404).send({ message: "User Not found." }); //Email provided not available
       }
+
+      nodemailer.confirmEmailForgotPassword(user.name, user.email);
       res.send({
-        message: "Please confirm your email."
+        message:
+          "You password was reset! You should receive an email in the following minutes.",
       });
-
-      nodemailer.confirmEmailForgotPassword(
-        user.name,
-        user.email
-      );
-
     });
+  } catch (e) {
+    res.send({ message: e.message });
   }
-  catch (e) {
-    res.send({message: e.message});
-  }
-}
+};

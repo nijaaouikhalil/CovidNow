@@ -4,10 +4,18 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { BaseUrl } from "../utils/utils";
+import axios from "axios";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 function PasswordRestScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
+
+  const [updating, setUpdating] = useState(false);
+  const [sucessReportRequest, setSucessReportRequest] = useState(false);
+  const [message, setMessage] = useState("");
 
   const userLogin = useSelector((state) => state.userLogin);
   const { error, loading, user_info } = userLogin;
@@ -20,8 +28,22 @@ function PasswordRestScreen() {
       }
     }
   }, [navigate, user_info]);
-  const submitHandler = (e) => {
+
+  const submitHandler = async (e) => {
     e.preventDefault();
+    setUpdating(true);
+    try {
+      const { data } = await axios.put(BaseUrl + `/api/auth/passwordrest`, {
+        email,
+      });
+      setMessage(data.message);
+      setUpdating(false);
+      setSucessReportRequest(true);
+    } catch (error) {
+      setUpdating(false);
+      setMessage("An error has occured! Please try again later.");
+      setSucessReportRequest(false);
+    }
   };
   return (
     <FormContainer>
@@ -43,6 +65,15 @@ function PasswordRestScreen() {
           </Button>
         </div>
       </Form>
+      {updating ? (
+        <Loader />
+      ) : message ? (
+        <Message variant={sucessReportRequest ? "success" : "danger"}>
+          {message}
+        </Message>
+      ) : (
+        ""
+      )}
     </FormContainer>
   );
 }

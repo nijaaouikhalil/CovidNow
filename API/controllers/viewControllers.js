@@ -81,12 +81,16 @@ exports.profileInfo = (req, res) => {
               },
               "doctorId"
             ).exec((err, doctor) => {
-              User.findOne({_id: doctor.doctorId}, "name lname").exec((err, docName) => {
 
-                profile.doctor = docName
-                console.log(profile);
+              if(doctor == null){
+                profile.doctor = null
                 res.send(profile);
-              })
+              }else{
+                User.findOne({_id: doctor.doctorId}, "name lname").exec((err, docName) => {
+                  profile.doctor = docName
+                  res.send(profile);
+                })
+              }
 
             })
           }

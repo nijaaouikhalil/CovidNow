@@ -216,6 +216,18 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
+function getRandomPassword() {
+  //Function to create a random password
+  var randomChars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var result = "";
+  for (var i = 0; i < 10; i++) {
+    result += randomChars.charAt(
+      Math.floor(Math.random() * randomChars.length)
+    );
+  }
+  return result;
+}
 //Method for forgot password to confirm email
 exports.forgotPasswordCEmail = async (req, res) => {
   console.log("njk");
@@ -225,7 +237,19 @@ exports.forgotPasswordCEmail = async (req, res) => {
         return res.status(404).send({ message: "User Not found." }); //Email provided not available
       }
 
-      nodemailer.confirmEmailForgotPassword(user.name, user.email);
+      const newPassword = getRandomPassword();
+      console.log("newPassword");
+      console.log(newPassword);
+      const hashedNewPassword = bcrypt.hash(newPassword, 10); //hash the password
+      user.password = hashedNewPassword; //change the user's password
+      user.save((err) => {
+        console.log(err);
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+      });
+      nodemailer.confirmEmailForgotPassword(user.name, user.email, newPassword);
       res.send({
         message:
           "You password was reset! You should receive an email in the following minutes.",

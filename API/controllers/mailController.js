@@ -7,9 +7,14 @@ var bcrypt = require("bcryptjs");
 //Creates transport route to send the user the registration mail
 const transport = nodemailer.createTransport({
   service: "gmail",
+  secure: false, // use SSL
+  port: 25, // port for secure SMTP
   auth: {
     user: user,
     pass: pass,
+  },
+  tls: {
+    rejectUnauthorized: false,
   },
 });
 
@@ -28,27 +33,11 @@ module.exports.sendConfirmationEmail = (name, email, confirmationCode) => {
     })
     .catch((err) => console.log(err));
 };
-function getRandomPassword() {
-  //Function to create a random password
-  var randomChars =
-    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-  var result = "";
-  for (var i = 0; i < 10; i++) {
-    result += randomChars.charAt(
-      Math.floor(Math.random() * randomChars.length)
-    );
-  }
-  return result;
-}
-//Forgot password email
-module.exports.confirmEmailForgotPassword = (name, email) => {
-  console.log("Check");
 
-  const newPassword = getRandomPassword();
-  console.log("newPassword");
-  console.log(newPassword);
-  const hashedNewPassword = bcrypt.hash(newPassword, 10); //hash the password
-  user.password = hashedNewPassword; //change the user's password
+//Forgot password email
+module.exports.confirmEmailForgotPassword = (name, email, newPassword) => {
+  console.log(email);
+
   transport
     .sendMail({
       from: user,

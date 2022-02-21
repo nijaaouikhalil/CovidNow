@@ -217,6 +217,7 @@ exports.resetPassword = async (req, res) => {
 
 //Method for forgot password to confirm email
 exports.forgotPasswordCEmail = async (req, res) => {
+  console.log("njk");
   try {
     User.findOne({email:req.body.email}).then((user)=>{
       if (!user) {
@@ -232,39 +233,6 @@ exports.forgotPasswordCEmail = async (req, res) => {
       );
 
     });
-  }
-  catch (e) {
-    res.send({message: e.message});
-  }
-}
-
-//Method for forgot password to change password
-exports.forgotPassword = async (req, res) => {
-  try {
-
-    User.findOne({email: req.params.email}).then((user)=>{
-    
-    if (req.body.password != req.body.cpassword) {
-      console.log("Passwords do not match");
-    } else {
-
-    user.password = bcrypt.hashSync(req.body.newPassword, 10);
-    
-    user.save((err) => {
-      if (err) {
-        res.status(500).send({ message: err });
-        return;
-      }
-    });
-    }
-
-    //Doubles checks if the password is up to date
-    var validPass = bcrypt.compareSync(req.body.newPassword, user.password);
-    if (validPass) {
-      res.status(200).send({ message: "Password Successfully Updated." });
-    }
-
-  });
   }
   catch (e) {
     res.send({message: e.message});

@@ -222,7 +222,7 @@ isMyPatient = (req, res, next) => {
     
        var include = false
        user.forEach((value) => {
-           if(value.userId == req.body.userId) {
+           if(value.userId == req.body.userId || value.userId == req.params.userId) {
             include = true
            }
        })
@@ -244,8 +244,9 @@ canFillReport = (req, res, next) =>{
             userId: req.userId,
         }).sort({date: -1}).exec((err, users) => {
             var user = users[0]
-
-            if(user != null && user.questions == null){
+            if(user != null && Object.values(user.questions)[0] == null &&
+            Object.values(user.questions)[1] == null && Object.values(user.questions)[2] == null &&
+            Object.values(user.questions)[3] == null && Object.values(user.questions)[4] == null){
                 req.reportId = user._id
                 next()
             }else{
@@ -255,6 +256,21 @@ canFillReport = (req, res, next) =>{
     })
 
 
+}
+
+uniqueUser = (req, res, next) =>{
+    assignedDoctor.findOne({userId: req.body.userId}).exec((err, value) =>{
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+        if(value != null){
+            res.status(500).send("User already has a doctor")
+            return
+        }
+        next()
+
+    })
 }
 
 
@@ -267,6 +283,7 @@ const authJwt = {
     isDoctor,
     dailyReport,
     canFillReport,
-    isMyPatient
+    isMyPatient,
+    uniqueUser
 }
 module.exports = authJwt

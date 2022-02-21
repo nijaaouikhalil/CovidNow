@@ -13,7 +13,7 @@ module.exports = function(app){
       
       app.post(
           "/api/view/assign",
-          [authJwt.verifyToken, authJwt.isAdmin],
+          [authJwt.verifyToken, authJwt.isAdmin, authJwt.uniqueUser],
           controller.assignDoctor
       )
 
@@ -42,7 +42,7 @@ module.exports = function(app){
       )
       
       app.get(
-        "/api/view/getReports",
+        "/api/view/:userId/report",
         [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient],
         controller.viewReport
       )

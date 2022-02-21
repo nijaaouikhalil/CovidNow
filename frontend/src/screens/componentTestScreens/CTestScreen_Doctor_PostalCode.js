@@ -8,11 +8,42 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
-import DoctorInfoPostalCode_Test from "../../componentsTestUtils/doctorFormsIndividual/DoctorInfoFormPostalCode_Test";
+import { updateUser } from "../../actions/userActions";
 
 function CTestScreen_Doctor_PostalCode() {
+    const dispatch = useDispatch();
+    const [postalcode, setPostalcode] = useState("");
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            updateUser({
+                postalCode: postalcode
+            })
+        );
+    };
+
     return (
-        "Hello world!"
+
+        <Form className="container" onSubmit={submitHandler}>
+
+            <Form.Group as={Col} controlId="postalcode">
+                <Form.Label>Postal code</Form.Label>
+                <Form.Control
+                    required
+                    placeholder="Postal code"
+                    value={postalcode}
+                    onChange={(e) => setPostalcode(e.target.value)}
+                ></Form.Control>
+            </Form.Group>
+
+            <Row className="mb-3 justify-content-md-center">
+                <div className="d-grid gap-2 py-3">
+                    <Button type="submit" variant="primary">
+                        Update
+                    </Button>
+                </div>
+            </Row>
+        </Form>
     );
 }
 

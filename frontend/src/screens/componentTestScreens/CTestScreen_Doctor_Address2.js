@@ -8,11 +8,42 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
-import DoctorInfoAddress2_Test from "../../componentsTestUtils/doctorFormsIndividual/DoctorInfoFormAddress2_Test";
+import { updateUser } from "../../actions/userActions";
 
 function CTestScreen_Doctor_Address2() {
+    const dispatch = useDispatch();
+    const [address2, setAdress2] = useState("");
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            updateUser({
+                address2
+            })
+        );
+    };
     return (
-        "Hello world!"
+
+        <Form className="container" onSubmit={submitHandler}>
+
+            <Form.Group className="mb-3" controlId="formGridAddress2">
+                <Form.Label>Address 2</Form.Label>
+                <Form.Control
+                    required
+                    placeholder="Postal code"
+                    value={address2}
+                    onChange={(e) => setAdress2(e.target.value)}
+                ></Form.Control>
+            </Form.Group>
+
+            <Row className="mb-3 justify-content-md-center">
+                <div className="d-grid gap-2 py-3">
+                    <Button type="submit" variant="primary">
+                        Update
+                    </Button>
+                </div>
+            </Row>
+        </Form>
     );
 }
 

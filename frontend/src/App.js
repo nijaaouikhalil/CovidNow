@@ -22,24 +22,15 @@ import PasswordRestScreen from "./screens/PasswordRestScreen";
 import PatientPanelScreen from "./screens/PatientPanelScreen";
 
 // COMPONENT TEST ROUTE(S)
-import DoctorInfoAddress1_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormAddress1_Test";
-import DoctorInfoAddress2_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormAddress2_Test";
-import DoctorInfoCity_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormCity_Test";
-import DoctorInfoLicenceNum_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormLicenceNum_Test";
-import DoctorInfoPostalCode_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormPostalCode_Test";
-import DoctorInfoProvince_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormProvince_Test";
-import GouvernInfo_Test from "./componentsTestUtils/gouvernFormsIndividual/GouvernInfoForm_gouvernID_Test";
-import HealthOfficialInfo_Test from "./componentsTestUtils/healthOfficialFormsIndividual/HealthOfficialInfoForm_OfficialID_Test";
-
-import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen"; //implement
-import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1"; //implement
-import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2"; //implement
-import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City"; //implement
-import CTestScreen_Doctor_LicenceNum from "./screens/componentTestScreens/CTestScreen_Doctor_LicenceNum"; //implement
-import CTestScreen_Doctor_PostalCode from "./screens/componentTestScreens/CTestScreen_Doctor_PostalCode"; //implement
-import CTestScreen_Doctor_Province from "./screens/componentTestScreens/CTestScreen_Doctor_Province"; //implement
-import CTestScreen_Govern_ID from "./screens/componentTestScreens/CTestScreen_Govern_ID"; // implement
-import CTestScreen_Health_ID from "./screens/componentTestScreens/CTestScreen_Health_ID"; // implement
+import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen";
+import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1";
+import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2";
+import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City";
+import CTestScreen_Doctor_LicenceNum from "./screens/componentTestScreens/CTestScreen_Doctor_LicenceNum";
+import CTestScreen_Doctor_PostalCode from "./screens/componentTestScreens/CTestScreen_Doctor_PostalCode";
+import CTestScreen_Doctor_Province from "./screens/componentTestScreens/CTestScreen_Doctor_Province";
+import CTestScreen_Govern_ID from "./screens/componentTestScreens/CTestScreen_Govern_ID";
+import CTestScreen_Health_ID from "./screens/componentTestScreens/CTestScreen_Health_ID";
 // END OF COMPONENT TEST ROUTE(S)
 
 

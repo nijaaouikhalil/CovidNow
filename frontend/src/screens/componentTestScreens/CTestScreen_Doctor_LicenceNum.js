@@ -8,11 +8,42 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
-import DoctorInfoLicenseNum_Test from "../../componentsTestUtils/doctorFormsIndividual/DoctorInfoFormLicenceNum_Test";
+import { updateUser } from "../../actions/userActions";
 
 function CTestScreen_Doctor_LicenceNum() {
+    const dispatch = useDispatch();
+    const [licenceNumber, setLicenceNumber] = useState("");
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        dispatch(
+            updateUser({
+                licenceNumber
+            })
+        );
+    };
     return (
-        "Hello world!"
+
+        <Form className="container" onSubmit={submitHandler}>
+
+            <Form.Group as={Col} controlId="LicenceNumber">
+                <Form.Label>Licence number</Form.Label>
+                <Form.Control
+                    required
+                    placeholder="Licence number"
+                    value={licenceNumber}
+                    onChange={(e) => setLicenceNumber(e.target.value)}
+                ></Form.Control>
+            </Form.Group>
+
+            <Row className="mb-3 justify-content-md-center">
+                <div className="d-grid gap-2 py-3">
+                    <Button type="submit" variant="primary">
+                        Update
+                    </Button>
+                </div>
+            </Row>
+        </Form>
     );
 }
 

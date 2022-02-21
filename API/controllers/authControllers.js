@@ -242,7 +242,7 @@ exports.forgotPasswordCEmail = async (req, res) => {
 exports.forgotPassword = async (req, res) => {
   try {
 
-    User.findOne({email: req.body.email}).then((user)=>{
+    User.findOne({email: req.params.email}).then((user)=>{
     
     if (req.body.password != req.body.cpassword) {
       console.log("Passwords do not match");

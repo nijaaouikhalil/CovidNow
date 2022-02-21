@@ -64,25 +64,11 @@ function RegisterScreen() {
             {error && <Message variant="danger">{error}</Message>}
             {loading && <Loader />}
           </Col>
-          <Col>
-            <FloatingLabel controlId="floatingSelect" label="User type">
-              <Form.Select
-                value={user_type}
-                onChange={(e) => setType(e.target.value)}
-                aria-label="Floating label select example"
-              >
-                <option>select user type</option>
-                <option value="user">Patient</option>
-                <option value="doctor">Doctor</option>
-                <option value="health_official">Health official</option>
-                <option value="immigration_officer">Immigration officer</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
+
         </Row>
         <Row className="mb-3">
           <Form.Group as={Col} controlId="name">
-            <Form.Label>Name</Form.Label>
+            <Form.Label>First Name</Form.Label>
             <Form.Control
               required
               placeholder="Enter name"
@@ -92,7 +78,7 @@ function RegisterScreen() {
           </Form.Group>
 
           <Form.Group as={Col} controlId="lastname">
-            <Form.Label>Last name</Form.Label>
+            <Form.Label>Last Name</Form.Label>
             <Form.Control
               required
               placeholder="Enter last name"
@@ -113,7 +99,7 @@ function RegisterScreen() {
             ></Form.Control>
           </Form.Group>
           <Form.Group as={Col} controlId="email">
-            <Form.Label>confirm email Address</Form.Label>
+            <Form.Label>Confirm Email Address</Form.Label>
             <Form.Control
               required
               type="email"
@@ -147,6 +133,22 @@ function RegisterScreen() {
           </Form.Group>
         </Row>
 
+        <Col>
+          <FloatingLabel controlId="floatingSelect" label="User Type">
+            <Form.Select
+              value={user_type}
+              onChange={(e) => setType(e.target.value)}
+              aria-label="Floating label select example"
+            >
+              <option>Select User Type</option>
+              <option value="user">Patient</option>
+              <option value="doctor">Doctor</option>
+              <option value="health_official">Health Official</option>
+              <option value="immigration_officer">Immigration Officer</option>
+            </Form.Select>
+          </FloatingLabel>
+        </Col>
+
         <Row className="mb-3 justify-content-md-center">
           <div className="d-grid gap-2 py-3">
             <Button type="submit" variant="primary">
@@ -158,7 +160,7 @@ function RegisterScreen() {
 
       <Row className="py-3">
         <Col>
-          Have an Account? <Link to={"/login"}>Sign In</Link>
+          Already Have an Account? <Link to={"/login"}>Sign In</Link>
         </Col>
       </Row>
     </div>

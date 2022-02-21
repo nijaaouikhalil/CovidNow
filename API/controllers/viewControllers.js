@@ -3,6 +3,7 @@ const db = require("../models");
 const User = db.user;
 const Role = db.role;
 const assignedDoctor = db.assignedDoctor;
+const Report = db.report;
 
 exports.assignDoctor = (req, res) => {
   //verify if doctorId is doctor role
@@ -74,8 +75,20 @@ exports.profileInfo = (req, res) => {
                 res.send(profile);
               });
           } else {
-            console.log(profile);
-            res.send(profile);
+            assignedDoctor.findOne(
+              {
+                userId: user._id,
+              },
+              "doctorId"
+            ).exec((err, doctor) => {
+              User.findOne({_id: doctor.doctorId}, "name lname").exec((err, docName) => {
+
+                profile.doctor = docName
+                console.log(profile);
+                res.send(profile);
+              })
+
+            })
           }
         }
       );
@@ -126,16 +139,13 @@ exports.viewAll = (req, res) => {
     );
   } else if (req.roleName == "admin") {
     var final = [];
-    console.log(
-      "------------------------------------------------------------------------"
-    );
     User.find({}, "name lname email roles verified").exec(
       async (err, cursor) => {
         if (err) {
           res.status(500).send({ message: err });
           return;
         }
-        cursor.forEach((doc, index) => {
+        await cursor.forEach((doc, index) => {
           Role.findOne(
             {
               _id: doc["roles"],
@@ -166,11 +176,51 @@ exports.viewAll = (req, res) => {
                   cursor[index] = NewArray;
                 });
             }
+            else{
+              assignedDoctor
+                .findOne({
+                  userId: doc._id,
+                })
+                .exec((err, assigned) => {
+                  if(assigned == null){
+                    your_doctor = null
+                    var NewArray = {
+                      _id: doc._id,
+                      name: doc.name,
+                      lname: doc.lname,
+                      email: doc.email,
+                      roles: doc.roles,
+                      verified: doc.verified,
+                      your_doctor: your_doctor,
+                    };
+                    cursor[index] = NewArray; 
+                  }else{
+                    User.findOne({_id: assigned.doctorId}, "name lname").exec((err, your_doctor) => {
+                      var NewArray = {
+                        _id: doc._id,
+                        name: doc.name,
+                        lname: doc.lname,
+                        email: doc.email,
+                        roles: doc.roles,
+                        verified: doc.verified,
+                        your_doctor: your_doctor,
+                      };
+                      cursor[index] = NewArray;
+                    })}
+                  })
+
+                }
+              
+               
+        
+        
+        
             setTimeout(() => {
               if (index == cursor.length - 1) {
                 res.send(cursor);
               }
-            }, 500);
+            }, 1000);
+
           });
         });
       }
@@ -210,3 +260,104 @@ exports.viewAll = (req, res) => {
       });
   }
 };
+
+
+exports.askReport = (req, res) => {
+  var date = req.body.date
+  if(date == null){
+    var date = new Date()
+  }
+
+  if(req.exists == null){
+      const newReport = new Report({
+        userId: req.body.userId,
+        date: date
+      })
+
+      newReport.save((err, report) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        res.send({
+          message:
+            "User can now fill his report",
+        });
+      })
+  }else{
+    Report.findById(req.exists._id).exec((err, report) => {
+
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      report.questions = null
+      report.date = date
+      report.save((err) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        res.send({
+          message:
+            "User can now refill his report",
+        });
+      })
+
+    })
+  }
+
+}
+
+exports.fillReport = (req, res) => {
+  
+  Report.findById(req.reportId).exec((err, report) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    report.questions.hasCovid = req.body.hasCovid
+    report.questions.hasTravelled = req.body.hasTravelled
+    report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease
+    report.questions.isPregnant = req.body.isPregnant 
+    report.questions.hadAllergicReaction = req.body.hadAllergicReaction
+
+    report.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      res.send({
+        message: "Succesfully submitted your information"
+      });
+    })
+
+  })
+
+}
+
+exports.viewReport = (req, res) => {
+  Report.find({
+    userId: req.params.userId
+  }).exec((err, reports) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    
+
+    User.findById(req.params.userId, "name lname email").exec((err, patient) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+
+      reports.push(patient)
+      console.log(patient)
+      res.send(reports)
+
+    })
+
+  })
+}

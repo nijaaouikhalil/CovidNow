@@ -33,8 +33,6 @@ module.exports = function(app){
     app.post("/api/auth/signin", controller.signin)
 
     //Get route for forgot password
-    app.get("/api/auth/resetPassword", controller.forgotPasswordCEmail)
+    app.get("/api/auth/passwordrest", controller.forgotPasswordCEmail)
 
-    //Get route for forgot password after confirmation through email
-    app.get("/api/auth/resetPassword/:email", controller.forgotPassword)
 }

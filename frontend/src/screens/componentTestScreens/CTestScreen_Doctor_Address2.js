@@ -9,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 //import Message from "../components/Message";
 
 function CTestScreen_Doctor_Address2() {
-
+    return (
+        "Hello world!"
+    );
 }
 
 export default CTestScreen_Doctor_Address2;

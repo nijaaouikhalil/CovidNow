@@ -1,3 +1,8 @@
+import { Container } from "react-bootstrap";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+//import Header from "./components/Header";
+//import Footer from "./components/Footer";
+
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -9,7 +14,9 @@ import { useNavigate } from "react-router-dom";
 //import Message from "../components/Message";
 
 function componentTestScreen() {
-
+    return (
+        "Hello world!"
+    );
 }
 
 export default componentTestScreen;

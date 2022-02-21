@@ -9,7 +9,9 @@ import { useNavigate } from "react-router-dom";
 //import Message from "../components/Message";
 
 function CTestScreen_Health_ID() {
-
+    return (
+        "Hello world!"
+    );
 }
 
 export default CTestScreen_Health_ID;

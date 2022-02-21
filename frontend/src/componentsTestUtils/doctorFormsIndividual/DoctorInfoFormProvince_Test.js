@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
-import FormContainer from "./components/Form/FormContainer";
+//import FormContainer from "./components/Form/FormContainer";
 import { updateUser } from "../../actions/userActions";
 
 function DoctorInfoProvince_Test() {

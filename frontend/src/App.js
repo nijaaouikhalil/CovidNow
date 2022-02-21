@@ -49,15 +49,15 @@ function App() {
       <Header />
       <Routes>
 
-        <Route path="/componentTests" element={<ComponentTestScreen></ComponentTestScreen>} />
-        <Route path="/componentTests/doc/address1" element={<CTestScreen_Doctor_Address1></CTestScreen_Doctor_Address1>} />
-        <Route path="/componentTests/doc/address2" element={<CTestScreen_Doctor_Address2></CTestScreen_Doctor_Address2>} />
-        <Route path="/componentTests/doc/city" element={<CTestScreen_Doctor_City></CTestScreen_Doctor_City>} />
-        <Route path="/componentTests/doc/licencenum" element={<CTestScreen_Doctor_LicenceNum></CTestScreen_Doctor_LicenceNum>} />
-        <Route path="/componentTests/doc/postalcode" element={<CTestScreen_Doctor_PostalCode></CTestScreen_Doctor_PostalCode>} />
-        <Route path="/componentTests/doc/province" element={<CTestScreen_Doctor_Province></CTestScreen_Doctor_Province>} />
-        <Route path="/componentTests/gov/id" element={<CTestScreen_Govern_ID></CTestScreen_Govern_ID>} />
-        <Route path="/componentTests/health/id" element={<CTestScreen_Health_ID></CTestScreen_Health_ID>} />
+        <Route path="/ctests" element={<ComponentTestScreen></ComponentTestScreen>} />
+        <Route path="/ctests/doc/address1" element={<CTestScreen_Doctor_Address1></CTestScreen_Doctor_Address1>} />
+        <Route path="/ctests/doc/address2" element={<CTestScreen_Doctor_Address2></CTestScreen_Doctor_Address2>} />
+        <Route path="/ctests/doc/city" element={<CTestScreen_Doctor_City></CTestScreen_Doctor_City>} />
+        <Route path="/ctests/doc/licencenum" element={<CTestScreen_Doctor_LicenceNum></CTestScreen_Doctor_LicenceNum>} />
+        <Route path="/ctests/doc/postalcode" element={<CTestScreen_Doctor_PostalCode></CTestScreen_Doctor_PostalCode>} />
+        <Route path="/ctests/doc/province" element={<CTestScreen_Doctor_Province></CTestScreen_Doctor_Province>} />
+        <Route path="/ctests/gov/id" element={<CTestScreen_Govern_ID></CTestScreen_Govern_ID>} />
+        <Route path="/ctests/health/id" element={<CTestScreen_Health_ID></CTestScreen_Health_ID>} />
 
         <Route path="/" element={<HomeScreen />} exact />
         <Route path="/login" element={<LoginScreen />} />

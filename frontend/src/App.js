@@ -28,10 +28,10 @@ import DoctorInfoCity_Test from "./componentsTestUtils/doctorFormsIndividual/Doc
 import DoctorInfoLicenceNum_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormLicenceNum_Test";
 import DoctorInfoPostalCode_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormPostalCode_Test";
 import DoctorInfoProvince_Test from "./componentsTestUtils/doctorFormsIndividual/DoctorInfoFormProvince_Test";
-import GouvernInfo_Test from "./componentsTestUtils/gouvernFormsIndividual/gouvernInfoForm_gouvernID_Test";
-import HealthOfficialInfo_Test from "./componentsTestUtils/healthOfficialFormsIndividual/healthOfficialInfoForm_OfficialID_Test";
+import GouvernInfo_Test from "./componentsTestUtils/gouvernFormsIndividual/GouvernInfoForm_gouvernID_Test";
+import HealthOfficialInfo_Test from "./componentsTestUtils/healthOfficialFormsIndividual/HealthOfficialInfoForm_OfficialID_Test";
 
-import ComponentTestScreen from "./screens/componentTestScreens/componentTestScreen"; //implement
+import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen"; //implement
 import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1"; //implement
 import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2"; //implement
 import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City"; //implement

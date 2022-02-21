@@ -8,12 +8,10 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
-import HealthOfficialInfo_Test from "../../componentsTestUtils/healthOfficialFormsIndividual/healthOfficialInfoForm_OfficialID_Test";
+import HealthOfficialInfo_Test from "../../componentsTestUtils/healthOfficialFormsIndividual/HealthOfficialInfoForm_OfficialID_Test";
 
 function CTestScreen_Health_ID() {
-    return (
-        "Hello world!"
-    );
+    return HealthOfficialInfo_Test();
 }
 
 export default CTestScreen_Health_ID;

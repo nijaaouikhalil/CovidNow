@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
-function componentTestScreen() {
+function ComponentTestScreen() {
     return (
         <Col>
             <Nav>
@@ -56,4 +56,4 @@ function componentTestScreen() {
     );
 }
 
-export default componentTestScreen;
+export default ComponentTestScreen;

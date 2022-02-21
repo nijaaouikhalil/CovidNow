@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
-import GouvernInfo_Test from "../../componentsTestUtils/gouvernFormsIndividual/gouvernInfoForm_gouvernID_Test";
+import GouvernInfo_Test from "../../componentsTestUtils/gouvernFormsIndividual/GouvernInfoForm_gouvernID_Test";
 
 function CTestScreen_Govern_ID() {
     return (

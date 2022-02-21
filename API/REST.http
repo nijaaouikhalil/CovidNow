@@ -93,7 +93,6 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE
 {
     "doctorId": "6206d9a5c48f73131c34f3ef",
     "userId": "620eca00f1eb719f8011f97d"
-
 }
 
 ###
@@ -129,9 +128,18 @@ Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0NTM4OTg2OCwiZXhwIjoxNjQ1NDc2MjY4fQ.-mUsQB5k6t-BodI2X9m1-mHlEIJ_7Q5YUE4G3_EkTIk
 
 {
-    "hasCovid": false,
+    "hasCovid": true,
     "hasTravelled": false,
     "hasAutoImmuneDisease": false,
     "isPregnant": false,
     "hadAllergicReaction": false
+}
+
+###
+GET http://localhost:8080/api/view/620eca00f1eb719f8011f97d/report
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NTQwMDI0MywiZXhwIjoxNjQ1NDg2NjQzfQ.mkX1LQtbXy01-xtZoTiEPsYrLrSAz1nYGgcCzDLozWg
+
+{
+
 }

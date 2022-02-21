@@ -337,5 +337,27 @@ exports.fillReport = (req, res) => {
 }
 
 exports.viewReport = (req, res) => {
-  
+  Report.find({
+    userId: req.params.userId
+  }).exec((err, reports) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    
+
+    User.findById(req.params.userId, "name lname email").exec((err, patient) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+
+      reports.push(patient)
+      console.log(patient)
+      res.send(reports)
+
+    })
+
+  })
 }

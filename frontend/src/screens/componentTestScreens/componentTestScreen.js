@@ -1,4 +1,4 @@
-import { Container } from "react-bootstrap";
+//import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 //import Header from "./components/Header";
 //import Footer from "./components/Footer";
@@ -13,9 +13,46 @@ import { useNavigate } from "react-router-dom";
 //import Loader from "../components/Loader";
 //import Message from "../components/Message";
 
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 function componentTestScreen() {
     return (
-        "Hello world!"
+        <Col>
+            <Nav>
+                < LinkContainer className="m-3" to="/ctests/doc/address1" >
+                    <i> Component Test: Address 1 for DOCTOR </i>
+                </LinkContainer >
+
+                <LinkContainer className="m-3" to="/ctests/doc/address2">
+                    <i> Component Test: Address 2 for DOCTOR </i>
+                </LinkContainer>
+
+                <LinkContainer className="m-3" to="/ctests/doc/city">
+                    <i> Component Test: City for DOCTOR </i>
+                </LinkContainer>
+
+                <LinkContainer className="m-3" to="/ctests/doc/licencenum">
+                    <i> Component Test: Licence Number for DOCTOR </i>
+                </LinkContainer>
+
+                <LinkContainer className="m-3" to="/ctests/doc/postalcode">
+                    <i> Component Test: Postal Code for DOCTOR </i>
+                </LinkContainer>
+
+                <LinkContainer className="m-3" to="/ctests/doc/province">
+                    <i> Component Test: Province for DOCTOR </i>
+                </LinkContainer>
+
+                <LinkContainer className="m-3" to="/ctests/gov/id">
+                    <i> Component Test: Government ID for GOVERNMENT OFFICIAL </i>
+                </LinkContainer>
+
+                <LinkContainer className="m-3" to="/ctests/health/id">
+                    <i> Component Test: Health ID for HEALTH OFFICIAL </i>
+                </LinkContainer>
+            </Nav>
+        </Col>
+
     );
 }
 

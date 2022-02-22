@@ -22,7 +22,7 @@ import PasswordRestScreen from "./screens/PasswordRestScreen";
 import PatientPanelScreen from "./screens/PatientPanelScreen";
 
 // COMPONENT TEST ROUTE(S)
-import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen";
+import ComponentTestScreen from "./screens/componentTestScreens/componentTestScreen";
 import CTestScreen_Doctor_Address1 from "./screens/componentTestScreens/CTestScreen_Doctor_Address1";
 import CTestScreen_Doctor_Address2 from "./screens/componentTestScreens/CTestScreen_Doctor_Address2";
 import CTestScreen_Doctor_City from "./screens/componentTestScreens/CTestScreen_Doctor_City";

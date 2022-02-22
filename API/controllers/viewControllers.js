@@ -8,26 +8,48 @@ const Report = db.report;
 exports.assignDoctor = (req, res) => {
   //verify if doctorId is doctor role
   /*
-    if(getRoleName(req.body.doctorId) != "doctor"){
-        res.status(500).send({message: "Given id is not associated to a doctor"})
-        return
-    }
-    */
-
+  if(!ifDoctorById(req.body.doctorId)){
+    res.status(403).send({message: "Require Doctor Role"})
+  }
+  */
+ 
   //need to verify id's
-  const assign = new assignedDoctor({
-    doctorId: req.body.doctorId,
-    userId: req.body.userId,
-  });
+  if(req.Assignation == null){
+    const assign = new assignedDoctor({
+      doctorId: req.body.doctorId,
+      userId: req.body.userId,
+    });
+    assign.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+  
+      res.send({ message: "Assigned user to doctor" });
+    });
+  }else{
+    assignedDoctor.findById(req.Assignation).exec((err, assign) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      if(assign.doctorId == req.body.doctorId){
+        res.send({ message: "Already assigned to that doctor" });
+      }else{
+        assign.doctorId = req.body.doctorId
+        assign.save((err) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+      
+          res.send({ message: "Reassigned user to doctor" });
+        });
+      }
+       
+    })
 
-  assign.save((err) => {
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-
-    res.send({ message: "Assigned user to doctor" });
-  });
+  }
 };
 
 exports.profileInfo = (req, res) => {

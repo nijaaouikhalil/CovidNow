@@ -265,8 +265,7 @@ uniqueUser = (req, res, next) =>{
             return
         }
         if(value != null){
-            res.status(500).send("User already has a doctor")
-            return
+            req.Assignation = value._id;
         }
         next()
 

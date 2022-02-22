@@ -49,8 +49,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"doctor@doctor.com",
-    "password":"doctor"
+    "email":"admin1@admin.com",
+    "password":"admin"
 }
 
 ###
@@ -88,11 +88,11 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjg4MjU5YWEwNzE
 
 POST http://localhost:8080/api/view/assign
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTM3NDcwNywiZXhwIjoxNjQ1NDYxMTA3fQ.j8fgj59lYo56PJFlg3bBGrIiMedsa7pzOtR5Rs51w5c
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTU3MjI4MSwiZXhwIjoxNjQ1NjU4NjgxfQ.EfZu5iLD0krd7MV4oRm1ezOEg7LV3r5nQMN6CsiewK4
 
 {
     "doctorId": "6206d9a5c48f73131c34f3ef",
-    "userId": "620eca00f1eb719f8011f97d"
+    "userId": "62129bdba14bf47689f1f95f"
 }
 
 ###

@@ -1,6 +1,9 @@
+const { expect } = require("chai");
+const authController = require("../controllers/authControllers");
 let chai = require("chai");
 let chaiHttp = require("chai-http");
 let server = require("../server");
+var assert = require('assert');
 
 //Assertion Style
 chai.should();
@@ -14,8 +17,8 @@ describe('Register/Login API', () => {
             chai.request(server)
                 .post("/api/auth/signin")
                 .send({
-                    email:"soen390testing@gmail.com",
-                    password:"pass"
+                    email:"doctor@doctor.com",
+                    password:"doctor"
                 })
                 .end((err, response) => {
                     response.should.have.status(200);
@@ -42,19 +45,19 @@ describe('Register/Login API', () => {
             chai.request(server)
                 .post("/api/auth/signin")
                 .send({
-                    email:"soen390testing@gmail.com",
-                    password:"pass"
+                    email:"doctor@doctor.com",
+                    password:"doctor"
                 })
                 .end((err, response) => {
                     response.body.should.have.property("id");
                     response.body.should.have.property("name");
-                    response.body.should.have.property("email").eq("soen390testing@gmail.com");
+                    response.body.should.have.property("email").eq("doctor@doctor.com");
                     response.body.should.have.property("roles");
                     response.body.should.have.property("accessToken");
                     response.body.should.have.property("verified");
                 done();
-                }) 
-                
+                })
+        
         })
 
        
@@ -92,12 +95,12 @@ describe('Register/Login API', () => {
                 .end((err, response) => {
                     response.should.have.status(400);
                 done();
-                }) 
+                })
                 
         })
     })
     describe("PUT /api/auth/resetPassword", () =>{
-        it("Input \: New Password - Password successuflly changes without error ", (done) =>{
+        it("Input \: New Password - Password successfully changes without error ", (done) =>{
             chai.request(server)
                 .put("/api/auth/resetPassword")
                 .send({
@@ -111,4 +114,45 @@ describe('Register/Login API', () => {
             }) 
         })
     })
+    describe("GET /api/auth/confirm/DOC", () =>{
+        it("Input \: Verification - User successfully verified without error ", (done) =>{
+            chai.request(server)
+                .get("/api/auth/confirm/DOC")
+                .end((err, response) => {
+                    response.should.have.status(200);
+                done();
+            }) 
+        })
+    })
+    describe('Test random password', function () {
+        it('should return a random password', function () {
+               assert.equal(authController.getRandomPassword().length, 10);
+        })
+    })
+
+    describe("PUT /api/auth/passwordrest", () =>{
+        it("Input \: Password Reset - User successfully reset his password without error ", (done) =>{
+            chai.request(server)
+                .put("/api/auth/passwordrest")
+                .send({
+                    email:"batata@gmail.com"
+                })
+                .end((err, response) => {
+                    response.should.have.status(200);
+                done();
+            }) 
+        })
+        it("Input \: Fake Password Reset - User enters a non existing email address", (done) =>{
+            chai.request(server)
+                .put("/api/auth/passwordrest")
+                .send({
+                    email:"crazybanana69@gmail.com"
+                })
+                .end((err, response) => {
+                    response.should.have.status(404);
+                done();
+            }) 
+        })
+    })
+    
 });

@@ -172,6 +172,7 @@ exports.verifyUser = (req, res, next) => {
           res.status(500).send({ message: err });
           return;
         }
+        res.send({ message: "User email got confirmed" });
       });
     })
     .catch((e) => console.log("error", e));
@@ -216,7 +217,7 @@ exports.resetPassword = async (req, res) => {
   }
 };
 
-function getRandomPassword() {
+function getRandomPassword(){
   //Function to create a random password
   var randomChars =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -230,13 +231,12 @@ function getRandomPassword() {
 }
 //Method for forgot password to confirm email
 exports.forgotPasswordCEmail = async (req, res) => {
-  console.log("njk");
   try {
     User.findOne({ email: req.body.email }).then(async (user) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." }); //Email provided not available
       }
-
+      
       const newPassword = getRandomPassword();
       console.log("newPassword");
       console.log(newPassword);
@@ -259,3 +259,5 @@ exports.forgotPasswordCEmail = async (req, res) => {
     res.send({ message: e.message });
   }
 };
+
+exports.getRandomPassword = getRandomPassword;

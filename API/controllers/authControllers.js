@@ -16,7 +16,7 @@ exports.register = async (req, res) => {
         { email: req.body.email },
         process.env.EMAIL_TOKEN_SECRET
       );
-        //Hashes the password for safety
+      //Hashes the password for safety
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const signedUpUser = new User({
         name: req.body.name,
@@ -70,7 +70,8 @@ exports.register = async (req, res) => {
               });
             }
           );
-        } else {//If the user did not enter a role, they/them will automatically be assigned to user
+        } else {
+          //If the user did not enter a role, they/them will automatically be assigned to user
           Role.findOne({ name: "user" }, (err, role) => {
             if (err) {
               res.status(500).send({ message: err });
@@ -171,6 +172,7 @@ exports.verifyUser = (req, res, next) => {
           res.status(500).send({ message: err });
           return;
         }
+        res.send({ message: "User email got confirmed" });
       });
     })
     .catch((e) => console.log("error", e));
@@ -214,3 +216,48 @@ exports.resetPassword = async (req, res) => {
     res.send({ message: e.message });
   }
 };
+
+function getRandomPassword(){
+  //Function to create a random password
+  var randomChars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  var result = "";
+  for (var i = 0; i < 10; i++) {
+    result += randomChars.charAt(
+      Math.floor(Math.random() * randomChars.length)
+    );
+  }
+  return result;
+}
+//Method for forgot password to confirm email
+exports.forgotPasswordCEmail = async (req, res) => {
+  try {
+    User.findOne({ email: req.body.email }).then(async (user) => {
+      if (!user) {
+        return res.status(404).send({ message: "User Not found." }); //Email provided not available
+      }
+      
+      const newPassword = getRandomPassword();
+      console.log("newPassword");
+      console.log(newPassword);
+      const hashedNewPassword = await bcrypt.hash(newPassword, 10); //hash the password
+      user.password = hashedNewPassword; //change the user's password
+      user.save((err) => {
+        console.log(err);
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+      });
+      nodemailer.confirmEmailForgotPassword(user.name, user.email, newPassword);
+      res.send({
+        message:
+          "You password was reset! You should receive an email in the following minutes.",
+      });
+    });
+  } catch (e) {
+    res.send({ message: e.message });
+  }
+};
+
+exports.getRandomPassword = getRandomPassword;

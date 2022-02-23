@@ -2,12 +2,12 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "Doccy",
-    "lname": "Badmin",
-    "email":"soen390testing@gmail.com",
+    "name" : "health",
+    "lname": "official",
+    "email":"health_official@gmail.com",
     "password":"pass",
     "cpassword": "pass",
-    "roles": "immigration_officer"
+    "roles": "health_official"
 
 }
 
@@ -16,11 +16,12 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "EmailConfirmation",
-    "email":"officialcovidnow@gmail.com",
-    "password":"EC",
-    "cpassword": "EC",
-    "roles": ["user"]
+    "name" : "User",
+    "lname": "buser",
+    "email":"user@user",
+    "password":"pass",
+    "cpassword": "pass",
+    "roles": ""
 
 }
 ###
@@ -48,8 +49,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"soen390testing@gmail.com",
-    "password":"pass"
+    "email":"admin1@admin.com",
+    "password":"admin"
 }
 
 ###
@@ -57,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"NR@admin",
-    "password":"NR"
+    "email":"patient@patient.com",
+    "password":"patient"
 }
 
 ###
@@ -81,4 +82,64 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjg4MjU5YWEwNzE
 
 {
     
+}
+
+###
+
+POST http://localhost:8080/api/view/assign
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTU3MjI4MSwiZXhwIjoxNjQ1NjU4NjgxfQ.EfZu5iLD0krd7MV4oRm1ezOEg7LV3r5nQMN6CsiewK4
+
+{
+    "doctorId": "6206d9a5c48f73131c34f3ef",
+    "userId": "62129bdba14bf47689f1f95f"
+}
+
+###
+GET http://localhost:8080/api/view/62129bdba14bf47689f1f95f
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTQxNzIxNiwiZXhwIjoxNjQ1NTAzNjE2fQ.Zbpbq3WAKJDU8fbgpcEXsgK23s0o41FW-L0jbRCOMtI
+
+{
+    
+}
+
+###
+GET http://localhost:8080/api/view
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTM3NDcwNywiZXhwIjoxNjQ1NDYxMTA3fQ.j8fgj59lYo56PJFlg3bBGrIiMedsa7pzOtR5Rs51w5c
+
+{
+    
+}
+
+###
+PUT http://localhost:8080/api/view/requestReport
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NTM4OTcyNCwiZXhwIjoxNjQ1NDc2MTI0fQ.CJKBziUEViXcReMptWiEBWH3aSh_KS_eiBWQnro08n8
+
+{
+   "userId": "620eca00f1eb719f8011f97d"  
+}
+
+###
+PUT http://localhost:8080/api/view/fillReport
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0NTM4OTg2OCwiZXhwIjoxNjQ1NDc2MjY4fQ.-mUsQB5k6t-BodI2X9m1-mHlEIJ_7Q5YUE4G3_EkTIk
+
+{
+    "hasCovid": true,
+    "hasTravelled": false,
+    "hasAutoImmuneDisease": false,
+    "isPregnant": false,
+    "hadAllergicReaction": false
+}
+
+###
+GET http://localhost:8080/api/view/620eca00f1eb719f8011f97d/report
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NTQwMDI0MywiZXhwIjoxNjQ1NDg2NjQzfQ.mkX1LQtbXy01-xtZoTiEPsYrLrSAz1nYGgcCzDLozWg
+
+{
+
 }

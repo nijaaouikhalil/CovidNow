@@ -63,6 +63,7 @@ function LoginScreen() {
           <Button type="submit" variant="primary">
             Sign In
           </Button>
+          <Link to={"/passwordrest"}> Forgot password?</Link>
         </div>
       </Form>
 

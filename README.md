@@ -27,7 +27,7 @@ Build a COVID-19 tracking app that heps medical doctors, immigration officers an
 | 6   | Omar Ghieh           | 40129455  | [Ogmar](https://github.com/Ogmar "Github user's profile")                 |
 | 7   | Farouk Ihdene        | 40129461  | [FI2000](https://github.com/FI2000 "Github user's profile")               | 
 | 8   | Ismael Rekik         | 40132567  | [IRekik](https://github.com/IRekik "Github user's profile")               |
-| 9   | Ryan Rokni           | 40133051  |                                                                           |
+| 9   | Ryan Rokni           | 40133051  | [other604](https://github.com/other604 "Github user's profile")               |
 ## Technologies
 
 ### 🔲 Front-end Technologies

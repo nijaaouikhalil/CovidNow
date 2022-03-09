@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const Contacted = mongoose.model(
-  "Contacted",
+  "Contacted People",
   new mongoose.Schema({
     name: {
       type: String,
@@ -23,7 +23,7 @@ const Contacted = mongoose.model(
       enum: ["Yes", "No"],
       default: "No",
     },
-    Test: {
+    TestResult: {
       type: String,
       enum: ["Positive", "Negative", "NA"],
       sparse: true,

@@ -114,6 +114,34 @@ isDoctor = (req, res, next) => {
     })
 }
 
+//Checks if the user is a health official
+isHealthOfficial = (req, res, next) => {
+    User.findById(req.userId).exec((err, user) => {
+        if(err){
+            res.status(500).send({message: err})
+            return
+        }
+        Role.findOne(
+            {
+                _id: user.roles
+            },
+            (err, roles) => {
+                if(err){
+                    res.status(500).send({message: err})
+                    return
+                }
+
+                if(roles.name == "health_official"){
+                    next()
+                    return
+                }
+                res.status(403).send({message: "Require Health Official Role"})
+            }
+        )
+
+    })
+}
+
 
 canView = (req, res, next) => {
     //console.log(req.params.userId)
@@ -238,7 +266,6 @@ isMyPatient = (req, res, next) => {
 
 
 canFillReport = (req, res, next) =>{
-
     Report.find(
         {
             userId: req.userId,
@@ -280,6 +307,7 @@ const authJwt = {
     canView,
     requestRoleName,
     isDoctor,
+    isHealthOfficial,
     dailyReport,
     canFillReport,
     isMyPatient,

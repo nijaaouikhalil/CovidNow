@@ -76,6 +76,7 @@ exports.profileInfo = (req, res) => {
             lname: user.lname,
             email: user.email,
             role: role ? role.name : "Not selected yet",
+            covidStatus: user.covidStatus
           };
 
           if (role.name == "doctor") {
@@ -124,6 +125,30 @@ exports.profileInfo = (req, res) => {
   );
 };
 
+
+exports.flaguser = (req, res) => {
+  User.findOne(
+        {
+          _id : req.params.userId,
+        },
+      ).exec((err, user) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+          user.covidStatus = req.body.covidStatus;
+          user.save((err)=>{
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+            res.send('User covid status has been updated.')
+
+          });
+      });
+
+}
+
 //Show list of profiles you have access to depending on the role
 exports.viewAll = (req, res) => {
   if (req.roleName == "user") {
@@ -140,7 +165,7 @@ exports.viewAll = (req, res) => {
             verified: "Active",
             status: "Active",
           },
-          "name lname email"
+          "name lname email covidStatus"
         ).exec((err, cursor) => {
           res.send(cursor);
         });
@@ -159,7 +184,7 @@ exports.viewAll = (req, res) => {
             verified: "Active",
             status: "Active",
           },
-          "name lname email"
+          "name lname email covidStatus"
         ).exec((err, cursor) => {
           res.send(cursor);
         });
@@ -290,13 +315,18 @@ exports.askReport = (req, res) => {
   if (date == null) {
     var date = new Date();
   }
-
+  var priorityLevel = req.body.priorityLevel;
+  if (priorityLevel != 1 && priorityLevel != 2 && priorityLevel != 3) {
+    res.status(422).send({message: "Wrong priority level has been entered."});
+  }
   if (req.exists == null) {
-    const newReport = new Report({
-      userId: req.body.userId,
-      date: date,
-    });
-
+      const newReport = new Report({
+        userId: req.body.userId,
+        questions: {customQ: req.body.customQ},
+        date: date,
+        priorityLevel: priorityLevel
+      });
+    
     newReport.save((err, report) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -314,6 +344,8 @@ exports.askReport = (req, res) => {
       }
       report.questions = null;
       report.date = date;
+      report.questions.customQ = req.body.customQ;
+      report.priorityLevel = priorityLevel;
       report.save((err) => {
         if (err) {
           res.status(500).send({ message: err });
@@ -327,6 +359,12 @@ exports.askReport = (req, res) => {
   }
 };
 
+exports.getDoctorsCustomRequest = (req, res) => {
+  Report.findById(req.reportId).exec((err, report) => { 
+    res.send(report.questions.customQ);
+  });
+}
+
 exports.fillReport = (req, res) => {
   Report.findById(req.reportId).exec((err, report) => {
     if (err) {
@@ -338,6 +376,12 @@ exports.fillReport = (req, res) => {
     report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease;
     report.questions.isPregnant = req.body.isPregnant;
     report.questions.hadAllergicReaction = req.body.hadAllergicReaction;
+    
+    report.questions.Temperature = req.body.Temperature;
+    report.questions.Weight = req.body.Weight;
+    report.questions.Height = req.body.Height;
+
+    report.questions.customAns = req.body.customAns;
 
     report.save((err) => {
       if (err) {
@@ -372,5 +416,21 @@ exports.viewReport = (req, res) => {
         res.send(reports);
       }
     );
+  });
+};
+
+exports.viewMyReport = (req, res) => {
+  Report.find({
+    userId: req.userId,
+    
+  },"userId date questions"
+  ).exec((err, reports) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    res.send(reports);
+    
   });
 };

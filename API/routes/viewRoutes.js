@@ -23,6 +23,12 @@ module.exports = function(app){
         controller.profileInfo
       )
 
+      app.put(
+        "/api/view/flag/:userId",
+        [authJwt.verifyToken, authJwt.isHealthOfficial],
+        controller.flaguser
+      )
+
       app.get(
         "/api/view/",
         [authJwt.verifyToken, requestRoleName],
@@ -34,7 +40,12 @@ module.exports = function(app){
         [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient, authJwt.dailyReport],
         controller.askReport
       )
-
+      
+      app.get(
+        "/api/view/fillReport/getCustom",
+        [authJwt.verifyToken, authJwt.canFillReport],
+        controller.getDoctorsCustomRequest
+      )
       app.put(
         "/api/view/fillReport",
         [authJwt.verifyToken, authJwt.canFillReport],
@@ -47,5 +58,9 @@ module.exports = function(app){
         controller.viewReport
       )
 
-      
+      app.get(
+        "/api/view/user/myreport",
+        [authJwt.verifyToken],
+        controller.viewMyReport
+      )
 }

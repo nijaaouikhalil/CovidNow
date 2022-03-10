@@ -32,6 +32,11 @@ const User = mongoose.model(
       enum: ["Pending", "Active"],
       default: "Pending",
     },
+    covidStatus: {
+      type: String,
+      enum: ["Negative", "Pending", "Positive"],
+      default: "Pending",
+    },
     confirmationCode: {
       type: String,
       unique: true,
@@ -55,6 +60,8 @@ const User = mongoose.model(
         sparse: true,
       },
     },
+
+    
 
     governmentOfficialInfo: {
       governmentID: {

@@ -75,6 +75,7 @@ exports.profileInfo = (req, res) => {
             name: user.name,
             lname: user.lname,
             email: user.email,
+            covidStatus: user.covidStatus,
             role: role ? role.name : "Not selected yet",
           };
 
@@ -164,7 +165,7 @@ exports.viewAll = (req, res) => {
             verified: "Active",
             status: "Active",
           },
-          "name lname email"
+          "name lname email covidStatus"
         ).exec((err, cursor) => {
           res.send(cursor);
         });
@@ -183,7 +184,7 @@ exports.viewAll = (req, res) => {
             verified: "Active",
             status: "Active",
           },
-          "name lname email"
+          "name lname email covidStatus"
         ).exec((err, cursor) => {
           res.send(cursor);
         });

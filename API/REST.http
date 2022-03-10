@@ -129,7 +129,8 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4Zjc
 
 {
    "userId": "620eca00f1eb719f8011f97d",
-   "customQ": "are you okay?"
+   "customQ": "are you okay?",
+   "priorityLevel": 1
 }
 
 ###

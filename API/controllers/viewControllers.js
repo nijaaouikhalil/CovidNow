@@ -316,7 +316,7 @@ exports.askReport = (req, res) => {
     var date = new Date();
   }
   var priorityLevel = req.body.priorityLevel;
-  if (priorityLevel != 1 || priorityLevel != 2 || priorityLevel != 3) {
+  if (priorityLevel != 1 && priorityLevel != 2 && priorityLevel != 3) {
     res.status(422).send({message: "Wrong priority level has been entered."});
   }
   if (req.exists == null) {

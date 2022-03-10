@@ -266,7 +266,6 @@ isMyPatient = (req, res, next) => {
 
 
 canFillReport = (req, res, next) =>{
-
     Report.find(
         {
             userId: req.userId,

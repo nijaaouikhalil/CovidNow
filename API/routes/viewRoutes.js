@@ -24,7 +24,7 @@ module.exports = function(app){
       )
 
       app.put(
-        "/api/view/:userId",
+        "/api/view/flag/:userId",
         [authJwt.verifyToken, authJwt.isHealthOfficial],
         controller.flaguser
       )
@@ -40,7 +40,12 @@ module.exports = function(app){
         [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient, authJwt.dailyReport],
         controller.askReport
       )
-
+      
+      app.get(
+        "/api/view/fillReport/getCustom",
+        [authJwt.verifyToken, authJwt.canFillReport],
+        controller.getDoctorsCustomRequest
+      )
       app.put(
         "/api/view/fillReport",
         [authJwt.verifyToken, authJwt.canFillReport],

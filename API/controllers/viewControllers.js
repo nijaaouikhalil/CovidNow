@@ -353,6 +353,12 @@ exports.askReport = (req, res) => {
   }
 };
 
+exports.getDoctorsCustomRequest = (req, res) => {
+  Report.findById(req.reportId).exec((err, report) => { 
+    res.send(report.questions.customQ);
+  });
+}
+
 exports.fillReport = (req, res) => {
   Report.findById(req.reportId).exec((err, report) => {
     if (err) {
@@ -369,7 +375,7 @@ exports.fillReport = (req, res) => {
     report.questions.Weight = req.body.Weight;
     report.questions.Height = req.body.Height;
 
-    report.questions.Height = req.body.Height;
+    report.questions.customAns = req.body.customAns;
 
     report.save((err) => {
       if (err) {

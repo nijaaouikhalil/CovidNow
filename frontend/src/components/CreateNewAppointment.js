@@ -76,8 +76,8 @@ export const CreateNewAppointment = ({patients}) => {
                 
             </div>
 
-            <div className="d-flex mt-3 mx-4 col-md-4 col-8 flex-column justify-content-center align-items-center">
-                <h5 className="my-3">Select Date &amp; time</h5>
+            <div className="d-flex mt-3 mx-4 col-md-4 col-8 flex-column justify-content-between align-items-center">
+                <h5 className="my-2">Select Date &amp; time</h5>
                 <div>
                     <DatePicker 
                     showTimeSelect

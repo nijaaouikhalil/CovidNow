@@ -15,7 +15,7 @@ function DoctorPanelScreen() {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-  const [subPage, setSubPage] = useState("Statistics");
+  const [subPage, setSubPage] = useState("Home");
   const doctorListPatients = useSelector((state) => state.doctorListPatients);
   const { patients, loading, error } = doctorListPatients;
 
@@ -40,12 +40,12 @@ function DoctorPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
+                  className={subPage =='Home' ? "nav-link active" : "nav-link"}
                   aria-current="page"
-                  onClick={() => setSubPage("Statistics")}
+                  onClick={() => setSubPage("Home")}
                 >
                   <i className="fas fa-chart-line me-3"></i>
-                  Statistics
+                  Home
                 </a>
               </li>
               <li className="nav-item">
@@ -101,9 +101,9 @@ function DoctorPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"}
-                  onClick={() => setSubPage("Statistics")}>
-                    <i className="fas fa-chart-line me-2"></i> Statistics
+                  <a className={subPage =='Home' ? "dropdown-item active" : "dropdown-item"}
+                  onClick={() => setSubPage("Home")}>
+                    <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
@@ -135,7 +135,7 @@ function DoctorPanelScreen() {
           </div>
         </div>
 
-        {subPage == "Statistics" && (
+        {subPage == "Home" && (
           <DoctorStatistics patients={patients} setSubPage={setSubPage} />
         )}
         {subPage == "My Patients" && <DoctorPatientsList patients={patients} />}

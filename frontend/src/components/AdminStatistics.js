@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+import { AdminPieChart } from './AdminPieChart';
+
 const AdminStatistics = ({
   setSubPage,
   all_users,
@@ -38,12 +40,11 @@ const AdminStatistics = ({
           className="d-flex justify-content-around align-items-center"
         >
           <div id="dd-pie" className="pastel-blue dd-card-link">
-            <h5 className="text-center">Pie Chart Title</h5>
-            <img src="/img/piechart.png" alt="pie-chart" />
+            <AdminPieChart all_users={all_users} />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h5 className="text-center">Graph Title</h5>
-            <img src="/img/graph.png" alt="graph" />
+            <h4>Canadian Covid Cases</h4>
+            <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>
       </div>

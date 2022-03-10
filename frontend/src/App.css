@@ -273,3 +273,7 @@
   position: absolute;
   top: -17px;
 }
+
+.acc-rounded-corners {
+  border-radius: 10px!important;
+}

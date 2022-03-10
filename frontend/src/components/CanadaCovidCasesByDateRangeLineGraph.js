@@ -27,7 +27,7 @@ const generateGrayScaleColours = (amount) => {
   return colours;
 };
 
-export const DoctorsLineGraph = () => {
+export const CanadaCovidCasesByDateRangeLineGraph = () => {
 
 
     const [chartData, setChartData] = useState(null);

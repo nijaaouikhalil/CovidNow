@@ -27,15 +27,11 @@ const Inbox = () => {
     const sendMessage = () => {
     }
 
-    useEffect(()=> {
-        console.log("emergency: ", isEmergency, "Urgent: ", isUrgent)
-    }, [isEmergency, isUrgent])
-
     return (
     <div className="row justify-content-center mt-5">
         <div className="col-9">
             <div className="accordion">
-                <div className="accordion-item">
+                <div className="accordion-item acc-rounded-corners">
                     <div className="show">
                         <div className="accordion-body">
                             <ul className="messageList">

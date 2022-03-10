@@ -61,3 +61,20 @@ module.exports.confirmEmailForgotPassword = (name, email, newPassword) => {
   //   Window.prompt(newPassword); // Prompt the result to the user
   // }
 };
+
+module.exports.contactedPeopleEmailToSignUp = (name, email) => {//Email to people that are contacted by patients
+  console.log("Check");
+  transport
+    .sendMail({
+      from: user,
+      to: email,
+      subject: "Contacted Covid Patient",
+      html: `<h1>Contacted Covid Patient</h1>
+          <h2>Hello ${name}</h2>
+          <p>We recently knew that you contacted someone that is positive with covid. We would like to ask you to sign up to CovidNow please
+              so we can help you out in case of anything.</p>
+          <a href=http://localhost:8080/api/auth/register>Sign Up</a>
+          </div>`,
+    })
+    .catch((err) => console.log(err));
+};

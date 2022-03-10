@@ -13,6 +13,7 @@ const Contacted = mongoose.model(
     },
     email: {
       type: String,
+      required: true,
     },
     phone: {
         type: String,

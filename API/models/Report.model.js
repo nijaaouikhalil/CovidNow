@@ -14,6 +14,11 @@ const Report = mongoose.model(
           hasAutoImmuneDisease : { type: Boolean, sparse: true },
           isPregnant : { type: Boolean, sparse: true }, 
           hadAllergicReaction: { type: Boolean, sparse: true },
+          Temperature: { type: Integer, sparse: true },
+          Weight: { type: Integer, sparse: true },
+          Height: { type: Integer, sparse: true },
+          customQ: { type: String, sparse: true },
+          customAns: { type: String, sparse: true },
     },
     date: {
         type: Date,

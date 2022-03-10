@@ -32,7 +32,7 @@ function LoginScreen() {
   };
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1 className='mt-4'>Sign In</h1>
       {register_message && (
         <Message variant="warning">{register_message}</Message>
       )}

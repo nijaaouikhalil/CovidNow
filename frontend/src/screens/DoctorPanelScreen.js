@@ -11,6 +11,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { DoctorStatistics } from "../components/DoctorStatistics";
 import { DoctorPatientsList } from "../components/DoctorPatientsList";
 import { DoctorlistPatients } from "../actions/doctorActions";
+import { DoctorAppointment } from '../components/DoctorAppointment';
 
 function DoctorPanelScreen() {
   const dispatch = useDispatch();
@@ -103,27 +104,27 @@ function DoctorPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"}>
                     <i className="fas fa-chart-line me-2"></i> Statistics
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"}>
                     <i className="fas fa-hospital-user me-2"></i> Patients
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Messages' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Messages' ? "dropdown-item active" : "dropdown-item"}>
                     <i className="fas fa-inbox me-2"></i> Messages
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Appointments' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Appointments' ? "dropdown-item active" : "dropdown-item"} >
                     <i className="fas fa-calendar me-2"></i> Appointments
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"}>
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>
@@ -136,6 +137,7 @@ function DoctorPanelScreen() {
           <DoctorStatistics patients={patients} setSubPage={setSubPage} />
         )}
         {subPage == "My Patients" && <DoctorPatientsList patients={patients} />}
+        {subPage == "Appointments" && <DoctorAppointment patients={patients} />}
       </div>
     </div>
 

@@ -23,11 +23,6 @@ const Contacted = mongoose.model(
       enum: ["Yes", "No"],
       default: "No",
     },
-    TestResult: {
-      type: String,
-      enum: ["Positive", "Negative", "NA"],
-      sparse: true,
-    },
   })
 );
 

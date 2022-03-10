@@ -47,5 +47,9 @@ module.exports = function(app){
         controller.viewReport
       )
 
-      
+      app.get(
+        "/api/view/user/myreport",
+        [authJwt.verifyToken],
+        controller.viewMyReport
+      )
 }

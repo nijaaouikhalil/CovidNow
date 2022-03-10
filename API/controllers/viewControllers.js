@@ -380,3 +380,20 @@ exports.viewReport = (req, res) => {
     );
   });
 };
+
+exports.viewMyReport = (req, res) => {
+  Report.find({
+    userId: req.userId,
+    
+  },"userId date questions"
+  ).exec((err, reports) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    
+
+    res.send(reports);
+    
+  });
+};

@@ -24,6 +24,11 @@ const Report = mongoose.model(
         type: Date,
         default: Date.now,
       },
+    priorityLevel: {
+      type: Number,
+      enum: [1, 2, 3],
+      default: 3
+    }
   })
 );
 

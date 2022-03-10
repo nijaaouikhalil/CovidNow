@@ -315,14 +315,18 @@ exports.askReport = (req, res) => {
   if (date == null) {
     var date = new Date();
   }
-
+  var priorityLevel = req.body.priorityLevel;
+  if (priorityLevel != 1 || priorityLevel != 2 || priorityLevel != 3) {
+    res.status(422).send({message: "Wrong priority level has been entered."});
+  }
   if (req.exists == null) {
-    const newReport = new Report({
-      userId: req.body.userId,
-      questions: {customQ: req.body.customQ},
-      date: date,
-    });
-
+      const newReport = new Report({
+        userId: req.body.userId,
+        questions: {customQ: req.body.customQ},
+        date: date,
+        priorityLevel: priorityLevel
+      });
+    
     newReport.save((err, report) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -341,6 +345,7 @@ exports.askReport = (req, res) => {
       report.questions = null;
       report.date = date;
       report.questions.customQ = req.body.customQ;
+      report.priorityLevel = priorityLevel;
       report.save((err) => {
         if (err) {
           res.status(500).send({ message: err });

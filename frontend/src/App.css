@@ -239,3 +239,37 @@
 #doctor-line-chart {
   width: 450px!important;
 }
+
+
+/* PATIENT MESSAGES */
+
+
+.messageList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageList li {
+  position: relative;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  width: 75%;
+}
+
+.recievedMessage {
+  align-self: flex-start;
+  background-color: rgba(241, 162, 57, 0.4);
+}
+
+.sentMessage {
+  align-self: flex-end;
+  background: rgba(128, 216, 216, 0.6);
+
+}
+
+.messageList small {
+  position: absolute;
+  top: -17px;
+}

@@ -37,7 +37,7 @@ const DoctorStatistics = ({ setSubPage, patients }) => {
             <DoctorsPieChart patients={patients} />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h4>Canadian Covid Cases <i id='chart-expand-icon' data-bs-toggle="modal" data-bs-target="#chartModal" onClick={() => console.log("CLICKED")} className="ms-4 fas fa-expand-arrows-alt"></i></h4>
+            <h4>Canadian Covid Cases</h4>
             <DoctorsLineGraph />
           </div>
 

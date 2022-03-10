@@ -124,6 +124,30 @@ exports.profileInfo = (req, res) => {
   );
 };
 
+
+exports.flaguser = (req, res) => {
+  User.findOne(
+        {
+          _id : req.params.userId,
+        },
+      ).exec((err, user) => {
+          if (err) {
+            res.status(500).send({ message: err });
+            return;
+          }
+          user.covidStatus = req.body.covidStatus;
+          user.save((err)=>{
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+            res.send('User covid status has been updated.')
+
+          });
+      });
+
+}
+
 //Show list of profiles you have access to depending on the role
 exports.viewAll = (req, res) => {
   if (req.roleName == "user") {
@@ -385,7 +409,6 @@ exports.viewMyReport = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }
-    
 
     res.send(reports);
     

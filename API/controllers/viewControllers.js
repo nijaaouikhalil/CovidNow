@@ -362,6 +362,12 @@ exports.fillReport = (req, res) => {
     report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease;
     report.questions.isPregnant = req.body.isPregnant;
     report.questions.hadAllergicReaction = req.body.hadAllergicReaction;
+    
+    report.questions.Temperature = req.body.Temperature;
+    report.questions.Weight = req.body.Weight;
+    report.questions.Height = req.body.Height;
+
+    report.questions.Height = req.body.Height;
 
     report.save((err) => {
       if (err) {

@@ -27,19 +27,16 @@ exports.contactedPerson = (req,res) => {
             });
           }
           else{ //incase in patients already
-            console.log("ok");
-            if(user.covidStatus=="Negative"){
-              console.log("in");
+            if(user.covidStatus==="Negative"){
               user.covidStatus="Pending";
-              /*user.save((err, user) => { //save in db
+              user.save((err, user) => { //save in db
                 if (err) {
                   res.status(500).send({ message: err });
                   return;
                 }
                 res.send("db updated");
-            });*/
+            });
           }
-            //covidStatus positive negative pending if negative change to pending
           }
         });
   }

@@ -294,6 +294,7 @@ exports.askReport = (req, res) => {
   if (req.exists == null) {
     const newReport = new Report({
       userId: req.body.userId,
+      questions: {customQ: req.body.customQ},
       date: date,
     });
 
@@ -314,6 +315,7 @@ exports.askReport = (req, res) => {
       }
       report.questions = null;
       report.date = date;
+      report.questions.customQ = req.body.customQ;
       report.save((err) => {
         if (err) {
           res.status(500).send({ message: err });

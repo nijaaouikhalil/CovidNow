@@ -31,21 +31,29 @@ export const DoctorsLineGraph = () => {
 
 
     const [chartData, setChartData] = useState(null);
+    const [afterDate, setAfterDate] = useState('2020-01-01');
+    const [beforeDate, setBeforeDate] = useState(new Date().toISOString().split('T')[0]);
 
     useEffect(()=> {
-
       const getAllCanadaData = async () => {
-        const res = await fetch("https://corona.lmao.ninja/v2/historical/Canada?lastdays=120", { method: 'GET' });
-        const json = await res.json();
-        const cases = json.timeline.cases;
-        let chart_data = {};
-        chart_data.labels = [];
-        chart_data.values = [];
-        for (let [key, value] of Object.entries(cases)) {
-            chart_data.labels.push(key);
-            chart_data.values.push(value);
-        };
-        return chart_data;
+        const response = await fetch(`https://api.opencovid.ca/summary?loc=canada&after=${afterDate}&before=${beforeDate}`, {method: "GET"});
+        const json = await response.json();
+        let api_graph_data = json.summary;
+        let graph_results = {};
+        graph_results.labels = [];
+        graph_results.active_cases = [];
+
+        for (let item in api_graph_data) {
+          const day = api_graph_data[item].date.substr(0,2);
+          const month = api_graph_data[item].date.substr(3,2);
+          const year = api_graph_data[item].date.substr(6,4);
+          const date = `${month}-${day}-${year}`;
+          api_graph_data[item].date = date;
+  
+          graph_results.labels.push(date);
+          graph_results.active_cases.push(api_graph_data[item].active_cases);
+        }
+        return graph_results;
       }; 
 
     const buildLineGraph = (data) => {
@@ -54,10 +62,10 @@ export const DoctorsLineGraph = () => {
       setChartData({
           labels: labels,
           datasets: [{
-              label: "Line Graph Data",
+              label: "Confirmed Covid-19 Cases",
               backgroundColor: colors,
               borderColor: colors,
-              data:  data.values,  
+              data:  data.active_cases,  
               fill: false,
               hoverOffset: 5
           }]
@@ -67,20 +75,31 @@ export const DoctorsLineGraph = () => {
     getAllCanadaData().then((data)=>{
       buildLineGraph(data);
     }).catch(err => console.log(err))      
-    }, []);
+    }, [afterDate, beforeDate]);
     
 
-    if (!chartData) return null;
+    if (!chartData) return <h4>API data currently unavailable</h4>;
     return (
+      <div>
         <Line
-        data={chartData}
-        options={{
-          plugins: {
-            legend: {
-              display: false,
-           }
-          }
-        }}
-      />
+          id='doctor-line-chart'
+          data={chartData}
+          options={{
+            plugins: {
+              legend: {
+                display: false,
+            }
+            }
+          }}
+        />
+        <div id='doctor-graph-dates'>
+          <label htmlFor="">From: </label>
+          <input type="date" onChange={(e) => setAfterDate(e.target.value)} defaultValue={afterDate} />
+          <label htmlFor="">To: </label>
+          <input type="date" onChange={(e) => setBeforeDate(e.target.value)} value={beforeDate} />
+        </div>
+
+      </div>
+        
     )
 }

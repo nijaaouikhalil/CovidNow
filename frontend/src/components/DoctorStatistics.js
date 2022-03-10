@@ -3,11 +3,10 @@ import { DoctorsLineGraph } from './DoctorsLineGraph';
 
 
 const DoctorStatistics = ({ setSubPage, patients }) => {
-
-
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+
         <div className="d-flex flex-wrap justify-content-around mt-5 text-center">
           <div className="dd-card pastel-blue">
             <h3>1234</h3>
@@ -38,12 +37,15 @@ const DoctorStatistics = ({ setSubPage, patients }) => {
             <DoctorsPieChart patients={patients} />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h4>Canadian Covid Cases</h4>
+            <h4>Canadian Covid Cases <i id='chart-expand-icon' data-bs-toggle="modal" data-bs-target="#chartModal" onClick={() => console.log("CLICKED")} className="ms-4 fas fa-expand-arrows-alt"></i></h4>
             <DoctorsLineGraph />
           </div>
+
         </div>
       </div>
     </div>
+    
+    
   );
 };
 

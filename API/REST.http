@@ -2,12 +2,12 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "health",
-    "lname": "official",
-    "email":"health_official@gmail.com",
+    "name" : "FlaggedUser",
+    "lname": "FlaggedUser",
+    "email":"Flagged@User",
     "password":"pass",
     "cpassword": "pass",
-    "roles": "health_official"
+    "roles": "user"
 
 }
 
@@ -49,8 +49,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"admin1@admin.com",
-    "password":"admin"
+    "email":"health_official@gmail.com",
+    "password":"pass"
 }
 
 ###
@@ -110,7 +110,16 @@ Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTM3NDcwNywiZXhwIjoxNjQ1NDYxMTA3fQ.j8fgj59lYo56PJFlg3bBGrIiMedsa7pzOtR5Rs51w5c
 
 {
-    
+
+}
+
+###
+PUT http://localhost:8080/api/view/622955ff96fcd9d5c53004dd
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZDFjYjM0YTc1YWVhZWIyMTA0NyIsImlhdCI6MTY0Njg3NTg1MCwiZXhwIjoxNjQ2OTYyMjUwfQ.2SNb1kbqr1ulACl4btUJ78CXVUDcr3l6WhHAHTnqPGM
+
+{
+    "covidStatus" : "Positive"
 }
 
 ###

@@ -23,6 +23,12 @@ module.exports = function(app){
         controller.profileInfo
       )
 
+      app.put(
+        "/api/view/:userId",
+        [authJwt.verifyToken, authJwt.isHealthOfficial],
+        controller.flaguser
+      )
+
       app.get(
         "/api/view/",
         [authJwt.verifyToken, requestRoleName],

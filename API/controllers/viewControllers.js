@@ -75,8 +75,8 @@ exports.profileInfo = (req, res) => {
             name: user.name,
             lname: user.lname,
             email: user.email,
-            covidStatus: user.covidStatus,
             role: role ? role.name : "Not selected yet",
+            covidStatus: user.covidStatus
           };
 
           if (role.name == "doctor") {

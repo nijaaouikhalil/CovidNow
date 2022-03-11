@@ -12,9 +12,9 @@ exports.assignDoctor = (req, res) => {
     res.status(403).send({message: "Require Doctor Role"})
   }
   */
- 
+
   //need to verify id's
-  if(req.Assignation == null){
+  if (req.Assignation == null) {
     const assign = new assignedDoctor({
       doctorId: req.body.doctorId,
       userId: req.body.userId,
@@ -24,31 +24,29 @@ exports.assignDoctor = (req, res) => {
         res.status(500).send({ message: err });
         return;
       }
-  
+
       res.send({ message: "Assigned user to doctor" });
     });
-  }else{
+  } else {
     assignedDoctor.findById(req.Assignation).exec((err, assign) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
-      if(assign.doctorId == req.body.doctorId){
+      if (assign.doctorId == req.body.doctorId) {
         res.send({ message: "Already assigned to that doctor" });
-      }else{
-        assign.doctorId = req.body.doctorId
+      } else {
+        assign.doctorId = req.body.doctorId;
         assign.save((err) => {
           if (err) {
             res.status(500).send({ message: err });
             return;
           }
-      
+
           res.send({ message: "Reassigned user to doctor" });
         });
       }
-       
-    })
-
+    });
   }
 };
 
@@ -76,7 +74,7 @@ exports.profileInfo = (req, res) => {
             lname: user.lname,
             email: user.email,
             role: role ? role.name : "Not selected yet",
-            covidStatus: user.covidStatus
+            covidStatus: user.covidStatus,
           };
 
           if (role.name == "doctor") {
@@ -125,29 +123,24 @@ exports.profileInfo = (req, res) => {
   );
 };
 
-
 exports.flaguser = (req, res) => {
-  User.findOne(
-        {
-          _id : req.params.userId,
-        },
-      ).exec((err, user) => {
-          if (err) {
-            res.status(500).send({ message: err });
-            return;
-          }
-          user.covidStatus = req.body.covidStatus;
-          user.save((err)=>{
-            if (err) {
-              res.status(500).send({ message: err });
-              return;
-            }
-            res.send('User covid status has been updated.')
-
-          });
-      });
-
-}
+  User.findOne({
+    _id: req.params.userId,
+  }).exec((err, user) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    user.covidStatus = req.body.covidStatus;
+    user.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      res.send("User covid status has been updated.");
+    });
+  });
+};
 
 //Show list of profiles you have access to depending on the role
 exports.viewAll = (req, res) => {
@@ -317,16 +310,16 @@ exports.askReport = (req, res) => {
   }
   var priorityLevel = req.body.priorityLevel;
   if (priorityLevel != 1 && priorityLevel != 2 && priorityLevel != 3) {
-    res.status(422).send({message: "Wrong priority level has been entered."});
+    res.status(422).send({ message: "Wrong priority level has been entered." });
   }
   if (req.exists == null) {
-      const newReport = new Report({
-        userId: req.body.userId,
-        questions: {customQ: req.body.customQ},
-        date: date,
-        priorityLevel: priorityLevel
-      });
-    
+    const newReport = new Report({
+      userId: req.body.userId,
+      questions: { customQ: req.body.customQ },
+      date: date,
+      priorityLevel: priorityLevel,
+    });
+
     newReport.save((err, report) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -360,10 +353,10 @@ exports.askReport = (req, res) => {
 };
 
 exports.getDoctorsCustomRequest = (req, res) => {
-  Report.findById(req.reportId).exec((err, report) => { 
+  Report.findById(req.reportId).exec((err, report) => {
     res.send(report.questions.customQ);
   });
-}
+};
 
 exports.fillReport = (req, res) => {
   Report.findById(req.reportId).exec((err, report) => {
@@ -376,7 +369,7 @@ exports.fillReport = (req, res) => {
     report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease;
     report.questions.isPregnant = req.body.isPregnant;
     report.questions.hadAllergicReaction = req.body.hadAllergicReaction;
-    
+
     report.questions.Temperature = req.body.Temperature;
     report.questions.Weight = req.body.Weight;
     report.questions.Height = req.body.Height;
@@ -420,10 +413,11 @@ exports.viewReport = (req, res) => {
 };
 
 exports.viewMyReport = (req, res) => {
-  Report.find({
-    userId: req.userId,
-    
-  },"userId date questions"
+  Report.find(
+    {
+      userId: req.userId,
+    },
+    "userId date questions"
   ).exec((err, reports) => {
     if (err) {
       res.status(500).send({ message: err });
@@ -431,6 +425,5 @@ exports.viewMyReport = (req, res) => {
     }
 
     res.send(reports);
-    
   });
 };

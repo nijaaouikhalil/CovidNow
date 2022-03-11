@@ -31,6 +31,8 @@ function DoctorPatientDetailScreen() {
   const [updating, setUpdating] = useState(false);
   const [sucessReportRequest, setSucessReportRequest] = useState(false);
   const [message, setMessage] = useState("");
+  const [priorityLevel, setPriorityLevel] = useState("3");
+  const [customQ, setcustomQ] = useState("");
 
   let { pid } = useParams();
   useEffect(() => {
@@ -39,31 +41,37 @@ function DoctorPatientDetailScreen() {
     }
     dispatch(getUserDetails(pid));
     dispatch(getUserDailyReports(pid));
-  }, [dispatch, user_info, pid]);
+  }, [dispatch, navigate, user_info, pid]);
 
   const requestDailtReportHandler = async () => {
-    setUpdating(true);
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
-
-      const { data } = await axios.put(
-        BaseUrl + `/api/view/requestReport`,
-        { userId: pid, date: new Date() },
-        config
+    if (priorityLevel === "" || customQ === "") {
+      setMessage(
+        "The question is missing. Type the question and re-send the report"
       );
-      setMessage(data.message);
-      setUpdating(false);
-      setSucessReportRequest(true);
-    } catch (error) {
-      console.log(error);
-      setMessage(error.response.data.message);
-      setUpdating(false);
-      setSucessReportRequest(false);
+    } else {
+      setUpdating(true);
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
+
+        const { data } = await axios.put(
+          BaseUrl + `/api/view/requestReport`,
+          { userId: pid, date: new Date(), customQ, priorityLevel },
+          config
+        );
+        setMessage(data.message);
+        setUpdating(false);
+        setSucessReportRequest(true);
+      } catch (error) {
+        console.log(error);
+        setMessage(error.response.data.message);
+        setUpdating(false);
+        setSucessReportRequest(false);
+      }
     }
   };
   const datesAreOnSameDay = (first, second) =>
@@ -129,17 +137,76 @@ function DoctorPatientDetailScreen() {
                   </div>
                 </div>
               )}
-
-              <Row className="mb-3">
-                <Col md={10}>
-                  <h2 className="ms-3">Request daily symptome report</h2>
-                </Col>
-                <Col>
-                  <Button onClick={() => requestDailtReportHandler()}>
-                    Send request
+              <div className="my-3">
+                <Row className="mb-3">
+                  <Col md={10}>
+                    <h2 className="ms-3">Request daily symptome report</h2>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col>
+                    <p className="mb-0 fw-bold">Priority</p>
+                  </Col>
+                  <Col className="mb-3">
+                    <Form.Check
+                      name="priority"
+                      value="1"
+                      type={"radio"}
+                      label={`Priority level 1`}
+                      id={`Priority level 1`}
+                      className="text-danger fw-bold"
+                      onClick={(e) => {
+                        setPriorityLevel(e.target.value);
+                      }}
+                    />
+                    <Form.Check
+                      name="priority"
+                      value="2"
+                      className="text-info fw-bold"
+                      type={"radio"}
+                      label={`Priority level 2`}
+                      onClick={(e) => {
+                        setPriorityLevel(e.target.value);
+                      }}
+                      id={`Priority level 2`}
+                    />
+                    <Form.Check
+                      name="priority"
+                      value="3"
+                      className="fw-bold"
+                      type={"radio"}
+                      label={`Priority level 3`}
+                      onClick={(e) => {
+                        setPriorityLevel(e.target.value);
+                      }}
+                      defaultChecked={priorityLevel}
+                      id={`Priority level 3`}
+                    />
+                  </Col>
+                </Row>
+                <Row className="mb-3">
+                  <Col md={3}>
+                    <p className="mb-0 fw-bold">Custom question</p>
+                  </Col>
+                  <Col>
+                    <Form.Control
+                      type="text"
+                      placeholder="Question .."
+                      onChange={(e) => {
+                        setcustomQ(e.target.value);
+                      }}
+                    />
+                  </Col>
+                </Row>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <Button
+                    className="ms-3 w-50"
+                    onClick={() => requestDailtReportHandler()}
+                  >
+                    Request report
                   </Button>
-                </Col>
-              </Row>
+                </div>
+              </div>
               <Row className="mb-3">
                 <Col md={10}>
                   <h4 className="ms-3">
@@ -191,6 +258,10 @@ function DoctorPatientDetailScreen() {
                                 }
                               )}
                             </div>
+                            &nbsp;
+                            <div className={"fw-bold text-end col"}>
+                              Priority {report.priorityLevel}
+                            </div>
                           </Accordion.Header>
                           <Accordion.Body>
                             <ListGroup variant="flush">
@@ -234,6 +305,48 @@ function DoctorPatientDetailScreen() {
                                   <Badge bg="danger">False</Badge>
                                 )}
                               </ListGroup.Item>
+                              <ListGroup.Item>
+                                Your Height? :{" "}
+                                {report.questions.Height ? (
+                                  <Badge bg="info">
+                                    {report.questions.Height}
+                                  </Badge>
+                                ) : (
+                                  <Badge bg="info">Not reported</Badge>
+                                )}
+                              </ListGroup.Item>
+                              <ListGroup.Item>
+                                Your Weight? :{" "}
+                                {report.questions.Weight ? (
+                                  <Badge bg="info">
+                                    {report.questions.Weight}
+                                  </Badge>
+                                ) : (
+                                  <Badge bg="info">Not reported</Badge>
+                                )}
+                              </ListGroup.Item>
+                              <ListGroup.Item>
+                                Your Temperature? :{" "}
+                                {report.questions.Temperature ? (
+                                  <Badge bg="info">
+                                    {report.questions.Temperature}
+                                  </Badge>
+                                ) : (
+                                  <Badge bg="info">Not reported</Badge>
+                                )}
+                              </ListGroup.Item>
+                              {report.questions.customQ && (
+                                <ListGroup.Item>
+                                  {report.questions.customQ} :
+                                  {report.questions.customAns ? (
+                                    <Badge bg="info">
+                                      {report.questions.customAns}
+                                    </Badge>
+                                  ) : (
+                                    <Badge bg="info">Not reported</Badge>
+                                  )}
+                                </ListGroup.Item>
+                              )}
                             </ListGroup>
                           </Accordion.Body>
                         </Accordion.Item>

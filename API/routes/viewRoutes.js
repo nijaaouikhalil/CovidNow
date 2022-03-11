@@ -40,7 +40,7 @@ module.exports = function(app){
         [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient, authJwt.dailyReport],
         controller.askReport
       )
-      
+
       app.get(
         "/api/view/fillReport/getCustom",
         [authJwt.verifyToken, authJwt.canFillReport],
@@ -56,6 +56,18 @@ module.exports = function(app){
         "/api/view/:userId/report",
         [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient],
         controller.viewReport
+      )
+
+      app.put(
+        "/api/view/:userId/report/viewed/:reportId",
+        [authJwt.verifyToken, authJwt.isDoctor],
+        controller.markAsViewed
+      )
+
+      app.get(
+        "/api/view/report/all/mypatients",
+        [authJwt.verifyToken, authJwt.isDoctor],
+        controller.getNewPatientReports
       )
 
       app.get(

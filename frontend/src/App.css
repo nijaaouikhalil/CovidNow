@@ -277,3 +277,22 @@
 .acc-rounded-corners {
   border-radius: 10px!important;
 }
+
+#doctor-inbox-cont {
+  height: 80vh;
+}
+
+#doctor-inbox-cont > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#doctor-inbox-cont > div button {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  text-align: center;
+  margin: 2px;
+  text-transform: capitalize;
+}

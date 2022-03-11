@@ -97,7 +97,7 @@ function HealthOfficialPanelScreen() {
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("All Patients")}>
+                  <a className={subPage =='All Patients' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("All Patients")}>
                     <i className="fas fa-hospital-user me-2"></i> All Patients
                   </a>
                 </li>

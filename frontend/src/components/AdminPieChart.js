@@ -28,11 +28,14 @@ export const AdminPieChart = ({all_users = []}) => {
         data.labels = ['Admin', 'Patient', 'Doctor', 'Immigration Officer', 'Health Official'];
         data.values = [0,0,0,0,0];
         for (let i in all_users) {
-            if (all_users[i].roles.name === "admin" ) data.values[0]++;
-            else if (all_users[i].roles.name === "user") data.values[1]++;
-            else if (all_users[i].roles.name === "doctor") data.values[2]++;
-            else if (all_users[i].roles.name === "immigration_officer") data.values[3]++;
-            else if (all_users[i].roles.name === "health_official") data.values[3]++;
+            switch (all_users[i].roles.name){
+                case "admin": {data.values[0]++; break;}
+                case "user": {data.values[1]++; break;}
+                case "doctor": {data.values[2]++; break;}
+                case "immigration_officer": {data.values[3]++; break;}
+                case "health_official": {data.values[4]++; break;}
+                default: break;
+            }
         }
         return data;
     };

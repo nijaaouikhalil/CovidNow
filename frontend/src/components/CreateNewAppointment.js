@@ -30,8 +30,9 @@ export const CreateNewAppointment = ({patients}) => {
     const showDropdown = () => {
         document.getElementById('appointmentPatientDropdown').childNodes[1].classList.add('stay-open');
     }
+    
 
-    const handleClick = (pat) => {
+    const handleClick = (pat, e) => {
         setPatient(pat);
         setSearchResults(null);
         document.getElementById('appointmentPatientDropdown').childNodes[1].classList.remove('stay-open');
@@ -44,9 +45,6 @@ export const CreateNewAppointment = ({patients}) => {
         setDateTime(new Date().setHours(new Date().getHours(), 0));
     };
 
-    //useEffect(()=> {
-    //   console.log(dateTime.toLocaleString())
-    //}, [dateTime])
 
     return (
         <>
@@ -65,7 +63,7 @@ export const CreateNewAppointment = ({patients}) => {
                                 <li key={'li-'+pat.email+Math.floor(Math.random() * 10000)}>
                                     <a key={pat.email+'-a'+Math.floor(Math.random() * 10000)} 
                                     className="dropdown-item"
-                                    onClick={()=> handleClick(pat)}
+                                    onClick={(e)=> handleClick(pat, e)}
                                     >{pat.name} {pat.lname}</a>
                                 </li>
                             ))}

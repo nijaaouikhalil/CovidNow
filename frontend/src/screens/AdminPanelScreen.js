@@ -33,7 +33,7 @@ function AdminPanelScreen() {
 
   const adminUpdate = useSelector((state) => state.adminUpdate);
   const { message, loading: updateLoading, error: updatError } = adminUpdate;
-  const [subPage, setSubPage] = useState("Statistics");
+  const [subPage, setSubPage] = useState("Home");
 
   useEffect(() => {
     if (!user_info || user_info.roles !== "ROLE_ADMIN") {
@@ -61,13 +61,13 @@ function AdminPanelScreen() {
               <li className="nav-item">
                 <a
                   className={
-                    subPage == "Statistics" ? "nav-link active" : "nav-link"
+                    subPage == "Home" ? "nav-link active" : "nav-link"
                   }
                   aria-current="page"
-                  onClick={() => setSubPage("Statistics")}
+                  onClick={() => setSubPage("Home")}
                 >
                   <i className="fas fa-chart-line me-3"></i>
-                  Statistics
+                  Home
                 </a>
               </li>
               <li className="nav-item">
@@ -128,13 +128,13 @@ function AdminPanelScreen() {
                 <li>
                   <a
                     className={
-                      subPage == "Statistics"
+                      subPage == "Home"
                         ? "dropdown-item active"
                         : "dropdown-item"
                     }
-                    onClick={() => setSubPage("Statistics")}
+                    onClick={() => setSubPage("Home")}
                   >
-                    <i className="fas fa-chart-line me-2"></i> Statistics
+                    <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
@@ -178,7 +178,7 @@ function AdminPanelScreen() {
           </div>
         </div>
 
-        {subPage == "Statistics" && (
+        {subPage == "Home" && (
           <AdminStatistics
             all_users={all_users}
             users_to_confirm={users}

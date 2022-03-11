@@ -17,7 +17,7 @@ function HealthOfficialPanelScreen() {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-  const [subPage, setSubPage] = useState("Statistics");
+  const [subPage, setSubPage] = useState("Home");
   const AdminListAllUsers = useSelector((state) => state.AdminListAllUsers);
   const {
     all_users,
@@ -46,12 +46,12 @@ function HealthOfficialPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
+                  className={subPage =='Home' ? "nav-link active" : "nav-link"}
                   aria-current="page"
-                  onClick={() => setSubPage("Statistics")}
+                  onClick={() => setSubPage("Home")}
                 >
                   <i className="fas fa-chart-line me-3"></i>
-                  Statistics
+                  Home
                 </a>
               </li>
               <li className="nav-item">
@@ -92,17 +92,17 @@ function HealthOfficialPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
-                    <i className="fas fa-chart-line me-2"></i> Statistics
+                  <a className={subPage =='Home' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("Home")}>
+                    <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
-                    <i className="fas fa-hospital-user me-2"></i> Patients
+                  <a className={subPage =='All Patients' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("All Patients")}>
+                    <i className="fas fa-hospital-user me-2"></i> All Patients
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("Settings")}>
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>
@@ -111,7 +111,7 @@ function HealthOfficialPanelScreen() {
           </div>
         </div>
 
-        {subPage == "Statistics" && (
+        {subPage == "Home" && (
           <HealthOfficialStatistics
             patients={all_users}
             setSubPage={setSubPage}

@@ -8,7 +8,7 @@ export const PatientContactTracing = () => {
         <div id="dd-main-container">
             <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div>
-                    <p className="text-center"><strong>Contact Tracing allows us to prevent the spreading of Covid-19.</strong><br/> Please submit the information of persons whom you have been in contact with recently. We will contact these people to inform them of the potential risk.<br/> Please note your credentials will be kept anonymous at all times.</p>
+                    <p className="text-center"><strong>Contact Tracing helps us to prevent the spreading of Covid-19.</strong><br/> Please submit the information of persons whom you have been in contact with recently. We will contact these people to inform them of the potential risk.<br/> Please note your credentials will be kept anonymous at all times.</p>
                 </div>
                 <ul className="nav nav-pills justify-content-center">
                     <li className="nav-item mx-3 pointer">
@@ -42,7 +42,12 @@ const SubmitTracingData = () => {
         setName('');
         setLname('');
         setEmail('');
-    }
+    };
+
+    const submitAll = () => {
+        console.log(data);
+        setData([]);
+    };
 
     return (<>
         <div className="d-flex justify-content-center mt-4">
@@ -60,16 +65,13 @@ const SubmitTracingData = () => {
                     type="submit"
                     >Add</button>
                 </div>
-                
             </form>
         </div>
 
         <div className="d-flex align-items-center flex-column mt-3" >
-            
             <div className="col-8" >
-
-            <h5 className="my-5 text-center">When finished adding to list, please check below and click Submit All</h5>
-            <h4 className="align-self-start">Current List</h4>
+                <h5 className="my-5 text-center">When finished adding to list, please check below and click Submit All</h5>
+                <h4 className="align-self-start">Current List</h4>
                 <Table striped bordered hover variant="light" size="sm">
                     <thead>
                     <tr>
@@ -83,22 +85,20 @@ const SubmitTracingData = () => {
                     {data && data.length > 0
                         ? data.map((user, index) => (
                             <tr key={index}>
-                            <td>{index + 1}</td>
+                            <td>{index+1}</td>
                             <td>{user ? user.name : "John"}</td>
                             <td>{user ? user.lname : "Doe"}</td>
                             <td>{user ? user.email : "John@Doe.com"}</td>
                             </tr>
                         ))
-                        : ""}
+                        : null}
                     </tbody>
                 </Table>
             </div>
-
-            <button className="btn btn-success form-control w-25">Submit All</button>
-
+            <button 
+                onClick={submitAll}
+                className="btn btn-success form-control w-25">Submit All</button>
         </div>
-
-
 
         </>
     );
@@ -123,13 +123,13 @@ const PreviouslySubmittedTracingData = ({data}) => {
                     {data && data.length > 0
                         ? data.map((user, index) => (
                             <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{user ? user.name : "John"}</td>
-                            <td>{user ? user.lname : "Doe"}</td>
-                            <td>{user ? user.email : "John@Doe.com"}</td>
+                                <td>{index+1}</td>
+                                <td>{user ? user.name : "John"}</td>
+                                <td>{user ? user.lname : "Doe"}</td>
+                                <td>{user ? user.email : "John@Doe.com"}</td>
                             </tr>
                         ))
-                        : ""}
+                        : null}
                     </tbody>
                 </Table>
             </div>

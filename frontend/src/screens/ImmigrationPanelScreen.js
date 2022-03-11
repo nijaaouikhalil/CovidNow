@@ -66,18 +66,18 @@ function ImmigrationPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
+                  className={subPage =='Home' ? "nav-link active" : "nav-link"}
                   aria-current="page"
-                  onClick={() => setSubPage("Statistics")}
+                  onClick={() => setSubPage("Home")}
                 >
                   <i className="fas fa-chart-line me-3"></i>
-                  Statistics
+                  Home
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='My Patients' ? "nav-link active" : "nav-link"}
-                  onClick={() => setSubPage("My Patients")}
+                  className={subPage =='All Patients' ? "nav-link active" : "nav-link"}
+                  onClick={() => setSubPage("All Patients")}
                 >
                   <i class="fas fa-hospital-user me-3"></i>
                   All Patients
@@ -112,17 +112,17 @@ function ImmigrationPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
-                    <i className="fas fa-chart-line me-2"></i> Statistics
+                  <a className={subPage =='Home' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("Home")}>
+                    <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='All Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='All Patients' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("All Patients")}>
                     <i className="fas fa-hospital-user me-2"></i> All Patients
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} onClick={() => setSubPage("Settings")}>
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>
@@ -131,11 +131,10 @@ function ImmigrationPanelScreen() {
           </div>
         </div>
 
-        {/* { (subPage=='Statistics') && <DoctorStatistics setSubPage={setSubPage}/>} */}
-        {subPage == "Statistics" && (
+        {subPage == "Home" && (
           <ImmiStatistics patients={all_users} setSubPage={setSubPage} />
         )}
-        {subPage == "My Patients" && <ImmiPatientsList all_users={all_users} />}
+        {subPage == "All Patients" && <ImmiPatientsList all_users={all_users} />}
       </div>
     </div>
   );

@@ -27,12 +27,14 @@ const generateGrayScaleColours = (amount) => {
   return colours;
 };
 
-export const DoctorsLineGraph = () => {
+export const CanadaCovidCasesByDateRangeLineGraph = () => {
 
 
     const [chartData, setChartData] = useState(null);
     const [afterDate, setAfterDate] = useState('2020-01-01');
     const [beforeDate, setBeforeDate] = useState(new Date().toISOString().split('T')[0]);
+    const [updateGraphToggle, setUpdateGraphToggle] = useState(false);
+
 
     useEffect(()=> {
       const getAllCanadaData = async () => {
@@ -74,8 +76,11 @@ export const DoctorsLineGraph = () => {
 
     getAllCanadaData().then((data)=>{
       buildLineGraph(data);
-    }).catch(err => console.log(err))      
-    }, [afterDate, beforeDate]);
+    }).catch(err => console.log(err));
+
+    setUpdateGraphToggle(false);
+
+    }, [updateGraphToggle]);
     
 
     if (!chartData) return <h4>API data currently unavailable</h4>;
@@ -97,6 +102,7 @@ export const DoctorsLineGraph = () => {
           <input type="date" onChange={(e) => setAfterDate(e.target.value)} defaultValue={afterDate} />
           <label htmlFor="">To: </label>
           <input type="date" onChange={(e) => setBeforeDate(e.target.value)} value={beforeDate} />
+          <button onClick={() => setUpdateGraphToggle(true)} className='btn btn-primary btn-sm mx-3'>update</button>
         </div>
 
       </div>

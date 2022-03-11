@@ -239,3 +239,60 @@
 #doctor-line-chart {
   width: 450px!important;
 }
+
+
+/* PATIENT MESSAGES */
+
+
+.messageList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageList li {
+  position: relative;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  width: 75%;
+}
+
+.recievedMessage {
+  align-self: flex-start;
+  background-color: rgba(241, 162, 57, 0.4);
+}
+
+.sentMessage {
+  align-self: flex-end;
+  background: rgba(128, 216, 216, 0.6);
+
+}
+
+.messageList small {
+  position: absolute;
+  top: -17px;
+}
+
+.acc-rounded-corners {
+  border-radius: 10px!important;
+}
+
+#doctor-inbox-cont {
+  height: 80vh;
+}
+
+#doctor-inbox-cont > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#doctor-inbox-cont > div button {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  text-align: center;
+  margin: 2px;
+  text-transform: capitalize;
+}

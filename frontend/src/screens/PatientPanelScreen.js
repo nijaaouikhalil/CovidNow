@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import PatientReportSym from "../components/PatientReportSym";
 import { PatientStatistics } from "../components/PatientStatistics";
 import { PatientContactTracing } from '../components/PatientContactTracing';
+import { PatientMessages } from '../components/PatientMessages';
 
 function PatientPanelScreen() {
   const navigate = useNavigate();
@@ -55,6 +56,19 @@ function PatientPanelScreen() {
                 >
                   <i className="fas fa-hospital-user me-3"></i>
                   Daily symptom report
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={
+                    subPage == "Messages"
+                      ? "nav-link active"
+                      : "nav-link"
+                  }
+                  onClick={() => setSubPage("Messages")}
+                >
+                  <i className="fas fa-inbox me-3"></i>
+                  Messages
                 </a>
               </li>
               <li className="nav-item">
@@ -129,6 +143,18 @@ function PatientPanelScreen() {
                 <li>
                   <a
                     className={
+                      subPage == "Messages"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("Messages")}
+                  >
+                    <i className="fas fa-inbox me-2"></i> Messages
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={
                       subPage == "Contact Tracing"
                         ? "dropdown-item active"
                         : "dropdown-item"
@@ -163,6 +189,9 @@ function PatientPanelScreen() {
         )}
         {subPage === "Contact Tracing" && (
           <PatientContactTracing />
+        )}
+        {subPage === "Messages" && (
+          <PatientMessages />
         )}
       </div>
     </div>

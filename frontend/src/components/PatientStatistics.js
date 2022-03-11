@@ -1,3 +1,6 @@
+
+import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+
 const PatientStatistics = ({ setSubPage }) => {
   return (
     <div id="dd-main-container">
@@ -25,9 +28,9 @@ const PatientStatistics = ({ setSubPage }) => {
             <h5 className="text-center">Pie Chart Title</h5>
             <img src="/img/piechart.png" alt="pie-chart" />
           </div>
-          <div id="dd-chart" className="pastel-orange">
-            <h5 className="text-center">Graph Title</h5>
-            <img src="/img/graph.png" alt="graph" />
+          <div id="dd-chart" className="pastel-orange dd-card-link">
+            <h4>Canadian Covid Cases</h4>
+            <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>
       </div>

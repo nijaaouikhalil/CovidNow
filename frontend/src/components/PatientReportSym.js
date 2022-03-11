@@ -10,6 +10,7 @@ import {
   Accordion,
   ListGroup,
   Badge,
+  FloatingLabel,
 } from "react-bootstrap";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
@@ -32,7 +33,7 @@ function PatientReportSym() {
   const [updating, setUpdating] = useState(false);
   const [sucessReportRequest, setSucessReportRequest] = useState(false);
   const [message, setMessage] = useState("");
-  const [questions, setQuestions] = useState("");
+  const [question, setQuestion] = useState("");
   const [reports, setReports] = useState("");
 
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ function PatientReportSym() {
     getPerviousReports();
 
     return () => {
-      setQuestions([]);
+      setQuestion("");
     };
   }, [dispatch, user_info]);
 
@@ -100,9 +101,12 @@ function PatientReportSym() {
         },
       };
 
-      const { data } = await axios.get(BaseUrl + `/api/view/getCustom`, config);
+      const { data } = await axios.get(
+        BaseUrl + `/api/view/fillReport/getCustom`,
+        config
+      );
       console.log(data);
-      setQuestions(data);
+      setQuestion(data);
     } catch (error) {
       console.log(error);
     }
@@ -147,7 +151,6 @@ function PatientReportSym() {
                   }}
                 />
               </Form.Group>
-
               <Form.Group className="mb-3 py-3" controlId="setHasTravelled">
                 <Form.Check
                   type="switch"
@@ -158,7 +161,6 @@ function PatientReportSym() {
                   }}
                 />
               </Form.Group>
-
               <Form.Group
                 className="mb-3 py-3"
                 controlId="setHasAutoImmuneDisease"
@@ -182,7 +184,6 @@ function PatientReportSym() {
                   }}
                 />
               </Form.Group>
-
               <Form.Group
                 className="mb-3 py-3"
                 controlId="setHadAllergicReaction"
@@ -197,41 +198,67 @@ function PatientReportSym() {
                 />
               </Form.Group>
               <Form.Group className="mb-3 py-3" controlId="temprature">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter your temprature.."
-                  onChange={(e) => {
-                    setTemperature(e.target.value);
-                  }}
-                />
+                <FloatingLabel
+                  controlId="Temp"
+                  label="enter your temprature"
+                  className="mb-3"
+                >
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your temprature.."
+                    onChange={(e) => {
+                      setTemperature(e.target.value);
+                    }}
+                  />
+                </FloatingLabel>
               </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="setWeight">
-                <Form.Control
-                  type="text"
-                  placeholder="enter your weight.."
-                  onChange={(e) => {
-                    setWeight(e.target.value);
-                  }}
-                />
+              <Form.Group className="mb-3 py-3" controlId="Weight">
+                <FloatingLabel
+                  controlId="weight"
+                  label="enter your weight .."
+                  className="mb-3"
+                >
+                  <Form.Control
+                    type="text"
+                    placeholder="enter your weight.."
+                    onChange={(e) => {
+                      setWeight(e.target.value);
+                    }}
+                  />
+                </FloatingLabel>
               </Form.Group>
               <Form.Group className="mb-3 py-3" controlId="height">
-                <Form.Control
-                  type="text"
-                  placeholder="enter your height .."
-                  onChange={(e) => {
-                    setHeight(e.target.value);
-                  }}
-                />
+                <FloatingLabel
+                  controlId="Height"
+                  label="enter your height .."
+                  className="mb-3"
+                >
+                  <Form.Control
+                    type="text"
+                    placeholder="enter your height .."
+                    onChange={(e) => {
+                      setHeight(e.target.value);
+                    }}
+                  />
+                </FloatingLabel>
               </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="CustomAns">
-                <Form.Control
-                  type="text"
-                  placeholder="Custom question .."
-                  onChange={(e) => {
-                    setCustomAns(e.target.value);
-                  }}
-                />
-              </Form.Group>
+              {question && (
+                <Form.Group className="mb-3 py-3" controlId="CustomAns">
+                  <FloatingLabel
+                    controlId="CustomQuestion"
+                    label={question}
+                    className="mb-3"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder={question}
+                      onChange={(e) => {
+                        setCustomAns(e.target.value);
+                      }}
+                    />
+                  </FloatingLabel>
+                </Form.Group>
+              )}
 
               <div style={{ display: "flex", justifyContent: "center" }}>
                 <Button onClick={submitHandler} className="ms-3 w-50">

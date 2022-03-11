@@ -77,6 +77,29 @@ function HealthOfficialPatientDetailScreen() {
                     </p>
                   </div>
                 </div>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-3">
+                    <p className="mb-0">Covid Status</p>
+                  </div>
+                  <div className="col-sm-9">
+                    <p className="text-muted mb-0">
+                      {user ? user.covidStatus : "Active"}
+                    </p>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-3">
+                    <p className="mb-0">Assigned doctor</p>
+                  </div>
+                  <div className="col-sm-9">
+                    <p className="text-muted mb-0">
+                      {user && user.doctor ? user.doctor.name : "Not assigned"}{" "}
+                      {user && user.doctor ? user.doctor.lname : ""}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

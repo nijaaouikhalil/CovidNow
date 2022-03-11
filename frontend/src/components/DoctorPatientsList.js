@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const DoctorPatientsList = ({ patients }) => {
@@ -29,8 +29,25 @@ const DoctorPatientsList = ({ patients }) => {
                         <td className="dd-patient-email">
                           {patient ? patient.email : "johndoe@test.com"}
                         </td>
-                        <td>False</td>
-                        <td>False</td>
+                        <td>
+                          <Badge
+                            bg={
+                              patient.covidStatus === "Positive"
+                                ? "danger"
+                                : patient.covidStatus === "Pending"
+                                ? "warning"
+                                : "info"
+                            }
+                          >
+                            {patient.covidStatus}
+                          </Badge>
+                        </td>
+                        <td>
+                          {patient.covidStatus === "Positive" ||
+                          patient.covidStatus === "Pending"
+                            ? "True"
+                            : "False"}
+                        </td>
                         <td>
                           {patient ? (
                             <Link to={"/doctor/patientdetails/" + patient._id}>

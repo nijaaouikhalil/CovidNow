@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const HealthOfficialPatientsList = ({ all_users }) => {
   return (
@@ -26,8 +26,26 @@ const HealthOfficialPatientsList = ({ all_users }) => {
                         <td>{user.name}</td>
                         <td>{user.lname}</td>
                         <td className="dd-patient-email">{user.email}</td>
-                        <td>True</td>
-                        <td>True</td>
+                        <td>
+                          <Badge
+                            bg={
+                              user.covidStatus === "Positive"
+                                ? "danger"
+                                : user.covidStatus === "Pending"
+                                ? "warning"
+                                : "info"
+                            }
+                          >
+                            {user.covidStatus}
+                          </Badge>
+                        </td>
+                        <td>
+                          {" "}
+                          {user.covidStatus === "Positive" ||
+                          user.covidStatus === "Pending"
+                            ? "True"
+                            : "False"}
+                        </td>
                         <td>
                           <Link to={"/healthoff/patientdetails/" + user._id}>
                             More

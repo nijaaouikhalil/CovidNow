@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const AdminAllUsersList = ({ all_users }) => {
   return (
@@ -42,7 +42,19 @@ const AdminAllUsersList = ({ all_users }) => {
                             "User"
                           )}
                         </td>
-                        <td>True</td>
+                        <td>
+                          <Badge
+                            bg={
+                              user.covidStatus === "Positive"
+                                ? "danger"
+                                : user.covidStatus === "Pending"
+                                ? "warning"
+                                : "info"
+                            }
+                          >
+                            {user.covidStatus}
+                          </Badge>
+                        </td>
                         <td className="text-center">
                           {user.your_doctor
                             ? user.your_doctor.name

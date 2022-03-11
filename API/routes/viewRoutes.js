@@ -23,49 +23,50 @@ module.exports = function (app) {
     controller.profileInfo
   );
 
-  app.put(
-    "/api/view/flag/:userId",
-    [authJwt.verifyToken, authJwt.isHealthOfficial],
-    controller.flaguser
-  );
+      app.get(
+        "/api/view/",
+        [authJwt.verifyToken, requestRoleName],
+        controller.viewAll
+      )
+        
+      app.put(
+        "/api/view/requestReport",
+        [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient, authJwt.dailyReport],
+        controller.askReport
+      )
 
-  app.get(
-    "/api/view/",
-    [authJwt.verifyToken, requestRoleName],
-    controller.viewAll
-  );
+      app.get(
+        "/api/view/fillReport/getCustom",
+        [authJwt.verifyToken, authJwt.canFillReport],
+        controller.getDoctorsCustomRequest
+      )
+      app.put(
+        "/api/view/fillReport",
+        [authJwt.verifyToken, authJwt.canFillReport],
+        controller.fillReport
+      )
+      
+      app.get(
+        "/api/view/:userId/report",
+        [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient],
+        controller.viewReport
+      )
 
-  app.put(
-    "/api/view/requestReport",
-    [
-      authJwt.verifyToken,
-      authJwt.isDoctor,
-      authJwt.isMyPatient,
-      authJwt.dailyReport,
-    ],
-    controller.askReport
-  );
+      app.put(
+        "/api/view/:userId/report/viewed/:reportId",
+        [authJwt.verifyToken, authJwt.isDoctor],
+        controller.markAsViewed
+      )
 
-  app.get(
-    "/api/view/getCustom",
-    [authJwt.verifyToken, authJwt.canFillReport],
-    controller.getDoctorsCustomRequest
-  );
-  app.put(
-    "/api/view/fillReport",
-    [authJwt.verifyToken, authJwt.canFillReport],
-    controller.fillReport
-  );
+      app.get(
+        "/api/view/report/all/mypatients",
+        [authJwt.verifyToken, authJwt.isDoctor],
+        controller.getNewPatientReports
+      )
 
-  app.get(
-    "/api/view/:userId/report",
-    [authJwt.verifyToken, authJwt.isDoctor, authJwt.isMyPatient],
-    controller.viewReport
-  );
-
-  app.get(
-    "/api/view/user/myreport",
-    [authJwt.verifyToken],
-    controller.viewMyReport
-  );
-};
+      app.get(
+        "/api/view/user/myreport",
+        [authJwt.verifyToken],
+        controller.viewMyReport
+      )
+}

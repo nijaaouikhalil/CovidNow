@@ -313,13 +313,14 @@ exports.askReport = (req, res) => {
     res.status(422).send({ message: "Wrong priority level has been entered." });
   }
   if (req.exists == null) {
-    const newReport = new Report({
-      userId: req.body.userId,
-      questions: { customQ: req.body.customQ },
-      date: date,
-      priorityLevel: priorityLevel,
-    });
-
+      const newReport = new Report({
+        userId: req.body.userId,
+        doctorId: req.userId,
+        questions: {customQ: req.body.customQ},
+        date: date,
+        priorityLevel: priorityLevel
+      });
+    
     newReport.save((err, report) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -335,6 +336,7 @@ exports.askReport = (req, res) => {
         res.status(500).send({ message: err });
         return;
       }
+      report.doctorId = req.userId;
       report.questions = null;
       report.date = date;
       report.questions.customQ = req.body.customQ;
@@ -427,3 +429,42 @@ exports.viewMyReport = (req, res) => {
     res.send(reports);
   });
 };
+
+exports.getNewPatientReports = (req, res) => {
+  Report.find({
+      doctorId : req.userId,
+      viewed : false
+  }
+  ).sort({priorityLevel : 1, date : -1})
+  .exec((err,report) =>{
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    res.send(report)
+  })
+}
+
+exports.markAsViewed = (req, res) => {
+    Report.findOne({
+        _id : req.params.reportId
+    }
+    ).exec((err,report) =>{
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      report.viewed = true;
+      report.lastViewed = Date.now();
+      report.save((err) => {
+        if (err) {
+          res.status(500).send({ message: err });
+          return;
+        }
+        res.send({
+          message: "Succesfully submitted your information",
+        });
+      });
+
+    });
+}

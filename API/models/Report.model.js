@@ -7,6 +7,10 @@ const Report = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
+    doctorId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+  },
     questions: {
           hasCovid: { type: Boolean, sparse: true },
           hasTravelled: { type: Boolean, sparse: true },
@@ -19,6 +23,14 @@ const Report = mongoose.model(
           Height: { type: Number, sparse: true },
           customQ: { type: String, sparse: true },
           customAns: { type: String, sparse: true },
+    },
+    viewed: {
+      type: Boolean,
+      default: false,
+    },
+    lastViewed: {
+      type: Date,
+      sparse : true
     },
     date: {
         type: Date,

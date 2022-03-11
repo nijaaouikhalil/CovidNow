@@ -49,8 +49,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"patient@patient.com",
-    "password":"patient"
+    "email":"soen394testing@gmail.com",
+    "password":"pass"
 }
 
 ###
@@ -58,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"user@user",
-    "password":"pass"
+    "email":"doctor@doctor.com",
+    "password":"doctor"
 }
 
 ###
@@ -107,14 +107,14 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE
 ###
 GET http://localhost:8080/api/view
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTM3NDcwNywiZXhwIjoxNjQ1NDYxMTA3fQ.j8fgj59lYo56PJFlg3bBGrIiMedsa7pzOtR5Rs51w5c
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njg3OTYwNSwiZXhwIjoxNjQ2OTY2MDA1fQ.lfAOV7hZNAuejN4yuMQh_4C7dSQlIlgA42UsP8KzcNg
 
 {
 
 }
 
 ###
-PUT http://localhost:8080/api/view/flag/622955ff96fcd9d5c53004dd
+PUT http://localhost:8080/api/view/620eca00f1eb719f8011f97d
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZDFjYjM0YTc1YWVhZWIyMTA0NyIsImlhdCI6MTY0Njg3NTg1MCwiZXhwIjoxNjQ2OTYyMjUwfQ.2SNb1kbqr1ulACl4btUJ78CXVUDcr3l6WhHAHTnqPGM
 
@@ -125,36 +125,23 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZDFjYjM0YTc
 ###
 PUT http://localhost:8080/api/view/requestReport
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0Njg3NzY1NSwiZXhwIjoxNjQ2OTY0MDU1fQ.QS5PseTsSWxdUN16wfJ_EWLaehnqlztZ3wAtAYf12bU
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NTM4OTcyNCwiZXhwIjoxNjQ1NDc2MTI0fQ.CJKBziUEViXcReMptWiEBWH3aSh_KS_eiBWQnro08n8
 
 {
-   "userId": "620eca00f1eb719f8011f97d",
-   "customQ": "are you okay?",
-   "priorityLevel": 1
-}
-
-###
-GET http://localhost:8080/api/view/fillReport/getCustom
-Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0Njg3ODM1NywiZXhwIjoxNjQ2OTY0NzU3fQ.RcOzBhFIjIMA5Da4JMbbGbRl5NXWypm_ZuMn8PQFRcY
-
-{
-
+   "userId": "620eca00f1eb719f8011f97d"  
 }
 
 ###
 PUT http://localhost:8080/api/view/fillReport
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0Njg3ODM1NywiZXhwIjoxNjQ2OTY0NzU3fQ.RcOzBhFIjIMA5Da4JMbbGbRl5NXWypm_ZuMn8PQFRcY
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0NTM4OTg2OCwiZXhwIjoxNjQ1NDc2MjY4fQ.-mUsQB5k6t-BodI2X9m1-mHlEIJ_7Q5YUE4G3_EkTIk
 
 {
     "hasCovid": true,
     "hasTravelled": false,
     "hasAutoImmuneDisease": false,
     "isPregnant": false,
-    "hadAllergicReaction": false,
-    "Weight": 120,
-    "customAns": "depressed"
+    "hadAllergicReaction": false
 }
 
 ###
@@ -174,4 +161,24 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTB
 
 {
  
+}
+
+###
+
+GET http://localhost:8080/api/view/report/all/mypatients
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0Njk2Mjc0MiwiZXhwIjoxNjQ3MDQ5MTQyfQ.SY7WqteV-IcVeQniSxpEq9aIGA_lec7E1S_ROzUVIDk
+
+{
+
+
+}
+
+###
+PUT http://localhost:8080/api/view/620eca00f1eb719f8011f97d/report/viewed/6212ac8293c2fd5209e61c6c
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0Njk2Mjc0MiwiZXhwIjoxNjQ3MDQ5MTQyfQ.SY7WqteV-IcVeQniSxpEq9aIGA_lec7E1S_ROzUVIDk
+
+{
+    
 }

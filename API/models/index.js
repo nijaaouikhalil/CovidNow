@@ -10,6 +10,7 @@ db.role = require("./Role.model")
 db.assignedDoctor = require("./assignedDoctor.model")
 db.report = require("./Report.model")
 db.contacted = require("./Contacted.model")
+db.appointments = require ("./appointments.model")
 
 db.ROLES = ["user", "admin"]
 

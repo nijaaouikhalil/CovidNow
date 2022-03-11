@@ -78,3 +78,20 @@ module.exports.contactedPeopleEmailToSignUp = (name, email) => {//Email to peopl
     })
     .catch((err) => console.log(err));
 };
+
+
+module.exports.makeAppointment = (name, email) => {//Email to people that are contacted by patients
+  console.log("Check");
+  transport
+    .sendMail({
+      from: user,
+      to: email,
+      subject: "Appointment Booking",
+      html: `<h1>Your Doctor is asking to book an appointment.</h1>
+          <h2>Hello ${name}</h2>
+          <p>Your doctor is asking for an appointment with you. Please check your dashboard for the timing and reason of appointment.</p>
+          <a href=http://localhost:8080/api/auth/signin>Sign In</a>
+          </div>`,
+    })
+    .catch((err) => console.log(err));
+};

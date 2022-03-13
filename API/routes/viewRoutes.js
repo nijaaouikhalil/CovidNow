@@ -79,4 +79,17 @@ module.exports = function (app) {
     [authJwt.verifyToken],
     controller.viewMyReport
   );
+  
+  app.get(
+    "/api/view/user/myreport/:reportId",
+    [authJwt.verifyToken],
+    controller.viewMyReportDetails
+  );
+
+  app.put(
+    "/api/view/user/myreport/:reportId",
+    [authJwt.verifyToken],
+    controller.editMyReportDetails
+  );
+
 };

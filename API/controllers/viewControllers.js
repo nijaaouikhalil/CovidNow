@@ -185,7 +185,7 @@ exports.viewAll = (req, res) => {
     );
   } else if (req.roleName == "admin") {
     var final = [];
-    User.find({}, "name lname email roles verified").exec(
+    User.find({}, "name lname email roles verified covidStatus").exec(
       async (err, cursor) => {
         if (err) {
           res.status(500).send({ message: err });
@@ -287,7 +287,7 @@ exports.viewAll = (req, res) => {
             {
               _id: obj.userId,
             },
-            "name lname email"
+            "name lname email covidStatus"
           ).exec((err, patient) => {
             if (err) {
               res.status(500).send({ message: err });
@@ -468,3 +468,73 @@ exports.markAsViewed = (req, res) => {
 
     });
 }
+
+exports.viewMyReportDetails = (req, res) => {
+  Report.findOne(
+    {
+      userId: req.userId,
+      _id: req.params.reportId
+    }
+  ).exec((err, report) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+
+    res.send(report);
+  });
+};
+
+exports.editMyReportDetails = (req, res) => {
+  Report.findOne(
+    {
+      userId: req.userId,
+      _id: req.params.reportId
+    },
+  ).exec((err, report) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    if(req.body.hasCovid != null){
+      report.questions.hasCovid = req.body.hasCovid;
+    }
+    if(req.body.hasTravelled != null){
+      report.questions.hasTravelled = req.body.hasTravelled;
+    }
+    if(req.body.hasAutoImmuneDisease != null){
+      report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease;
+    }
+    if(req.body.isPregnant != null){
+      report.questions.isPregnant = req.body.isPregnant;
+    }
+    if(req.body.hadAllergicReaction != null){
+      report.questions.hadAllergicReaction = req.body.hadAllergicReaction;
+    }
+
+    if(req.body.Temperature != null){
+      report.questions.Temperature = req.body.Temperature;
+    }
+    if(req.body.Weight != null){
+      report.questions.Weight = req.body.Weight;
+    }
+    if(req.body.Height != null){
+      report.questions.Height = req.body.Height;
+    }
+
+    if(req.body.customAns != null){
+      report.questions.customAns = req.body.customAns;
+    }
+
+    report.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      res.send({
+        message: "Succesfully submitted your information",
+      });
+    });
+
+  });
+};

@@ -27,6 +27,10 @@ const User = mongoose.model(
       type: Date,
       default: Date.now,
     },
+    dateSubmitted: {
+      type: Date,
+      default: Date.now,
+    },
     status: {
       type: String,
       enum: ["Pending", "Active"],

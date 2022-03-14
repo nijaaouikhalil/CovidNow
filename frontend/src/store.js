@@ -13,6 +13,7 @@ import {
   FlagCovidReducer,
 } from "./reducers/adminReducers";
 import { doctorListPatientsReducer } from "./reducers/doctorReducers";
+import { patientReportContacted } from "./reducers/patientReducers";
 const reducer = combineReducers({
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
@@ -22,6 +23,7 @@ const reducer = combineReducers({
   AdminListAllUsers: AdminListAllUsersReducer,
   userDetails: userDetailsReducer,
   FlagCovid: FlagCovidReducer,
+  patientReportContacted: patientReportContacted,
 });
 
 const userInfoFromStorage = localStorage.getItem("user_info")

@@ -132,6 +132,17 @@ function DoctorPatientDetailScreen() {
                             </p>
                           </div>
                         </div>
+                        <hr />
+                        <div className="row">
+                          <div className="col-sm-3">
+                            <p className="mb-0 fw-bold">Status</p>
+                          </div>
+                          <div className="col-sm-9">
+                            <p className="text-muted mb-0 text-uppercase">
+                              {user ? user.covidStatus : "Negative"}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

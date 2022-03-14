@@ -7,10 +7,9 @@ const appointments = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
       },
-    Email: {
+    patientId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
-        unique: true,
     },
     appointmentDate: {
         type: Date,

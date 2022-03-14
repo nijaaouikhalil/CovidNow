@@ -58,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"user@user",
-    "password":"pass"
+    "email":"doctor@doctor.com",
+    "password":"doctor"
 }
 
 ###
@@ -184,4 +184,24 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTB
 
 {
  
+}
+
+###
+POST http://localhost:8080/api/appointmentBooking
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzIyNDk2NywiZXhwIjoxNjQ3MzExMzY3fQ.2Z-ulNywgFDe8IHpsa2b-C3DdBp0Op8hjVEOZ5nQCxU
+
+{
+    "userId":"620eca00f1eb719f8011f97d",
+    "appointmentDate":"2022-12-30T16:00:00Z",
+    "description":"kfaklmflka"
+}
+
+###
+GET  http://localhost:8080/api/appointmentsWithPatients
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzIyNDk2NywiZXhwIjoxNjQ3MzExMzY3fQ.2Z-ulNywgFDe8IHpsa2b-C3DdBp0Op8hjVEOZ5nQCxU
+
+{
+    
 }

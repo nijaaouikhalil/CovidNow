@@ -92,6 +92,8 @@ function initial() {
 require("./routes/authRoutes")(app);
 require("./routes/verificationRoutes")(app);
 require("./routes/viewRoutes")(app);
+require("./routes/contactedPeopleRoutes")(app);
+require("./routes/appointmentAndChatRoutes")(app);
 
 //Connect to port
 app.listen(8080, () => console.log("server is up and running"));

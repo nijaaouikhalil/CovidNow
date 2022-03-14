@@ -163,7 +163,17 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4Zjc
 }
 
 ###
+POST http://localhost:8080/api/contactedPeople
+Content-Type:  application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njg4NzQ2MSwiZXhwIjoxNjQ2OTczODYxfQ.aVHiFtSiFLd-1T5KB4ph0ndIBI6_cVBN2hn_8nlWpCw
 
+{
+    "name":"FlaggedUser",
+    "lname":"FlaggedUser",
+    "email":"Flagged@User"
+}
+
+###
 GET http://localhost:8080/api/view/user/myreport
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njg3MzE1NiwiZXhwIjoxNjQ2OTU5NTU2fQ.GbOTBlbe-psbauCJgxhxQ69OLzbfl4aNZAL9L7xLo_c

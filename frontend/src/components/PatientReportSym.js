@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -141,132 +142,138 @@ function PatientReportSym() {
         <Row className="justify-content-center mt-5">
           <Col md={8}>
             <h2> Fill daily report </h2>
-            <Form>
-              <Form.Group className="mb-3 py-3" controlId="hasCovid">
-                <Form.Check
-                  type="switch"
-                  id="HasCovid"
-                  label="Have you tested positif for covid19 ?"
-                  onChange={(e) => {
-                    setHasCovid(e.target.checked);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="setHasTravelled">
-                <Form.Check
-                  type="switch"
-                  id="travelled"
-                  label="Have you travelled recently ?"
-                  onChange={(e) => {
-                    setHasTravelled(e.target.checked);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3 py-3"
-                controlId="setHasAutoImmuneDisease"
-              >
-                <Form.Check
-                  type="switch"
-                  id="immune"
-                  label="Do you have auto immune disease?"
-                  onChange={(e) => {
-                    setHasAutoImmuneDisease(e.target.checked);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="setIsPregnant">
-                <Form.Check
-                  type="switch"
-                  id="pregnant"
-                  label="are you pregnant?"
-                  onChange={(e) => {
-                    setIsPregnant(e.target.checked);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group
-                className="mb-3 py-3"
-                controlId="setHadAllergicReaction"
-              >
-                <Form.Check
-                  type="switch"
-                  id="AllergicReaction"
-                  label="Do you have allergic reaction?"
-                  onChange={(e) => {
-                    setHadAllergicReaction(e.target.checked);
-                  }}
-                />
-              </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="temprature">
-                <FloatingLabel
-                  controlId="Temp"
-                  label="enter your temprature"
-                  className="mb-3"
-                >
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter your temprature.."
+            {question ? (
+              <Form>
+                <Form.Group className="mb-3 py-3" controlId="hasCovid">
+                  <Form.Check
+                    type="switch"
+                    id="HasCovid"
+                    label="Have you tested positif for covid19 ?"
                     onChange={(e) => {
-                      setTemperature(e.target.value);
+                      setHasCovid(e.target.checked);
                     }}
                   />
-                </FloatingLabel>
-              </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="Weight">
-                <FloatingLabel
-                  controlId="weight"
-                  label="enter your weight .."
-                  className="mb-3"
-                >
-                  <Form.Control
-                    type="text"
-                    placeholder="enter your weight.."
+                </Form.Group>
+                <Form.Group className="mb-3 py-3" controlId="setHasTravelled">
+                  <Form.Check
+                    type="switch"
+                    id="travelled"
+                    label="Have you travelled recently ?"
                     onChange={(e) => {
-                      setWeight(e.target.value);
+                      setHasTravelled(e.target.checked);
                     }}
                   />
-                </FloatingLabel>
-              </Form.Group>
-              <Form.Group className="mb-3 py-3" controlId="height">
-                <FloatingLabel
-                  controlId="Height"
-                  label="enter your height .."
-                  className="mb-3"
+                </Form.Group>
+                <Form.Group
+                  className="mb-3 py-3"
+                  controlId="setHasAutoImmuneDisease"
                 >
-                  <Form.Control
-                    type="text"
-                    placeholder="enter your height .."
+                  <Form.Check
+                    type="switch"
+                    id="immune"
+                    label="Do you have auto immune disease?"
                     onChange={(e) => {
-                      setHeight(e.target.value);
+                      setHasAutoImmuneDisease(e.target.checked);
                     }}
                   />
-                </FloatingLabel>
-              </Form.Group>
-              {question && (
-                <Form.Group className="mb-3 py-3" controlId="CustomAns">
+                </Form.Group>
+                <Form.Group className="mb-3 py-3" controlId="setIsPregnant">
+                  <Form.Check
+                    type="switch"
+                    id="pregnant"
+                    label="are you pregnant?"
+                    onChange={(e) => {
+                      setIsPregnant(e.target.checked);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group
+                  className="mb-3 py-3"
+                  controlId="setHadAllergicReaction"
+                >
+                  <Form.Check
+                    type="switch"
+                    id="AllergicReaction"
+                    label="Do you have allergic reaction?"
+                    onChange={(e) => {
+                      setHadAllergicReaction(e.target.checked);
+                    }}
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3 py-3" controlId="temprature">
                   <FloatingLabel
-                    controlId="CustomQuestion"
-                    label={question}
+                    controlId="Temp"
+                    label="enter your temprature"
                     className="mb-3"
                   >
                     <Form.Control
                       type="text"
-                      placeholder={question}
+                      placeholder="Enter your temprature.."
                       onChange={(e) => {
-                        setCustomAns(e.target.value);
+                        setTemperature(e.target.value);
                       }}
                     />
                   </FloatingLabel>
                 </Form.Group>
-              )}
+                <Form.Group className="mb-3 py-3" controlId="Weight">
+                  <FloatingLabel
+                    controlId="weight"
+                    label="enter your weight .."
+                    className="mb-3"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="enter your weight.."
+                      onChange={(e) => {
+                        setWeight(e.target.value);
+                      }}
+                    />
+                  </FloatingLabel>
+                </Form.Group>
+                <Form.Group className="mb-3 py-3" controlId="height">
+                  <FloatingLabel
+                    controlId="Height"
+                    label="enter your height .."
+                    className="mb-3"
+                  >
+                    <Form.Control
+                      type="text"
+                      placeholder="enter your height .."
+                      onChange={(e) => {
+                        setHeight(e.target.value);
+                      }}
+                    />
+                  </FloatingLabel>
+                </Form.Group>
+                {question && (
+                  <Form.Group className="mb-3 py-3" controlId="CustomAns">
+                    <FloatingLabel
+                      controlId="CustomQuestion"
+                      label={question}
+                      className="mb-3"
+                    >
+                      <Form.Control
+                        type="text"
+                        placeholder={question}
+                        onChange={(e) => {
+                          setCustomAns(e.target.value);
+                        }}
+                      />
+                    </FloatingLabel>
+                  </Form.Group>
+                )}
 
-              <div style={{ display: "flex", justifyContent: "center" }}>
-                <Button onClick={submitHandler} className="ms-3 w-50">
-                  SUBMIT REPORT
-                </Button>
-              </div>
-            </Form>
+                <div style={{ display: "flex", justifyContent: "center" }}>
+                  <Button onClick={submitHandler} className="ms-3 w-50">
+                    SUBMIT REPORT
+                  </Button>
+                </div>
+              </Form>
+            ) : (
+              <Message variant={"warning"}>
+                {"Your doctor didn't request a report today."}
+              </Message>
+            )}
           </Col>
           {updating ? (
             <Loader />
@@ -284,7 +291,8 @@ function PatientReportSym() {
               {reports && reports.length > 0 ? (
                 reports.map(
                   (report, index) =>
-                    report.questions && (
+                    report.questions &&
+                    report.questions.customAns && (
                       <Accordion.Item key={index} eventKey={index}>
                         <Accordion.Header>
                           Report on &nbsp;
@@ -302,6 +310,19 @@ function PatientReportSym() {
                           </div>
                         </Accordion.Header>
                         <Accordion.Body>
+                          <div
+                            style={{
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <Link
+                              className="ms-3 w-50 btn btn-dark"
+                              to={"/patient/updatereport/" + report._id}
+                            >
+                              Update REPORT
+                            </Link>
+                          </div>
                           <ListGroup variant="flush">
                             <ListGroup.Item>
                               Have tested positif for covid19 ? :{" "}

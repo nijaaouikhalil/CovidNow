@@ -20,6 +20,7 @@ import ImmigrationPanelScreen from "./screens/ImmigrationPanelScreen";
 import ImmigrationPatientDetailScreen from "./screens/ImmigrationPatientDetailScreen";
 import PasswordRestScreen from "./screens/PasswordRestScreen";
 import PatientPanelScreen from "./screens/PatientPanelScreen";
+import PatientUpdateReportScreen from "./screens/PatientUpdateReportScreen";
 
 // COMPONENT TEST ROUTE(S)
 import ComponentTestScreen from "./screens/componentTestScreens/ComponentTestScreen";
@@ -107,6 +108,10 @@ function App() {
           element={<ImmigrationPatientDetailScreen />}
         />
         <Route path="/patient/dashboard" element={<PatientPanelScreen />} />
+        <Route
+          path="/patient/updatereport/:report_id"
+          element={<PatientUpdateReportScreen />}
+        />
         <Route path="/announcements" element={<AnnouceScreen />} />
         <Route path="/passwordrest" element={<PasswordRestScreen />} />
       </Routes>

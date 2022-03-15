@@ -84,7 +84,8 @@ function PatientReportSym() {
       setSucessReportRequest(true);
     } catch (error) {
       setUpdating(false);
-      setMessage("An error has occured! Please try again later.");
+      console.log(error.response.data);
+      setMessage(error.response.data);
       setSucessReportRequest(false);
     }
   };

@@ -12,7 +12,11 @@ import {
   AdminListAllUsersReducer,
   FlagCovidReducer,
 } from "./reducers/adminReducers";
-import { doctorListPatientsReducer } from "./reducers/doctorReducers";
+import {
+  doctorListAppointmentsReducer,
+  doctorListPatientsReducer,
+  doctorScheduleAppointmentReducer,
+} from "./reducers/doctorReducers";
 import { patientReportContacted } from "./reducers/patientReducers";
 const reducer = combineReducers({
   userLogin: userLoginReducer,
@@ -24,6 +28,8 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   FlagCovid: FlagCovidReducer,
   patientReportContacted: patientReportContacted,
+  doctorScheduleAppointment: doctorScheduleAppointmentReducer,
+  doctorListAppointments: doctorListAppointmentsReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("user_info")

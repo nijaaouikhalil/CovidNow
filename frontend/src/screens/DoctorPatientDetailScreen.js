@@ -19,6 +19,7 @@ import { getUserDailyReports, getUserDetails } from "../actions/userActions";
 import { useParams } from "react-router-dom";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
+import { MarkReportViewed } from "../actions/doctorActions";
 
 function DoctorPatientDetailScreen() {
   const dispatch = useDispatch();
@@ -27,6 +28,9 @@ function DoctorPatientDetailScreen() {
   const { user_info } = userLogin;
   const userDetails = useSelector((state) => state.userDetails);
   const { user, loading, error, reports } = userDetails;
+
+  const doctorViewReport = useSelector((state) => state.doctorViewReport);
+  const { success } = doctorViewReport;
 
   const [updating, setUpdating] = useState(false);
   const [sucessReportRequest, setSucessReportRequest] = useState(false);
@@ -41,7 +45,7 @@ function DoctorPatientDetailScreen() {
     }
     dispatch(getUserDetails(pid));
     dispatch(getUserDailyReports(pid));
-  }, [dispatch, navigate, user_info, pid]);
+  }, [dispatch, navigate, success, user_info, pid]);
 
   const requestDailtReportHandler = async () => {
     if (priorityLevel === "" || customQ === "") {
@@ -78,6 +82,15 @@ function DoctorPatientDetailScreen() {
     first.getFullYear() === second.getFullYear() &&
     first.getMonth() === second.getMonth() &&
     first.getDate() === second.getDate();
+
+  const MarkViewd = (id) => {
+    console.log(id);
+    dispatch(
+      MarkReportViewed({
+        id,
+      })
+    );
+  };
   return (
     <div>
       <Link to="/doctor/dashboard" className="btn btn-light my-2 ms-3">
@@ -275,6 +288,28 @@ function DoctorPatientDetailScreen() {
                             </div>
                           </Accordion.Header>
                           <Accordion.Body>
+                            <Row>
+                              <Col md={8}>
+                                <Message
+                                  variant={
+                                    report.viewed ? "success" : "warning"
+                                  }
+                                  className="text-center"
+                                >
+                                  report
+                                  {report.viewed ? " viewed" : " not viewed"}
+                                </Message>
+                              </Col>
+                              <Col>
+                                {report.viewed ? (
+                                  ""
+                                ) : (
+                                  <Button onClick={() => MarkViewd(report._id)}>
+                                    Mark as viewed
+                                  </Button>
+                                )}
+                              </Col>
+                            </Row>
                             <ListGroup variant="flush">
                               <ListGroup.Item>
                                 Have tested positif for covid19 ? :{" "}

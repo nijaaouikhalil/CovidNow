@@ -3,10 +3,10 @@ import {
   DOCTOR_LIST_PATIENTS_REQUEST,
   DOCTOR_LIST_PATIENTS_RESET,
   DOCTOR_LIST_PATIENTS_SUCCESS,
-  DOCTOR_SCHEDULE_APPOINTMENT_FAIL,
-  DOCTOR_SCHEDULE_APPOINTMENT_RESET,
-  DOCTOR_SCHEDULE_APPOINTMENT_SUCCESS,
-  DOCTOR_SCHEDULE_APPOINTMENT_REQUEST,
+  DOCTOR_VIEW_REPORT_FAIL,
+  DOCTOR_VIEW_REPORT_RESET,
+  DOCTOR_VIEW_REPORT_SUCCESS,
+  DOCTOR_VIEW_REPORT_REQUEST,
   DOCTOR_LIST_APPOINTMENTS_REQUEST,
   DOCTOR_LIST_APPOINTMENTS_SUCCESS,
   DOCTOR_LIST_APPOINTMENTS_FAIL,
@@ -42,30 +42,27 @@ export const doctorListPatientsReducer = (state = { patients: [] }, action) => {
   }
 };
 
-export const doctorScheduleAppointmentReducer = (
-  state = { patients: [] },
-  action
-) => {
+export const doctorViewReportReducer = (state = { report: {} }, action) => {
   switch (action.type) {
-    case DOCTOR_SCHEDULE_APPOINTMENT_REQUEST:
+    case DOCTOR_VIEW_REPORT_REQUEST:
       return {
         loading: true,
       };
 
-    case DOCTOR_SCHEDULE_APPOINTMENT_SUCCESS:
+    case DOCTOR_VIEW_REPORT_SUCCESS:
       return {
         loading: false,
-        appointment: action.payload,
+        report: action.payload,
         success: true,
       };
 
-    case DOCTOR_SCHEDULE_APPOINTMENT_FAIL:
+    case DOCTOR_VIEW_REPORT_FAIL:
       return {
         loading: false,
         error: action.payload,
       };
 
-    case DOCTOR_SCHEDULE_APPOINTMENT_RESET:
+    case DOCTOR_VIEW_REPORT_RESET:
       return {};
 
     default:

@@ -15,7 +15,7 @@ import {
 import {
   doctorListAppointmentsReducer,
   doctorListPatientsReducer,
-  doctorScheduleAppointmentReducer,
+  doctorViewReportReducer,
 } from "./reducers/doctorReducers";
 import { patientReportContacted } from "./reducers/patientReducers";
 const reducer = combineReducers({
@@ -28,7 +28,7 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   FlagCovid: FlagCovidReducer,
   patientReportContacted: patientReportContacted,
-  doctorScheduleAppointment: doctorScheduleAppointmentReducer,
+  doctorViewReport: doctorViewReportReducer,
   doctorListAppointments: doctorListAppointmentsReducer,
 });
 

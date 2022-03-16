@@ -42,6 +42,114 @@ function ComponentTestScreen() {
                 <LinkContainer className="m-3" to="/ctests/health/id">
                     <i> Component Test: Health ID for HEALTH OFFICIAL </i>
                 </LinkContainer>
+
+                /**NEW C-TESTS */
+
+                < LinkContainer className="m-3" to="/ctests/adminalluserlist" >
+                    <i> Component Test: AdminAllUserList </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/adminconfirmusers" >
+                    <i> Component Test: AdminConfirmUsers </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/adminpiechart" >
+                    <i> Component Test: AdminPieChart </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/adminstatistics" >
+                    <i> Component Test: AdminStatistics </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/canadacovidcases" >
+                    <i> Component Test: Canada Covid Cases by Day </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/createnewappointment" >
+                    <i> Component Test: CreateNewAppointment </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/doctorappointment" >
+                    <i> Component Test: DoctorAppointment </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/doctormessages" >
+                    <i> Component Test: DoctorMessages </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/doctorpatientslist" >
+                    <i> Component Test: DoctorPatientsList </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/doctorpiechart" >
+                    <i> Component Test: DoctorPieChart </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/doctorstatistics" >
+                    <i> Component Test: DoctorStatistics </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/footer" >
+                    <i> Component Test: Footer </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/header" >
+                    <i> Component Test: Header </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/healthofficialflagcovid" >
+                    <i> Component Test: HealthOfficialFlagCovid </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/healthofficialpatientslist" >
+                    <i> Component Test: HealthOfficialPatientsList </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/healthofficialstatistics" >
+                    <i> Component Test: HealthOfficialStatistics </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/immipatientslist" >
+                    <i> Component Test: ImmiPatientsList </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/immistatistics" >
+                    <i> Component Test: ImmiStatistics </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/listdoctorappointments" >
+                    <i> Component Test: ListDoctorAppointments </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/loader" >
+                    <i> Component Test: Loader </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/message" >
+                    <i> Component Test: Message </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/patientcontacttracing" >
+                    <i> Component Test: PatientContactTracing </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/patientmessages" >
+                    <i> Component Test: PatientMessages </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/patientreportsym" >
+                    <i> Component Test: PatientReportSym </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/patientstatistics" >
+                    <i> Component Test: PatientStatistics </i>
+                </LinkContainer >
+
+                < LinkContainer className="m-3" to="/ctests/resource" >
+                    <i> Component Test: Resource </i>
+                </LinkContainer >
+
+                /** END OF NEW C-TESTS */
             </Nav>
         </Col>
 

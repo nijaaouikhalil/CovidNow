@@ -32,6 +32,10 @@ import CTestScreen_Doctor_PostalCode from "./screens/componentTestScreens/CTestS
 import CTestScreen_Doctor_Province from "./screens/componentTestScreens/CTestScreen_Doctor_Province";
 import CTestScreen_Govern_ID from "./screens/componentTestScreens/CTestScreen_Govern_ID";
 import CTestScreen_Health_ID from "./screens/componentTestScreens/CTestScreen_Health_ID";
+
+// NEW:
+import CTestScreen_AdminAllUsersList from "./screens/componentTestScreens/CTestScreen_AdminAllUsersList";
+
 // END OF COMPONENT TEST ROUTE(S)
 
 function App() {

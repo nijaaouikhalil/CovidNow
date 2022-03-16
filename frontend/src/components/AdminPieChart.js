@@ -19,7 +19,7 @@ const generateColours = (amount) => {
 export const AdminPieChart = ({all_users = []}) => {
     console.log(all_users)
 
-    const [chartData, setChartData] = useState(null);
+    const [chartData, setChartData] = useState([]);
 
 
     const sortUsersByRole = () => {
@@ -60,7 +60,7 @@ export const AdminPieChart = ({all_users = []}) => {
     }, [all_users]);
     
 
-    if (!chartData) return null;
+    if (chartData.length == 0) return null;
     return (
         <Pie
         data={chartData}

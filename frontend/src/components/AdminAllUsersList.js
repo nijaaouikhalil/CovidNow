@@ -19,10 +19,10 @@ const AdminAllUsersList = ({ all_users }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid={'admin-all-users-table-body'}>
                 {all_users && all_users.length > 0
                   ? all_users.map((user, index) => (
-                      <tr key={index}>
+                      <tr data-testid={'admin-all-users-table-row'} key={index}>
                         <td>{index + 1}</td>
                         <td>{user.name}</td>
                         <td>{user.lname}</td>

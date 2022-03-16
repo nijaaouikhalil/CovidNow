@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getDoctorAppointments } from "../actions/doctorActions";
+import { getDoctorAppointments } from "../../actions/doctorActions";
 
-export const CTestScreen_ListDoctorsAppoinments = ({ patients }) => {
+
+
+function CTestScreen_ListDoctorAppoinments({ patients }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -97,3 +99,4 @@ export const CTestScreen_ListDoctorsAppoinments = ({ patients }) => {
     </div>
   );
 };
+export default CTestScreen_ListDoctorAppoinments;

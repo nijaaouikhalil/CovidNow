@@ -17,7 +17,7 @@ const generateColours = (amount) => {
     return colours;
 };
 
-export const CTestScreen_DoctorsPieChart = ({ patients = [] }) => {
+function CTestScreen_DoctorsPieChart({ patients = [] }) {
 
 
     const [chartData, setChartData] = useState(null);
@@ -81,3 +81,5 @@ export const CTestScreen_DoctorsPieChart = ({ patients = [] }) => {
         />
     )
 }
+
+export default CTestScreen_DoctorsPieChart;

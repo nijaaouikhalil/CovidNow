@@ -1,8 +1,8 @@
-import { DoctorsPieChart } from './DoctorsPieChart';
-import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+import { DoctorsPieChart } from '../../components/DoctorsPieChart';
+import { CanadaCovidCasesByDateRangeLineGraph } from '../../components/CanadaCovidCasesByDateRangeLineGraph';
 
 
-const CTestScreen_DoctorStatistics = ({ setSubPage, patients }) => {
+function CTestScreen_DoctorStatistics({ setSubPage, patients }) {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -49,4 +49,4 @@ const CTestScreen_DoctorStatistics = ({ setSubPage, patients }) => {
   );
 };
 
-export { CTestScreen_DoctorStatistics };
+export default CTestScreen_DoctorStatistics;

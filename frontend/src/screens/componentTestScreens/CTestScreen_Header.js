@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../actions/userActions";
+import { logout } from "../../actions/userActions";
 
 function CTestScreen_Header() {
   const dispatch = useDispatch();

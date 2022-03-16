@@ -62,7 +62,7 @@ function ComponentTestScreen() {
                 </LinkContainer >
 
                 < LinkContainer className="m-3" to="/ctests/canadacovidcases" >
-                    <i> Component Test: Canada Covid Cases by Day </i>
+                    <i> Component Test: Canada Covid Cases by Date Range </i>
                 </LinkContainer >
 
                 < LinkContainer className="m-3" to="/ctests/createnewappointment" >

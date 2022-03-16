@@ -1,6 +1,6 @@
-import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+import { CanadaCovidCasesByDateRangeLineGraph } from '../../components/CanadaCovidCasesByDateRangeLineGraph';
 
-const CTestScreen_HealthOfficialStatistics = ({ setSubPage, patients }) => {
+function CTestScreen_HealthOfficialStatistics({ setSubPage, patients }) {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -33,4 +33,4 @@ const CTestScreen_HealthOfficialStatistics = ({ setSubPage, patients }) => {
   );
 };
 
-export { CTestScreen_HealthOfficialStatistics };
+export default CTestScreen_HealthOfficialStatistics;

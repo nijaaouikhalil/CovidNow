@@ -1,14 +1,14 @@
 import { Row, Col, Table, Button } from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
-import Loader from "./Loader";
-import Message from "./Message";
-import { AdminlistUsers, AdminUpdateUser } from "../actions/adminActions";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { AdminlistUsers, AdminUpdateUser } from "../../actions/adminActions";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 
-const CTestScreen_AdminConfirmUsers = () => {
+function CTestScreen_AdminConfirmUsers() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -147,4 +147,4 @@ const CTestScreen_AdminConfirmUsers = () => {
   )
 }
 
-export { CTestScreen_AdminConfirmUsers };
+export default CTestScreen_AdminConfirmUsers;

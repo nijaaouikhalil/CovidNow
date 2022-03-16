@@ -7,12 +7,12 @@ import {
   AdminUpdateUser,
   ListAllUsers,
   UpdateCovidStatus,
-} from "../actions/adminActions";
+} from "../../actions/adminActions";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CTestScreen_HealthOfficialFlagCovid = () => {
+function CTestScreen_HealthOfficialFlagCovid() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
@@ -135,4 +135,4 @@ const CTestScreen_HealthOfficialFlagCovid = () => {
   );
 };
 
-export { CTestScreen_HealthOfficialFlagCovid };
+export default CTestScreen_HealthOfficialFlagCovid;

@@ -1,7 +1,7 @@
 import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const CTestScreen_DoctorPatientsList = ({ patients }) => {
+function CTestScreen_DoctorPatientsList({ patients }) {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -71,4 +71,4 @@ const CTestScreen_DoctorPatientsList = ({ patients }) => {
   );
 };
 
-export { CTestScreen_DoctorPatientsList };
+export default CTestScreen_DoctorPatientsList;

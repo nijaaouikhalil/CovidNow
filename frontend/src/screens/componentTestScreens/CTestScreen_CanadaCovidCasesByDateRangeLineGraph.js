@@ -27,7 +27,7 @@ const generateGrayScaleColours = (amount) => {
   return colours;
 };
 
-export const CTestScreen_CanadaCovidCasesByDateRangeLineGraph = () => {
+function CTestScreen_CanadaCovidCasesByDateRangeLineGraph() {
 
 
   const [chartData, setChartData] = useState(null);
@@ -109,3 +109,4 @@ export const CTestScreen_CanadaCovidCasesByDateRangeLineGraph = () => {
 
   )
 }
+export default CTestScreen_CanadaCovidCasesByDateRangeLineGraph;

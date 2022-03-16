@@ -17,7 +17,7 @@ const generateColours = (amount) => {
     return colours;
 };
 
-export const CTestScreen_AdminPieChart = ({ all_users = [] }) => {
+function CTestScreen_AdminPieChart({ all_users = [] }) {
     console.log(all_users)
 
     const [chartData, setChartData] = useState(null);
@@ -81,3 +81,4 @@ export const CTestScreen_AdminPieChart = ({ all_users = [] }) => {
         />
     )
 }
+export default CTestScreen_AdminPieChart;

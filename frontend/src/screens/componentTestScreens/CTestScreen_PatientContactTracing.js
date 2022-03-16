@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { reportContactedPatients } from "../actions/patientActions";
-import Loader from "./Loader";
+import { reportContactedPatients } from "../../actions/patientActions";
+import Loader from "../../components/Loader";
 import Message from "./CTestScreen_Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-export const CTestScreen_PatientContactTracing = () => {
+function CTestScreen_PatientContactTracing() {
   const [currentTab, setCurrentTab] = useState("Submit");
 
   return (
@@ -218,3 +218,4 @@ const PreviouslySubmittedTracingData = ({ data }) => {
     </div>
   );
 };
+export default CTestScreen_PatientContactTracing;

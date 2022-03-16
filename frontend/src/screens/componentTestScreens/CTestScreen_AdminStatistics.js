@@ -1,12 +1,12 @@
-import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
-import { AdminPieChart } from './AdminPieChart';
+import { CanadaCovidCasesByDateRangeLineGraph } from "../../components/CanadaCovidCasesByDateRangeLineGraph"
+import { AdminPieChart } from '../../components/AdminPieChart';
 
-const CTestScreen_AdminStatistics = ({
+function CTestScreen_AdminStatistics({
   setSubPage,
   all_users,
   users_to_confirm,
   doctors,
-}) => {
+}) {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -52,4 +52,4 @@ const CTestScreen_AdminStatistics = ({
   );
 };
 
-export { CTestScreen_AdminStatistics };
+export default CTestScreen_AdminStatistics;

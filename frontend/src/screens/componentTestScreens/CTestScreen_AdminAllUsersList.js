@@ -1,6 +1,6 @@
 import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
-const CTestScreen_AdminAllUsersList = ({ all_users }) => {
+function CTestScreen_AdminAllUsersList({ all_users }) {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -77,4 +77,4 @@ const CTestScreen_AdminAllUsersList = ({ all_users }) => {
   );
 };
 
-export { CTestScreen_AdminAllUsersList };
+export default CTestScreen_AdminAllUsersList;

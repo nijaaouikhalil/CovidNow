@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const CTestScreen_PatientMessages = () => {
+function CTestScreen_PatientMessages() {
 
     return (
         <div id="dd-main-container">
@@ -70,7 +70,4 @@ const Inbox = () => {
         </div>
     )
 }
-
-
-
-
+export default CTestScreen_PatientMessages;

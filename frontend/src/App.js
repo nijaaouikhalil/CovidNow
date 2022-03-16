@@ -35,6 +35,31 @@ import CTestScreen_Health_ID from "./screens/componentTestScreens/CTestScreen_He
 
 // NEW:
 import CTestScreen_AdminAllUsersList from "./screens/componentTestScreens/CTestScreen_AdminAllUsersList";
+import CTestScreen_AdminConfirmUsers from "./screens/componentTestScreens/CTestScreen_AdminConfirmUsers";
+import CTestScreen_AdminPieChart from "./screens/componentTestScreens/CTestScreen_AdminPieChart";
+import CTestScreen_AdminStatistics from "./screens/componentTestScreens/CTestScreen_AdminStatistics";
+import CTestScreen_CanadaCovidCasesByDateRangeLineGraph from "./screens/componentTestScreens/CTestScreen_CanadaCovidCasesByDateRangeLineGraph";
+import CTestScreen_CreateNewAppointment from "./screens/componentTestScreens/CTestScreen_CreateNewAppointment";
+import CTestScreen_DoctorAppointment from "./screens/componentTestScreens/CTestScreen_DoctorAppointment";
+import CTestScreen_DoctorMessages from "./screens/componentTestScreens/CTestScreen_DoctorMessages";
+import CTestScreen_DoctorPatientsList from "./screens/componentTestScreens/CTestScreen_DoctorPatientsList";
+import CTestScreen_DoctorsPieChart from "./screens/componentTestScreens/CTestScreen_DoctorsPieChart";
+import CTestScreen_DoctorStatistics from "./screens/componentTestScreens/CTestScreen_DoctorStatistics";
+import CTestScreen_Footer from "./screens/componentTestScreens/CTestScreen_Footer";
+import CTestScreen_Header from "./screens/componentTestScreens/CTestScreen_Header";
+import CTestScreen_HealthOfficialFlagCovid from "./screens/componentTestScreens/CTestScreen_HealthOfficialFlagCovid";
+import CTestScreen_HealthOfficialPatientsList from "./screens/componentTestScreens/CTestScreen_HealthOfficialPatientsList";
+import CTestScreen_HealthOfficialStatistics from "./screens/componentTestScreens/CTestScreen_HealthOfficialStatistics";
+import CTestScreen_ImmiPatientsList from "./screens/componentTestScreens/CTestScreen_ImmiPatientsList";
+import CTestScreen_ImmiStatistics from "./screens/componentTestScreens/CTestScreen_ImmiStatistics";
+import CTestScreen_ListDoctorAppointments from "./screens/componentTestScreens/CTestScreen_ListDoctorAppointments";
+import CTestScreen_Loader from "./screens/componentTestScreens/CTestScreen_Loader";
+import CTestScreen_Message from "./screens/componentTestScreens/CTestScreen_Message";
+import CTestScreen_PatientContactTracing from "./screens/componentTestScreens/CTestScreen_PatientContactTracing";
+import CTestScreen_PatientMessages from "./screens/componentTestScreens/CTestScreen_PatientMessages";
+import CTestScreen_PatientReportSym from "./screens/componentTestScreens/CTestScreen_PatientReportSym";
+import CTestScreen_PatientStatistics from "./screens/componentTestScreens/CTestScreen_PatientStatistics";
+import CTestScreen_Resource from "./screens/componentTestScreens/CTestScreen_Resource";
 
 // END OF COMPONENT TEST ROUTE(S)
 
@@ -83,6 +108,105 @@ function App() {
           path="/ctests/health/id"
           element={<CTestScreen_Health_ID></CTestScreen_Health_ID>}
         />
+
+        // start of new c-tests routes
+        <Route
+          path="/ctests/adminalluserlist"
+          element={<CTestScreen_AdminAllUsersList></CTestScreen_AdminAllUsersList>}
+        />
+        <Route
+          path="/ctests/adminconfirmusers"
+          element={<CTestScreen_AdminConfirmUsers></CTestScreen_AdminConfirmUsers>}
+        />
+        <Route
+          path="/ctests/adminpiechart"
+          element={<CTestScreen_AdminPieChart></CTestScreen_AdminPieChart>}
+        />
+        <Route
+          path="/ctests/adminstatistics"
+          element={<CTestScreen_AdminStatistics></CTestScreen_AdminStatistics>}
+        />
+        <Route
+          path="/ctests/canadacovidcases"
+          element={<CTestScreen_CanadaCovidCasesByDateRangeLineGraph></CTestScreen_CanadaCovidCasesByDateRangeLineGraph>}
+        />
+        <Route
+          path="/ctests/createnewappointment"
+          element={<CTestScreen_CreateNewAppointment></CTestScreen_CreateNewAppointment>}
+        />
+        <Route
+          path="/ctests/doctorappointment"
+          element={<CTestScreen_DoctorAppointment></CTestScreen_DoctorAppointment>}
+        />
+        <Route
+          path="/ctests/doctormessages"
+          element={<CTestScreen_DoctorMessages></CTestScreen_DoctorMessages>}
+        />
+        <Route
+          path="/ctests/doctorstatistics"
+          element={<CTestScreen_DoctorStatistics></CTestScreen_DoctorStatistics>}
+        />
+        <Route
+          path="/ctests/footer"
+          element={<CTestScreen_Footer></CTestScreen_Footer>}
+        />
+        <Route
+          path="/ctests/header"
+          element={<CTestScreen_Header></CTestScreen_Header>}
+        />
+        <Route
+          path="/ctests/healthofficialflagcovid"
+          element={<CTestScreen_HealthOfficialFlagCovid></CTestScreen_HealthOfficialFlagCovid>}
+        />
+        <Route
+          path="/ctests/healthofficialpatientslist"
+          element={<CTestScreen_HealthOfficialPatientsList></CTestScreen_HealthOfficialPatientsList>}
+        />
+        <Route
+          path="/ctests/healthofficialstatistics"
+          element={<CTestScreen_HealthOfficialStatistics></CTestScreen_HealthOfficialStatistics>}
+        />
+        <Route
+          path="/ctests/immipatientslist"
+          element={<CTestScreen_ImmiPatientsList></CTestScreen_ImmiPatientsList>}
+        />
+        <Route
+          path="/ctests/immistatistics"
+          element={<CTestScreen_ImmiStatistics></CTestScreen_ImmiStatistics>}
+        />
+        <Route
+          path="/ctests/listdoctorappointments"
+          element={<CTestScreen_ListDoctorAppointments></CTestScreen_ListDoctorAppointments>}
+        />
+        <Route
+          path="/ctests/loader"
+          element={<CTestScreen_Loader></CTestScreen_Loader>}
+        />
+        <Route
+          path="/ctests/message"
+          element={<CTestScreen_Message></CTestScreen_Message>}
+        />
+        <Route
+          path="/ctests/patientcontacttracing"
+          element={<CTestScreen_PatientContactTracing></CTestScreen_PatientContactTracing>}
+        />
+        <Route
+          path="/ctests/patientmessages"
+          element={<CTestScreen_PatientMessages></CTestScreen_PatientMessages>}
+        />
+        <Route
+          path="/ctests/patientreportsym"
+          element={<CTestScreen_PatientReportSym></CTestScreen_PatientReportSym>}
+        />
+        <Route
+          path="/ctests/patientstatistics"
+          element={<CTestScreen_PatientStatistics></CTestScreen_PatientStatistics>}
+        />
+        <Route
+          path="/ctests/resource"
+          element={<CTestScreen_Resource></CTestScreen_Resource>}
+        />
+        // end of new c-tests routes
 
         <Route path="/" element={<HomeScreen />} exact />
         <Route path="/login" element={<LoginScreen />} />

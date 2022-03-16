@@ -1,7 +1,7 @@
 import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const CTestScreen_ImmiPatientsList = ({ all_users }) => {
+function CTestScreen_ImmiPatientsList({ all_users }) {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
@@ -63,4 +63,4 @@ const CTestScreen_ImmiPatientsList = ({ all_users }) => {
   );
 };
 
-export { CTestScreen_ImmiPatientsList };
+export default CTestScreen_ImmiPatientsList;

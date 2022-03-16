@@ -3,12 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FloatingLabel, Form } from "react-bootstrap";
-import { BaseUrl } from "../utils/utils";
+import { BaseUrl } from "../../utils/utils";
 import axios from "axios";
-import Loader from "./Loader";
-import Message from "./Message";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 
-export const CTestScreen_CreateNewAppointment = ({ patients }) => {
+function CTestScreen_CreateNewAppointment({ patients }) {
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
 
@@ -191,4 +191,5 @@ export const CTestScreen_CreateNewAppointment = ({ patients }) => {
       )}
     </>
   );
-};
+}
+export default CTestScreen_CreateNewAppointment;

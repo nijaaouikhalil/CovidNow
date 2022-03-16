@@ -13,12 +13,12 @@ import {
   Badge,
   FloatingLabel,
 } from "react-bootstrap";
-import { BaseUrl } from "../utils/utils";
+import { BaseUrl } from "../../utils/utils";
 import axios from "axios";
-import FormContainer from "./Form/FormContainer";
-import Message from "./Message";
-import Loader from "./Loader";
-import { getUserDailyReports, getUserDetails } from "../actions/userActions";
+import FormContainer from "../../components/Form/FormContainer";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
+import { getUserDailyReports, getUserDetails } from "../../actions/userActions";
 
 function CTestScreen_PatientReportSym() {
   const [hasCovid, setHasCovid] = useState(false);

@@ -3,9 +3,9 @@ import { AdminPieChart } from './AdminPieChart';
 
 const AdminStatistics = ({
   setSubPage,
-  all_users,
-  users_to_confirm,
-  doctors,
+  all_users = [],
+  users_to_confirm = [],
+  doctors = [],
 }) => {
   return (
     <div id="dd-main-container">
@@ -29,7 +29,7 @@ const AdminStatistics = ({
           </div>
           <div className="dd-card dd-card-link pastel-green">
             <a onClick={() => setSubPage("All Users")}>
-              <h3 data-testid='admin-stats-count-doctors'>{doctors ? doctors.length : 0}</h3>
+              <h3 data-testid='admin-stats-count-doctor'>{doctors ? doctors.length : 0}</h3>
               <p>Total doctors</p>
             </a>
           </div>

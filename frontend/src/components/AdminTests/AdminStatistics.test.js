@@ -1,18 +1,24 @@
 import React, { useEffect, useState } from 'react';
-import { render } from '@testing-library/react';
-import { MemoryRouter } from 'react-router-dom';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { Provider } from "react-redux";
-import store from "../../store.js";
 import { AdminStatistics } from '../AdminStatistics';
+import { Provider } from "react-redux";
+import { MemoryRouter } from 'react-router-dom';
+import store from '../../store';
 
 describe("Admin Statistics Page", () => {
+
     it('Renders component without issue', () => {
-        render(<Provider store={store}><MemoryRouter><AdminStatistics all_users={[]}/></MemoryRouter></Provider>);
+        render(<AdminStatistics/>);
     });
-    it('Displays zero in counts if no users passed', async () => {
-        const { container } = render(<Provider store={store}><MemoryRouter><AdminStatistics all_users={[]}/></MemoryRouter></Provider>);
-        expect(container.childElementCount).toEqual(0);
+    it('Displays zero when no users passed', () => {
+        render(<AdminStatistics/>);
+        const countAll = screen.getByTestId('admin-stats-count-all');
+        const countConfirm = screen.getByTestId('admin-stats-count-confirm');
+        const countDoctor = screen.getByTestId('admin-stats-count-doctor');
+        expect(parseInt(countAll.innerHTML)).toBe(0);
+        expect(parseInt(countConfirm.innerHTML)).toBe(0);
+        expect(parseInt(countDoctor.innerHTML)).toBe(0);
     });
     it('Displays correct counts if users passed', async () => {
         let all_users = [
@@ -27,10 +33,15 @@ describe("Admin Statistics Page", () => {
                 your_doctor: {name: "testDoctorName"}
             }
         ];
-
+        let doctors = [{name: 'testDoctor'}];
         let users_to_confirm = [ {name: 'test'} ];
-        const { queryByTestId } = render(<Provider store={store}><MemoryRouter><AdminStatistics all_users={all_users} users_to_confirm={users_to_confirm}/></MemoryRouter></Provider>);
-        const countAll = queryByTestId('admin-stats-count-all');
-
+        render(<Provider store={store}><MemoryRouter><AdminStatistics
+            doctors={doctors} all_users={all_users} users_to_confirm={users_to_confirm}/></MemoryRouter></Provider>);
+        const countAll = screen.getByTestId('admin-stats-count-all');
+        const countConfirm = screen.getByTestId('admin-stats-count-confirm');
+        const countDoctor = screen.getByTestId('admin-stats-count-doctor');
+        expect(parseInt(countAll.innerHTML)).toBe(1);
+        expect(parseInt(countConfirm.innerHTML)).toBe(1);
+        expect(parseInt(countDoctor.innerHTML)).toBe(1);
     });
 });

@@ -6,7 +6,7 @@ function CTestScreen_AdminAllUsersList({ all_users }) {
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div className="row justify-content-center mt-5">
           <div className="col-11">
-            <Table striped bordered hover variant="light" size="sm">
+            <Table striped bordered hover variant="light" size="sm" title="adminUserListHead">
               <thead>
                 <tr>
                   <th>#</th>

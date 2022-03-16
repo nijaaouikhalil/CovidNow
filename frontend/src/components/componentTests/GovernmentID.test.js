@@ -2,7 +2,7 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { useDispatch, useSelector } from "react-redux";
 import '@testing-library/jest-dom'
 
-import App from '../../App';
+//import App from '../../App';
 import CTestScreen_Govern_ID from '../../screens/componentTestScreens/CTestScreen_Govern_ID';
 
 import store from "../../store";

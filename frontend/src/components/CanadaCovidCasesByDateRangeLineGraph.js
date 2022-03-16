@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
+import Chart from 'chart.js/auto';
 
 const generateColours = (amount) => {
   const colours = [];

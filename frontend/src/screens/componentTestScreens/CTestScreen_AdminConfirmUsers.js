@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function CTestScreen_AdminConfirmUsers() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
   const AdminListUsers = useSelector((state) => state.AdminListUsers);
@@ -29,7 +29,7 @@ function CTestScreen_AdminConfirmUsers() {
 
   useEffect(() => {
     if (!user_info || user_info.roles !== "ROLE_ADMIN") {
-      navigate("/login");
+      //navigate("/login");
     }
     dispatch(AdminlistUsers());
   }, [dispatch, user_info]

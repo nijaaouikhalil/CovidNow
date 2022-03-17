@@ -1,16 +1,14 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-function Resource({ resource }) {
+export const Resource = ({ resource }) => {
   return (
     <Card>
       <Card.Body>
-        <Card.Title>{resource.title}</Card.Title>
-
-        <Card.Text>{resource.details}</Card.Text>
-        <Card.Link href={resource.link}> Link</Card.Link>
+        <Card.Title data-testid="resource-title-test">{resource.title}</Card.Title>
+        <Card.Text data-testid="resource-detail-test">{resource.details}</Card.Text>
+        <Card.Link data-testid="resource-link-test" href={resource.link}> Link</Card.Link>
       </Card.Body>
     </Card>
   );
 }
 
-export default Resource;

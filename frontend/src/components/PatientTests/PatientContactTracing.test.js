@@ -1,17 +1,13 @@
-import { render, fireEvent, screen } from '@testing-library/react';
-import { useDispatch, useSelector } from "react-redux";
+import { render, cleanup } from '@testing-library/react';
+import { PatientContactTracing } from '../PatientContactTracing';
 import '@testing-library/jest-dom'
-
-import CTestScreen_PatientContactTracing from '../../screens/componentTestScreens/CTestScreen_PatientContactTracing';
-
-import store from "../../store";
+import { MemoryRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
+import store from "../../store.js";
 
-test("ctest - patient contact tracing", () => {
-    render(
-        <Provider store={store} >
-            <CTestScreen_PatientContactTracing />
-        </Provider>
-    );
-    // TO BE IMPLEMENTED
+
+describe("Patients contact tracing form", () => {
+    it('renders without crashing', () => {
+        render(<Provider store={store}><MemoryRouter><PatientContactTracing /></MemoryRouter></Provider>);
+    });
 });

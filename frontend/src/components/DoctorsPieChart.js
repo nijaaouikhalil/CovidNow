@@ -37,6 +37,9 @@ export const DoctorsPieChart = ({patients = []}) => {
         return data;
     };
     const buildPieChart = (data) => {
+        if(patients.length==0) {
+        return setChartData(null);
+    }
         const labels = data.labels;   //DUMMY LABELS
         const colors = generateColours(labels.length)
         setChartData({

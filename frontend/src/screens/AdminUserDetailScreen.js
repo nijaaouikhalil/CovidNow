@@ -10,8 +10,8 @@ import {
   FloatingLabel,
 } from "react-bootstrap";
 
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import {Loader} from "../components/Loader";
+import {Message} from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";

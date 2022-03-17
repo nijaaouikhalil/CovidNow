@@ -5,8 +5,8 @@ import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
 import { useNavigate } from "react-router-dom";
 import { register } from "../actions/userActions";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import {Loader} from "../components/Loader";
+import {Message} from "../components/Message";
 
 function RegisterScreen() {
   const dispatch = useDispatch();

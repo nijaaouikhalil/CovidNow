@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import {Loader} from "../components/Loader";
+import {Message} from "../components/Message";
 function PasswordRestScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();

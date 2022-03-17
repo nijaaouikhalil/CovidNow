@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { reportContactedPatients } from "../actions/patientActions";
-import Loader from "./Loader";
-import Message from "./Message";
+import { Loader } from "./Loader";
+import { Message } from "./Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

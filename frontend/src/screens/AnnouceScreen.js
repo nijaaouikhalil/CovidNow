@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Row, Col, Card } from "react-bootstrap";
 import { covid_resources } from "../utils/utils";
-import Resource from "../components/Resource";
+import {Resource} from "../components/Resource";
 import { Link } from "react-router-dom";
-import Message from "../components/Message";
+import {Message} from "../components/Message";
 
 function AnnouceScreen() {
   return (

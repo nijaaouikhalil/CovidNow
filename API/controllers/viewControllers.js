@@ -303,6 +303,7 @@ exports.viewAll = (req, res) => {
   }
 };
 
+//Doctor asks a report to fill from a patient
 exports.askReport = (req, res) => {
   var date = req.body.date;
   if (date == null) {
@@ -354,12 +355,14 @@ exports.askReport = (req, res) => {
   }
 };
 
+//get doctors custom question from the report
 exports.getDoctorsCustomRequest = (req, res) => {
   Report.findById(req.reportId).exec((err, report) => {
     res.send(report.questions.customQ);
   });
 };
 
+//Patient answers question from the report
 exports.fillReport = (req, res) => {
   Report.findById(req.reportId).exec((err, report) => {
     if (err) {
@@ -390,6 +393,7 @@ exports.fillReport = (req, res) => {
   });
 };
 
+//get all the reports from a associated to a users id
 exports.viewReport = (req, res) => {
   Report.find({
     userId: req.params.userId,
@@ -414,6 +418,7 @@ exports.viewReport = (req, res) => {
   });
 };
 
+//View all reports associated to logged in user
 exports.viewMyReport = (req, res) => {
   Report.find(
     {
@@ -430,6 +435,7 @@ exports.viewMyReport = (req, res) => {
   });
 };
 
+//Get all reports associated to a doctor that have no been seen yet
 exports.getNewPatientReports = (req, res) => {
   Report.find({
       doctorId : req.userId,
@@ -445,6 +451,7 @@ exports.getNewPatientReports = (req, res) => {
   })
 }
 
+//Mark a patients report as viewed
 exports.markAsViewed = (req, res) => {
     Report.findOne({
         _id : req.params.reportId
@@ -469,6 +476,7 @@ exports.markAsViewed = (req, res) => {
     });
 }
 
+//View report by reportId
 exports.viewMyReportDetails = (req, res) => {
   Report.findOne(
     {
@@ -485,6 +493,7 @@ exports.viewMyReportDetails = (req, res) => {
   });
 };
 
+//Edit answers to report questions using report id
 exports.editMyReportDetails = (req, res) => {
   Report.findOne(
     {

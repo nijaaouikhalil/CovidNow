@@ -9,7 +9,7 @@ const DoctorPatientsList = ({ patients }) => {
           <div className="col-11">
             <Table striped bordered hover variant="light" size="sm">
               <thead>
-                <tr>
+                <tr >
                   <th>#</th>
                   <th>First Name</th>
                   <th>Last Name</th>
@@ -19,48 +19,48 @@ const DoctorPatientsList = ({ patients }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid={'doctor-all-users-table-body'}>
                 {patients && patients.length > 0
                   ? patients.map((patient, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{patient ? patient.name : "John"}</td>
-                        <td>{patient ? patient.lname : "Doe"}</td>
-                        <td className="dd-patient-email">
-                          {patient ? patient.email : "johndoe@test.com"}
-                        </td>
-                        <td>
-                          <Badge
-                            bg={
-                              patient.covidStatus === "Positive"
-                                ? "danger"
-                                : patient.covidStatus === "Pending"
+                    <tr key={index} data-testid={'doctor-all-users-table-row'}>
+                      <td>{index + 1}</td>
+                      <td>{patient ? patient.name : "John"}</td>
+                      <td>{patient ? patient.lname : "Doe"}</td>
+                      <td className="dd-patient-email">
+                        {patient ? patient.email : "johndoe@test.com"}
+                      </td>
+                      <td>
+                        <Badge
+                          bg={
+                            patient.covidStatus === "Positive"
+                              ? "danger"
+                              : patient.covidStatus === "Pending"
                                 ? "warning"
                                 : "info"
-                            }
-                          >
-                            {patient.covidStatus}
-                          </Badge>
-                        </td>
-                        <td>
-                          {patient.covidStatus === "Positive" ||
+                          }
+                        >
+                          {patient.covidStatus}
+                        </Badge>
+                      </td>
+                      <td>
+                        {patient.covidStatus === "Positive" ||
                           patient.covidStatus === "Pending"
-                            ? "True"
-                            : "False"}
-                        </td>
-                        <td>
-                          {patient ? (
-                            <Link to={"/doctor/patientdetails/" + patient._id}>
-                              More
-                            </Link>
-                          ) : (
-                            <Link to={"/doctor/patientdetails/" + index}>
-                              More
-                            </Link>
-                          )}
-                        </td>
-                      </tr>
-                    ))
+                          ? "True"
+                          : "False"}
+                      </td>
+                      <td>
+                        {patient ? (
+                          <Link to={"/doctor/patientdetails/" + patient._id}>
+                            More
+                          </Link>
+                        ) : (
+                          <Link to={"/doctor/patientdetails/" + index}>
+                            More
+                          </Link>
+                        )}
+                      </td>
+                    </tr>
+                  ))
                   : ""}
               </tbody>
             </Table>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { HealthOfficialStatistics } from '../../components/HealthOfficialStatistics';
+import { ImmiStatistics } from '../../components/ImmiStatistics';
 import { Provider } from "react-redux";
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
@@ -9,16 +9,20 @@ import store from '../../store';
 describe("Admin Statistics Page", () => {
 
     it('Renders component without issue', () => {
-        render(<HealthOfficialStatistics />);
+        render(<ImmiStatistics />);
     });
     it('Displays zero when no users passed --> TWEAK THIS! ', () => {
-        render(<HealthOfficialStatistics />);
+        render(<ImmiStatistics />);
         const countCases = screen.getByTestId('immi-stats-count-cases');
         const countPatients = screen.getByTestId('immi-stats-count-patients');
+        const countMessages = screen.getByTestId('immi-stats-count-messages');
+        const countAppointments = screen.getByTestId('immi-stats-count-appointments');
         const countCovidCases = screen.getByTestId('immi-stats-count-covid-cases');
 
         expect(parseInt(countCases.innerHTML)).toBe(1234);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
+        expect(parseInt(countMessages.innerHTML)).toBe(12);
+        expect(parseInt(countAppointments.innerHTML)).toBe(6);
         expect(parseInt(countCovidCases.innerHTML)).toBe(NaN);
 
     });
@@ -37,14 +41,19 @@ describe("Admin Statistics Page", () => {
         ];
         let doctors = [{ name: 'testDoctor' }];
         let users_to_confirm = [{ name: 'test' }];
-        render(<Provider store={store}><MemoryRouter><HealthOfficialStatistics
+        render(<Provider store={store}><MemoryRouter><ImmiStatistics
             doctors={doctors} all_users={all_users} users_to_confirm={users_to_confirm} /></MemoryRouter></Provider>);
         const countCases = screen.getByTestId('immi-stats-count-cases');
         const countPatients = screen.getByTestId('immi-stats-count-patients');
+        const countMessages = screen.getByTestId('immi-stats-count-messages');
+        const countAppointments = screen.getByTestId('immi-stats-count-appointments');
         const countCovidCases = screen.getByTestId('immi-stats-count-covid-cases');
 
         expect(parseInt(countCases.innerHTML)).toBe(1234);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
+        expect(parseInt(countMessages.innerHTML)).toBe(12);
+        expect(parseInt(countAppointments.innerHTML)).toBe(6);
         expect(parseInt(countCovidCases.innerHTML)).toBe(NaN);
     });
 });
+

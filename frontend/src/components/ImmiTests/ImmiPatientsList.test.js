@@ -1,20 +1,20 @@
 import { render, cleanup } from '@testing-library/react';
-import { DoctorPatientsList } from '../../components/DoctorTests/DoctorPatientsList';
+import { ImmiPatientsList } from '../../components/ImmiPatientsList';
 import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom'
 
 
-describe("Table displaying all a doctor's patients", () => {
+describe("Table displaying an immi patients list", () => {
     afterEach(cleanup);
     it('renders without crashing', () => {
-        render(<DoctorPatientsList patients={[]} />);
+        render(<ImmiPatientsList all_users={[]} />);
     });
 
     it('renders empty table when passed empty array', () => {
-        const { queryByTestId } = render(<DoctorPatientsList patients={[]} />)
-        const tableBody = queryByTestId('doctor-all-users-table-body');
-        const tableRow = queryByTestId('doctor-all-users-table-row');
+        const { queryByTestId } = render(<ImmiPatientsList all_users={[]} />)
+        const tableBody = queryByTestId('immi-all-users-table-body');
+        const tableRow = queryByTestId('immi-all-users-table-row');
         expect(tableBody).not.toContainElement(tableRow);
     });
 
@@ -31,9 +31,9 @@ describe("Table displaying all a doctor's patients", () => {
                 your_doctor: { name: "testDoctorName" }
             }
         ]
-        const { queryByTestId } = render(<MemoryRouter><DoctorPatientsList patients={all_users} /></MemoryRouter>)
-        const tableBody = queryByTestId('doctor-all-users-table-body');
-        const tableRow = queryByTestId('doctor-all-users-table-row');
+        const { queryByTestId } = render(<MemoryRouter><ImmiPatientsList all_users={all_users} /></MemoryRouter>)
+        const tableBody = queryByTestId('immi-all-users-table-body');
+        const tableRow = queryByTestId('immi-all-users-table-row');
         expect(tableBody).toContainElement(tableRow);
     });
 });

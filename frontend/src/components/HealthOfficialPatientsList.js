@@ -18,41 +18,41 @@ const HealthOfficialPatientsList = ({ all_users }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid={'hoff-all-users-table-body'}>
                 {all_users && all_users.length > 0
                   ? all_users.map((user, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{user.name}</td>
-                        <td>{user.lname}</td>
-                        <td className="dd-patient-email">{user.email}</td>
-                        <td>
-                          <Badge
-                            bg={
-                              user.covidStatus === "Positive"
-                                ? "danger"
-                                : user.covidStatus === "Pending"
+                    <tr key={index} data-testid={'hoff-all-users-table-row'}>
+                      <td>{index + 1}</td>
+                      <td>{user.name}</td>
+                      <td>{user.lname}</td>
+                      <td className="dd-patient-email">{user.email}</td>
+                      <td>
+                        <Badge
+                          bg={
+                            user.covidStatus === "Positive"
+                              ? "danger"
+                              : user.covidStatus === "Pending"
                                 ? "warning"
                                 : "info"
-                            }
-                          >
-                            {user.covidStatus}
-                          </Badge>
-                        </td>
-                        <td>
-                          {" "}
-                          {user.covidStatus === "Positive" ||
+                          }
+                        >
+                          {user.covidStatus}
+                        </Badge>
+                      </td>
+                      <td>
+                        {" "}
+                        {user.covidStatus === "Positive" ||
                           user.covidStatus === "Pending"
-                            ? "True"
-                            : "False"}
-                        </td>
-                        <td>
-                          <Link to={"/healthoff/patientdetails/" + user._id}>
-                            More
-                          </Link>
-                        </td>
-                      </tr>
-                    ))
+                          ? "True"
+                          : "False"}
+                      </td>
+                      <td>
+                        <Link to={"/healthoff/patientdetails/" + user._id}>
+                          More
+                        </Link>
+                      </td>
+                    </tr>
+                  ))
                   : ""}
               </tbody>
             </Table>

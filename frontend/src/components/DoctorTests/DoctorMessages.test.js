@@ -1,17 +1,29 @@
-import { render, fireEvent, screen } from '@testing-library/react';
-import { useDispatch, useSelector } from "react-redux";
+import { render, screen } from '@testing-library/react';
+import { DoctorMessages } from '../DoctorMessages';
 import '@testing-library/jest-dom'
-
-import CTestScreen_DoctorMessages from '../../screens/componentTestScreens/CTestScreen_DoctorMessages';
-
-import store from "../../store";
+import { MemoryRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
+import store from "../../store.js";
 
-test("ctest - doctor messages", () => {
-    render(
-        <Provider store={store} >
-            <CTestScreen_DoctorMessages />
-        </Provider>
-    );
-    // TO BE IMPLEMENTED
+
+describe("Doctor message page", () => {
+    it('renders without crashing', () => {
+        render(<Provider store={store}><MemoryRouter><DoctorMessages patients={[]}/></MemoryRouter></Provider>);
+    });
+    it('renders 0 rows when no patients given ', () => {
+        render(<MemoryRouter><DoctorMessages patients={[]}/></MemoryRouter>)
+        const rows = screen.queryAllByTestId('doctor-message-item');
+       expect(rows.length).toBe(0);
+    });
+    it('renders 4 rows from default messsages in table ', () => {
+        const patients = [{
+            _id: 123,
+            name: "testName"
+        }]
+        render(<MemoryRouter><DoctorMessages patients={patients}/></MemoryRouter>)
+        const rows = screen.getAllByTestId('doctor-message-item');
+       expect(rows.length).toBe(4);
+    });
 });
+
+

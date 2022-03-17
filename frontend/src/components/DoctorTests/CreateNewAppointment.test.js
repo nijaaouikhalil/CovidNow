@@ -1,14 +1,14 @@
 import { render, screen } from '@testing-library/react';
-import { DoctorAppointment } from '../DoctorAppointment';
+import { CreateNewAppointment } from '../CreateNewAppointment';
 import '@testing-library/jest-dom'
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from "react-redux";
 import store from "../../store.js";
 
 
-describe("Doctor message page", () => {
+describe("Doctor create new appointment page", () => {
     it('renders without crashing', () => {
-        render(<Provider store={store}><MemoryRouter><DoctorAppointment patients={[]}/></MemoryRouter></Provider>);
+        render(<Provider store={store}><MemoryRouter><CreateNewAppointment patients={[]}/></MemoryRouter></Provider>);
     });
 });
 

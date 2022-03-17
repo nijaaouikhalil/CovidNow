@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { CreateNewAppointment } from '../../components/CreateNewAppointment';
-import CTestScreen_ListDoctorAppoinments from './CTestScreen_ListDoctorAppointments';
+import { CreateNewAppointment } from './CreateNewAppointment';
+import { ListDoctorsAppoinments } from './ListDoctorAppointments';
 
-function CTestScreen_DoctorAppointment({ patients }) {
+export const DoctorAppointment = ({ patients }) => {
 
     const [currentTab, setCurrentTab] = useState("Scheduled");
 
@@ -22,10 +22,10 @@ function CTestScreen_DoctorAppointment({ patients }) {
                     </li>
                 </ul>
                 {currentTab === "New Appointment" && <CreateNewAppointment patients={patients} />}
-                {currentTab === "Scheduled" && <CTestScreen_ListDoctorAppoinments patients={patients} />}
+                {currentTab === "Scheduled" && <ListDoctorsAppoinments patients={patients} />}
             </div>
         </div>
     )
 };
-export default CTestScreen_DoctorAppointment;
+
 

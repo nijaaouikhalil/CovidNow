@@ -5,7 +5,7 @@ import DoctorInfo from "../components/Form/DoctorInfo";
 import GouvernInfo from "../components/Form/GouvernInfo";
 import HealthOfficialInfo from "../components/Form/HealthOfficialInfo";
 import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
-import Message from "../components/Message";
+import {Message} from "../components/Message";
 
 function EditProfile() {
   const dispatch = useDispatch();

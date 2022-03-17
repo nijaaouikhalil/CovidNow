@@ -16,11 +16,11 @@ import {
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
 import FormContainer from "./Form/FormContainer";
-import Message from "./Message";
-import Loader from "./Loader";
+import {Message} from "./Message";
+import {Loader} from "./Loader";
 import { getUserDailyReports, getUserDetails } from "../actions/userActions";
 
-function PatientReportSym() {
+export const PatientReportSym = () => {
   const [hasCovid, setHasCovid] = useState(false);
   const [hasTravelled, setHasTravelled] = useState(false);
   const [hasAutoImmuneDisease, setHasAutoImmuneDisease] = useState(false);
@@ -423,5 +423,3 @@ function PatientReportSym() {
     </div>
   );
 }
-
-export default PatientReportSym;

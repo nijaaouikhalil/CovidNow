@@ -98,7 +98,7 @@ export const CanadaCovidCasesByDateRangeLineGraph = () => {
         />
         <div id='doctor-graph-dates'>
           <label htmlFor="">From: </label>
-          <input type="date" onChange={(e) => setAfterDate(e.target.value)} defaultValue={afterDate} />
+          <input data-testid='covid-cases-start-date' type="date" onChange={(e) => setAfterDate(e.target.value)} defaultValue={afterDate} />
           <label htmlFor="">To: </label>
           <input type="date" onChange={(e) => setBeforeDate(e.target.value)} value={beforeDate} />
           <button onClick={() => setUpdateGraphToggle(true)} className='btn btn-primary btn-sm mx-3'>update</button>

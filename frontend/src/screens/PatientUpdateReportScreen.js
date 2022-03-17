@@ -18,8 +18,8 @@ import { BaseUrl } from "../utils/utils";
 import axios from "axios";
 import FormContainer from "../components/Form/FormContainer";
 import { useParams } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import {Loader} from "../components/Loader";
+import {Message} from "../components/Message";
 
 function PatientUpdateReportScreen() {
   const [hasCovid, setHasCovid] = useState(false);

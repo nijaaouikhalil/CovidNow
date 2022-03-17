@@ -37,7 +37,7 @@ const Inbox = () => {
                             <ul className="messageList">
 
                                 {messages && messages.length && messages.map((message, i)=> (                            
-                                    <li key={`msg${i}`} className={message.from == 'doctor' ?"recievedMessage" : "sentMessage"}>
+                                    <li data-testid={'patient-message-row'} key={`msg${i}`} className={message.from == 'doctor' ?"recievedMessage" : "sentMessage"}>
                                         <small>{message.from == 'doctor' ? "Doctor" : "Me"}</small>
                                         {message.message}
                                     </li>

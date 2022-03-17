@@ -11,12 +11,11 @@ describe("Doctor Statistics Page", () => {
     it('Renders component without issue', () => {
         render(<Provider store={store}><MemoryRouter><DoctorStatistics
             patients={[]} /></MemoryRouter></Provider>);
-        //render(<DoctorStatistics />);
     });
-    it('Displays zero when no users passed --> TWEAK THIS! ', () => {
+    it('Displays zero when no users passed', () => {
         render(<Provider store={store}><MemoryRouter><DoctorStatistics
             patients={[]} /></MemoryRouter></Provider>);
-        //render(<DoctorStatistics />);
+
         const countCases = screen.getByTestId('doctor-stats-count-cases');
         const countPatients = screen.getByTestId('doctor-stats-count-patients');
         const countMessages = screen.getByTestId('doctor-stats-count-messages');

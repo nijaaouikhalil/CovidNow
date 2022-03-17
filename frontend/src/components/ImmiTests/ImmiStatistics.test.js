@@ -6,12 +6,12 @@ import { Provider } from "react-redux";
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
 
-describe("Admin Statistics Page", () => {
+describe("Immigration Statistics Page", () => {
 
     it('Renders component without issue', () => {
         render(<ImmiStatistics />);
     });
-    it('Displays zero when no users passed --> TWEAK THIS! ', () => {
+    it('Displays zero when no users passed', () => {
         render(<ImmiStatistics />);
         const countCases = screen.getByTestId('immi-stats-count-cases');
         const countPatients = screen.getByTestId('immi-stats-count-patients');

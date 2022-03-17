@@ -6,12 +6,12 @@ import { Provider } from "react-redux";
 import store from "../../store.js";
 import { DoctorsPieChart } from '../DoctorsPieChart';
 
-describe("Admin Pie Chart sort users", () => {
+describe("Doctor Pie Chart sort users", () => {
     it('Renders component without issue', () => {
-        render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={[]}/></MemoryRouter></Provider>);
+        render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={[]} /></MemoryRouter></Provider>);
     });
     it('Chart not displayed if no users passed', async () => {
-        const { container } = render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={[]}/></MemoryRouter></Provider>);
+        const { container } = render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={[]} /></MemoryRouter></Provider>);
         expect(container.childElementCount).toEqual(0);
     });
     it('Chart displayed if users passed', async () => {
@@ -22,12 +22,12 @@ describe("Admin Pie Chart sort users", () => {
                 lname: 'testLName',
                 email: 'test@email',
                 count: 29,
-                roles: {name:'admin'},
+                roles: { name: 'admin' },
                 covidStatus: 'negative',
-                your_doctor: {name: "testDoctorName"}
+                your_doctor: { name: "testDoctorName" }
             }
         ]
-        const { container } = render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={all_users}/></MemoryRouter></Provider>);
+        const { container } = render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={all_users} /></MemoryRouter></Provider>);
         expect(container.childElementCount).toEqual(1);
     });
 });

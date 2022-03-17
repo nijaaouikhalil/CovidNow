@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
 
-describe("Admin Statistics Page", () => {
+describe("Health Official Statistics Page", () => {
 
     it('Renders component without issue', () => {
         render(<HealthOfficialStatistics />);

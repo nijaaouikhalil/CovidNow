@@ -3,7 +3,7 @@ import { Message } from '../Message';
 import '@testing-library/jest-dom'
 
 
-describe("Loader component", () => {
+describe("Message component", () => {
     afterEach(cleanup);
     it('renders without crashing', () => {
         render(<Message />);

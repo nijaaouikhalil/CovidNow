@@ -6,14 +6,14 @@ import { Provider } from "react-redux";
 import store from "../../store.js";
 
 
-describe("Patients contact tracing form", () => {
+describe("Patients messages", () => {
     it('renders without crashing', () => {
         render(<Provider store={store}><MemoryRouter><PatientMessages /></MemoryRouter></Provider>);
     });
     it('renders 4 rows in table ', () => {
-        render(<MemoryRouter><PatientMessages/></MemoryRouter>)
+        render(<MemoryRouter><PatientMessages /></MemoryRouter>)
         const rows = screen.getAllByTestId('patient-message-row');
-       expect(rows.length).toBe(4);
+        expect(rows.length).toBe(4);
     });
 });
 

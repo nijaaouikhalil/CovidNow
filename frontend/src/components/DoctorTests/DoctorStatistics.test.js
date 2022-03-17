@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { DoctorStatistics } from '../../components/DoctorTests/DoctorStatistics';
+import { DoctorStatistics } from '../../components/DoctorStatistics';
 import { Provider } from "react-redux";
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';

@@ -1,5 +1,5 @@
 import { render, cleanup } from '@testing-library/react';
-import { DoctorPatientsList } from '../../components/DoctorTests/DoctorPatientsList';
+import { DoctorPatientsList } from '../../components/DoctorPatientsList';
 import ReactDOM from 'react-dom';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom'

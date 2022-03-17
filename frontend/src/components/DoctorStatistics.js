@@ -1,5 +1,5 @@
 import { DoctorsPieChart } from './DoctorsPieChart';
-import { CanadaCovidCasesByDateRangeLineGraph } from '../CanadaCovidCasesByDateRangeLineGraph';
+import { CanadaCovidCasesByDateRangeLineGraph } from '../components/CanadaCovidCasesByDateRangeLineGraph';
 
 
 const DoctorStatistics = ({ setSubPage, patients }) => {

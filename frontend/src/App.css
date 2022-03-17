@@ -63,6 +63,7 @@
   flex-direction: column!important;
   margin-bottom: 25px;
   box-shadow: 3px 3px 3px #888888;
+  justify-content: center;
 }
 
 .dd-card-link:hover {
@@ -85,22 +86,17 @@
   .dd-card {
     width: 400px!important;
   }
-  #dd-chart img {
-    width: 400px!important;
-  }
   #dd-pie {
     margin-top: -20px!important;
-  }
-}
-@media screen and (max-width: 920px) {
-  #dd-chart img {
-    width: 350px!important;
   }
 }
 
 @media screen and (max-width: 1354px) {
   #dd-chart {
     margin-top: 60px!important;
+  }
+  #dd-data-visuals {
+    margin-top: 20px!important;
   }
 }
 
@@ -130,8 +126,12 @@
 }
 
 #dd-data-visuals {
+  display: flex;
   flex-wrap: wrap;
-  margin: 60px 20px 50px 20px;
+  margin: 70px 20px 50px 20px;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: space-around;
 }
 
 #dd-data-visuals h5 {
@@ -141,27 +141,33 @@
 #dd-pie {
   box-sizing: content-box;
   border-radius: 10px;
-  padding: 40px;
+  width: 300px;
+  padding: 15px;
   box-shadow: 3px 3px 3px #888888;
 }
 
-#dd-pie img {
-  margin-top: 10px;
-  width: 250px;
-  height: 250px;
-}
-
 #dd-chart {
-  padding: 40px;
+  min-width: 450px;
+  flex: 0.8;
+  height: 300px;
+  justify-content: space-evenly;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  margin: 0 10px;
   box-sizing: content-box;
   border-radius: 10px;
   box-shadow: 3px 3px 3px #888888;
 }
 
-#dd-chart img{
-  margin-top: 10px;
-  width: 600px;
-  height: 250px;
+#dd-chart h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: rgb(100, 100, 100);
+}
+#dd-chart img {
+  width: 90%;
 }
 
 #dd-main-container a {
@@ -190,4 +196,103 @@
 }
 .pastel-red {
   background-color: rgba(228, 127, 141, 0.2);
+}
+
+
+/* CHARTS & GRAPHS */
+
+/* DOCTORS CHARTS */
+
+.pointer {
+  cursor: pointer;
+}
+
+#doctorDatePicker {
+  width: 220px;
+}
+
+#appointmentPatientDropdown > input::placeholder{
+  color: white;
+}
+
+.stay-open {display:block !important;}
+
+#doctor-graph-dates {
+  display: flex;
+  justify-content: center;
+}
+
+#doctor-graph-dates > label{
+  margin: 5px;
+  font-size: 14px;
+}
+
+#doctor-graph-dates > input{
+  margin: 5px;
+  font-size: 14px;
+}
+
+#chart-expand-icon:hover {
+  color: orangered;
+}
+
+#doctor-line-chart {
+  width: 450px!important;
+}
+
+
+/* PATIENT MESSAGES */
+
+
+.messageList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.messageList li {
+  position: relative;
+  margin: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  width: 75%;
+}
+
+.recievedMessage {
+  align-self: flex-start;
+  background-color: rgba(241, 162, 57, 0.4);
+}
+
+.sentMessage {
+  align-self: flex-end;
+  background: rgba(128, 216, 216, 0.6);
+
+}
+
+.messageList small {
+  position: absolute;
+  top: -17px;
+}
+
+.acc-rounded-corners {
+  border-radius: 10px!important;
+}
+
+#doctor-inbox-cont {
+  height: 80vh;
+}
+
+#doctor-inbox-cont > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#doctor-inbox-cont > div button {
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 2px 5px;
+  text-align: center;
+  margin: 2px;
+  text-transform: capitalize;
 }

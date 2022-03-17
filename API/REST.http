@@ -2,12 +2,12 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "health",
-    "lname": "official",
-    "email":"health_official@gmail.com",
+    "name" : "FlaggedUser",
+    "lname": "FlaggedUser",
+    "email":"Flagged@User",
     "password":"pass",
     "cpassword": "pass",
-    "roles": "health_official"
+    "roles": "user"
 
 }
 
@@ -49,8 +49,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"admin1@admin.com",
-    "password":"admin"
+    "email":"doctor@doctor.com",
+    "password":"doctor"
 }
 
 ###
@@ -58,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"patient@patient.com",
-    "password":"patient"
+    "email":"doctor@doctor.com",
+    "password":"doctor"
 }
 
 ###
@@ -88,7 +88,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjg4MjU5YWEwNzE
 
 POST http://localhost:8080/api/view/assign
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTU3MjI4MSwiZXhwIjoxNjQ1NjU4NjgxfQ.EfZu5iLD0krd7MV4oRm1ezOEg7LV3r5nQMN6CsiewK4
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzEzODYzNywiZXhwIjoxNjQ3MjI1MDM3fQ.ztdKipSiEsVMD946zpyGrOf3NY2QvveCyfkqssT5pxM
 
 {
     "doctorId": "6206d9a5c48f73131c34f3ef",
@@ -107,7 +107,16 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE
 ###
 GET http://localhost:8080/api/view
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0NTM3NDcwNywiZXhwIjoxNjQ1NDYxMTA3fQ.j8fgj59lYo56PJFlg3bBGrIiMedsa7pzOtR5Rs51w5c
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzEzODYzNywiZXhwIjoxNjQ3MjI1MDM3fQ.ztdKipSiEsVMD946zpyGrOf3NY2QvveCyfkqssT5pxM
+
+{
+
+}
+
+###
+GET http://localhost:8080/api/view/620eca00f1eb719f8011f97d
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzEzODYzNywiZXhwIjoxNjQ3MjI1MDM3fQ.ztdKipSiEsVMD946zpyGrOf3NY2QvveCyfkqssT5pxM
 
 {
     
@@ -125,7 +134,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4Zjc
 ###
 PUT http://localhost:8080/api/view/fillReport
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjcxOWY4MDExZjk3ZCIsImlhdCI6MTY0NTM4OTg2OCwiZXhwIjoxNjQ1NDc2MjY4fQ.-mUsQB5k6t-BodI2X9m1-mHlEIJ_7Q5YUE4G3_EkTIk
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njk3MjM4OCwiZXhwIjoxNjQ3MDU4Nzg4fQ.LyD58FN8YPYiAd6Sz5c80pjyqtZQE-AbK7To9ikaDaM
 
 {
     "hasCovid": true,
@@ -136,10 +145,107 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGVjYTAwZjFlYjc
 }
 
 ###
+GET http://localhost:8080/api/view/fillReport/getCustom
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njk3MjM4OCwiZXhwIjoxNjQ3MDU4Nzg4fQ.LyD58FN8YPYiAd6Sz5c80pjyqtZQE-AbK7To9ikaDaM
+
+{
+
+}
+
+###
 GET http://localhost:8080/api/view/620eca00f1eb719f8011f97d/report
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NTQwMDI0MywiZXhwIjoxNjQ1NDg2NjQzfQ.mkX1LQtbXy01-xtZoTiEPsYrLrSAz1nYGgcCzDLozWg
 
 {
+
+}
+
+###
+POST http://localhost:8080/api/contactedPeople
+Content-Type:  application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njg4NzQ2MSwiZXhwIjoxNjQ2OTczODYxfQ.aVHiFtSiFLd-1T5KB4ph0ndIBI6_cVBN2hn_8nlWpCw
+
+{
+    "name":"FlaggedUser",
+    "lname":"FlaggedUser",
+    "email":"Flagged@User"
+}
+
+###
+GET http://localhost:8080/api/view/user/myreport
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0Njg3MzE1NiwiZXhwIjoxNjQ2OTU5NTU2fQ.GbOTBlbe-psbauCJgxhxQ69OLzbfl4aNZAL9L7xLo_c
+
+{
+ 
+}
+
+###
+POST http://localhost:8080/api/appointmentBooking
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzIyNDk2NywiZXhwIjoxNjQ3MzExMzY3fQ.2Z-ulNywgFDe8IHpsa2b-C3DdBp0Op8hjVEOZ5nQCxU
+
+{
+    "userId":"620eca00f1eb719f8011f97d",
+    "appointmentDate":"2022-12-30T16:00:00Z",
+    "description":"kfaklmflka"
+}
+
+###
+GET  http://localhost:8080/api/appointmentsWithPatients
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzIyNDk2NywiZXhwIjoxNjQ3MzExMzY3fQ.2Z-ulNywgFDe8IHpsa2b-C3DdBp0Op8hjVEOZ5nQCxU
+
+{
+    
+}
+
+###
+
+GET http://localhost:8080/api/view/report/all/mypatients
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0Njk2Mjc0MiwiZXhwIjoxNjQ3MDQ5MTQyfQ.SY7WqteV-IcVeQniSxpEq9aIGA_lec7E1S_ROzUVIDk
+
+{
+
+
+}
+
+###
+PUT http://localhost:8080/api/view/620eca00f1eb719f8011f97d/report/viewed/6212ac8293c2fd5209e61c6c
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0Njk2Mjc0MiwiZXhwIjoxNjQ3MDQ5MTQyfQ.SY7WqteV-IcVeQniSxpEq9aIGA_lec7E1S_ROzUVIDk
+
+{
+    
+}
+
+###
+GET http://localhost:8080/api/view/user/myreport/622b834e3ab51af6ba7cc19d
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0NzE0MDE4OSwiZXhwIjoxNjQ3MjI2NTg5fQ.3X05fdakeKDlfCK2zpFAZTvwqshutT6lktH-7hHUvRo
+
+{
+
+
+}
+
+###
+PUT http://localhost:8080/api/view/user/myreport/622b834e3ab51af6ba7cc19d
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0NzE0MDE4OSwiZXhwIjoxNjQ3MjI2NTg5fQ.3X05fdakeKDlfCK2zpFAZTvwqshutT6lktH-7hHUvRo
+
+{
+    "hasCovid": true,
+    "hasTravelled": false,
+    "hasAutoImmuneDisease": false,
+    "isPregnant": false,
+    "hadAllergicReaction": false,
+    "Temperature": 35,
+    "Weight": 72,
+    "Height": 190,
+    "customAns": "A little bit"
 
 }

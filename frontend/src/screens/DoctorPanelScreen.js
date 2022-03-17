@@ -4,20 +4,18 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-// import { DoctorlistUsers } from "../actions/doctorActions";
-import { LinkContainer } from "react-router-bootstrap";
-
 import { DoctorStatistics } from "../components/DoctorStatistics";
 import { DoctorPatientsList } from "../components/DoctorPatientsList";
 import { DoctorlistPatients } from "../actions/doctorActions";
+import { DoctorAppointment } from '../components/DoctorAppointment';
+import { DoctorMessages } from '../components/DoctorMessages';
 
 function DoctorPanelScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-  const [subPage, setSubPage] = useState("Statistics");
+  const [subPage, setSubPage] = useState("Home");
   const doctorListPatients = useSelector((state) => state.doctorListPatients);
   const { patients, loading, error } = doctorListPatients;
 
@@ -42,12 +40,12 @@ function DoctorPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='Statistics' ? "nav-link active" : "nav-link"}
+                  className={subPage =='Home' ? "nav-link active" : "nav-link"}
                   aria-current="page"
-                  onClick={() => setSubPage("Statistics")}
+                  onClick={() => setSubPage("Home")}
                 >
                   <i className="fas fa-chart-line me-3"></i>
-                  Statistics
+                  Home
                 </a>
               </li>
               <li className="nav-item">
@@ -103,27 +101,32 @@ function DoctorPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className={subPage =='Statistics' ? "dropdown-item active" : "dropdown-item"} href="#">
-                    <i className="fas fa-chart-line me-2"></i> Statistics
+                  <a className={subPage =='Home' ? "dropdown-item active" : "dropdown-item"}
+                  onClick={() => setSubPage("Home")}>
+                    <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Patients' ? "dropdown-item active" : "dropdown-item"} href="#">
-                    <i className="fas fa-hospital-user me-2"></i> Patients
+                  <a className={subPage =='My Patients' ? "dropdown-item active" : "dropdown-item"}
+                  onClick={() => setSubPage("My Patients")}>
+                    <i className="fas fa-hospital-user me-2"></i> My Patients
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Messages' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Messages' ? "dropdown-item active" : "dropdown-item"}
+                  onClick={() => setSubPage("Messages")}>
                     <i className="fas fa-inbox me-2"></i> Messages
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Appointments' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Appointments' ? "dropdown-item active" : "dropdown-item"}
+                  onClick={() => setSubPage("Appointments")} >
                     <i className="fas fa-calendar me-2"></i> Appointments
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"} href="#">
+                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"}
+                  onClick={() => setSubPage("Settings")}>
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>
@@ -132,10 +135,12 @@ function DoctorPanelScreen() {
           </div>
         </div>
 
-        {subPage == "Statistics" && (
+        {subPage == "Home" && (
           <DoctorStatistics patients={patients} setSubPage={setSubPage} />
         )}
         {subPage == "My Patients" && <DoctorPatientsList patients={patients} />}
+        {subPage == "Appointments" && <DoctorAppointment patients={patients} />}
+        {subPage == "Messages" && <DoctorMessages patients={patients} />}
       </div>
     </div>
 

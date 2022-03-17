@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import App from './App';
+//import App from './App';
 import { login, register, logout } from "./actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 

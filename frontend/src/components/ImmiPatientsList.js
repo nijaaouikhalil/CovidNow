@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 const ImmiPatientsList = ({ all_users }) => {
@@ -19,23 +19,40 @@ const ImmiPatientsList = ({ all_users }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid={'immi-all-users-table-body'}>
                 {all_users && all_users.length > 0
                   ? all_users.map((user, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{user.name}</td>
-                        <td>{user.lname}</td>
-                        <td className="dd-patient-email">{user.email}</td>
-                        <td>True</td>
-                        <td>True</td>
-                        <td>
-                          <Link to={"/immi/patientdetails/" + user._id}>
-                            More
-                          </Link>
-                        </td>
-                      </tr>
-                    ))
+                    <tr key={index} data-testid={'immi-all-users-table-row'}>
+                      <td>{index + 1}</td>
+                      <td>{user.name}</td>
+                      <td>{user.lname}</td>
+                      <td className="dd-patient-email">{user.email}</td>
+                      <td>
+                        <Badge
+                          bg={
+                            user.covidStatus === "Positive"
+                              ? "danger"
+                              : user.covidStatus === "Pending"
+                                ? "warning"
+                                : "info"
+                          }
+                        >
+                          {user.covidStatus}
+                        </Badge>
+                      </td>
+                      <td>
+                        {user.covidStatus === "Positive" ||
+                          user.covidStatus === "Pending"
+                          ? "True"
+                          : "False"}
+                      </td>
+                      <td>
+                        <Link to={"/immi/patientdetails/" + user._id}>
+                          More
+                        </Link>
+                      </td>
+                    </tr>
+                  ))
                   : ""}
               </tbody>
             </Table>

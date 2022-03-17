@@ -5,8 +5,8 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
 import { useNavigate } from "react-router-dom";
 import { login } from "../actions/userActions";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import {Loader} from "../components/Loader";
+import {Message} from "../components/Message";
 function LoginScreen() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,7 +32,7 @@ function LoginScreen() {
   };
   return (
     <FormContainer>
-      <h1>Sign In</h1>
+      <h1 className='mt-4'>Sign In</h1>
       {register_message && (
         <Message variant="warning">{register_message}</Message>
       )}

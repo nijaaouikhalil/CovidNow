@@ -27,9 +27,18 @@ const User = mongoose.model(
       type: Date,
       default: Date.now,
     },
+    dateSubmitted: {
+      type: Date,
+      default: Date.now,
+    },
     status: {
       type: String,
       enum: ["Pending", "Active"],
+      default: "Pending",
+    },
+    covidStatus: {
+      type: String,
+      enum: ["Negative", "Pending", "Positive"],
       default: "Pending",
     },
     confirmationCode: {
@@ -55,6 +64,8 @@ const User = mongoose.model(
         sparse: true,
       },
     },
+
+    
 
     governmentOfficialInfo: {
       governmentID: {

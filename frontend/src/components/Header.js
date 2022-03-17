@@ -4,14 +4,14 @@ import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../actions/userActions";
-function Header() {
+export const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
 
   const goHome = () => {
-    navigate("/");
+    navigate("/login");
   };
 
   const logoutHandler = () => {
@@ -19,7 +19,7 @@ function Header() {
     goHome();
   };
   return (
-    <Navbar id="main-navbar" bg="primary" collapseOnSelect variant="dark">
+    <Navbar id="main-navbar" className="d-flex align-items-center" bg="primary" collapseOnSelect variant="dark">
       <Container>
         <LinkContainer to="/">
           <Navbar.Brand>CovidTracker</Navbar.Brand>
@@ -29,8 +29,8 @@ function Header() {
           <LinkContainer className="m-3" to="/">
             <i className="fas fa-home clickable"> Home </i>
           </LinkContainer>
-          {user_info ? (
-            <NavDropdown title={user_info.name} id="name" className="text-body">
+          {user_info && (
+            <NavDropdown title={user_info.name.substring(0,1).toUpperCase()+user_info.name.substring(1,user_info.name.length)} id="name" className="text-body d-flex align-items-center">
               <LinkContainer to={`/editprofile`}>
                 <NavDropdown.Item>Edit my info</NavDropdown.Item>
               </LinkContainer>
@@ -40,57 +40,13 @@ function Header() {
                 Logout
               </NavDropdown.Item>
             </NavDropdown>
-          ) : (
-            <LinkContainer to="/login">
-              <Nav.Link className="text-body">
-                <i className="fas fa-user clickable"></i> Login
-              </Nav.Link>
-            </LinkContainer>
-          )}
+          ) }
           <LinkContainer className="m-3" to="/announcements">
             <i className="fas fa-bullhorn clickable"> Announcements </i>
           </LinkContainer>
-        </Nav>
-        <Nav className="ml-auto">
-          {user_info && user_info.roles === "ROLE_ADMIN" && (
-            <NavDropdown title="Admin" id="adminmenue">
-              <LinkContainer to="/admin/dashboard">
-                <NavDropdown.Item>Dashboard</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          )}
-          {user_info && user_info.roles === "ROLE_DOCTOR" && (
-            <NavDropdown title="Doctor" id="doctormenue">
-              <LinkContainer to="/doctor/dashboard">
-                <NavDropdown.Item>Dashboard</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          )}
-          {user_info && user_info.roles === "ROLE_HEALTH_OFFICIAL" && (
-            <NavDropdown title="Health Official" id="healthoffmenu">
-              <LinkContainer to="/healthoff/dashboard">
-                <NavDropdown.Item>Dashboard</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          )}
-          {user_info && user_info.roles === "ROLE_IMMIGRATION_OFFICER" && (
-            <NavDropdown title="Immigration Officer" id="immimenue">
-              <LinkContainer to="/immi/dashboard">
-                <NavDropdown.Item>Dashboard</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          )}
-          {user_info && user_info.roles === "ROLE_USER" && (
-            <NavDropdown title="Patient" id="patientmenu">
-              <LinkContainer to="/patient/dashboard">
-                <NavDropdown.Item>Dashboard</NavDropdown.Item>
-              </LinkContainer>
-            </NavDropdown>
-          )}
         </Nav>
       </Container>
     </Navbar>
   );
 }
 
-export default Header;

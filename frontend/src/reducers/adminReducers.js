@@ -11,6 +11,10 @@ import {
   ADMIN_LIST_ALL_USERS_SUCCESS,
   ADMIN_LIST_ALL_USERS_FAIL,
   ADMIN_LIST_ALL_USERS_RESET,
+  FLAG_USER_COVID_REQUEST,
+  FLAG_USER_COVID_SUCCESS,
+  FLAG_USER_COVID_FAIL,
+  FLAG_USER_COVID_RESET,
 } from "../constants/adminConstants";
 
 export const adminUpdateReducer = (state = {}, action) => {
@@ -89,6 +93,25 @@ export const AdminListAllUsersReducer = (
       return {
         all_users: [],
       };
+
+    default:
+      return state;
+  }
+};
+
+export const FlagCovidReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FLAG_USER_COVID_REQUEST:
+      return { loading: true };
+
+    case FLAG_USER_COVID_SUCCESS:
+      return { loading: false, success: true, message: action.payload.message };
+
+    case FLAG_USER_COVID_FAIL:
+      return { loading: false, error: action.payload };
+
+    case FLAG_USER_COVID_RESET:
+      return {};
 
     default:
       return state;

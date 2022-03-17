@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import PatientReportSym from "../components/PatientReportSym";
+import {PatientReportSym} from "../components/PatientReportSym";
 import { PatientStatistics } from "../components/PatientStatistics";
+import { PatientContactTracing } from '../components/PatientContactTracing';
+import { PatientMessages } from '../components/PatientMessages';
 
 function PatientPanelScreen() {
   const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
-  const [subPage, setSubPage] = useState("Statistics");
+  const [subPage, setSubPage] = useState("Home");
 
   useEffect(() => {
     if (!user_info) {
@@ -34,13 +36,13 @@ function PatientPanelScreen() {
               <li className="nav-item">
                 <a
                   className={
-                    subPage == "Statistics" ? "nav-link active" : "nav-link"
+                    subPage == "Home" ? "nav-link active" : "nav-link"
                   }
                   aria-current="page"
-                  onClick={() => setSubPage("Statistics")}
+                  onClick={() => setSubPage("Home")}
                 >
                   <i className="fas fa-chart-line me-3"></i>
-                  Statistics
+                  Home
                 </a>
               </li>
               <li className="nav-item">
@@ -59,12 +61,25 @@ function PatientPanelScreen() {
               <li className="nav-item">
                 <a
                   className={
-                    subPage == "Menu item" ? "nav-link active" : "nav-link"
+                    subPage == "Messages"
+                      ? "nav-link active"
+                      : "nav-link"
                   }
-                  onClick={() => setSubPage("Menu item")}
+                  onClick={() => setSubPage("Messages")}
                 >
-                  <i className="fas fa-check-square me-3"></i>
-                  Menu item
+                  <i className="fas fa-inbox me-3"></i>
+                  Messages
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className={
+                    subPage == "Contact Tracing" ? "nav-link active" : "nav-link"
+                  }
+                  onClick={() => setSubPage("Contact Tracing")}
+                >
+                  <i className="fas fa-search-location me-3"></i>
+                  Contact Tracing
                 </a>
               </li>
               <li className="nav-item">
@@ -103,13 +118,13 @@ function PatientPanelScreen() {
                 <li>
                   <a
                     className={
-                      subPage == "Statistics"
+                      subPage == "Home"
                         ? "dropdown-item active"
                         : "dropdown-item"
                     }
-                    onClick={() => setSubPage("Statistics")}
+                    onClick={() => setSubPage("Home")}
                   >
-                    <i className="fas fa-chart-line me-2"></i> Statistics
+                    <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
@@ -128,13 +143,25 @@ function PatientPanelScreen() {
                 <li>
                   <a
                     className={
-                      subPage == "Menu item"
+                      subPage == "Messages"
                         ? "dropdown-item active"
                         : "dropdown-item"
                     }
-                    onClick={() => setSubPage("Menu item")}
+                    onClick={() => setSubPage("Messages")}
                   >
-                    <i className="fas fa-check-square me-2"></i> Menu item
+                    <i className="fas fa-inbox me-2"></i> Messages
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={
+                      subPage == "Contact Tracing"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("Contact Tracing")}
+                  >
+                    <i className="fas fa-search-location me-2"></i> Contact Tracing
                   </a>
                 </li>
                 <li>
@@ -154,11 +181,17 @@ function PatientPanelScreen() {
           </div>
         </div>
 
-        {subPage === "Statistics" && (
+        {subPage === "Home" && (
           <PatientStatistics setSubPage={setSubPage} />
         )}
         {subPage === "Daily symptom report" && (
           <PatientReportSym setSubPage={setSubPage} />
+        )}
+        {subPage === "Contact Tracing" && (
+          <PatientContactTracing />
+        )}
+        {subPage === "Messages" && (
+          <PatientMessages />
         )}
       </div>
     </div>

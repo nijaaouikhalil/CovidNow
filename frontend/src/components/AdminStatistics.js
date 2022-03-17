@@ -1,9 +1,11 @@
-import { Link } from "react-router-dom";
+import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+import { AdminPieChart } from './AdminPieChart';
+
 const AdminStatistics = ({
   setSubPage,
-  all_users,
-  users_to_confirm,
-  doctors,
+  all_users = [],
+  users_to_confirm = [],
+  doctors = [],
 }) => {
   return (
     <div id="dd-main-container">
@@ -15,19 +17,19 @@ const AdminStatistics = ({
           </div>
           <div className="dd-card dd-card-link pastel-green">
             <a onClick={() => setSubPage("All Users")}>
-              <h3>{all_users ? all_users.length : 0}</h3>
+              <h3 data-testid='admin-stats-count-all'>{all_users ? all_users.length : 0}</h3>
               <p>Total users</p>
             </a>
           </div>
           <div className="dd-card dd-card-link pastel-orange">
             <a onClick={() => setSubPage("Confirm Users")}>
-              <h3>{users_to_confirm ? users_to_confirm.length : 0}</h3>
+              <h3 data-testid='admin-stats-count-confirm'>{users_to_confirm ? users_to_confirm.length : 0}</h3>
               <p>Users to Confirm</p>
             </a>
           </div>
           <div className="dd-card dd-card-link pastel-green">
             <a onClick={() => setSubPage("All Users")}>
-              <h3>{doctors ? doctors.length : 0}</h3>
+              <h3 data-testid='admin-stats-count-doctor'>{doctors ? doctors.length : 0}</h3>
               <p>Total doctors</p>
             </a>
           </div>
@@ -38,12 +40,11 @@ const AdminStatistics = ({
           className="d-flex justify-content-around align-items-center"
         >
           <div id="dd-pie" className="pastel-blue dd-card-link">
-            <h5 className="text-center">Pie Chart Title</h5>
-            <img src="/img/piechart.png" alt="pie-chart" />
+            <AdminPieChart all_users={all_users} />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h5 className="text-center">Graph Title</h5>
-            <img src="/img/graph.png" alt="graph" />
+            <h4>Canadian Covid Cases</h4>
+            <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>
       </div>

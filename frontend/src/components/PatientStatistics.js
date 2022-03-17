@@ -1,3 +1,6 @@
+
+import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+
 const PatientStatistics = ({ setSubPage }) => {
   return (
     <div id="dd-main-container">
@@ -7,17 +10,13 @@ const PatientStatistics = ({ setSubPage }) => {
             <h3>1234</h3>
             <p>Total submitted daily reports </p>
           </div>
-          <div className="dd-card dd-card-link pastel-green">
-            <a onClick={() => setSubPage("")}>
-              <h3>7</h3>
-              <p>Remaining Days In Quarantine</p>
-            </a>
+          <div onClick={() => setSubPage("")} className="dd-card dd-card-link pastel-green">
+            <h3 data-testid={'patient-remaining-days'}>7</h3>
+            <p>Remaining Days In Quarantine</p>
           </div>
-          <div className="dd-card dd-card-link pastel-orange">
-            <a onClick={() => setSubPage("")}>
-              <h3>4</h3>
+          <div onClick={() => setSubPage("Contact Tracing")} className="dd-card dd-card-link pastel-orange">
+              <h3 data-testid={'patient-users-traced'}>4</h3>
               <p>Users Traced</p>
-            </a>
           </div>
         </div>
 
@@ -29,9 +28,9 @@ const PatientStatistics = ({ setSubPage }) => {
             <h5 className="text-center">Pie Chart Title</h5>
             <img src="/img/piechart.png" alt="pie-chart" />
           </div>
-          <div id="dd-chart" className="pastel-orange">
-            <h5 className="text-center">Graph Title</h5>
-            <img src="/img/graph.png" alt="graph" />
+          <div id="dd-chart" className="pastel-orange dd-card-link">
+            <h4>Canadian Covid Cases</h4>
+            <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { Table } from "react-bootstrap";
+import { Table, Badge } from "react-bootstrap";
 import { Link } from "react-router-dom";
 const AdminAllUsersList = ({ all_users }) => {
   return (
@@ -19,10 +19,10 @@ const AdminAllUsersList = ({ all_users }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody data-testid={'admin-all-users-table-body'}>
                 {all_users && all_users.length > 0
                   ? all_users.map((user, index) => (
-                      <tr key={index}>
+                      <tr data-testid={'admin-all-users-table-row'} key={index}>
                         <td>{index + 1}</td>
                         <td>{user.name}</td>
                         <td>{user.lname}</td>
@@ -42,7 +42,19 @@ const AdminAllUsersList = ({ all_users }) => {
                             "User"
                           )}
                         </td>
-                        <td>True</td>
+                        <td>
+                          <Badge
+                            bg={
+                              user.covidStatus === "Positive"
+                                ? "danger"
+                                : user.covidStatus === "Pending"
+                                ? "warning"
+                                : "info"
+                            }
+                          >
+                            {user.covidStatus}
+                          </Badge>
+                        </td>
                         <td className="text-center">
                           {user.your_doctor
                             ? user.your_doctor.name

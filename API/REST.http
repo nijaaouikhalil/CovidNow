@@ -274,11 +274,30 @@ Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0ODc2NTM5NCwiZXhwIjoxNjQ4ODUxNzk0fQ.jALvAfG39OzF3zEc-P_l_-g3ihxhiSN3S68S3TziQaE
 
 {
-    "message": "Hello how are you today"
+    "message": "Have you done x",
+    "emergency": true
 }
 
 ###
 GET http://localhost:8080/api/message/recipient/6206d9a5c48f73131c34f3ef
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODc2NDg0OCwiZXhwIjoxNjQ4ODUxMjQ4fQ.IfzAbV9K2BOhMskUJ4XsRpLAN8KfB25XVIqlLjjAyvs
+
+{
+
+}
+
+###
+GET http://localhost:8080/api/message/emergency/recipient/6206d9a5c48f73131c34f3ef
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODc2NDg0OCwiZXhwIjoxNjQ4ODUxMjQ4fQ.IfzAbV9K2BOhMskUJ4XsRpLAN8KfB25XVIqlLjjAyvs
+
+{
+
+}
+
+###
+PUT http://localhost:8080/api/message/seen/emergency/recipient/62463336bbf1390ded1f0a9f
 Content-Type: application/json
 x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODc2NDg0OCwiZXhwIjoxNjQ4ODUxMjQ4fQ.IfzAbV9K2BOhMskUJ4XsRpLAN8KfB25XVIqlLjjAyvs
 

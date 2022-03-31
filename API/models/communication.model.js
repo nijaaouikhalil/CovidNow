@@ -21,7 +21,11 @@ const communication = mongoose.model(
     date: {
       type: Date,
       default: Date.now,
-    },   
+    },
+    emergency: {
+      type: Boolean,
+      default: false,
+    }   
   })
 );
 

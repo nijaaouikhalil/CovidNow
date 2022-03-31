@@ -32,6 +32,20 @@ module.exports = function (app) {
     [authJwt.verifyToken, authJwt.requestRoleName],
     communicationController.getAllMessages
   );
+
+  //get only important messages
+  app.get(
+    "/api/message/emergency/recipient/:recipientId",
+    [authJwt.verifyToken, authJwt.requestRoleName],
+    communicationController.getImportantMessage
+  );
+
+  //change message to seen/not emergency
+  app.put(
+    "/api/message/seen/emergency/recipient/:messageId",
+    [authJwt.verifyToken],
+    communicationController.setMessageToNormal
+  );
   
 
   //get doctors patients

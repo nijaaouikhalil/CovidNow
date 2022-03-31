@@ -49,8 +49,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"doctor@doctor.com",
-    "password":"doctor"
+    "email":"user@user",
+    "password":"pass"
 }
 
 ###
@@ -247,5 +247,41 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTB
     "Weight": 72,
     "Height": 190,
     "customAns": "A little bit"
+
+}
+
+###
+GET http://localhost:8080/api/message/myDoctor
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODc2MjM2NywiZXhwIjoxNjQ4ODQ4NzY3fQ.88nr9794EAfBuKnux7lVO87CkY1OTD2D7rCdIWG1PaI
+
+{
+
+}
+
+###
+GET http://localhost:8080/api/message/myPatients
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0ODc2MjcxNywiZXhwIjoxNjQ4ODQ5MTE3fQ.vtej4Pfo9xwaAQcbTEaOus36PhShlvnd8i5U4n62szQ
+
+{
+
+}
+
+###
+POST http://localhost:8080/api/message/recipient/620bdf6a54190d942f5fcf02
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0ODc2NTM5NCwiZXhwIjoxNjQ4ODUxNzk0fQ.jALvAfG39OzF3zEc-P_l_-g3ihxhiSN3S68S3TziQaE
+
+{
+    "message": "Hello how are you today"
+}
+
+###
+GET http://localhost:8080/api/message/recipient/6206d9a5c48f73131c34f3ef
+Content-Type: application/json
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODc2NDg0OCwiZXhwIjoxNjQ4ODUxMjQ4fQ.IfzAbV9K2BOhMskUJ4XsRpLAN8KfB25XVIqlLjjAyvs
+
+{
 
 }

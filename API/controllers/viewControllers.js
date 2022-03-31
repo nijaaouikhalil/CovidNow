@@ -547,3 +547,27 @@ exports.editMyReportDetails = (req, res) => {
 
   });
 };
+
+//return list of doctors. The list should almost always contain one element
+exports.listMyDoctors = (req, res) => {
+  assignedDoctor.find({userId: req.userId}, "doctorId").exec((err, doctors) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+
+      res.send(doctors)
+  })
+}
+
+//return list of patients associated to the doctor requesting the call
+exports.listMyPatients = (req, res) => {
+  assignedDoctor.find({doctorId: req.userId}, "userId").exec((err, patients) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+
+      res.send(patients)
+  })
+}

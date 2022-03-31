@@ -15,7 +15,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "test": "nyc --reporter=text mocha --exit --timeout 5000",
+    "test": "mocha --exit --timeout 5000",
+    "testci": "nyc --reporter=text mocha --exit --timeout 5000",
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },

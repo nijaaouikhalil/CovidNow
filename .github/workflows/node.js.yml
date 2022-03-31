@@ -44,5 +44,5 @@ jobs:
       working-directory: './API'
     - run: npm run build --if-present
       working-directory: './API'
-    - run: npm test
+    - run: npm run testci
       working-directory: './API'

@@ -28,7 +28,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "CI=false && react-scripts build",
-    "test": "react-scripts test --coverage --watchAll --browsers=ChromeHeadless",
+    "test": "react-scripts test --coverage --watchAll",
+    "testci": "react-scripts test --coverage --watchAll --forceExit",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

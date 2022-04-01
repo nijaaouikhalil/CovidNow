@@ -9,12 +9,12 @@ exports.contactedPerson = (req,res) => {
         name: req.body.name,
         lname: req.body.lname,
         email: req.body.email,
-        phone: req.body.phone,
+        contactedBy: req.userId
     });
-      User.findOne({email: contactedPerson.email/*, phone: contactedPerson.phone*/}).then(async (user) => { //checking the db of patients
+      User.findOne({email: contactedPerson.email}).then(async (user) => { //checking the db of patients
           if(!user) { //user not there
             nodemailer.contactedPeopleEmailToSignUp(contactedPerson.name, contactedPerson.email);
-            Contacted.findOne({email: contactedPerson.email/*, phone: contactedPerson.phone*/}).then(async (contacted) => { //searching if already in the contacted sick people db
+            Contacted.findOne({email: contactedPerson.email}).then(async (contacted) => { //searching if already in the contacted sick people db
               if(!contacted){ //not there
                 contactedPerson.save((err, contacted) => { //save in db
                   if (err) {
@@ -44,4 +44,21 @@ exports.contactedPerson = (req,res) => {
     res.send({message: e});
   }
 
+}
+
+exports.contactedPeopleList = (req, res) => {
+  try{
+    Contacted.find({contactedBy: req.userId}).then(async (contactedList) => {//check if the user has already entered a list of contacted
+      if(contactedList===null){
+        res.send("The patient did not report any contacted people.");
+      }
+      else{
+        res.send(contactedList);
+      }
+    })
+
+  }
+  catch (err) {
+    res.send({message: err});
+  }
 }

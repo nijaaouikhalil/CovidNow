@@ -314,14 +314,14 @@ exports.askReport = (req, res) => {
     res.status(422).send({ message: "Wrong priority level has been entered." });
   }
   if (req.exists == null) {
-      const newReport = new Report({
-        userId: req.body.userId,
-        doctorId: req.userId,
-        questions: {customQ: req.body.customQ},
-        date: date,
-        priorityLevel: priorityLevel
-      });
-    
+    const newReport = new Report({
+      userId: req.body.userId,
+      doctorId: req.userId,
+      questions: { customQ: req.body.customQ },
+      date: date,
+      priorityLevel: priorityLevel,
+    });
+
     newReport.save((err, report) => {
       if (err) {
         res.status(500).send({ message: err });
@@ -438,52 +438,48 @@ exports.viewMyReport = (req, res) => {
 //Get all reports associated to a doctor that have no been seen yet
 exports.getNewPatientReports = (req, res) => {
   Report.find({
-      doctorId : req.userId,
-      viewed : false
-  }
-  ).sort({priorityLevel : 1, date : -1})
-  .exec((err,report) =>{
-    if (err) {
-      res.status(500).send({ message: err });
-      return;
-    }
-    res.send(report)
+    doctorId: req.userId,
+    viewed: false,
   })
-}
-
-//Mark a patients report as viewed
-exports.markAsViewed = (req, res) => {
-    Report.findOne({
-        _id : req.params.reportId
-    }
-    ).exec((err,report) =>{
+    .sort({ priorityLevel: 1, date: -1 })
+    .exec((err, report) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
-      report.viewed = true;
-      report.lastViewed = Date.now();
-      report.save((err) => {
-        if (err) {
-          res.status(500).send({ message: err });
-          return;
-        }
-        res.send({
-          message: "Succesfully submitted your information",
-        });
-      });
-
+      res.send(report);
     });
-}
+};
+
+//Mark a patients report as viewed
+exports.markAsViewed = (req, res) => {
+  Report.findOne({
+    _id: req.params.reportId,
+  }).exec((err, report) => {
+    if (err) {
+      res.status(500).send({ message: err });
+      return;
+    }
+    report.viewed = true;
+    report.lastViewed = Date.now();
+    report.save((err) => {
+      if (err) {
+        res.status(500).send({ message: err });
+        return;
+      }
+      res.send({
+        message: "Succesfully submitted your information",
+      });
+    });
+  });
+};
 
 //View report by reportId
 exports.viewMyReportDetails = (req, res) => {
-  Report.findOne(
-    {
-      userId: req.userId,
-      _id: req.params.reportId
-    }
-  ).exec((err, report) => {
+  Report.findOne({
+    userId: req.userId,
+    _id: req.params.reportId,
+  }).exec((err, report) => {
     if (err) {
       res.status(500).send({ message: err });
       return;
@@ -495,43 +491,41 @@ exports.viewMyReportDetails = (req, res) => {
 
 //Edit answers to report questions using report id
 exports.editMyReportDetails = (req, res) => {
-  Report.findOne(
-    {
-      userId: req.userId,
-      _id: req.params.reportId
-    },
-  ).exec((err, report) => {
+  Report.findOne({
+    userId: req.userId,
+    _id: req.params.reportId,
+  }).exec((err, report) => {
     if (err) {
       res.status(500).send({ message: err });
       return;
     }
-    if(req.body.hasCovid != null){
+    if (req.body.hasCovid != null) {
       report.questions.hasCovid = req.body.hasCovid;
     }
-    if(req.body.hasTravelled != null){
+    if (req.body.hasTravelled != null) {
       report.questions.hasTravelled = req.body.hasTravelled;
     }
-    if(req.body.hasAutoImmuneDisease != null){
+    if (req.body.hasAutoImmuneDisease != null) {
       report.questions.hasAutoImmuneDisease = req.body.hasAutoImmuneDisease;
     }
-    if(req.body.isPregnant != null){
+    if (req.body.isPregnant != null) {
       report.questions.isPregnant = req.body.isPregnant;
     }
-    if(req.body.hadAllergicReaction != null){
+    if (req.body.hadAllergicReaction != null) {
       report.questions.hadAllergicReaction = req.body.hadAllergicReaction;
     }
 
-    if(req.body.Temperature != null){
+    if (req.body.Temperature != null) {
       report.questions.Temperature = req.body.Temperature;
     }
-    if(req.body.Weight != null){
+    if (req.body.Weight != null) {
       report.questions.Weight = req.body.Weight;
     }
-    if(req.body.Height != null){
+    if (req.body.Height != null) {
       report.questions.Height = req.body.Height;
     }
 
-    if(req.body.customAns != null){
+    if (req.body.customAns != null) {
       report.questions.customAns = req.body.customAns;
     }
 
@@ -544,30 +538,33 @@ exports.editMyReportDetails = (req, res) => {
         message: "Succesfully submitted your information",
       });
     });
-
   });
 };
 
 //return list of doctors. The list should almost always contain one element
 exports.listMyDoctors = (req, res) => {
-  assignedDoctor.find({userId: req.userId}, "doctorId").exec((err, doctors) => {
+  assignedDoctor
+    .find({ userId: req.userId }, "doctorId")
+    .exec((err, doctors) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
 
-      res.send(doctors)
-  })
-}
+      res.send(doctors);
+    });
+};
 
 //return list of patients associated to the doctor requesting the call
 exports.listMyPatients = (req, res) => {
-  assignedDoctor.find({doctorId: req.userId}, "userId").exec((err, patients) => {
+  assignedDoctor
+    .find({ doctorId: req.userId }, "userId")
+    .exec((err, patients) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
 
-      res.send(patients)
-  })
-}
+      res.send(patients);
+    });
+};

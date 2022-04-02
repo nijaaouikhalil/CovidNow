@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { Message } from "../components/Message";
 export const DoctorMessages = ({ patients }) => {
   return (
     <div id="dd-main-container">
@@ -114,7 +114,7 @@ const InboxItem = ({ patient }) => {
         {
           date: new Date(),
           emergency: false,
-          sendersId: user_info._id,
+          sendersId: user_info.id,
           message: newMessage,
         },
       ]);
@@ -133,8 +133,7 @@ const InboxItem = ({ patient }) => {
             <div className="accordion-item acc-rounded-corners">
               <div className="accordion-body">
                 <ul className="messageList">
-                  {messages &&
-                    messages.length &&
+                  {messages && messages.length > 0 ? (
                     messages.map((message, i) => (
                       <li
                         data-testid="doctor-message-item"
@@ -152,7 +151,10 @@ const InboxItem = ({ patient }) => {
                         </small>
                         {message.message}
                       </li>
-                    ))}
+                    ))
+                  ) : (
+                    <Message variant="warning">No messages yet</Message>
+                  )}
                 </ul>
 
                 <div className="d-flex">
@@ -160,6 +162,7 @@ const InboxItem = ({ patient }) => {
                     className="form-control mx-2"
                     placeholder="Enter message"
                     type="text"
+                    value={newMessage}
                     onChange={(e) => setNewMessage(e.target.value)}
                   />
                   <button className="btn btn-success" onClick={sendMessage}>

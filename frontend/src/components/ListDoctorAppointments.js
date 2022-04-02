@@ -39,30 +39,31 @@ export const ListDoctorsAppoinments = ({ patients }) => {
             <th>Details</th>
           </tr>
         </thead>
-        <tbody data-testid={'doctor-all-appointments-table-body'}>
-          {appointments && appointments.length > 0
-            ? appointments.map((appointment, index) => (
-              <tr key={index} data-testid={'doctor-all-appointments-table-row'}>
+        <tbody data-testid={"doctor-all-appointments-table-body"}>
+          {appointments &&
+            appointments.length > 0 &&
+            appointments.map((appointment, index) => (
+              <tr key={index} data-testid={"doctor-all-appointments-table-row"}>
                 <td>{index + 1}</td>
                 <td>
                   {appointment.patientId
                     ? patients.find(
-                      (patient) => patient._id === appointment.patientId
-                    ).name
+                        (patient) => patient._id === appointment.patientId
+                      ).name
                     : "John"}
                 </td>
                 <td>
                   {appointment.patientId
                     ? patients.find(
-                      (patient) => patient._id === appointment.patientId
-                    ).lname
+                        (patient) => patient._id === appointment.patientId
+                      ).lname
                     : "Doe"}
                 </td>
                 <td className="dd-patient-email">
                   {appointment.patientId
                     ? patients.find(
-                      (patient) => patient._id === appointment.patientId
-                    ).email
+                        (patient) => patient._id === appointment.patientId
+                      ).email
                     : "Johndoe@test.com"}
                 </td>
                 <td>
@@ -90,8 +91,7 @@ export const ListDoctorsAppoinments = ({ patients }) => {
                   )}
                 </td>
               </tr>
-            ))
-            : ""}
+            ))}
         </tbody>
       </Table>
     </div>

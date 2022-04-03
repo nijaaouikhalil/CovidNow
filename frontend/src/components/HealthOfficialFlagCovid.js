@@ -1,7 +1,7 @@
 import { Table, Badge, Button, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Loader from "./Loader";
-import Message from "./Message";
+import { Loader } from "./Loader";
+import { Message } from "./Message";
 import {
   AdminlistUsers,
   AdminUpdateUser,

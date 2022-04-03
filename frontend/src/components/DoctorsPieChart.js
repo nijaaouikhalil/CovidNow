@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
+import Chart from 'chart.js/auto';
 
 const generateColours = (amount) => {
     const colours = [];
@@ -38,6 +37,9 @@ export const DoctorsPieChart = ({patients = []}) => {
         return data;
     };
     const buildPieChart = (data) => {
+        if(patients.length==0) {
+        return setChartData(null);
+    }
         const labels = data.labels;   //DUMMY LABELS
         const colors = generateColours(labels.length)
         setChartData({

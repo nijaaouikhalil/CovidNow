@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { Chart, registerables } from "chart.js";
-Chart.register(...registerables);
+import Chart from "chart.js/auto";
 
 const generateColours = (amount) => {
     const colours = [];
@@ -18,7 +17,6 @@ const generateColours = (amount) => {
 };
 
 export const AdminPieChart = ({all_users = []}) => {
-    console.log(all_users)
 
     const [chartData, setChartData] = useState(null);
 
@@ -40,6 +38,9 @@ export const AdminPieChart = ({all_users = []}) => {
         return data;
     };
     const buildPieChart = (data) => {
+        if(all_users.length==0) {
+            return setChartData(null);
+        }
         const labels = data.labels; 
         const colors = generateColours(labels.length)
         setChartData({

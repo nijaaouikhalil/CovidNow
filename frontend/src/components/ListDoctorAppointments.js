@@ -39,58 +39,58 @@ export const ListDoctorsAppoinments = ({ patients }) => {
             <th>Details</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody data-testid={'doctor-all-appointments-table-body'}>
           {appointments && appointments.length > 0
             ? appointments.map((appointment, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>
-                    {appointment.patientId
-                      ? patients.find(
-                          (patient) => patient._id === appointment.patientId
-                        ).name
-                      : "John"}
-                  </td>
-                  <td>
-                    {appointment.patientId
-                      ? patients.find(
-                          (patient) => patient._id === appointment.patientId
-                        ).lname
-                      : "Doe"}
-                  </td>
-                  <td className="dd-patient-email">
-                    {appointment.patientId
-                      ? patients.find(
-                          (patient) => patient._id === appointment.patientId
-                        ).email
-                      : "Johndoe@test.com"}
-                  </td>
-                  <td>
-                    {new Date(appointment.appointmentDate).toLocaleDateString(
-                      "en-US"
-                    )}
-                  </td>
-                  <td>
-                    {new Date(appointment.appointmentDate).toLocaleTimeString(
-                      [],
-                      {
-                        timeStyle: "short",
-                      }
-                    )}
-                  </td>
-                  <td>
-                    {appointment.patientId ? (
-                      <Link
-                        to={"/doctor/patientdetails/" + appointment.patientId}
-                      >
-                        More
-                      </Link>
-                    ) : (
-                      <Link to={"/doctor/patientdetails/" + index}>More</Link>
-                    )}
-                  </td>
-                </tr>
-              ))
+              <tr key={index} data-testid={'doctor-all-appointments-table-row'}>
+                <td>{index + 1}</td>
+                <td>
+                  {appointment.patientId
+                    ? patients.find(
+                      (patient) => patient._id === appointment.patientId
+                    ).name
+                    : "John"}
+                </td>
+                <td>
+                  {appointment.patientId
+                    ? patients.find(
+                      (patient) => patient._id === appointment.patientId
+                    ).lname
+                    : "Doe"}
+                </td>
+                <td className="dd-patient-email">
+                  {appointment.patientId
+                    ? patients.find(
+                      (patient) => patient._id === appointment.patientId
+                    ).email
+                    : "Johndoe@test.com"}
+                </td>
+                <td>
+                  {new Date(appointment.appointmentDate).toLocaleDateString(
+                    "en-US"
+                  )}
+                </td>
+                <td>
+                  {new Date(appointment.appointmentDate).toLocaleTimeString(
+                    [],
+                    {
+                      timeStyle: "short",
+                    }
+                  )}
+                </td>
+                <td>
+                  {appointment.patientId ? (
+                    <Link
+                      to={"/doctor/patientdetails/" + appointment.patientId}
+                    >
+                      More
+                    </Link>
+                  ) : (
+                    <Link to={"/doctor/patientdetails/" + index}>More</Link>
+                  )}
+                </td>
+              </tr>
+            ))
             : ""}
         </tbody>
       </Table>

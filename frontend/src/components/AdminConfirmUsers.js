@@ -1,7 +1,7 @@
 import { Row, Col, Table, Button} from 'react-bootstrap';
 import { LinkContainer } from "react-router-bootstrap";
-import Loader from "./Loader";
-import Message from "./Message";
+import { Loader } from "./Loader";
+import { Message } from "./Message";
 import { AdminlistUsers, AdminUpdateUser } from "../actions/adminActions";
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';

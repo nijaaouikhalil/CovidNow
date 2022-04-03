@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import PatientReportSym from "../components/PatientReportSym";
+import {PatientReportSym} from "../components/PatientReportSym";
 import { PatientStatistics } from "../components/PatientStatistics";
 import { PatientContactTracing } from '../components/PatientContactTracing';
 import { PatientMessages } from '../components/PatientMessages';

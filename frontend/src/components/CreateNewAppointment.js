@@ -5,8 +5,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { FloatingLabel, Form } from "react-bootstrap";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
-import Loader from "./Loader";
-import Message from "./Message";
+import { Loader } from "./Loader";
+import { Message } from "./Message";
 export const CreateNewAppointment = ({ patients }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;

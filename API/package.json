@@ -8,13 +8,15 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8",
     "nodemailer": "^6.7.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "nyc": "^15.1.0"
   },
   "name": "api",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
     "test": "mocha --exit --timeout 5000",
+    "testci": "nyc --reporter=text mocha --exit --timeout 5000",
     "start": "node server.js",
     "devStart": "nodemon server.js"
   },

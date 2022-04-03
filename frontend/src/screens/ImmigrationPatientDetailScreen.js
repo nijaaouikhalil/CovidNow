@@ -1,19 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {
-  Button,
   Container,
-  Row,
-  Col,
-  Accordion,
-  ListGroup,
-  Form,
 } from "react-bootstrap";
 import {Loader} from "../components/Loader";
 import {Message} from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { DoctorGetPatient, DoctorUpdatePatient } from "../actions/doctorActions";
 import { getUserDetails } from "../actions/userActions";
 import { useParams } from "react-router-dom";
 
@@ -31,7 +24,7 @@ function ImmigrationPatientDetailScreen() {
     if (!user_info || user_info.roles !== "ROLE_IMMIGRATION_OFFICER") {
       navigate("/login");
     }
-    dispatch(getUserDetails(pid));
+    dispatch(getUserDetails(pid));// eslint-disable-next-line
   }, [dispatch, user_info, pid]);
 
   return (

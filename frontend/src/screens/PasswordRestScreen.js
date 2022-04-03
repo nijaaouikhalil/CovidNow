@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import FormContainer from "../components/Form/FormContainer";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
 import {Loader} from "../components/Loader";
 import {Message} from "../components/Message";
 function PasswordRestScreen() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
 
@@ -18,7 +16,7 @@ function PasswordRestScreen() {
   const [message, setMessage] = useState("");
 
   const userLogin = useSelector((state) => state.userLogin);
-  const { error, loading, user_info } = userLogin;
+  const { user_info } = userLogin;
   useEffect(() => {
     if (user_info) {
       if (user_info.verified === "Pending") {

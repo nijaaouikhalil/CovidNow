@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Form, Button, Row, Col, FloatingLabel } from "react-bootstrap";
-import FormContainer from "../components/Form/FormContainer";
 import { useNavigate } from "react-router-dom";
 import { register } from "../actions/userActions";
 import {Loader} from "../components/Loader";
@@ -19,10 +18,9 @@ function RegisterScreen() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [user_type, setType] = useState("");
   const [customError, setCustomError] = useState("");
-  const [phonenumber, setPhoneNumber] = useState("");
 
   const userRegister = useSelector((state) => state.userRegister);
-  const { error, loading, register_message, success } = userRegister;
+  const { error, loading, success } = userRegister;
 
   useEffect(() => {
     if (success) {
@@ -33,7 +31,7 @@ function RegisterScreen() {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if (password != confirmPassword) {
+    if (password !== confirmPassword) {
       setCustomError("Passwords do not match! Please try again");
     } else if (email !== confirmEmail) {
       setCustomError("Emails do not match! Please try again");

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { render } from '@testing-library/react';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 import '@testing-library/jest-dom';
 import { Provider } from "react-redux";
 import store from "../../store.js";
 import { DoctorsPieChart } from '../DoctorsPieChart';
+import 'jest-canvas-mock';
+jest.mock('react-chartjs-2', () => ({ Pie: () => null }))
 
 describe("Doctor Pie Chart sort users", () => {
     it('Renders component without issue', () => {
@@ -27,7 +29,8 @@ describe("Doctor Pie Chart sort users", () => {
                 your_doctor: { name: "testDoctorName" }
             }
         ]
-        const { container } = render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={all_users} /></MemoryRouter></Provider>);
-        expect(container.childElementCount).toEqual(1);
+        render(<Provider store={store}><MemoryRouter><DoctorsPieChart patients={all_users} /></MemoryRouter></Provider>);
+        const chart = screen.queryAllByTestId('doctor-pie-test');
+        expect(chart).not.toBeNull();
     });
 });

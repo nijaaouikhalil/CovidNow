@@ -5,6 +5,7 @@ import { DoctorStatistics } from '../../components/DoctorStatistics';
 import { Provider } from "react-redux";
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
+jest.mock('react-chartjs-2', () => ({ Pie: () => null }))
 
 describe("Doctor Statistics Page", () => {
 

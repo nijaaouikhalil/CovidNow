@@ -14,8 +14,7 @@ describe("Table displaying all users in admin panel", () => {
     it('renders empty table when passed empty array', () => {
         const { queryByTestId } = render(<AdminAllUsersList all_users={[]}/>)
         const table = queryByTestId('admin-all-users-table-body');
-        const row = queryByTestId('admin-all-users-table-row');
-        expect(table).not.toContainElement(row);
+        expect(table).toBeNull();
     });
     
     it('renders rows in table when passed array of users', () => {

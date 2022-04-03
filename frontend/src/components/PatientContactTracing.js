@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { reportContactedPatients } from "../actions/patientActions";
 import { Loader } from "./Loader";
 import { Message } from "./Message";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
 
@@ -15,30 +13,32 @@ export const PatientContactTracing = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
   useEffect(() => {
-    getPerviousReports();
+    getPreviousReports();
 
     return () => {
       setReports([]);
-    };
+    };// eslint-disable-next-line
   }, [user_info]);
 
-  const getPerviousReports = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
-
-      const { data } = await axios.get(
-        BaseUrl + `/api/contactedPeopleList`,
-        config
-      );
-      console.log(data);
-      setReports(data);
-    } catch (error) {
-      console.log(error);
+  const getPreviousReports = async () => {
+    if (user_info) {
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
+  
+        const { data } = await axios.get(
+          BaseUrl + `/api/contactedPeopleList`,
+          config
+        );
+        console.log(data);
+        setReports(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -59,24 +59,24 @@ export const PatientContactTracing = () => {
         </div>
         <ul className="nav nav-pills justify-content-center">
           <li className="nav-item mx-3 pointer">
-            <a
+            <button
               className={
                 currentTab === "Submit" ? "nav-link active" : "nav-link"
               }
               onClick={() => setCurrentTab("Submit")}
             >
               Submit Tracing Data
-            </a>
+            </button>
           </li>
           <li className="nav-item pointer">
-            <a
+            <button
               className={
                 currentTab === "Submitted" ? "nav-link active" : "nav-link"
               }
               onClick={() => setCurrentTab("Submitted")}
             >
               Previously Submitted Data
-            </a>
+            </button>
           </li>
         </ul>
         {currentTab === "Submit" && <SubmitTracingData />}
@@ -89,8 +89,8 @@ export const PatientContactTracing = () => {
 };
 
 const SubmitTracingData = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
 
@@ -102,20 +102,20 @@ const SubmitTracingData = () => {
   // );
   // const { success, loading, error } = patientReportContacted;
 
-  const [data, setData] = useState([]);
+  const [data] = useState([]);
   const [name, setName] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  const addToList = (e) => {
-    e.preventDefault();
-    setData([...data, { name, lname, email, phone }]);
-    setName("");
-    setLname("");
-    setEmail("");
-    setPhone("");
-  };
+  // const addToList = (e) => {
+  //   e.preventDefault();
+  //   setData([...data, { name, lname, email, phone }]);
+  //   setName("");
+  //   setLname("");
+  //   setEmail("");
+  //   setPhone("");
+  // };
 
   const submitHandler = async (e) => {
     console.log(data);

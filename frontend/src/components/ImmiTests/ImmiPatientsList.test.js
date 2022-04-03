@@ -14,8 +14,7 @@ describe("Table displaying an immi patients list", () => {
     it('renders empty table when passed empty array', () => {
         const { queryByTestId } = render(<ImmiPatientsList all_users={[]} />)
         const tableBody = queryByTestId('immi-all-users-table-body');
-        const tableRow = queryByTestId('immi-all-users-table-row');
-        expect(tableBody).not.toContainElement(tableRow);
+        expect(tableBody).toBeNull()
     });
 
     it('renders rows in table when passed array of users', () => {

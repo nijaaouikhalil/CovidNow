@@ -13,22 +13,22 @@ const DoctorStatistics = ({ setSubPage, patients }) => {
             <p>Total Confirmed Cases</p>
           </div>
           <div className="dd-card dd-card-link pastel-green">
-            <a onClick={() => setSubPage("My Patients")}>
+            <div onClick={() => setSubPage("My Patients")}>
               <h3 data-testid='doctor-stats-count-patients'>{patients ? patients.length : 0}</h3>
               <p>Patients Assigned</p>
-            </a>
+            </div>
           </div>
           <div className="dd-card dd-card-link pastel-orange">
-            <a onClick={() => setSubPage("Messages")}>
+            <div onClick={() => setSubPage("Messages")}>
               <h3 data-testid='doctor-stats-count-messages'>12</h3>
               <p>New Messages</p>
-            </a>
+            </div>
           </div>
           <div className="dd-card dd-card-link pastel-red">
-            <a onClick={() => setSubPage("Appointments")}>
+            <div onClick={() => setSubPage("Appointments")}>
               <h3 data-testid='doctor-stats-count-appointments'>6</h3>
               <p>Appointments</p>
-            </a>
+            </div>
           </div>
         </div>
 

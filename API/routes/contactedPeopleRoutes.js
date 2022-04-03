@@ -10,4 +10,8 @@ module.exports = function (app) {
   app.post("/api/contactedPeople",
   [authJwt.verifyToken],
    controller.contactedPerson);
+
+   app.get("/api/contactedPeopleList",
+  [authJwt.verifyToken],
+   controller.contactedPeopleList);
 };

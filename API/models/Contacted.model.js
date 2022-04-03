@@ -15,7 +15,7 @@ const Contacted = mongoose.model(
       type: String,
       required: true,
     },
-    phone: {
+    contactedBy: {
         type: String,
         required: true,
     },

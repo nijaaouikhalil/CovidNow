@@ -262,7 +262,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTB
 ###
 GET http://localhost:8080/api/message/myDoctor
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODc2MjM2NywiZXhwIjoxNjQ4ODQ4NzY3fQ.88nr9794EAfBuKnux7lVO87CkY1OTD2D7rCdIWG1PaI
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMGJkZjZhNTQxOTBkOTQyZjVmY2YwMiIsImlhdCI6MTY0ODk5ODQzMCwiZXhwIjoxNjQ5MDg0ODMwfQ.PAl_dF5zucs21AxFh7S7wPMN69RuXhpsh3wiV2OC-Lc
 
 {
 

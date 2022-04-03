@@ -10,10 +10,10 @@ describe("Patients messages", () => {
     it('renders without crashing', () => {
         render(<Provider store={store}><MemoryRouter><PatientMessages /></MemoryRouter></Provider>);
     });
-    it('renders 4 rows in table ', () => {
-        render(<MemoryRouter><PatientMessages /></MemoryRouter>)
-        const rows = screen.getAllByTestId('patient-message-row');
-        expect(rows.length).toBe(4);
+    it('renders warning message when there are no messages for patient', () => {
+        render(<Provider store={store}><MemoryRouter><PatientMessages /></MemoryRouter></Provider>)
+        const message = screen.getAllByText('No messages yet');
+        expect(message).not.toBeNull();
     });
 });
 

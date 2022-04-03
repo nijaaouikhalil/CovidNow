@@ -30,7 +30,7 @@ export const PatientMessages = () => {
         config
       );
       console.log(data);
-      setDoctors(data);
+      setDoctors([data]);
     } catch (error) {
       console.log(error);
     }
@@ -48,7 +48,8 @@ const Inbox = ({ doctors }) => {
 
   const setChat = (pid) => {
     for (let i in doctors) {
-      if (doctors[i]._id == pid) {
+      console.log(doctors[i]);
+      if (doctors[i].doctorId == pid) {
         setCurrentChat(doctors[i]);
         return;
       }
@@ -65,8 +66,8 @@ const Inbox = ({ doctors }) => {
               onClick={(e) => {
                 setChat(e.target.value);
               }}
-              value={doctor._id}
-              key={doctor._id}
+              value={doctor.doctorId}
+              key={doctor.doctorId}
               className="pointer btn btn-primary"
             >
               {doctor.name + " " + doctor.lname}
@@ -167,8 +168,12 @@ const InboxItem = ({ doctor }) => {
                         }
                       >
                         <small>
+                          {message.emergency ? (
+                            <i className="fas fa-exclamation-circle text-danger"></i>
+                          ) : null}{" "}
                           {message.sendersId === user_info.id ? "Doctor" : "Me"}
                         </small>
+
                         {message.message}
                       </li>
                     ))

@@ -85,13 +85,8 @@ const InboxItem = ({ patient }) => {
   };
 
   const [newMessage, setNewMessage] = useState("");
+  const [isUrgent, setIsUrgent] = useState(false);
   const [messages, setMessages] = useState([]);
-  // const messages = [
-  //     { from: 'doctor', message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.", date: "10/03/2022", time: '13:10'},
-  //     { from: 'patient', message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.", date: "10/03/2022", time: '13:25'},
-  //     { from: 'doctor', message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.", date: "10/03/2022", time: '17:15'},
-  //     { from: 'patient', message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.", date: "11/03/2022", time: '09:20'}
-  // ];
 
   const sendMessage = async () => {
     try {
@@ -113,7 +108,7 @@ const InboxItem = ({ patient }) => {
         ...messages,
         {
           date: new Date(),
-          emergency: false,
+          emergency: isUrgent,
           sendersId: user_info.id,
           message: newMessage,
         },
@@ -145,6 +140,9 @@ const InboxItem = ({ patient }) => {
                         }
                       >
                         <small>
+                          {message.emergency ? (
+                            <i className="fas fa-exclamation-circle text-danger"></i>
+                          ) : null}{" "}
                           {message.sendersId === user_info.id
                             ? "Me"
                             : "Patient"}
@@ -170,17 +168,18 @@ const InboxItem = ({ patient }) => {
                   </button>
                 </div>
 
-                {/* <div className="d-flex flex-wrap mt-3 align-items-center">
-                        <h5 className="w-100 ms-3">Set message as: </h5>
-                        <div className="col-6 text-center">
-                            <label className="mx-3">Urgent</label>
-                            <input type="checkbox" name="Urgent" onChange={(e)=> setIsUrgent(!isUrgent)} />
-                        </div>
-                        <div className="col-6 text-center">
-                            <label className="mx-3">Emergency</label>
-                            <input type="checkbox" name="Emergency" onChange={(e)=> setIsEmergency(!isEmergency)}/>
-                        </div>
-                    </div> */}
+                <div className="d-flex flex-wrap mt-3 align-items-center">
+                  <h5 className="w-100 ms-3">Set message as: </h5>
+
+                  <div className="col-6 text-center">
+                    <label className="mx-3">Emergency</label>
+                    <input
+                      type="checkbox"
+                      name="Emergency"
+                      onChange={(e) => setIsUrgent(!isUrgent)}
+                    />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -24,7 +24,7 @@ exports.messageRecipient = (req, res) => {
   if (req.body.emergency) {
     emergency = req.body.emergency;
   } else {
-    c = false;
+    emergency = false;
   }
 
   const newText = new communication({

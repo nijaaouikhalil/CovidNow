@@ -171,7 +171,7 @@ const InboxItem = ({ doctor }) => {
                           {message.emergency ? (
                             <i className="fas fa-exclamation-circle text-danger"></i>
                           ) : null}{" "}
-                          {message.sendersId === user_info.id ? "Doctor" : "Me"}
+                          {message.sendersId === user_info.id ? "Me" : "Doctor"}
                         </small>
 
                         {message.message}

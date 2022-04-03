@@ -119,6 +119,7 @@ const SubmitTracingData = () => {
 
   const submitHandler = async (e) => {
     console.log(data);
+    e.preventDefault();
     try {
       const config = {
         headers: {

@@ -38,7 +38,6 @@ export const CanadaCovidCasesByDateRangeLineGraph = () => {
       const getAllCanadaData = async () => {
         const response = await fetch(`https://api.opencovid.ca/timeseries?stat=cases&loc=canada&after=${afterDate}&before=${beforeDate}`, {method: "GET"});
         const json = await response.json();
-        console.log(json)
         let api_graph_data = json.cases;
         let graph_results = {};
         graph_results.labels = [];

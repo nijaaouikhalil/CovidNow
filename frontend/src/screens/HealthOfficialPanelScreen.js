@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Button, Container, Row, Col, Table } from "react-bootstrap";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-// import { HealthOfficallistUsers } from "../actions/healthOfficalActions";
-import { LinkContainer } from "react-router-bootstrap";
 
 import { HealthOfficialPatientsList } from "../components/HealthOfficialPatientsList";
 import { ListAllUsers } from "../actions/adminActions";
@@ -21,9 +15,7 @@ function HealthOfficialPanelScreen() {
   const [subPage, setSubPage] = useState("Home");
   const AdminListAllUsers = useSelector((state) => state.AdminListAllUsers);
   const {
-    all_users,
-    loading: loadingAllUsers,
-    error: errorAllUsers,
+    all_users
   } = AdminListAllUsers;
 
   useEffect(() => {
@@ -65,7 +57,7 @@ function HealthOfficialPanelScreen() {
                   }
                   onClick={() => setSubPage("All Patients")}
                 >
-                  <i class="fas fa-hospital-user me-3"></i>
+                  <i className="fas fa-hospital-user me-3"></i>
                   All Patients
                 </a>
               </li>

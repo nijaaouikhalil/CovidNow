@@ -5,9 +5,42 @@ import { Loader } from "./Loader";
 import { Message } from "./Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { BaseUrl } from "../utils/utils";
+import axios from "axios";
 
 export const PatientContactTracing = () => {
   const [currentTab, setCurrentTab] = useState("Submit");
+  const [reports, setReports] = useState([]);
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { user_info } = userLogin;
+  useEffect(() => {
+    getPerviousReports();
+
+    return () => {
+      setReports([]);
+    };
+  }, [user_info]);
+
+  const getPerviousReports = async () => {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          "x-access-token": `${user_info.accessToken}`,
+        },
+      };
+
+      const { data } = await axios.get(
+        BaseUrl + `/api/contactedPeopleList`,
+        config
+      );
+      console.log(data);
+      setReports(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div id="dd-main-container">
@@ -35,14 +68,21 @@ export const PatientContactTracing = () => {
               Submit Tracing Data
             </a>
           </li>
-          {/* <li className="nav-item pointer">
-                        <a className={currentTab==="Submitted" ? "nav-link active" : "nav-link"} 
-                            onClick={() => setCurrentTab("Submitted")}
-                        >Previously Submitted Data</a>
-                    </li> */}
+          <li className="nav-item pointer">
+            <a
+              className={
+                currentTab === "Submitted" ? "nav-link active" : "nav-link"
+              }
+              onClick={() => setCurrentTab("Submitted")}
+            >
+              Previously Submitted Data
+            </a>
+          </li>
         </ul>
         {currentTab === "Submit" && <SubmitTracingData />}
-        {currentTab === "Submitted" && <PreviouslySubmittedTracingData />}
+        {currentTab === "Submitted" && (
+          <PreviouslySubmittedTracingData data={reports} />
+        )}
       </div>
     </div>
   );
@@ -54,10 +94,13 @@ const SubmitTracingData = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
 
-  const patientReportContacted = useSelector(
-    (state) => state.patientReportContacted
-  );
-  const { success, loading, error } = patientReportContacted;
+  const [success, setSuccess] = useState("");
+  const [loading, setLoading] = useState("");
+  const [error, setError] = useState("");
+  // const patientReportContacted = useSelector(
+  //   (state) => state.patientReportContacted
+  // );
+  // const { success, loading, error } = patientReportContacted;
 
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
@@ -74,9 +117,30 @@ const SubmitTracingData = () => {
     setPhone("");
   };
 
-  const submitHandler = () => {
+  const submitHandler = async (e) => {
     console.log(data);
-    dispatch(reportContactedPatients({ name, lname, email, phone }));
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          "x-access-token": `${user_info.accessToken}`,
+        },
+      };
+      setLoading(true);
+      const { data } = await axios.post(
+        BaseUrl + `/api/contactedPeople`,
+        { name, lname, email },
+        config
+      );
+      console.log(data);
+      setSuccess(data.message);
+      setLoading(false);
+    } catch (error) {
+      setLoading(false);
+      console.log(error.response.data);
+      setError(error.response.data);
+    }
+    //dispatch(reportContactedPatients({ name, lname, email }));
     setName("");
     setLname("");
     setEmail("");

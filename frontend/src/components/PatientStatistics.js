@@ -1,5 +1,5 @@
-
 import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+import { CasesByProvincePieChart } from './CasesByProvincePieChart';
 
 const PatientStatistics = ({ setSubPage }) => {
   return (
@@ -24,12 +24,11 @@ const PatientStatistics = ({ setSubPage }) => {
           id="dd-data-visuals"
           className="d-flex justify-content-around align-items-center"
         >
-          <div id="dd-pie" className="pastel-blue">
-            <h5 className="text-center">Pie Chart Title</h5>
-            <img src="/img/piechart.png" alt="pie-chart" />
+          <div id="dd-pie" className="pastel-blue dd-card-link">
+            <CasesByProvincePieChart />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h4>Canadian Covid Cases</h4>
+            <h4>Daily Covid Cases Canada</h4>
             <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>

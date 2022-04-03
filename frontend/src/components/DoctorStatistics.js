@@ -1,4 +1,4 @@
-import { DoctorsPieChart } from './DoctorsPieChart';
+import { CasesByProvincePieChart } from './CasesByProvincePieChart';
 import { CanadaCovidCasesByDateRangeLineGraph } from '../components/CanadaCovidCasesByDateRangeLineGraph';
 
 
@@ -34,10 +34,10 @@ const DoctorStatistics = ({ setSubPage, patients }) => {
 
         <div id="dd-data-visuals">
           <div id="dd-pie" className="pastel-blue dd-card-link">
-            <DoctorsPieChart patients={patients} />
+            <CasesByProvincePieChart />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h4 data-testid='doctor-stats-count-covid-cases'>Canadian Covid Cases</h4>
+            <h4 data-testid='doctor-stats-count-covid-cases'>Daily Covid Cases Canada</h4>
             <CanadaCovidCasesByDateRangeLineGraph />
           </div>
 

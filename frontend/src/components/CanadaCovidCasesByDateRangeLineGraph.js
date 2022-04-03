@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Line } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
 
 const generateColours = (amount) => {
   const colours = [];
@@ -30,29 +29,30 @@ export const CanadaCovidCasesByDateRangeLineGraph = () => {
 
 
     const [chartData, setChartData] = useState(null);
-    const [afterDate, setAfterDate] = useState('2020-01-01');
+    const [afterDate, setAfterDate] = useState('2022-01-01');
     const [beforeDate, setBeforeDate] = useState(new Date().toISOString().split('T')[0]);
     const [updateGraphToggle, setUpdateGraphToggle] = useState(false);
 
 
     useEffect(()=> {
       const getAllCanadaData = async () => {
-        const response = await fetch(`https://api.opencovid.ca/summary?loc=canada&after=${afterDate}&before=${beforeDate}`, {method: "GET"});
+        const response = await fetch(`https://api.opencovid.ca/timeseries?stat=cases&loc=canada&after=${afterDate}&before=${beforeDate}`, {method: "GET"});
         const json = await response.json();
-        let api_graph_data = json.summary;
+        console.log(json)
+        let api_graph_data = json.cases;
         let graph_results = {};
         graph_results.labels = [];
-        graph_results.active_cases = [];
+        graph_results.values = [];
 
         for (let item in api_graph_data) {
-          const day = api_graph_data[item].date.substr(0,2);
-          const month = api_graph_data[item].date.substr(3,2);
-          const year = api_graph_data[item].date.substr(6,4);
+          const day = api_graph_data[item].date_report.substr(0,2);
+          const month = api_graph_data[item].date_report.substr(3,2);
+          const year = api_graph_data[item].date_report.substr(6,4);
           const date = `${month}-${day}-${year}`;
           api_graph_data[item].date = date;
   
           graph_results.labels.push(date);
-          graph_results.active_cases.push(api_graph_data[item].active_cases);
+          graph_results.values.push(api_graph_data[item].cases);
         }
         return graph_results;
       }; 
@@ -63,10 +63,10 @@ export const CanadaCovidCasesByDateRangeLineGraph = () => {
       setChartData({
           labels: labels,
           datasets: [{
-              label: "Confirmed Covid-19 Cases",
+              label: "Daily Covid-19 Cases",
               backgroundColor: colors,
               borderColor: colors,
-              data:  data.active_cases,  
+              data:  data.values,  
               fill: false,
               hoverOffset: 5
           }]

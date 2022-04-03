@@ -43,7 +43,7 @@ const AdminStatistics = ({
             <AdminPieChart all_users={all_users} />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h4>Canadian Covid Cases</h4>
+            <h4>Daily Covid Cases Canada</h4>
             <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>

@@ -544,14 +544,38 @@ exports.editMyReportDetails = (req, res) => {
 //return list of doctors. The list should almost always contain one element
 exports.listMyDoctors = (req, res) => {
   assignedDoctor
-    .find({ userId: req.userId }, "doctorId")
+    .findOne({ userId: req.userId },)
     .exec((err, doctors) => {
       if (err) {
         res.status(500).send({ message: err });
         return;
       }
 
-      res.send(doctors);
+          User.findOne({
+            _id: doctors.doctorId
+          },).exec((err, names) => {
+            
+            if (err) {
+              res.status(500).send({ message: err });
+              return;
+            }
+            var doctor = {}
+            doctor["doctorId"] = doctors.doctorId;
+            doctor["name"] = names.name;
+            doctor["lname"] = names.lname;
+  
+
+            res.send(doctor);
+
+            
+            
+          })
+
+
+
+    
+      
+
     });
 };
 

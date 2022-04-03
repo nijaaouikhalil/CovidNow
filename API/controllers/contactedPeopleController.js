@@ -24,6 +24,9 @@ exports.contactedPerson = (req,res) => {
                   res.send("Person is added successfully");
                 });
               }
+              else{
+                res.send("Person with this email already found!")
+              }
             });
           }
           else{ //incase in patients already

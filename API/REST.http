@@ -58,8 +58,8 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"doctor@doctor.com",
-    "password":"doctor"
+    "email":"zaatar@yopmail.com",
+    "password":"123"
 }
 
 ###
@@ -165,18 +165,18 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4Zjc
 ###
 POST http://localhost:8080/api/contactedPeople
 Content-Type:  application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTMwY2Q5MTQxZGYyODc2N2NiZDNmOSIsImlhdCI6MTY0ODc3MjY5NSwiZXhwIjoxNjQ4ODU5MDk1fQ.bxy_4xCwNVTqUwE3whaWBZDytxtSiCjO0CT4xM2Pb5A
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTMwY2Q5MTQxZGYyODc2N2NiZDNmOSIsImlhdCI6MTY0OTAwNDI2NywiZXhwIjoxNjQ5MDkwNjY3fQ.T8g-kx7pl8w-WF6k3QxuZDIiupP5wtxbFV961w-vBjw
 
 {
-    "name":"mareed3",
+    "name":"mareed6",
     "lname":"mareed",
-    "email":"mareed3@yopmail.com"
+    "email":"mareed5@yopmail.com"
 }
 
 ###
 GET http://localhost:8080/api/contactedPeopleList
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTMwY2Q5MTQxZGYyODc2N2NiZDNmOSIsImlhdCI6MTY0ODc3MjY5NSwiZXhwIjoxNjQ4ODU5MDk1fQ.bxy_4xCwNVTqUwE3whaWBZDytxtSiCjO0CT4xM2Pb5A
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMTMwY2Q5MTQxZGYyODc2N2NiZDNmOSIsImlhdCI6MTY0OTAwNDI2NywiZXhwIjoxNjQ5MDkwNjY3fQ.T8g-kx7pl8w-WF6k3QxuZDIiupP5wtxbFV961w-vBjw
 
 {
     

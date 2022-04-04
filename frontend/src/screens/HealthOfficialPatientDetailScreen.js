@@ -1,12 +1,9 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useEffect } from "react";
 import {Loader} from "../components/Loader";
 import {Message} from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-// import { HealthOfficialGetPatient } from "../actions/healthOfficialActions";
-import { LinkContainer } from "react-router-bootstrap";
 import { getUserDetails } from "../actions/userActions";
 import { useParams } from "react-router-dom";
 
@@ -24,7 +21,7 @@ function HealthOfficialPatientDetailScreen() {
       navigate("/login");
     }
 
-    dispatch(getUserDetails(pid));
+    dispatch(getUserDetails(pid));// eslint-disable-next-line
   }, [dispatch, user_info, pid]);
 
   return (

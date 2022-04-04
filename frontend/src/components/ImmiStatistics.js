@@ -1,4 +1,5 @@
-import { CanadaCovidCasesByDateRangeLineGraph } from './CanadaCovidCasesByDateRangeLineGraph';
+import { CanadaCovidCasesByDateRangeLineGraph } from "./CanadaCovidCasesByDateRangeLineGraph";
+import { CasesByProvincePieChart } from "./CasesByProvincePieChart";
 
 const ImmiStatistics = ({ setSubPage, patients }) => {
   return (
@@ -6,26 +7,28 @@ const ImmiStatistics = ({ setSubPage, patients }) => {
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div className="d-flex flex-wrap justify-content-around mt-5 text-center">
           <div className="dd-card pastel-blue">
-            <h3 data-testid='immi-stats-count-cases'>1234</h3> /** may need to tweak */
+            <h3 data-testid="immi-stats-count-cases">57</h3>
             <p>Total Confirmed Cases</p>
           </div>
           <div className="dd-card pastel-green">
-            <a onClick={() => setSubPage("My Patients")}>
-              <h3 data-testid='immi-stats-count-patients'>{patients ? patients.length : 0}</h3>
+            <div onClick={() => setSubPage("My Patients")}>
+              <h3 data-testid="immi-stats-count-patients">
+                {patients ? patients.length : 0}
+              </h3>
               <p>Patients </p>
-            </a>
+            </div>
           </div>
           <div className="dd-card pastel-orange">
-            <a href="" onClick={() => setSubPage("Messages")}>
-              <h3 data-testid='immi-stats-count-messages'>12</h3>
+            <div onClick={() => setSubPage("Messages")}>
+              <h3 data-testid="immi-stats-count-messages">12</h3>
               <p>New Messages</p>
-            </a>
+            </div>
           </div>
           <div className="dd-card pastel-red">
-            <a href="" onClick={() => setSubPage("Appointments")}>
-              <h3 data-testid='immi-stats-count-appointments'>6</h3>
+            <div onClick={() => setSubPage("Appointments")}>
+              <h3 data-testid="immi-stats-count-appointments">6</h3>
               <p>Appointments</p>
-            </a>
+            </div>
           </div>
         </div>
 
@@ -33,12 +36,13 @@ const ImmiStatistics = ({ setSubPage, patients }) => {
           id="dd-data-visuals"
           className="d-flex justify-content-around align-items-center"
         >
-          <div id="dd-pie" className="pastel-blue">
-            <h5 className="text-center">Pie Chart Title</h5>
-            <img src="/img/piechart.png" alt="pie-chart" />
+          <div id="dd-pie" className="pastel-blue dd-card-link">
+            <CasesByProvincePieChart />
           </div>
           <div id="dd-chart" className="pastel-orange dd-card-link">
-            <h4 data-testid='immi-stats-count-covid-cases'>Canadian Covid Cases</h4>
+            <h4 data-testid="immi-stats-count-covid-cases">
+              Daily Covid Cases Canada
+            </h4>
             <CanadaCovidCasesByDateRangeLineGraph />
           </div>
         </div>

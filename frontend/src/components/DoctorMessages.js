@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import { Message } from "../components/Message";
 export const DoctorMessages = ({ patients }) => {
   return (
@@ -19,7 +18,7 @@ const Inbox = ({ patients }) => {
 
   const setChat = (pid) => {
     for (let i in patients) {
-      if (patients[i]._id == pid) {
+      if (patients[i]._id === pid) {
         setCurrentChat(patients[i]);
         return;
       }
@@ -57,30 +56,32 @@ const InboxItem = ({ patient }) => {
   const { user_info } = userLogin;
 
   useEffect(() => {
-    getPerviousMessages();
+    getPreviousMessages();
 
     return () => {
       setMessages([]);
-    };
+    };// eslint-disable-next-line
   }, [patient, user_info]);
 
-  const getPerviousMessages = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
-
-      const { data } = await axios.get(
-        BaseUrl + `/api/message/recipient/${patient._id}`,
-        config
-      );
-      console.log(data);
-      setMessages(data);
-    } catch (error) {
-      console.log(error);
+  const getPreviousMessages = async () => {
+    if (user_info){
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
+  
+        const { data } = await axios.get(
+          BaseUrl + `/api/message/recipient/${patient._id}`,
+          config
+        );
+        console.log(data);
+        setMessages(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

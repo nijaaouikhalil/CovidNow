@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 export const HomeScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
-  const { error, loading, user_info } = userLogin;
+  const { user_info } = userLogin;
   const navigate = useNavigate();
 
   useEffect(()=> {
@@ -28,7 +28,7 @@ export const HomeScreen = () => {
           break;
         default: break;
       }
-    }
+    }// eslint-disable-next-line
   }, []);
 
   return (null);

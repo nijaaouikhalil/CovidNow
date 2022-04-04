@@ -31,6 +31,7 @@ export const reportContactedPatients =
         person,
         config
       );
+      console.log(data);
 
       dispatch({
         type: PATIENT_REPORT_CONTACTED_SUCCESS,

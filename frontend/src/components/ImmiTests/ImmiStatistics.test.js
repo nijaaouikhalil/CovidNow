@@ -19,7 +19,7 @@ describe("Immigration Statistics Page", () => {
         const countAppointments = screen.getByTestId('immi-stats-count-appointments');
         const countCovidCases = screen.getByTestId('immi-stats-count-covid-cases');
 
-        expect(parseInt(countCases.innerHTML)).toBe(1234);
+        expect(parseInt(countCases.innerHTML)).toBe(57);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
         expect(parseInt(countMessages.innerHTML)).toBe(12);
         expect(parseInt(countAppointments.innerHTML)).toBe(6);
@@ -49,7 +49,7 @@ describe("Immigration Statistics Page", () => {
         const countAppointments = screen.getByTestId('immi-stats-count-appointments');
         const countCovidCases = screen.getByTestId('immi-stats-count-covid-cases');
 
-        expect(parseInt(countCases.innerHTML)).toBe(1234);
+        expect(parseInt(countCases.innerHTML)).toBe(57);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
         expect(parseInt(countMessages.innerHTML)).toBe(12);
         expect(parseInt(countAppointments.innerHTML)).toBe(6);

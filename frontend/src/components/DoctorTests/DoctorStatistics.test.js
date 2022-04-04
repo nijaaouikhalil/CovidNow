@@ -5,6 +5,7 @@ import { DoctorStatistics } from '../../components/DoctorStatistics';
 import { Provider } from "react-redux";
 import { MemoryRouter } from 'react-router-dom';
 import store from '../../store';
+jest.mock('react-chartjs-2', () => ({ Pie: () => null }))
 
 describe("Doctor Statistics Page", () => {
 
@@ -22,9 +23,9 @@ describe("Doctor Statistics Page", () => {
         const countAppointments = screen.getByTestId('doctor-stats-count-appointments');
         const countCovidCases = screen.getByTestId('doctor-stats-count-covid-cases');
 
-        expect(parseInt(countCases.innerHTML)).toBe(1234);
+        expect(parseInt(countCases.innerHTML)).toBe(57);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
-        expect(parseInt(countMessages.innerHTML)).toBe(12);
+        expect(parseInt(countMessages.innerHTML)).toBe(0);
         expect(parseInt(countAppointments.innerHTML)).toBe(6);
         expect(parseInt(countCovidCases.innerHTML)).toBe(NaN);
 
@@ -52,9 +53,9 @@ describe("Doctor Statistics Page", () => {
         const countAppointments = screen.getByTestId('doctor-stats-count-appointments');
         const countCovidCases = screen.getByTestId('doctor-stats-count-covid-cases');
 
-        expect(parseInt(countCases.innerHTML)).toBe(1234);
+        expect(parseInt(countCases.innerHTML)).toBe(57);
         expect(parseInt(countPatients.innerHTML)).toBe(1);
-        expect(parseInt(countMessages.innerHTML)).toBe(12);
+        expect(parseInt(countMessages.innerHTML)).toBe(1);
         expect(parseInt(countAppointments.innerHTML)).toBe(6);
         expect(parseInt(countCovidCases.innerHTML)).toBe(NaN);
     });

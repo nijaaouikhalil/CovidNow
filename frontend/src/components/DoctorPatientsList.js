@@ -19,9 +19,10 @@ const DoctorPatientsList = ({ patients }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody data-testid={'doctor-all-users-table-body'}>
                 {patients && patients.length > 0
-                  ? patients.map((patient, index) => (
+                  &&
+                  <tbody data-testid={'doctor-all-users-table-body'}>
+                   {patients.map((patient, index) => (
                     <tr key={index} data-testid={'doctor-all-users-table-row'}>
                       <td>{index + 1}</td>
                       <td>{patient ? patient.name : "John"}</td>
@@ -60,9 +61,7 @@ const DoctorPatientsList = ({ patients }) => {
                         )}
                       </td>
                     </tr>
-                  ))
-                  : ""}
-              </tbody>
+                  ))}</tbody>}
             </Table>
           </div>
         </div>

@@ -18,9 +18,10 @@ const HealthOfficialPatientsList = ({ all_users }) => {
                   <th>Details</th>
                 </tr>
               </thead>
-              <tbody data-testid={'hoff-all-users-table-body'}>
                 {all_users && all_users.length > 0
-                  ? all_users.map((user, index) => (
+                  &&
+                  <tbody data-testid={'hoff-all-users-table-body'}>
+                   {all_users.map((user, index) => (
                     <tr key={index} data-testid={'hoff-all-users-table-row'}>
                       <td>{index + 1}</td>
                       <td>{user.name}</td>
@@ -52,9 +53,7 @@ const HealthOfficialPatientsList = ({ all_users }) => {
                         </Link>
                       </td>
                     </tr>
-                  ))
-                  : ""}
-              </tbody>
+                  ))}</tbody>}
             </Table>
           </div>
         </div>

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { reportContactedPatients } from "../actions/patientActions";
 import { Loader } from "./Loader";
 import { Message } from "./Message";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { BaseUrl } from "../utils/utils";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { reportContactedPatients } from "../actions/patientActions";
 
 export const PatientContactTracing = () => {
   const [currentTab, setCurrentTab] = useState("Submit");
@@ -14,31 +14,38 @@ export const PatientContactTracing = () => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
+
+  const patientReportContacted = useSelector(
+    (state) => state.patientReportContacted
+  );
+  const { success, loading, error } = patientReportContacted;
   useEffect(() => {
-    getPerviousReports();
+    getPreviousReports();
 
     return () => {
       setReports([]);
-    };
-  }, [user_info]);
+    }; // eslint-disable-next-line
+  }, [success, user_info]);
 
-  const getPerviousReports = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
+  const getPreviousReports = async () => {
+    if (user_info) {
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
 
-      const { data } = await axios.get(
-        BaseUrl + `/api/contactedPeopleList`,
-        config
-      );
-      console.log(data);
-      setReports(data);
-    } catch (error) {
-      console.log(error);
+        const { data } = await axios.get(
+          BaseUrl + `/api/contactedPeopleList`,
+          config
+        );
+        console.log(data);
+        setReports(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -59,24 +66,24 @@ export const PatientContactTracing = () => {
         </div>
         <ul className="nav nav-pills justify-content-center">
           <li className="nav-item mx-3 pointer">
-            <a
+            <button
               className={
                 currentTab === "Submit" ? "nav-link active" : "nav-link"
               }
               onClick={() => setCurrentTab("Submit")}
             >
               Submit Tracing Data
-            </a>
+            </button>
           </li>
           <li className="nav-item pointer">
-            <a
+            <button
               className={
                 currentTab === "Submitted" ? "nav-link active" : "nav-link"
               }
               onClick={() => setCurrentTab("Submitted")}
             >
               Previously Submitted Data
-            </a>
+            </button>
           </li>
         </ul>
         {currentTab === "Submit" && <SubmitTracingData />}
@@ -94,54 +101,54 @@ const SubmitTracingData = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
 
-  const [success, setSuccess] = useState("");
-  const [loading, setLoading] = useState("");
-  const [error, setError] = useState("");
-  // const patientReportContacted = useSelector(
-  //   (state) => state.patientReportContacted
-  // );
-  // const { success, loading, error } = patientReportContacted;
+  // const [success, setSuccess] = useState("");
+  // const [loading, setLoading] = useState("");
+  // const [error, setError] = useState("");
+  const patientReportContacted = useSelector(
+    (state) => state.patientReportContacted
+  );
+  const { success, loading, error } = patientReportContacted;
 
-  const [data, setData] = useState([]);
+  const [data] = useState([]);
   const [name, setName] = useState("");
   const [lname, setLname] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
 
-  const addToList = (e) => {
-    e.preventDefault();
-    setData([...data, { name, lname, email, phone }]);
-    setName("");
-    setLname("");
-    setEmail("");
-    setPhone("");
-  };
+  // const addToList = (e) => {
+  //   e.preventDefault();
+  //   setData([...data, { name, lname, email, phone }]);
+  //   setName("");
+  //   setLname("");
+  //   setEmail("");
+  //   setPhone("");
+  // };
 
   const submitHandler = async (e) => {
     console.log(data);
     e.preventDefault();
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
-      setLoading(true);
-      const { data } = await axios.post(
-        BaseUrl + `/api/contactedPeople`,
-        { name, lname, email },
-        config
-      );
-      console.log(data);
-      setSuccess(data.message);
-      setLoading(false);
-    } catch (error) {
-      setLoading(false);
-      console.log(error.response.data);
-      setError(error.response.data);
-    }
-    //dispatch(reportContactedPatients({ name, lname, email }));
+    // try {
+    //   const config = {
+    //     headers: {
+    //       "Content-type": "application/json",
+    //       "x-access-token": `${user_info.accessToken}`,
+    //     },
+    //   };
+    //   setLoading(true);
+    //   const { data } = await axios.post(
+    //     BaseUrl + `/api/contactedPeople`,
+    //     { name, lname, email },
+    //     config
+    //   );
+    //   console.log(data);
+    //   setSuccess(data.message);
+    //   setLoading(false);
+    // } catch (error) {
+    //   setLoading(false);
+    //   console.log(error.response.data);
+    //   setError(error.response.data);
+    // }
+    dispatch(reportContactedPatients({ name, lname, email }));
     setName("");
     setLname("");
     setEmail("");
@@ -205,9 +212,7 @@ const SubmitTracingData = () => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : success ? (
-        <Message variant="success">
-          {"Your report was submitted successfully!"}
-        </Message>
+        <Message variant="success">{success}</Message>
       ) : (
         ""
       )}

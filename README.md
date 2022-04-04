@@ -4,15 +4,16 @@
 COVID-19 Tracking App
 
 ## Description ✏️
-Build a COVID-19 tracking app that heps medical doctors, immigration officers and health officials keep track  of those infected with COVID-19.
+Build a COVID-19 tracking app that helps medical doctors, immigration officers and health officials keep track of those infected with COVID-19.
 
 ## Core Features 👇
 
 ## Progress ⏰
- - [ ] Sprint 1
- - [ ] Sprint 2
- - [ ] Sprint 3
+ - [x] Sprint 1
+ - [x] Sprint 2
+ - [x] Sprint 3
  - [ ] Sprint 4
+ - [ ] Sorint 5
 
 
 ## Team Members :technologist:

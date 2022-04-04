@@ -11,7 +11,7 @@ export const patientReportContacted = (state = {}, action) => {
       return { loading: true };
 
     case PATIENT_REPORT_CONTACTED_SUCCESS:
-      return { loading: false, success: true };
+      return { loading: false, success: action.payload };
 
     case PATIENT_REPORT_CONTACTED_FAIL:
       return { loading: false, error: action.payload };

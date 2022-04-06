@@ -66,7 +66,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/api/verify/admin
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjhhOGY2OGU2OWE5ZTFkYTFiMmUyOSIsImlhdCI6MTY0Mzc2NDk1MiwiZXhwIjoxNjQzODUxMzUyfQ._OWiBjMSZlSYnYRREG6_CnP663v0NHoOEwN99eB4bYw
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0OTI4NTgzNiwiZXhwIjoxNjQ5MzcyMjM2fQ.gozJFg2RTTy_-hkF1Hfe4KDmgGxXp3s9iw5BYe9mNfI
 
 ###
 PUT http://localhost:8080/api/verify/admin

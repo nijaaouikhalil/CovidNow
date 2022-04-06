@@ -92,6 +92,10 @@ exports.getPendingList = (req, res) => {
       res.status(500).send({ message: err });
       return;
     }
+    if(cursor.length == 0){
+      res.send({});
+      return;
+    }
     await cursor.forEach((doc, index) => {
       Role.findOne(
         {

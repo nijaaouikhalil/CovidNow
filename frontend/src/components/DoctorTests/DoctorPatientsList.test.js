@@ -14,8 +14,7 @@ describe("Table displaying all a doctor's patients", () => {
     it('renders empty table when passed empty array', () => {
         const { queryByTestId } = render(<DoctorPatientsList patients={[]} />)
         const tableBody = queryByTestId('doctor-all-users-table-body');
-        const tableRow = queryByTestId('doctor-all-users-table-row');
-        expect(tableBody).not.toContainElement(tableRow);
+        expect(tableBody).toBeNull();
     });
 
     it('renders rows in table when passed array of users', () => {

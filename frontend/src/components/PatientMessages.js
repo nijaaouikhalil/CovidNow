@@ -15,24 +15,27 @@ export const PatientMessages = () => {
     return () => {
       setDoctors([]);
     };
+    // eslint-disable-next-line
   }, [user_info]);
   const getDoctors = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
-
-      const { data } = await axios.get(
-        BaseUrl + `/api/message/myDoctor`,
-        config
-      );
-      console.log(data);
-      setDoctors([data]);
-    } catch (error) {
-      console.log(error);
+    if (user_info){
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
+  
+        const { data } = await axios.get(
+          BaseUrl + `/api/message/myDoctor`,
+          config
+        );
+        console.log(data);
+        setDoctors([data]);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   return (
@@ -49,7 +52,7 @@ const Inbox = ({ doctors }) => {
   const setChat = (pid) => {
     for (let i in doctors) {
       console.log(doctors[i]);
-      if (doctors[i].doctorId == pid) {
+      if (doctors[i].doctorId === pid) {
         setCurrentChat(doctors[i]);
         return;
       }
@@ -86,11 +89,12 @@ const InboxItem = ({ doctor }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { user_info } = userLogin;
   useEffect(() => {
-    getPerviousMessages();
+    getPreviousMessages();
 
     return () => {
       setMessages([]);
     };
+    // eslint-disable-next-line
   }, [doctor, user_info]);
 
   const [messages, setMessages] = useState([]);
@@ -98,23 +102,25 @@ const InboxItem = ({ doctor }) => {
   const [newMessage, setNewMessage] = useState("");
   const [isUrgent, setIsUrgent] = useState(false);
 
-  const getPerviousMessages = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
-
-      const { data } = await axios.get(
-        BaseUrl + `/api/message/recipient/${doctor.doctorId}`,
-        config
-      );
-      console.log(data);
-      setMessages(data);
-    } catch (error) {
-      console.log(error);
+  const getPreviousMessages = async () => {
+    if (user_info){
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
+  
+        const { data } = await axios.get(
+          BaseUrl + `/api/message/recipient/${doctor.doctorId}`,
+          config
+        );
+        console.log(data);
+        setMessages(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
   const sendMessage = async () => {

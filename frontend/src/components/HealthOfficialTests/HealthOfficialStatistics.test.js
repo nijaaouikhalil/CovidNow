@@ -17,7 +17,7 @@ describe("Health Official Statistics Page", () => {
         const countPatients = screen.getByTestId('immi-stats-count-patients');
         const countCovidCases = screen.getByTestId('immi-stats-count-covid-cases');
 
-        expect(parseInt(countCases.innerHTML)).toBe(1234);
+        expect(parseInt(countCases.innerHTML)).toBe(57);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
         expect(parseInt(countCovidCases.innerHTML)).toBe(NaN);
 
@@ -43,7 +43,7 @@ describe("Health Official Statistics Page", () => {
         const countPatients = screen.getByTestId('immi-stats-count-patients');
         const countCovidCases = screen.getByTestId('immi-stats-count-covid-cases');
 
-        expect(parseInt(countCases.innerHTML)).toBe(1234);
+        expect(parseInt(countCases.innerHTML)).toBe(57);
         expect(parseInt(countPatients.innerHTML)).toBe(0);
         expect(parseInt(countCovidCases.innerHTML)).toBe(NaN);
     });

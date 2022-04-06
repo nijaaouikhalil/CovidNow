@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
-  Container,
   Row,
   Col,
   Form,
@@ -18,7 +17,6 @@ import axios from "axios";
 import FormContainer from "./Form/FormContainer";
 import {Message} from "./Message";
 import {Loader} from "./Loader";
-import { getUserDailyReports, getUserDetails } from "../actions/userActions";
 
 export const PatientReportSym = () => {
   const [hasCovid, setHasCovid] = useState(false);
@@ -47,94 +45,102 @@ export const PatientReportSym = () => {
       navigate("/login");
     }
     getCustomMessage();
-    getPerviousReports();
+    getPreviousReports();
 
     return () => {
       setQuestion("");
     };
+    // eslint-disable-next-line
   }, [dispatch, user_info]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    setUpdating(true);
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-      };
+    if (user_info){
+      setUpdating(true);
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+        };
 
-      const { data } = await axios.put(
-        BaseUrl + `/api/view/fillReport`,
-        {
-          hasCovid,
-          hasTravelled,
-          hasAutoImmuneDisease,
-          isPregnant,
-          hadAllergicReaction,
-          Temperature,
-          Weight,
-          Height,
-          customAns,
-        },
-        config
-      );
-      setMessage(data.message);
-      setUpdating(false);
-      setSucessReportRequest(true);
-    } catch (error) {
-      setUpdating(false);
-      console.log(error.response.data);
-      setMessage(error.response.data);
-      setSucessReportRequest(false);
+        const { data } = await axios.put(
+          BaseUrl + `/api/view/fillReport`,
+          {
+            hasCovid,
+            hasTravelled,
+            hasAutoImmuneDisease,
+            isPregnant,
+            hadAllergicReaction,
+            Temperature,
+            Weight,
+            Height,
+            customAns,
+          },
+          config
+        );
+        setMessage(data.message);
+        setUpdating(false);
+        setSucessReportRequest(true);
+      } catch (error) {
+        setUpdating(false);
+        console.log(error.response.data);
+        setMessage(error.response.data);
+        setSucessReportRequest(false);
+      }
     }
   };
 
   const getCustomMessage = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-        data: {
-          userId: user_info.id,
-        },
-      };
-
-      const { data } = await axios.get(
-        BaseUrl + `/api/view/fillReport/getCustom`,
-        config
-      );
-      console.log(data);
-      setQuestion(data);
-    } catch (error) {
-      console.log(error);
+    if (user_info){
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+          data: {
+            userId: user_info.id,
+          },
+        };
+  
+        const { data } = await axios.get(
+          BaseUrl + `/api/view/fillReport/getCustom`,
+          config
+        );
+        console.log(data);
+        setQuestion(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
-  const getPerviousReports = async () => {
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-          "x-access-token": `${user_info.accessToken}`,
-        },
-        data: {
-          userId: user_info.id,
-        },
-      };
-
-      const { data } = await axios.get(
-        BaseUrl + `/api/view/user/myreport`,
-        config
-      );
-      console.log(data);
-      setReports(data);
-    } catch (error) {
-      console.log(error);
+  const getPreviousReports = async () => {
+    if (user_info){
+      try {
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+            "x-access-token": `${user_info.accessToken}`,
+          },
+          data: {
+            userId: user_info.id,
+          },
+        };
+  
+        const { data } = await axios.get(
+          BaseUrl + `/api/view/user/myreport`,
+          config
+        );
+        console.log(data);
+        setReports(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
+    
   };
   return (
     <div id="dd-main-container">

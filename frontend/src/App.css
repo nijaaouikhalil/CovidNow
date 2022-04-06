@@ -159,6 +159,7 @@
   box-sizing: content-box;
   border-radius: 10px;
   box-shadow: 3px 3px 3px #888888;
+  overflow:-moz-hidden-unscrollable;
 }
 
 #dd-chart h4 {
@@ -236,9 +237,6 @@
   color: orangered;
 }
 
-#doctor-line-chart {
-  width: 450px!important;
-}
 
 
 /* PATIENT MESSAGES */

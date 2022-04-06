@@ -1,10 +1,7 @@
 import { Table, Badge, Button, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { Loader } from "./Loader";
 import { Message } from "./Message";
 import {
-  AdminlistUsers,
-  AdminUpdateUser,
   ListAllUsers,
   UpdateCovidStatus,
 } from "../actions/adminActions";
@@ -18,9 +15,7 @@ const HealthOfficialFlagCovid = () => {
   const { user_info } = userLogin;
   const AdminListAllUsers = useSelector((state) => state.AdminListAllUsers);
   const {
-    all_users,
-    loading: loadingAllUsers,
-    error: errorAllUsers,
+    all_users
   } = AdminListAllUsers;
 
   const FlagCovid = useSelector((state) => state.FlagCovid);
@@ -39,7 +34,7 @@ const HealthOfficialFlagCovid = () => {
     if (!user_info) {
       navigate("/login");
     }
-    dispatch(ListAllUsers());
+    dispatch(ListAllUsers());// eslint-disable-next-line
   }, [dispatch, success, user_info]);
   return (
     <div id="dd-main-container">
@@ -67,9 +62,10 @@ const HealthOfficialFlagCovid = () => {
                   <th>Flag as covid case</th>
                 </tr>
               </thead>
-              <tbody>
                 {all_users && all_users.length > 0
-                  ? all_users.map((user, index) => (
+                  &&
+                  <tbody>
+                   {all_users.map((user, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>{user.name}</td>
@@ -123,9 +119,7 @@ const HealthOfficialFlagCovid = () => {
                           </Col>
                         </td>
                       </tr>
-                    ))
-                  : ""}
-              </tbody>
+                    ))}</tbody>}
             </Table>
           </div>
         </div>

@@ -31,6 +31,10 @@ const User = mongoose.model(
       type: Date,
       default: Date.now,
     },
+    birthday: {
+      type: Date,
+      sparse: true,
+    },
     status: {
       type: String,
       enum: ["Pending", "Active"],

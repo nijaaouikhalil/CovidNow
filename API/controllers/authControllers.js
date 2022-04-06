@@ -16,6 +16,7 @@ exports.register = async (req, res) => {
         { email: req.body.email },
         process.env.EMAIL_TOKEN_SECRET
       );
+
       //Hashes the password for safety
       const hashedPassword = await bcrypt.hash(req.body.password, 10);
       const signedUpUser = new User({
@@ -24,6 +25,7 @@ exports.register = async (req, res) => {
         email: req.body.email,
         password: hashedPassword,
         confirmationCode: token,
+        birthday: req.body.birthday
       });
       //Adds the user if there is no error
       signedUpUser.save((err, user) => {

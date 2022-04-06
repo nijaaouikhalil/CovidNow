@@ -75,6 +75,7 @@ exports.profileInfo = (req, res) => {
             email: user.email,
             role: role ? role.name : "Not selected yet",
             covidStatus: user.covidStatus,
+            birthday: user.birthday
           };
 
           if (role.name == "doctor") {
@@ -158,7 +159,7 @@ exports.viewAll = (req, res) => {
             verified: "Active",
             status: "Active",
           },
-          "name lname email covidStatus"
+          "name lname email covidStatus birthday"
         ).exec((err, cursor) => {
           res.send(cursor);
         });
@@ -177,7 +178,7 @@ exports.viewAll = (req, res) => {
             verified: "Active",
             status: "Active",
           },
-          "name lname email covidStatus"
+          "name lname email covidStatus birthday"
         ).exec((err, cursor) => {
           res.send(cursor);
         });
@@ -185,7 +186,7 @@ exports.viewAll = (req, res) => {
     );
   } else if (req.roleName == "admin") {
     var final = [];
-    User.find({}, "name lname email roles verified covidStatus").exec(
+    User.find({}, "name lname email roles verified covidStatus birthday").exec(
       async (err, cursor) => {
         if (err) {
           res.status(500).send({ message: err });
@@ -287,7 +288,7 @@ exports.viewAll = (req, res) => {
             {
               _id: obj.userId,
             },
-            "name lname email covidStatus"
+            "name lname email covidStatus birthday"
           ).exec((err, patient) => {
             if (err) {
               res.status(500).send({ message: err });

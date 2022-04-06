@@ -60,11 +60,11 @@ const InboxItem = ({ patient }) => {
 
     return () => {
       setMessages([]);
-    };// eslint-disable-next-line
+    }; // eslint-disable-next-line
   }, [patient, user_info]);
 
   const getPreviousMessages = async () => {
-    if (user_info){
+    if (user_info) {
       try {
         const config = {
           headers: {
@@ -72,7 +72,7 @@ const InboxItem = ({ patient }) => {
             "x-access-token": `${user_info.accessToken}`,
           },
         };
-  
+
         const { data } = await axios.get(
           BaseUrl + `/api/message/recipient/${patient._id}`,
           config
@@ -100,7 +100,7 @@ const InboxItem = ({ patient }) => {
 
       const { data } = await axios.post(
         BaseUrl + `/api/message/recipient/${patient._id}`,
-        { message: newMessage },
+        { message: newMessage, emergency: isUrgent },
         config
       );
       console.log(data);

@@ -5,33 +5,6 @@ const ImmiStatistics = ({ setSubPage, patients }) => {
   return (
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <div className="d-flex flex-wrap justify-content-around mt-5 text-center">
-          <div className="dd-card pastel-blue">
-            <h3 data-testid="immi-stats-count-cases">57</h3>
-            <p>Total Confirmed Cases</p>
-          </div>
-          <div className="dd-card pastel-green">
-            <div onClick={() => setSubPage("My Patients")}>
-              <h3 data-testid="immi-stats-count-patients">
-                {patients ? patients.length : 0}
-              </h3>
-              <p>Patients </p>
-            </div>
-          </div>
-          <div className="dd-card pastel-orange">
-            <div onClick={() => setSubPage("Messages")}>
-              <h3 data-testid="immi-stats-count-messages">12</h3>
-              <p>New Messages</p>
-            </div>
-          </div>
-          <div className="dd-card pastel-red">
-            <div onClick={() => setSubPage("Appointments")}>
-              <h3 data-testid="immi-stats-count-appointments">6</h3>
-              <p>Appointments</p>
-            </div>
-          </div>
-        </div>
-
         <div
           id="dd-data-visuals"
           className="d-flex justify-content-around align-items-center"

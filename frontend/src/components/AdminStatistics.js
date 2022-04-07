@@ -11,10 +11,6 @@ const AdminStatistics = ({
     <div id="dd-main-container">
       <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
         <div className="d-flex flex-wrap justify-content-around mt-5 text-center">
-          <div className="dd-card pastel-blue">
-            <h3>57</h3>
-            <p>Total Confirmed Cases</p>
-          </div>
           <div className="dd-card dd-card-link pastel-green">
             <a onClick={() => setSubPage("All Users")}>
               <h3 data-testid="admin-stats-count-all">

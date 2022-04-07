@@ -16,12 +16,13 @@ POST http://localhost:8080/api/auth/register
 Content-Type: application/json
 
 {
-    "name" : "User",
-    "lname": "buser",
-    "email":"user@user",
+    "name" : "Birth",
+    "lname": "ed",
+    "email":"birthday@birthday",
     "password":"pass",
     "cpassword": "pass",
-    "roles": ""
+    "roles": "",
+    "birthday": "1990-01-02"
 
 }
 ###
@@ -58,14 +59,14 @@ POST http://localhost:8080/api/auth/signin
 Content-Type: application/json
 
 {
-    "email":"zaatar@yopmail.com",
-    "password":"123"
+    "email":"admin1@admin.com",
+    "password":"admin"
 }
 
 ###
 GET http://localhost:8080/api/verify/admin
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjhhOGY2OGU2OWE5ZTFkYTFiMmUyOSIsImlhdCI6MTY0Mzc2NDk1MiwiZXhwIjoxNjQzODUxMzUyfQ._OWiBjMSZlSYnYRREG6_CnP663v0NHoOEwN99eB4bYw
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0OTI4NTgzNiwiZXhwIjoxNjQ5MzcyMjM2fQ.gozJFg2RTTy_-hkF1Hfe4KDmgGxXp3s9iw5BYe9mNfI
 
 ###
 PUT http://localhost:8080/api/verify/admin
@@ -107,7 +108,7 @@ x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE
 ###
 GET http://localhost:8080/api/view
 Content-Type: application/json
-x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOWE1YzQ4ZjczMTMxYzM0ZjNlZiIsImlhdCI6MTY0NzEzODYzNywiZXhwIjoxNjQ3MjI1MDM3fQ.ztdKipSiEsVMD946zpyGrOf3NY2QvveCyfkqssT5pxM
+x-access-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyMDZkOTAzMjY0ZWE3MTg1OWMxZDk3NCIsImlhdCI6MTY0OTIxMjAyNiwiZXhwIjoxNjQ5Mjk4NDI2fQ.J-RDhJ6TGAzxHoQbiWY9K9t9MrzlWm5u4FQ1Dx4Or5U
 
 {
 

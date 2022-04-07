@@ -41,13 +41,18 @@ export const ListDoctorsAppoinments = ({ patients }) => {
         </thead>
         <tbody data-testid={"doctor-all-appointments-table-body"}>
           {appointments &&
+            patients &&
             appointments.length > 0 &&
+            patients.length > 0 &&
             appointments.map((appointment, index) => (
               <tr key={index} data-testid={"doctor-all-appointments-table-row"}>
                 <td>{index + 1}</td>
                 <td>
                   {appointment.patientId
                     ? patients.find(
+                        (patient) => patient._id === appointment.patientId
+                      ) &&
+                      patients.find(
                         (patient) => patient._id === appointment.patientId
                       ).name
                     : "John"}
@@ -56,12 +61,18 @@ export const ListDoctorsAppoinments = ({ patients }) => {
                   {appointment.patientId
                     ? patients.find(
                         (patient) => patient._id === appointment.patientId
+                      ) &&
+                      patients.find(
+                        (patient) => patient._id === appointment.patientId
                       ).lname
                     : "Doe"}
                 </td>
                 <td className="dd-patient-email">
                   {appointment.patientId
                     ? patients.find(
+                        (patient) => patient._id === appointment.patientId
+                      ) &&
+                      patients.find(
                         (patient) => patient._id === appointment.patientId
                       ).email
                     : "Johndoe@test.com"}

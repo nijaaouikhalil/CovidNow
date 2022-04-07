@@ -11,8 +11,8 @@ describe("Patients statistics form", () => {
         render(<Provider store={store}><MemoryRouter><PatientStatistics/></MemoryRouter></Provider>);
     });
     it('Correct traced count value is outputted', () => {
-        render(<MemoryRouter><PatientStatistics/></MemoryRouter>)
+        render(<Provider store={store}><MemoryRouter><PatientStatistics/></MemoryRouter></Provider>)
         const traced = screen.getByTestId('patient-users-traced');
-        expect(parseInt(traced.innerHTML)).toBe(4);
+        expect(parseInt(traced.innerHTML)).toBe(0);
     });
 });

@@ -125,7 +125,7 @@ const AdminConfirmUsers = () => {
                           ))
                         ) : (
                           <tr>
-                            <td colspan="6">
+                            <td colSpan="6">
                               <Message variant="info">{"No users"}</Message>
                             </td>
                           </tr>

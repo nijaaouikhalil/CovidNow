@@ -40,7 +40,6 @@ export const ListDoctorsAppoinments = ({ patients }) => {
           </tr>
         </thead>
         <tbody data-testid={"doctor-all-appointments-table-body"}>
-          {console.log(patients)}
           {appointments &&
             patients &&
             appointments.length > 0 &&

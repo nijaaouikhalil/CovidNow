@@ -4,7 +4,7 @@ import { MemoryRouter } from "react-router-dom";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import store from "../../store.js";
-import { CasesByProvincePieChart } from "../Doctor/CasesByProvincePieChart";
+import { CasesByProvincePieChart } from "../CasesByProvincePieChart";
 import "jest-canvas-mock";
 jest.mock("react-chartjs-2", () => ({ Pie: () => null }));
 

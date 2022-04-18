@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BaseUrl } from "../utils/utils";
+import { BaseUrl } from "../../utils/utils";
 import axios from "axios";
-import { Message } from "../components/Message";
+import { Message } from "../../components/Message";
 export const DoctorMessages = ({ patients }) => {
   return (
     <div id="dd-main-container">
-      <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-        <Inbox patients={patients} />
+      <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-scroll">
+        <Inbox
+          patients={patients}
+          style={{
+            height: "800px",
+          }}
+        />
       </div>
     </div>
   );

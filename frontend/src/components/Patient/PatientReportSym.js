@@ -12,11 +12,11 @@ import {
   Badge,
   FloatingLabel,
 } from "react-bootstrap";
-import { BaseUrl } from "../utils/utils";
+import { BaseUrl } from "../../utils/utils";
 import axios from "axios";
-import FormContainer from "./Form/FormContainer";
-import {Message} from "./Message";
-import {Loader} from "./Loader";
+import FormContainer from "../Form/FormContainer";
+import { Message } from "../Message";
+import { Loader } from "../Loader";
 
 export const PatientReportSym = () => {
   const [hasCovid, setHasCovid] = useState(false);
@@ -55,7 +55,7 @@ export const PatientReportSym = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if (user_info){
+    if (user_info) {
       setUpdating(true);
       try {
         const config = {
@@ -93,7 +93,7 @@ export const PatientReportSym = () => {
   };
 
   const getCustomMessage = async () => {
-    if (user_info){
+    if (user_info) {
       try {
         const config = {
           headers: {
@@ -104,7 +104,7 @@ export const PatientReportSym = () => {
             userId: user_info.id,
           },
         };
-  
+
         const { data } = await axios.get(
           BaseUrl + `/api/view/fillReport/getCustom`,
           config
@@ -118,7 +118,7 @@ export const PatientReportSym = () => {
   };
 
   const getPreviousReports = async () => {
-    if (user_info){
+    if (user_info) {
       try {
         const config = {
           headers: {
@@ -129,7 +129,7 @@ export const PatientReportSym = () => {
             userId: user_info.id,
           },
         };
-  
+
         const { data } = await axios.get(
           BaseUrl + `/api/view/user/myreport`,
           config
@@ -140,7 +140,6 @@ export const PatientReportSym = () => {
         console.log(error);
       }
     }
-    
   };
   return (
     <div id="dd-main-container">
@@ -428,4 +427,4 @@ export const PatientReportSym = () => {
       </FormContainer>
     </div>
   );
-}
+};

@@ -4,11 +4,11 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { DoctorStatistics } from "../components/DoctorStatistics";
-import { DoctorPatientsList } from "../components/DoctorPatientsList";
+import { DoctorStatistics } from "../components/Doctor/DoctorStatistics";
+import { DoctorPatientsList } from "../components/Doctor/DoctorPatientsList";
 import { DoctorlistPatients } from "../actions/doctorActions";
-import { DoctorAppointment } from '../components/DoctorAppointment';
-import { DoctorMessages } from '../components/DoctorMessages';
+import { DoctorAppointment } from "../components/Doctor/DoctorAppointment";
+import { DoctorMessages } from "../components/Doctor/DoctorMessages";
 
 function DoctorPanelScreen() {
   const dispatch = useDispatch();
@@ -33,14 +33,17 @@ function DoctorPanelScreen() {
           <div className="position-sticky pt-3">
             <ul className="nav flex-column mt-5">
               <li className="text-center mb-3">
-                <h1><i className="fas fa-user-md"></i></h1>
+                <h1>
+                  <i className="fas fa-user-md"></i>
+                </h1>
                 <h4> Welcome Dr. {user_info.name}</h4>
-                <small>{user_info.email}</small><br />
+                <small>{user_info.email}</small>
+                <br />
                 <small>Doctor Account</small>
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='Home' ? "nav-link active" : "nav-link"}
+                  className={subPage == "Home" ? "nav-link active" : "nav-link"}
                   aria-current="page"
                   onClick={() => setSubPage("Home")}
                 >
@@ -50,7 +53,9 @@ function DoctorPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='My Patients' ? "nav-link active" : "nav-link"}
+                  className={
+                    subPage == "My Patients" ? "nav-link active" : "nav-link"
+                  }
                   onClick={() => setSubPage("My Patients")}
                 >
                   <i className="fas fa-hospital-user me-3"></i>
@@ -58,14 +63,21 @@ function DoctorPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className={subPage =='Messages' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Messages")}>
+                <a
+                  className={
+                    subPage == "Messages" ? "nav-link active" : "nav-link"
+                  }
+                  onClick={() => setSubPage("Messages")}
+                >
                   <i className="fas fa-inbox me-3"></i>
                   Messages
                 </a>
               </li>
               <li className="nav-item">
                 <a
-                  className={subPage =='Appointments' ? "nav-link active" : "nav-link"}
+                  className={
+                    subPage == "Appointments" ? "nav-link active" : "nav-link"
+                  }
                   onClick={() => setSubPage("Appointments")}
                 >
                   <i className="fas fa-calendar me-3"></i>
@@ -73,7 +85,12 @@ function DoctorPanelScreen() {
                 </a>
               </li>
               <li className="nav-item">
-                <a className={subPage =='Settings' ? "nav-link active" : "nav-link"} onClick={() => setSubPage("Settings")}>
+                <a
+                  className={
+                    subPage == "Settings" ? "nav-link active" : "nav-link"
+                  }
+                  onClick={() => setSubPage("Settings")}
+                >
                   <i className="fas fa-cogs me-3"></i>
                   Settings
                 </a>
@@ -101,32 +118,62 @@ function DoctorPanelScreen() {
                 aria-labelledby="dd-dropdown-menu-button"
               >
                 <li>
-                  <a className={subPage =='Home' ? "dropdown-item active" : "dropdown-item"}
-                  onClick={() => setSubPage("Home")}>
+                  <a
+                    className={
+                      subPage == "Home"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("Home")}
+                  >
                     <i className="fas fa-chart-line me-2"></i> Home
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='My Patients' ? "dropdown-item active" : "dropdown-item"}
-                  onClick={() => setSubPage("My Patients")}>
+                  <a
+                    className={
+                      subPage == "My Patients"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("My Patients")}
+                  >
                     <i className="fas fa-hospital-user me-2"></i> My Patients
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Messages' ? "dropdown-item active" : "dropdown-item"}
-                  onClick={() => setSubPage("Messages")}>
+                  <a
+                    className={
+                      subPage == "Messages"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("Messages")}
+                  >
                     <i className="fas fa-inbox me-2"></i> Messages
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Appointments' ? "dropdown-item active" : "dropdown-item"}
-                  onClick={() => setSubPage("Appointments")} >
+                  <a
+                    className={
+                      subPage == "Appointments"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("Appointments")}
+                  >
                     <i className="fas fa-calendar me-2"></i> Appointments
                   </a>
                 </li>
                 <li>
-                  <a className={subPage =='Settings' ? "dropdown-item active" : "dropdown-item"}
-                  onClick={() => setSubPage("Settings")}>
+                  <a
+                    className={
+                      subPage == "Settings"
+                        ? "dropdown-item active"
+                        : "dropdown-item"
+                    }
+                    onClick={() => setSubPage("Settings")}
+                  >
                     <i className="fas fa-cogs me-2"></i> Settings
                   </a>
                 </li>

@@ -11,9 +11,9 @@ import {
   AdminUpdateUser,
 } from "../actions/adminActions";
 import { LinkContainer } from "react-router-bootstrap";
-import { AdminConfirmUsers } from "../components/AdminConfirmUsers";
-import { AdminAllUsersList } from "../components/AdminAllUsersList";
-import { AdminStatistics } from "../components/AdminStatistics";
+import { AdminConfirmUsers } from "../components/Admin/AdminConfirmUsers";
+import { AdminAllUsersList } from "../components/Admin/AdminAllUsersList";
+import { AdminStatistics } from "../components/Admin/AdminStatistics";
 
 function AdminPanelScreen() {
   const dispatch = useDispatch();
@@ -60,9 +60,7 @@ function AdminPanelScreen() {
               </li>
               <li className="nav-item">
                 <a
-                  className={
-                    subPage == "Home" ? "nav-link active" : "nav-link"
-                  }
+                  className={subPage == "Home" ? "nav-link active" : "nav-link"}
                   aria-current="page"
                   onClick={() => setSubPage("Home")}
                 >

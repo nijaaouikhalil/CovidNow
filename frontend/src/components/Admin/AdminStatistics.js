@@ -1,4 +1,4 @@
-import { CanadaCovidCasesByDateRangeLineGraph } from "./CanadaCovidCasesByDateRangeLineGraph";
+import { CanadaCovidCasesByDateRangeLineGraph } from "../CanadaCovidCasesByDateRangeLineGraph";
 import { AdminPieChart } from "./AdminPieChart";
 
 const AdminStatistics = ({

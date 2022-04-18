@@ -1,5 +1,5 @@
-import { CanadaCovidCasesByDateRangeLineGraph } from "./CanadaCovidCasesByDateRangeLineGraph";
-import { CasesByProvincePieChart } from "./CasesByProvincePieChart";
+import { CanadaCovidCasesByDateRangeLineGraph } from "../CanadaCovidCasesByDateRangeLineGraph";
+import { CasesByProvincePieChart } from "../CasesByProvincePieChart";
 
 const HealthOfficialStatistics = ({ setSubPage, patients }) => {
   return (

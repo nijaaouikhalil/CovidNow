@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { Loader } from "./Loader";
-import { Message } from "./Message";
-import { BaseUrl } from "../utils/utils";
+import { Loader } from "../Loader";
+import { Message } from "../Message";
+import { BaseUrl } from "../../utils/utils";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { reportContactedPatients } from "../actions/patientActions";
+import { reportContactedPatients } from "../../actions/patientActions";
 
 export const PatientContactTracing = () => {
   const [currentTab, setCurrentTab] = useState("Submit");

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { HealthOfficialPatientsList } from "../components/HealthOfficialPatientsList";
+import { HealthOfficialPatientsList } from "../components/HealthOfficial/HealthOfficialPatientsList";
 import { ListAllUsers } from "../actions/adminActions";
-import { HealthOfficialStatistics } from "../components/HealthOfficialStatistics";
-import { HealthOfficialFlagCovid } from "../components/HealthOfficialFlagCovid";
+import { HealthOfficialStatistics } from "../components/HealthOfficial/HealthOfficialStatistics";
+import { HealthOfficialFlagCovid } from "../components/HealthOfficial/HealthOfficialFlagCovid";
 
 function HealthOfficialPanelScreen() {
   const dispatch = useDispatch();
@@ -14,9 +14,7 @@ function HealthOfficialPanelScreen() {
   const { user_info } = userLogin;
   const [subPage, setSubPage] = useState("Home");
   const AdminListAllUsers = useSelector((state) => state.AdminListAllUsers);
-  const {
-    all_users
-  } = AdminListAllUsers;
+  const { all_users } = AdminListAllUsers;
 
   useEffect(() => {
     if (!user_info || user_info.roles !== "ROLE_HEALTH_OFFICIAL") {

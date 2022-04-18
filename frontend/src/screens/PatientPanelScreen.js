@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import {PatientReportSym} from "../components/PatientReportSym";
-import { PatientStatistics } from "../components/PatientStatistics";
-import { PatientContactTracing } from '../components/PatientContactTracing';
-import { PatientMessages } from '../components/PatientMessages';
+import { PatientReportSym } from "../components/Patient/PatientReportSym";
+import { PatientStatistics } from "../components/Patient/PatientStatistics";
+import { PatientContactTracing } from "../components/Patient/PatientContactTracing";
+import { PatientMessages } from "../components/Patient/PatientMessages";
 
 function PatientPanelScreen() {
   const navigate = useNavigate();
@@ -15,7 +15,7 @@ function PatientPanelScreen() {
   useEffect(() => {
     if (!user_info) {
       navigate("/login");
-    }// eslint-disable-next-line
+    } // eslint-disable-next-line
   }, [user_info]);
 
   return (
@@ -61,9 +61,7 @@ function PatientPanelScreen() {
               <li className="nav-item">
                 <div
                   className={
-                    subPage === "Messages"
-                      ? "nav-link active"
-                      : "nav-link"
+                    subPage === "Messages" ? "nav-link active" : "nav-link"
                   }
                   onClick={() => setSubPage("Messages")}
                 >
@@ -74,7 +72,9 @@ function PatientPanelScreen() {
               <li className="nav-item">
                 <div
                   className={
-                    subPage === "Contact Tracing" ? "nav-link active" : "nav-link"
+                    subPage === "Contact Tracing"
+                      ? "nav-link active"
+                      : "nav-link"
                   }
                   onClick={() => setSubPage("Contact Tracing")}
                 >
@@ -161,7 +161,8 @@ function PatientPanelScreen() {
                     }
                     onClick={() => setSubPage("Contact Tracing")}
                   >
-                    <i className="fas fa-search-location me-2"></i> Contact Tracing
+                    <i className="fas fa-search-location me-2"></i> Contact
+                    Tracing
                   </div>
                 </li>
                 <li>
@@ -181,18 +182,12 @@ function PatientPanelScreen() {
           </div>
         </div>
 
-        {subPage === "Home" && (
-          <PatientStatistics setSubPage={setSubPage} />
-        )}
+        {subPage === "Home" && <PatientStatistics setSubPage={setSubPage} />}
         {subPage === "Daily symptom report" && (
           <PatientReportSym setSubPage={setSubPage} />
         )}
-        {subPage === "Contact Tracing" && (
-          <PatientContactTracing />
-        )}
-        {subPage === "Messages" && (
-          <PatientMessages />
-        )}
+        {subPage === "Contact Tracing" && <PatientContactTracing />}
+        {subPage === "Messages" && <PatientMessages />}
       </div>
     </div>
   );

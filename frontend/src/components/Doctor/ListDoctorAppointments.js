@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getDoctorAppointments } from "../actions/doctorActions";
+import { getDoctorAppointments } from "../../actions/doctorActions";
 
 export const ListDoctorsAppoinments = ({ patients }) => {
   const dispatch = useDispatch();

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { BaseUrl } from "../utils/utils";
+import { BaseUrl } from "../../utils/utils";
 import axios from "axios";
 
-import { Message } from "../components/Message";
+import { Message } from "../../components/Message";
 
 export const PatientMessages = () => {
   const [doctors, setDoctors] = useState([]);
@@ -18,7 +18,7 @@ export const PatientMessages = () => {
     // eslint-disable-next-line
   }, [user_info]);
   const getDoctors = async () => {
-    if (user_info){
+    if (user_info) {
       try {
         const config = {
           headers: {
@@ -26,7 +26,7 @@ export const PatientMessages = () => {
             "x-access-token": `${user_info.accessToken}`,
           },
         };
-  
+
         const { data } = await axios.get(
           BaseUrl + `/api/message/myDoctor`,
           config
@@ -40,7 +40,12 @@ export const PatientMessages = () => {
   };
   return (
     <div id="dd-main-container">
-      <div className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+      <div
+        className="col-md-9 ms-sm-auto col-lg-10 px-md-4 overflow-scroll"
+        style={{
+          height: "800px",
+        }}
+      >
         <Inbox doctors={doctors} />
       </div>
     </div>
@@ -103,7 +108,7 @@ const InboxItem = ({ doctor }) => {
   const [isUrgent, setIsUrgent] = useState(false);
 
   const getPreviousMessages = async () => {
-    if (user_info){
+    if (user_info) {
       try {
         const config = {
           headers: {
@@ -111,7 +116,7 @@ const InboxItem = ({ doctor }) => {
             "x-access-token": `${user_info.accessToken}`,
           },
         };
-  
+
         const { data } = await axios.get(
           BaseUrl + `/api/message/recipient/${doctor.doctorId}`,
           config
